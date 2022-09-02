@@ -13,4 +13,8 @@
 </style>
 </head>
 <body>
-<h1>header</h1>
+<h1>CCU 홈</h1>
+	<ol>
+		<li><a href="/login">로그인</a></li>
+		<li><a href="/signup">회원가입</a></li>
+	</ol>
