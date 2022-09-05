@@ -1,0 +1,29 @@
+<!-- <ul class="slider-nav"> -->
+<!-- 	<li><img src="img/poster/1.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/2.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/3.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/4.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/5.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/6.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/7.jpg" /></li> -->
+<!-- </ul> -->
+<!-- <ul class="slider-for"> -->
+<!-- 	<li><img src="img/poster/1.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/2.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/3.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/4.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/5.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/6.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/7.jpg" /></li> -->
+<!-- </ul> -->
+
+<div class="post-slider">
+        <h1 class="sider-title">Treding Posts</h1>
+        <div class="post-wrapper">
+          <div class="post">1</div>
+          <div class="post">2</div>
+          <div class="post">3</div>
+          <div class="post">4</div>
+          <div class="post">5</div>
+        </div>
+</div>

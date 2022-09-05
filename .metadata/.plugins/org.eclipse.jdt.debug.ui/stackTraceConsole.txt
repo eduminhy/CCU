@@ -1,0 +1,15 @@
+		<div class="slider-div2">
+			<div><a href=""><img src="img/poster/1.jpg" /></a>
+						<div class="slider-div">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			asasad</div></div>
+
+
+		</div>
