@@ -1,0 +1,34 @@
+<!-- <ul class="slider-nav"> -->
+<!-- 	<li><img src="img/poster/1.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/2.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/3.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/4.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/5.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/6.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/7.jpg" /></li> -->
+<!-- </ul> -->
+<!-- <ul class="slider-for"> -->
+<!-- 	<li><img src="img/poster/1.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/2.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/3.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/4.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/5.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/6.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/7.jpg" /></li> -->
+<!-- </ul> -->
+
+	<!-- stlye 은 slick 영역 확인용 -->
+	<div style="padding:300px 100px; background-color: skyblue;">
+	  	<div id="slider-div"  >
+		    <div>1</div>
+		    <div>2</div>
+		    <div>3</div>
+		    <div>4</div>
+		    <div>5</div>
+		    <div>6</div>
+		    <div>7</div>
+		    <div>8</div>
+		    <div>9</div>
+		    <div>10</div>
+	  	</div>
+	</div>
