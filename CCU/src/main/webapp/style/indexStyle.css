@@ -67,3 +67,59 @@ height: 150px
 	height : 744.5px;
 	width:100%;
 }
+.emptyDiv{
+	width: 100%;
+	height:250px;
+}
+.indexBody{
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+}
+.indexFav{
+	margin: 0 auto;
+	text-align: center;
+	
+}
+.indexFav_post{
+display: flex;
+	width: 1080px;
+	justify-content: space-around;
+}
+.indexFav_post>div>img{
+width:200px;
+}
+.indexRank{
+	margin: 0 auto;
+	text-align: center;
+}
+.indexFes{
+	margin: 0 auto;
+}
+.indexRank_menu{
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width:250px;
+}
+.indexRank_post{
+	display: flex;
+	width: 1080px;
+	justify-content: space-around;
+}
+.indexRank_post>div>img{
+width:200px;
+}
+.indexFes_post{
+	display: flex;
+	width: 1080px;
+	justify-content: space-around;
+}
+.indexFes_post>div>img{
+width:200px;
+}
+.indexFes{
+	margin: 0 auto;
+	text-align: center;
+}

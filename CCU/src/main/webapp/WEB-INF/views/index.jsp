@@ -122,4 +122,48 @@
 		}); 
 	});
 </script>
-<div class=".indexbody"></div>
+<div class="emptyDiv"></div>
+<div class="indexBody">
+	<div class="indexFav">
+		<h1>- 인기상황판 -</h1>
+		<div class="indexFav_post">
+		<div><img src="img/poster/1.jpg" /></div>
+		<div><img src="img/poster/2.jpg" /></div>
+		<div><img src="img/poster/3.jpg" /></div>
+		<div><img src="img/poster/4.jpg" /></div>
+		<div><img src="img/poster/5.jpg" /></div>
+		</div>
+	</div>
+	<div class="indexRank">
+		<h1 class="indexRank_title" >- Monthly Ranking -</h1>
+		<div class="indexRank_menu">
+			<div>#연극&nbsp;&nbsp;</div>
+			<div>#뮤지컬&nbsp;&nbsp;</div>
+			<div>#클래식/오페라</div>
+			<div>#무용&nbsp;&nbsp;</div>
+			<div>#국악&nbsp;&nbsp;</div>
+			<div>#아동&nbsp;&nbsp;</div>
+			<div>#관란객참여</div>
+		</div>
+		<br/>
+		<div class="indexRank_post">
+		<div><img src="img/poster/1.jpg" /></div>
+		<div><img src="img/poster/2.jpg" /></div>
+		<div><img src="img/poster/3.jpg" /></div>
+		<div><img src="img/poster/4.jpg" /></div>
+		<div><img src="img/poster/5.jpg" /></div>
+		</div>
+	</div>
+	<div class="indexFes">
+		<h1>- Festival -</h1>
+		<div>2022축제 라인업 놓치지 마세요</div>
+		<br/>
+		<div class="indexFes_post">
+		<div><img src="img/poster/1.jpg" /></div>
+		<div><img src="img/poster/2.jpg" /></div>
+		<div><img src="img/poster/3.jpg" /></div>
+		<div><img src="img/poster/4.jpg" /></div>
+		<div><img src="img/poster/5.jpg" /></div>
+		</div>
+	</div>
+</div>
