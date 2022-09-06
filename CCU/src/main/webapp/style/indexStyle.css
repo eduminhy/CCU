@@ -143,3 +143,9 @@ width:170px;
 	flex-direction: column;
 	width:19%;
 }
+.indexFav_title{
+	color: rgba(255, 81,87);
+}
+.indexRank_title, .indexRank_menu>div, .indexFes, .indexFes_post>div{ 
+	color: rgba(59, 0,148);
+}
