@@ -14,4 +14,12 @@ public class ShowController {
 		mav.setViewName("show/showList");
 		return mav;
 	}
+	
+	@GetMapping("showDetail")
+	public ModelAndView showDetail() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("show/showDetail");
+		return mav;
+	}
 }
+

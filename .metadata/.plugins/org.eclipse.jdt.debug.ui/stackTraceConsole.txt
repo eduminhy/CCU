@@ -1,15 +1,10 @@
-		<div class="slider-div2">
-			<div><a href=""><img src="img/poster/1.jpg" /></a>
-						<div class="slider-div">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			</br>
-			asasad</div></div>
-
-
-		</div>
+		slidesToShow : 5,
+		slidesToScroll : 10,
+		dots : false,
+		arrows : false,
+		centerMode : true,
+		focusOnSelect : true,
+		pauseOnHover : true,
+		swipe : false,
+		autoplay : true,
+		autoplaySpeed : 300,
