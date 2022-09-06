@@ -107,7 +107,7 @@
 		slidesToScroll : 10,
 		asNavFor : '.slider-for',
 		dots : false,
-		arrows : true,
+		arrows : false,
 		centerMode : true,
 		focusOnSelect : true,
 		pauseOnHover : true,
@@ -123,17 +123,60 @@
 	});
 </script>
 <div class="emptyDiv"></div>
-<div class="indexBody">
-	<div class="indexFav">
-		<h1>- 인기상황판 -</h1>
-		<div class="indexFav_post">
-		<div><img src="img/poster/1.jpg" /></div>
-		<div><img src="img/poster/2.jpg" /></div>
-		<div><img src="img/poster/3.jpg" /></div>
-		<div><img src="img/poster/4.jpg" /></div>
-		<div><img src="img/poster/5.jpg" /></div>
+<div class="indexFav">
+	<h1>- 인기상황판 -</h1>
+	<div class="indexFav_post">
+		<div>
+			<img src="img/poster/1.jpg" />
+		</div>
+		<div>
+			<img src="img/poster/2.jpg" />
+		</div>
+		<div>
+			<img src="img/poster/3.jpg" />
+		</div>
+		<div>
+			<img src="img/poster/4.jpg" />
+		</div>
+		<div>
+			<img src="img/poster/5.jpg" />
+		</div>
+				<div>
+			<img src="img/poster/1.jpg" />
+		</div>
+		<div>
+			<img src="img/poster/2.jpg" />
+		</div>
+		<div>
+			<img src="img/poster/3.jpg" />
+		</div>
+		<div>
+			<img src="img/poster/4.jpg" />
+		</div>
+		<div>
+			<img src="img/poster/5.jpg" />
 		</div>
 	</div>
+</div>
+<script>
+	$('.indexFav_post').slick({
+		slidesToShow : 5,
+		slidesToScroll : 5,
+ 		dots : true,
+		arrows : false,
+		//centerMode : true,
+		focusOnSelect : true,
+		pauseOnHover : true,
+		//swipe : true,
+		autoplay : true,
+		autoplaySpeed : 3000,
+		//draggable : true
+	});
+</script>
+<div class="indexBody">
+	<br/>
+	<br/>
+	<br/>
 	<div class="indexRank">
 		<h1 class="indexRank_title" >- Monthly Ranking -</h1>
 		<div class="indexRank_menu">
@@ -153,17 +196,21 @@
 		<div><img src="img/poster/4.jpg" /></div>
 		<div><img src="img/poster/5.jpg" /></div>
 		</div>
+		<br/>
 	</div>
+	<br/>
+	<br/>
 	<div class="indexFes">
 		<h1>- Festival -</h1>
-		<div>2022축제 라인업 놓치지 마세요</div>
+		<div>2022축제 라인업, 놓치지 마세요!</div>
 		<br/>
 		<div class="indexFes_post">
-		<div><img src="img/poster/1.jpg" /></div>
-		<div><img src="img/poster/2.jpg" /></div>
-		<div><img src="img/poster/3.jpg" /></div>
-		<div><img src="img/poster/4.jpg" /></div>
-		<div><img src="img/poster/5.jpg" /></div>
+		<div><img src="img/poster/1.jpg" />< 축제명 ><br/>2022.05.28~2022.12.31</div>
+		<div><img src="img/poster/2.jpg" />< 축제명 ><br/>2022.05.28~2022.12.31</div>
+		<div><img src="img/poster/3.jpg" />< 축제명 ><br/>2022.05.28~2022.12.31</div>
+		<div><img src="img/poster/4.jpg" />< 축제명 ><br/>2022.05.28~2022.12.31</div>
+		<div><img src="img/poster/5.jpg" />< 축제명 ><br/>2022.05.28~2022.12.31</div>
 		</div>
+		<br/>
 	</div>
 </div>
