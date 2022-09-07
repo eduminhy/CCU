@@ -17,4 +17,10 @@
 	<ol>
 		<li><a href="/login">로그인</a></li>
 		<li><a href="/signup">회원가입</a></li>
+		<li><a href="/searchResult">검색결과페이지</a></li>
+		<li><a href="/preferGenre">선호도장르페이지</a></li>
+		<li><a href="/mainMeetingNotice">미팅게시판전체공지(임시)</a></li>
+		<li><a href="/playMeetingList">연극게시판목록페이지(임시)</a></li>
+		<li><a href="/playMeetingForm">연극게시판 글쓰기(임시)</a></li>
+		<li><a href="/playMeetingComment">연극게시판 댓글(임시)</a></li>
 	</ol>
