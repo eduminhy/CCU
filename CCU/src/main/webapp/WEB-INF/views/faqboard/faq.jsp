@@ -43,7 +43,7 @@
 <div>
 	<ul>
 		<li><li><a href="/chatbot">Q&A CHATBOT</li>
-		<li>운영방침 운영방침</li>
+		<li>운영방침</li>
 		<li><li><a href="/terms">이용약관</li>
 	</ul>
 </div>
