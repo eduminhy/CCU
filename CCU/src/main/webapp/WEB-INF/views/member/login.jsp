@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -10,16 +9,19 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <style>
-	h1 {
-		background-color:#440099;
-	}
 	.wrap {
 		display: grid;
   		place-items: center;
   		min-height: 100px;
 	}
 	.loginFrm{
-		text-align:center;
+		text-align: center;
+		border: 5px double; color:#440099;
+		border-radius: 15%;
+		margin-right:500px;
+		margin-left:500px;
+		padding : 50px;
+	
 	}
 	#userid, #userpwd {
 		border : 1px solid grey;
@@ -33,6 +35,7 @@
 		background-color:#440099;
 		color:white;
 		margin-bottom:10px;
+		font-size : 1.1em;
 	}
 	h2 {
 		color:#440099;
@@ -45,50 +48,63 @@
 		color:white;
 	}
 	#naverloginBtn {
-		background-color:green;
+		background-color:#04CF5C;
 		margin-bottom : 10px;
 		text-align: center;
 	}
 	#kakaologinBtn {
-		background-color:yellow;
+		background-color:#ffdc00;
 		margin-bottom : 10px;
 	}
 	#googleloginBtn {
 		background-color:black;
 	}
-
+	div.loginfrm {
+		width: 50%;
+		float: left;
+		box-sizing: border-box;
+	}
+	div.snsloginfrm{
+		width: 50%;
+		float: right;
+		box-sizing: border-box;
+	}
+	#googleicon {
+		border: 2.5px solid; color:#4285F4;
+		border-radius: 50%;
+	}
+	#navericon {
+		margin-right:25px;
+	}
+	#kakaoicon {
+		margin-right:25px;
+	}
 	
 </style>
 <body>
-<form class="wrap">
-	<h1><img src="../img/cculogo.png" width=100px; height=100px;></h1>
-		<div class="loginFrm">
+<div class="loginFrm">
+	<h1><img src="../img/logo01.PNG" width=100px; height=100px;></h1>
+		
 			<input type="userid" placeholder="아이디를 입력해주세요" id="userid">
 			<br/>
 			<input type="userpwd" placeholder="비밀번호를 입력해주세요" id="userpwd">
-		</div>
 		<br/>
 		<br/>
-		<div>
 			<input type="submit" value="로그인" class="loginBtn">
-		</div>
-		<div>
+			<br/>
 			<input type="button" value="회원가입"  class="signupBtn">
-		</div>
-</form>
-</body>
-<body>
-	<h2>SNS 계정을 통해 <br/> 로그인하실 수 있습니다</h2>
-<form>
-		<div>
-			<input type="button" value="네이버 계정 로그인"  id="naverloginBtn">
-		</div>
-		<div>
-			<input type="button" value="카카오 계정 로그인"  id="kakaologinBtn">
-		</div>
-		<div>
-			<input type="button" value="구글 계정 로그인"  id="googleloginBtn">
-		</div>
-</form>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+			<img src="../img/navericon.png" width=80px; height=80px; id="navericon">
+			<img src="../img/kakaoicon.png" width=80px; height=80px; id="kakaoicon">
+			<img src="../img/googleicon.png" width=80px; height=80px; id="googleicon">
+</div>
+
+
+
+
+
 </body>
 </html>
