@@ -20,10 +20,6 @@ height: 150px
 	height: 150px;
 	margin: auto;
 }
-.slider-for div{
-/* 	background-color:red; */
-
-}
 
 .slider-div{
 	height: 700px;
@@ -34,6 +30,7 @@ height: 150px
 /* 	left: 1000px; */
 /* 	float: right; */
 }
+
 .slider-div2>div{
 	
 	display: flex;

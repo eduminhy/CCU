@@ -4,7 +4,6 @@
 <script>
 	$(function(){
 		$(document).attr("title","연극목록");//title 이름 변경 
-		
 		for(var i=0;i<5;i++){
 			if($(".subject").children("a:eq("+i+")").text().length>=30){
 				$(".more").children("a:eq("+i+")").show();
@@ -14,7 +13,6 @@
 		}
 	});
 </script>
-<body>
 <div class="container">
 	<div id="hot">
 		<h2>What's HOT? [연극]</h2>
@@ -102,7 +100,7 @@
 			</ul>
 		</div>
 		<div id="playBoard">
-			<h2>연극 Meeting 게시판</h2>
+			<h2><a href="#">연극 Meeting 게시판</a></h2>
 			<ul>
 				<li>1198.&nbsp;</li>
 				<li class="subject"><a href="#">대학로에서 만나실 분 계시면 댓글주세요</a></li>
