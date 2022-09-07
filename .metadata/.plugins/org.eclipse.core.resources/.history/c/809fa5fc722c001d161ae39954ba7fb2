@@ -1,0 +1,39 @@
+<!-- <ul class="slider-nav"> -->
+<!-- 	<li><img src="img/poster/1.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/2.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/3.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/4.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/5.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/6.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/7.jpg" /></li> -->
+<!-- </ul> -->
+<!-- <ul class="slider-for"> -->
+<!-- 	<li><img src="img/poster/1.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/2.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/3.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/4.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/5.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/6.jpg" /></li> -->
+<!-- 	<li><img src="img/poster/7.jpg" /></li> -->
+<!-- </ul> -->
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <style>/* 임시 삽입: 확인용 */
+        .slick-sample{width: 100%;height: 200px;}
+        .slick-sample .slick-list{height: 100%;}
+    </style>
+</head>
+<body>
+    
+    <div class=".slider-for">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+    </div>
+    <div class=".slider-nav">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+    </div>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
