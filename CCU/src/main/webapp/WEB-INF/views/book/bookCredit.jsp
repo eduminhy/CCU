@@ -63,7 +63,7 @@
 			IMP.request_pay({
 		    pg : 'html5_inicis',//kg이니시스
 		    pay_method : 'card',
-		    merchant_uid: "order_no_0003", // 상점에서 관리하는 주문 번호
+		    merchant_uid: "order_no_0010", // 상점에서 관리하는 주문 번호
 		    name : '주문명:결제테스트',
 		    amount : 100,
 		    buyer_email : 'eduminhy@gmail.com',
@@ -97,6 +97,7 @@
 			    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
 			    		}
 			    	});
+			    	location.href="bookCheck";
 			    } else {
 			        var msg = '결제에 실패하였습니다.';
 			        msg += '에러내용 : ' + rsp.error_msg;
