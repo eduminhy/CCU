@@ -17,4 +17,6 @@
 	<ol>
 		<li><a href="/login">로그인</a></li>
 		<li><a href="/signup">회원가입</a></li>
+		<li><a href="/faq">고객센터</a></li>
+		
 	</ol>
