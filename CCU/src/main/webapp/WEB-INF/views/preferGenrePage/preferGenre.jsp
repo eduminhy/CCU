@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="/js_css/style.css" type="text/css"/>
 <style>
 	.leftContainer{ /* 왼쪽 부분 */
 		margin-left:250px;
@@ -33,12 +32,19 @@
 		border: 2px solid #7000FF;
 		border-radius:30px;
 	}
+	
 	.hashTag:hover{
 		background-color: #7000FF;
 		color: white;
 		font-weight:bold;
 	}
-	
+	/*
+	.clicked{
+		background-color: #7000FF;
+		color: white;
+		font-weight:bold;
+	}
+	*/
 	.selectPoster{
 		width:150px;
 		margin-top:140px;
@@ -62,14 +68,14 @@
 			<button class="hashTag">#코미디</button>
 			
 			<section>
-				<img src="../image/선호포스터1.png" class="selectPoster"/>
-				<img src="../image/선호포스터2.png" class="selectPoster"/>
-				<img src="../image/선호포스터3.png" class="selectPoster"/>
-				<img src="../image/선호포스터4.png" class="selectPoster"/><br/>
-				<img src="../image/선호포스터5.png" class="selectPoster"/>
-				<img src="../image/선호포스터6.png" class="selectPoster"/>
-				<img src="../image/선호포스터7.png" class="selectPoster"/>
-				<img src="../image/선호포스터8.png" class="selectPoster"/>
+				<a href="#"><img src="../img/선호포스터1.png" class="selectPoster"/></a>
+				<a href="#"><img src="../img/선호포스터2.png" class="selectPoster"/></a>
+				<a href="#"><img src="../img/선호포스터3.png" class="selectPoster"/></a>
+				<a href="#"><img src="../img/선호포스터4.png" class="selectPoster"/></a><br/>
+				<a href="#"><img src="../img/선호포스터5.png" class="selectPoster"/></a>
+				<a href="#"><img src="../img/선호포스터6.png" class="selectPoster"/></a>
+				<a href="#"><img src="../img/선호포스터7.png" class="selectPoster"/></a>
+				<a href="#"><img src="../img/선호포스터8.png" class="selectPoster"/></a>
 			
 			</section>
 			
