@@ -1,0 +1,54 @@
+<!-- CSS -->
+<link rel="stylesheet" type="text/css"
+	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<!-- jQ -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- JS -->
+<script type="text/javascript"
+	src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!-- indexPage style -->
+<link rel="stylesheet" href="/style/showDetail.css">
+<!-- indexPage script -->
+<script src="/script/showDetailScript.js" type="text/javascript"></script>
+<div>분류:제목</div>
+<div>
+	<img src="../img/poster/1.jpg" />
+</div>
+<div>
+			<fieldset>
+				<table class="showDetailTable" summary="공연명 에 대한 상세 설명 테이블">
+					<tbody>
+						<tr>
+							<th scope="row">
+							<label for="meetingSubject">말머리</label></th>
+							<td>공지</td>
+						</tr>
+						<tr>
+							<th scope="row">
+							<label for="writeSubject">제목</label></th>
+							<td>*** 범죄 및 사기 주의 ***</td>
+						</tr>
+						<tr>
+							<th scope="row">
+							<label for="meetingWriter">작성자</label></th>
+							<td>관리자</td>
+						</tr>
+						<tr>
+							<th scope="row">
+							<label for="meetingDate">작성일</label></th>
+							<td>2022.01.01</td>
+						</tr>
+						<tr class="contentPart" style="height:500px;">
+							<th scope="row">
+							<label for="meetingContent">내용</label></th>
+							<td>
+							내용
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</fieldset>
+
+	</div>
+<div></div>
