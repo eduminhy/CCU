@@ -20,4 +20,5 @@
 		<li><a href="/book/bookSeat">좌석선택</a></li>
 		<li><a href="/book/bookCredit">결제하기</a></li>
 		<li><a href="/book/bookCheck">예약내역확인하기</a></li>
+		<li><a href="/show/showDetail">공연상세보기</a></li>
 	</ol>

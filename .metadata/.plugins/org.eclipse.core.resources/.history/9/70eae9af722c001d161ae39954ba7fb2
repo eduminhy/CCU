@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slick | slide</title>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <style>/* 임시 삽입: 확인용 */
+        .slick-sample{width: 100%;height: 200px;}
+        .slick-sample .slick-list{height: 100%;}
+    </style>
+</head>
+<body>
+    
+    <div class="slick-sample">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+    </div>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.slick-sample').slick({
+                dots: true
+            });
+        });
+    </script>
+
+</body>
+</html>
+출처: https://fresh-mint.tistory.com/entry/플러그인슬라이드-slick-사용법반응형 [민트코딩:티스토리]
