@@ -46,7 +46,11 @@
 				<hr />
 				<div class="calanderSelect">
 					회차선택
-					<div>1회차? 이건 가능할지 데이터 베이스를 봐야함..</div>
+					<div class="calanderSelectDiv">
+						<div>1회차 20:00</div>
+						<div>2회차 22:00</div>
+						<div>3회차 24:00</div>
+					</div>
 				</div>
 				<hr />
 				<div class="calanderButten">
