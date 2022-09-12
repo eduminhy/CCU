@@ -8651,3 +8651,54 @@ Binding(CTRL+SHIFT+C,
 
 !ENTRY org.eclipse.lsp4e 1 0 2022-09-07 13:30:21.058
 !MESSAGE [Info]	[lspserver] Using Typescript version (bundled) 4.6.4 from path "C:\Users\ABC\Desktop\WorkspaceSpringboot\spring-tool-suite-4-4.15.1.RELEASE-e4.24.0-win32.win32.x86_64.self-extracting\sts-4.15.1.RELEASE\plugins\org.eclipse.wildwebdeveloper_0.5.22.202205250019\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:19.179
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:19.179
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@30d4bbb0[org.springframework.tooling.boot.ls:1.36.0.202206171137(id=567)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:19.187
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:19.293
+!MESSAGE Instantiating ReusableClasspathListenerHandler
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:21.667
+!MESSAGE Boot LS startup time from start to initialized: 2475ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:21.787
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.YMAQdrgdisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:21.789
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:21.790
+!MESSAGE Scheduling initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:21.791
+!MESSAGE Scheduling initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:21.791
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:21.791
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.YMAQdrgd => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:21.836
+!MESSAGE classpath=86 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:21.840
+!MESSAGE buffering callback sts4.classpath.YMAQdrgd CCU false 86
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:21.841
+!MESSAGE executing callback sts4.classpath.YMAQdrgd 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-09-07 15:06:22.350
+!MESSAGE executing callback sts4.classpath.YMAQdrgd SUCCESS [done]
+
+!ENTRY org.eclipse.lsp4e 1 0 2022-09-07 15:06:22.522
+!MESSAGE [Info]	ESLint server running in node v16.14.2
+
+!ENTRY org.eclipse.ui 2 2 2022-09-07 18:37:19.521
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
