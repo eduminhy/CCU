@@ -1,16 +1,18 @@
-.showDetailTitle{
+.showDetailTitle {
 	display: flex;
 	width: 1200px;
-/* 	//margin: auto; */
+	/* 	//margin: auto; */
 	text-align: left;
-		color: rgba(59, 0, 148);
+	color: rgba(59, 0, 148);
 	font-size: 35px;
 	font-weight: bold;
 	padding: 0px 0px 10px;
 }
-.showDetailTitle>div:nth-child(2){
+
+.showDetailTitle>div:nth-child(2) {
 	color: red;
 }
+
 .showDetail {
 	width: 1200px;
 	margin: auto;
@@ -25,7 +27,7 @@
 	display: flax;
 	justify-content: space-between;
 	display: inline-flex;
-/* 	background-color: green; */
+	/* 	background-color: green; */
 }
 
 .showDetailImgDiv {
@@ -43,7 +45,7 @@
 	margin-left: auto;
 	border: none;
 	height: 1200px;
-/* 	background-color: red; */
+	/* 	background-color: red; */
 }
 
 .showDetailDiv {
@@ -123,7 +125,7 @@
 .detailRatingLink {
 	width: 90%;
 	text-align: right;
-	border-radius : 15px;
+	border-radius: 15px;
 	color: rgba(59, 0, 148);
 	font-size: 20px;
 	font-weight: bold;
@@ -134,7 +136,6 @@
 	display: flex;
 	margin: 0 auto;
 	flex-direction: column;
-	
 }
 
 .detailRatingContentInnerDiv {
@@ -143,34 +144,50 @@
 	display: flex;
 	justify-content: space-between;
 	border: solid rgba(247, 247, 247) 4px;
-	height:140px;
+	height: 140px;
 }
-.detailRatingContentInnerDiv>div{
+
+.detailRatingContentInnerDiv>div {
 	margin: auto;
 }
-.detailRatingContentInnerDiv>div:nth-child(1){
+
+.detailRatingContentInnerDiv>div:nth-child(1) {
 	font-size: 30px;
 	font-weight: bold;
-	width:25%;
+	width: 25%;
 	text-align: center;
 	color: red;
 }
-.detailRatingContentInnerDiv>div:nth-child(2){
+
+.detailRatingContentInnerDiv>div:nth-child(2) {
 	font-size: 20px;
 	font-weight: bold;
-	width:73%;
+	width: 73%;
 	text-align: left;
 }
+
 .calendar {
 	height: 700px;
 	width: 300px;
 }
 
-.calendar {padding: 5px 20px 20px 20px; box-sizing: border-box; 	border-radius: 15px;
-	border: solid rgba(59, 0, 148);}
-.calendar > .header {text-align: center;}
-.calendar > .header > .title {width:50%; display: inline-block;}
-.calendar > .header > .calendar_btn {
+.calendar {
+	padding: 5px 20px 20px 20px;
+	box-sizing: border-box;
+	border-radius: 15px;
+	border: solid rgba(59, 0, 148);
+}
+
+.calendar>.header {
+	text-align: center;
+}
+
+.calendar>.header>.title {
+	width: 50%;
+	display: inline-block;
+}
+
+.calendar>.header>.calendar_btn {
 	width: 30px;
 	height: 30px;
 	border: none;
@@ -179,29 +196,87 @@
 	vertical-align: middle;
 	color: black;
 }
-.calendar > .day {width:100%; display: table; table-layout: fixed;}
-.calendar > .day > div {display: table-cell; text-align: center; height: 50px; vertical-align: middle;}
-.calendar > .day > div:first-child {color: red;}
-.calendar > .day > div:last-of-type {color: blue;}
-.calendar > .dates {display: flex; flex-wrap: wrap; width: 100%;}
-.calendar > .dates > .date {text-align: center; width: calc(100%/7); height: 50px; box-sizing: border-box;line-height: 3; border-radius: 3px;} 
-.calendar > .dates > .date:nth-child(7n){color: blue;}
-.calendar > .dates > .date:nth-child(7n+1){color: red;}
-.calendar > .dates > .last {color: #c8c8c8 !important;}
-.calendar > .dates > .next {color: #c8c8c8 !important;}
 
-.calanderSelect{
+.calendar>.day {
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+}
+
+.calendar>.day>div {
+	display: table-cell;
+	text-align: center;
+	height: 50px;
+	vertical-align: middle;
+}
+
+.calendar>.day>div:first-child {
+	color: red;
+}
+
+.calendar>.day>div:last-of-type {
+	color: blue;
+}
+
+.calendar>.dates {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.calendar>.dates>.date {
+	text-align: center;
+	width: calc(100%/ 7);
+	height: 50px;
+	box-sizing: border-box;
+	line-height: 3;
+	border-radius: 3px;
+}
+
+.calendar>.dates>.date:nth-child(7n) {
+	color: blue;
+}
+
+.calendar>.dates>.date:nth-child(7n+1) {
+	color: red;
+}
+
+.calendar>.dates>.last {
+	color: #c8c8c8 !important;
+}
+
+.calendar>.dates>.next {
+	color: #c8c8c8 !important;
+}
+
+.calanderSelect {
 	height: 100px;
 }
-.calanderButten{
-       display: flex;
-	height: 50px;
-		background-color: rgba(59, 0, 148);
-/* 	text-align: center; */
+.calanderSelectDiv{
+	display: flex;
+	flex-flow:wrap;
 }
-.calanderButten>div{
-       display: flex;
-        align-items: center;
-	margin:auto;
-	color:white;
+.calanderSelectDiv>div {
+	display: flex;
+/* 	margin:auto; */
+justify-content : center;
+	align-items: center;
+	width:48%;
+	height: 35px;
+	border-radius: 5px;
+	border: solid orange 1px;
+}
+
+.calanderButten {
+	display: flex;
+	height: 50px;
+	background-color: rgba(59, 0, 148);
+	/* 	text-align: center; */
+}
+
+.calanderButten>div {
+	display: flex;
+	align-items: center;
+	margin: auto;
+	color: white;
 }
