@@ -115,13 +115,13 @@
 		swipe : false
 	});
 	
-	$(document).ready(function(){
-	$(".slider-back").css("background-image","url("+$('.slider-nav').children('div').children('div').children('.slick-current').children('img').attr("src")+")");
-	//console.log($(this)); imgUrl = $(this).attr("src");
-	$('.slider-nav').on('afterChange', function(event, slick, currentSlide, nextSlide){
-		$(".slider-back").css("background-image","url("+$('.slider-nav').children('div').children('div').children('.slick-current').children('img').attr("src")+")");
-		}); 
-	});
+// 	$(document).ready(function(){
+// 	$(".slider-back").css("background-image","url("+$('.slider-nav').children('div').children('div').children('.slick-current').children('img').attr("src")+")");
+// 	//console.log($(this)); imgUrl = $(this).attr("src");
+// 	$('.slider-nav').on('afterChange', function(event, slick, currentSlide, nextSlide){
+// 		$(".slider-back").css("background-image","url("+$('.slider-nav').children('div').children('div').children('.slick-current').children('img').attr("src")+")");
+// 		}); 
+// 	});
 </script>
 <div class="emptyDiv"></div>
 <div class="indexFav">
@@ -163,7 +163,7 @@
 	$('.indexFav_post').slick({
 		slidesToShow : 5,
 		slidesToScroll : 5,
- 		dots : true,
+ 		//dots : true,
 		arrows : false,
 		//centerMode : true,
 		focusOnSelect : true,
