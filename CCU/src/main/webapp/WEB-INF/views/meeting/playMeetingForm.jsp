@@ -79,7 +79,7 @@
 </style>
 <script>
 	$(function(){
-		CKEDITOR.replace("writeContent");
+		CKEDITOR.replace("writeContent",{width:'100%', height:'300px'}); // CKEDITOR 크기 조절
 		
 		$("#writeSubject").submit(function(){
 			if($("#playSubject").val()==""){
