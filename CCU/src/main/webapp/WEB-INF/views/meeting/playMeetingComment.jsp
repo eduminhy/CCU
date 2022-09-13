@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 	.playMeetingTopContainer{
 		border:5px solid #440099;
@@ -91,18 +90,142 @@
 	
 	
 	
+	.CommentBox {
+	    margin-top: 30px;
+	    border-top: 2px solid #7F7F7F;
+	}	
+	.CommentBox .comment_option {
+	    position: relative;
+	    padding-top: 16px;
+	    margin-bottom: 11px;
+	}	
+	
+	.CommentBox .comment_option .comment_title {
+	    float: left;
+	    margin-top: 3px;
+	    margin-right: 12px;
+	    padding-left:20px;
+	    font-size: 17px;
+	}	
+	.comment_list{
+		list-style: none;
+	}
+	
+	.CommentBox .comment_list .CommentItem:first-child {
+	    border-top: 0;
+	    position: relative;
+	    margin: 0;
+	    padding: 0;
+	    display: list-item;
+	}	
+	
+	.CommentBox .comment_list .comment_area {
+	    position: relative;
+	    padding: 12px 23px 10px 0;
+	}
+	.CommentBox .comment_list .comment_box {
+	    padding-left: 46px;
+	}	
+	
+	.CommentBox .comment_list .comment_nick_box {
+	    margin-bottom: 4px;
+	}	
+	.CommentBox .comment_list .comment_nick_box .comment_nick_info {
+	    display: inline-block;
+	    position: relative;
+	    font-size: 13px;
+	    vertical-align: top;
+	}	
+	.CommentBox .comment_list .comment_nick_box .comment_nickname {
+	    font-weight: 700;
+	}	
+	.CommentBox .comment_list .comment_text_box {
+	    position: relative;
+	    font-size: 13px;
+	    word-break: break-all;
+	    word-wrap: break-word;
+	}	
+	
+	.CommentBox .comment_list .comment_text_box .comment_text_view {
+	    overflow: hidden;
+	    margin: 0;
+    	padding: 0;
+	}	
+	.CommentBox .comment_list .comment_text_box .text_comment {
+	    line-height: 17px;
+	    word-break: break-all;
+	    word-wrap: break-word;
+	    vertical-align: top;
+	}
+	.CommentBox .comment_list .comment_info_box {
+	    margin-top: 7px;
+	    font-size: 12px;
+	    color: #ddd;
+	}	
+	.CommentBox .comment_list .comment_info_box .comment_info_date {
+	    margin-right: 8px;
+	}
+	.CommentBox a {
+		color: #ddd;
+		cursor: pointer;
+	    text-decoration: none;
+	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
+	.CommentBox .comment_list .CommentItem.CommentItem-reply {
+	    padding-left: 46px;
+	    border-top: 1px solid #ddd;
+	}
+	.CommentBox .comment_list+.CommentWriter {
+	    margin-top: 10px;
+	}
+	.CommentWriter {
+	    margin: 12px 0 29px;
+	    padding: 16px 10px 20px 18px;
+	    
+	    border: 2px solid #ddd;
+	    /*border-radius: 6px;*/
+	    box-sizing: border-box;
+	}
+	.CommentWriter .comment_inbox {
+	    position: relative;
+	    margin-bottom: 10px;
+	}
+	.CommentWriter .comment_inbox_text {
+	    overflow-x: hidden;
+	    overflow-y: auto;
+	    display: block;
+	    width: 100%;
+	    min-height: 17px;
+	    padding-right: 1px;
+	    border: 0;
+	    font-size: 13px;
+	    background: transparent;
+	    outline: 0;
+	}
+	.CommentWriter .comment_btn {
+	    position: relative;
+	}
+	.CommentWriter .register_box {
+	    float: right;
+	}
+	.CommentWriter .register_box .button {
+	    display: inline-block;
+	    margin-top:-50px;
+	    margin-left:-70px;
+	    min-width: 46px;
+	    height: 34px;
+	    line-height: 36px;
+	    font-size: 13px;
+	    color: #7F7F7F;
+	    border-radius: 6px;
+	    box-sizing: border-box;
+	    font-weight: 700;
+	    text-align: center;
+	    vertical-align: top;
+	    text-decoration: none;
+	}
 </style>
-<script>
-</script>
 </head>
 <body>
 	<div class="playMeetingTopContainer">
@@ -148,20 +271,119 @@
 						</tr>
 					</tbody>
 				</table>
+
+		
+			<div class="CommentBox">
+				<div class="comment_option">
+					<h3 class="comment_title">댓글</h3>
+					<ul class="comment_list">
+						<li class="CommentItem">
+							<div class="comment_area">
+								<div class="comment_box">
+									<div class="comment_nick_box">
+										<div class="comment_nick_info">
+											<div class="comment_nickname">jhma</div>
+										</div>
+									</div>
+									
+									
+									<div class="comment_text_box">
+										<p class="comment_text_view">
+											<span class="text_comment">
+												혹시 구하셨나요?
+											</span>
+										</p>
+									</div>
+									
+									
+									<div class="comment_info_box">
+										<span class="comment_info_date">2022.08.03</span>
+										<a href="#" role="button" class="comment_info_button">답글쓰기</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						
+						
+						
+						
+						
+						
+						<li class="CommentItem CommentItem-reply">
+							<div class="comment_area">
+								<div class="comment_box">
+									<div class="comment_nick_box">
+										<div class="comment_nick_info">
+											<div class="comment_nickname">tylee</div>
+										</div>
+									</div>
+									
+									
+									<div class="comment_text_box">
+										<p class="comment_text_view">
+											<span class="text_comment">
+												아직 안 구했습니다!
+											</span>
+										</p>
+									</div>
+									
+									
+									<div class="comment_info_box">
+										<span class="comment_info_date">2022.08.03</span>
+										<a href="#" role="button" class="comment_info_button">답글쓰기</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						
+						<li class="CommentItem CommentItem-reply">
+							<div class="comment_area">
+								<div class="comment_box">
+									<div class="comment_nick_box">
+										<div class="comment_nick_info">
+											<div class="comment_nickname">jhma</div>
+										</div>
+									</div>
+									
+									
+									<div class="comment_text_box">
+										<p class="comment_text_view">
+											<span class="text_comment">
+												저 같이 보고 싶어요!
+											</span>
+										</p>
+									</div>
+									
+									
+									<div class="comment_info_box">
+										<span class="comment_info_date">2022.08.03</span>
+										<a href="#" role="button" class="comment_info_button">답글쓰기</a>
+									</div>
+								</div>
+							</div>
+						</li>	
+					</ul>
 				
 				
+					<div class="CommentWriter">
+						<div class="comment_inbox">
+							<textarea placeholder="댓글을 남겨보세요" rows="1" class="comment_inbox_text" style="height: 50px;"></textarea>
+						</div>
+						<div class="comment_btn">
+							<div class="register_box">
+								<a href="#" role="button" class="button btn_register">등록</a>
+							</div>
+						
+						</div>
+						
+					</div>
 				
 				
-				
-			<div class="playComment1">
-	 			<ul class="playComment2">
-					<li>댓글</li>
-	 			</ul>
+				</div>
+			
+			
 			
 			</div>	
-
-				
-				
 				
 				
 				

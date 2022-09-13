@@ -5,18 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 	.playMeetingTopContainer{
-		/*margin-top:1%;*/
 		border:5px solid #440099;
 		width:80%;
-		/*margin:0 auto;*/
-		margin:1% auto; /* %:위 , auto:(상하/좌우) */
+		margin:1% auto;
         font-size:15px;
         text-align:center;
 	}
@@ -24,21 +18,83 @@
 		color:#440099;
 	}
 	
-	
 	.playMeetingWarning{
 		color: #FF5161;
 		margin-top:4%;
 		margin-left:11%;
 	}
 	
-	
-	.playMeetingListContainer{
-		width:80%;
-		margin:0 auto;
+    ul, li{ 
+        list-style:none;
+        /*text-align:center;*/
+        padding:0;
+        margin:0;
 	}
 	
-	
+    .playMeetingTable{
+		margin:0 auto;
+		width:80%;
+		/*height:255px;*/
+		padding:0;
+		/*border-bottom:2px solid #7F7F7F; /* ------------------백엔드하고 스타일 다시 확인하기 */
+		height:400px;
+    }
+
+    .playMeetingTable > ul > li:first-child {
+        text-align: center;
+        font-size:14pt;
+        height:40px;
+        vertical-align:middle;
+        line-height:30px;
+	}
+
+
+    .playMeetingList {
+    	margin-top:10px;
+    	line-height: 50px;
+    }
+    
+
+    .playMeetingList > li:first-child > ul > li {
+        background-color:#E0E0E0;
+        font-weight:bold;
+        text-align:center;
+        border-top:2px solid #7F7F7F;
+	}
+    .playMeetingList > li:last-child > ul > li {
+        background-color:#E0E0E0;
+        border-bottom:2px solid #7F7F7F;
+	}
+
+/*
+    .playMeetingList > li > ul {
+        clear:both;
+        padding:0px auto;
+        position:relative;
+        min-width:40px;
+}*/
+    .playMeetingList > li > ul > li { 
+        float:left;
+        font-size:12pt; /* 글씨 크기 */
+        border-bottom:1px solid silver;
+        vertical-align:baseline;
+}    
+
+	.playMeetingList > li > ul > li:first-child							{width:5%; height:50px;} /*체크박스 열,행 크기*/
+    .playMeetingList > li > ul > li:first-child +li              		{width:10%; height:50px;} /*번호 열,행 크기*/
+    .playMeetingList > li > ul > li:first-child +li+li           		{width:10%; height:50px;} /*말머리 열,행 크기*/
+    .playMeetingList > li > ul > li:first-child +li+li+li        		{width:30%; height:50px; text-align: center;} /*제목 열,행 크기*/
+    .playMeetingList > li > ul > li:first-child +li+li+li+li     		{width:10%; height:50px;} /*마감여부 열,행 크기*/
+    .playMeetingList > li > ul > li:first-child +li+li+li+li+li			{width:10%; height:50px;} /*작성자 열,행 크기*/
+    .playMeetingList > li > ul > li:first-child +li+li+li+li+li+li		{width:10%; height:50px;} /*조회수 열,행 크기*/
+    .playMeetingList > li > ul > li:first-child +li+li+li+li+li+li+li	{width:15%; height:50px;} /*작성일 열,행 크기*/    
+
+    .left {
+        text-align : left;
+	}
+
 	.playMeetingListBtn{
+		margin:1%;
 		padding:10px 20px;
 		float:right;
 		background:#440099;
@@ -46,10 +102,17 @@
 		font-weight:bold;
 		font-size:17px;
 		border-style:none;
+		cursor:pointer;
 	}
 	
+
+
 	.playMeetingListSearchKey{
+		margin:1%;
+		margin-top:1%;
 		border:1px solid #ddd;
+		padding:7px 7px;
+		padding-left:1%;
 	}
 	.playMeetingListSearchTxt{
 		width:250px;
@@ -58,14 +121,17 @@
 		border-left:none;
 		border-right:none;
 		border-bottom:1px solid #ddd;
+		outline:none;
 	}
 	.playMeetingListSearchBtn{
-		background:url("../image/search.png");
+		background:url("../img/icon/search.png");
 		border-style:none;
 		background-repeat: no-repeat;
+		margin:-0.5%;
 		width:25px;
 		height:25px;
-	}	
+		cursor:pointer;
+	}
 </style>
 <script>
 	function checkAll(checkAll){
@@ -83,73 +149,85 @@
 		<h1 class="playMeetingTopText">연극게시판</h1>
 	</div>
 	
-	
 	<p class="playMeetingWarning">※ 개인정보 유출 및 피해에 유의하시고 금전 및 물품 피해에 대해 유의하십시오.</p>
 	
 	
-	<div class="playMeetingListContainer">
-		<table class="table">
-			<thead class="thead-light">
-				<tr>
-					<th><input type="checkbox" name="checkbox" value="checkbox" onclick="checkAll(this)"></th>
-					<th>번호</th>
-					<th>말머리</th>
-					<th>제목</th>
-					<th>마감여부</th>
-					<th>작성자</th>
-					<th>조회수</th>
-					<th>작성일</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th><input type="checkbox" name="checkbox" value="checkbox"></th>
-					<td>1298</td>
-					<td>모집</td>
-					<td>엘리자벳 3명 구해요.</td>
-					<td>모집중</td>
-					<td>tylee</td>
-					<td>5</td>
-  					<td>2022.07.29</td>
- 				</tr>
-				<tr>
-					<th><input type="checkbox" name="checkbox" value="checkbox"></th>
-					<td>1297</td>
-					<td>모집</td>
-					<td>행오버 같이 보실 분?</td>
-					<td>모집중</td>
-					<td>jhma</td>
-					<td>11</td>
-					<td>2022.07.13</td>
- 				</tr>
-				<tr>
-					<th><input type="checkbox" name="checkbox" value="checkbox"></th>
-					<td>1296</td>
-					<td>모집</td>
-					<td>오만과 편견 1분 구합니다!</td>
-  					<td>모집중</td>
-					<td>hymin</td>
-					<td>16</td>
-					<td>2022.06.30</td>
-				</tr>
-				<tr>
-					<th><input type="checkbox" name="checkbox" value="checkbox"></th>
-					<td>1295</td>
- 					<td>찾아요</td>
-					<td>햄릿 관람하실 분 1명</td>
-					<td>모집마감</td>
-					<td>tylee</td>
-					<td>31</td>
-					<td>2022.06.23</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		
+    <form method="post" action="" class="playMeetingTable">
+        <ul>
+            <!-- 게시판 목록  -->
+            <li>
+                <ul class="playMeetingList">
+                    <li>
+                        <ul>
+                        	<li><input type="checkbox" name="checkbox" value="checkbox" onclick="checkAll(this)"></li>
+                            <li>번호</li>
+                            <li>말머리</li>
+                            <li>제목</li>
+                            <li>마감여부</li>
+                            <li>작성자</li>
+                            <li>조회수</li>
+	        				<li>작성일</li>
+                        </ul>
+                    </li>
+                    <!-- 게시물이 출력될 영역 -->
+                    <li>
+                        <ul>
+                        	<li><input type="checkbox" name="checkbox" value="checkbox"></li>
+		                    <li>1298</li>
+		                    <li>모집</li>
+		                    <li class="left">엘리자벳 3명 구해요.</li>
+		                    <li>모집중</li>
+		                    <li>tylee</li>
+		                    <li>5</li>
+		                    <li>2022.07.29</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul>
+		                	<li><input type="checkbox" name="checkbox" value="checkbox"></li>
+		                    <li>1297</li>
+		                    <li>모집</li>
+		                    <li class="left">행오버 같이 보실 분?</li>
+		                    <li>모집중</li>
+		                    <li>jhma</li>
+		                    <li>11</li>
+		                    <li>2022.07.13</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul>
+                            <li><input type="checkbox" name="checkbox" value="checkbox"></li>
+		                    <li>1296</li>
+		                    <li>모집</li>
+		                    <li class="left">오만과 편견 1분 구합니다!</li>
+		                    <li>모집중</li>
+		                    <li>hymin</li>
+		                    <li>16</li>
+		                    <li>2022.06.30</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul>
+		                	<li><input type="checkbox" name="checkbox" value="checkbox"></li>
+		                    <li>1295</li>
+		                    <li>찾아요</li>
+		                    <li class="left">햄릿 관람하실 분 1명</li>
+		                    <li>모집마감</li>
+		                    <li>tylee</li>
+		                    <li>31</li>
+		                    <li>2022.06.23</li>
+                        </ul>
+                    <li>                                        
+                </ul>
+            </li>
+        </ul>
+        
 		<div>
 			<button class="playMeetingListBtn">글쓰기</button>
 		</div>
-		
 		
 		<div class="playMeetingListSearch">
 			<form method="get" action="" class="playMeetingListSearchFrm">
@@ -161,11 +239,8 @@
 				<input type="text" name="searchWord" class="playMeetingListSearchTxt" placeholder=""/>
 				<input type="submit" value="" class="playMeetingListSearchBtn"/>
 			</form>	
-		</div>
+		</div>		
 		
-
-	</div>
-	
-	
+    </form>
 </body>
 </html>
