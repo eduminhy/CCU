@@ -90,6 +90,7 @@
 			    			msg += '\n상점 거래ID : ' + rsp.merchant_uid;
 			    			msg += '\결제 금액 : ' + rsp.paid_amount;
 			    			msg += '카드 승인번호 : ' + rsp.apply_num;
+			    			
 			    			alert(msg);
 			    		} else {
 			    			//[3] 아직 제대로 결제가 되지 않았습니다.
