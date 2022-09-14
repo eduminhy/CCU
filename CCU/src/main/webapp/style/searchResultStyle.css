@@ -1,6 +1,8 @@
 @charset "UTF-8";
+
 	.searchTopContainer{
 		width:70%;
+		/*width:64%;*/
 		height:160px;
 		background-color:#F2F2F2;
 		margin:1% auto;
@@ -60,6 +62,9 @@
 		display: table-cell;
     	vertical-align: top;
 	}
+	
+
+	
 	.searchPanel a{
 		margin: 0;
 	    padding: 0;
