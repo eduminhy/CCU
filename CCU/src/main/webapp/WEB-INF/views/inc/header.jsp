@@ -21,9 +21,9 @@
 		<img src="../img/logo.png" id="logo"/>
 		<span>CCU</span>
 	</a>
-	<a href="#" class="member">로그인</a>
-	<a href="#" class="member">회원가입</a>
-	<a href="#" class="member">고객센터</a>
+	<a href="/login" class="member">로그인</a>
+	<a href="/signup" class="member">회원가입</a>
+	<a href="/faq" class="member">고객센터</a>
 </div>
 
 <!-- 탭메뉴 -->
