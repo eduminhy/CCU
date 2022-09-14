@@ -1,138 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<style>
-	.playMeetingTopContainer{
-		border:5px solid #440099;
-		width:80%;
-		margin:1% auto;
-        font-size:15px;
-        text-align:center;
-	}
-	.playMeetingTopText{
-		color:#440099;
-	}
-	
-	.playMeetingWarning{
-		color: #FF5161;
-		margin-top:4%;
-		margin-left:11%;
-	}
-	
-    ul, li{ 
-        list-style:none;
-        /*text-align:center;*/
-        padding:0;
-        margin:0;
-	}
-	
-    .playMeetingTable{
-		margin:0 auto;
-		width:80%;
-		/*height:255px;*/
-		padding:0;
-		/*border-bottom:2px solid #7F7F7F; /* ------------------백엔드하고 스타일 다시 확인하기 */
-		height:400px;
-    }
-
-    .playMeetingTable > ul > li:first-child {
-        text-align: center;
-        font-size:14pt;
-        height:40px;
-        vertical-align:middle;
-        line-height:30px;
-	}
-
-
-    .playMeetingList {
-    	margin-top:10px;
-    	line-height: 50px;
-    }
-    
-
-    .playMeetingList > li:first-child > ul > li {
-        background-color:#E0E0E0;
-        font-weight:bold;
-        text-align:center;
-        border-top:2px solid #7F7F7F;
-	}
-    .playMeetingList > li:last-child > ul > li {
-        background-color:#E0E0E0;
-        border-bottom:2px solid #7F7F7F;
-	}
-
-/*
-    .playMeetingList > li > ul {
-        clear:both;
-        padding:0px auto;
-        position:relative;
-        min-width:40px;
-}*/
-    .playMeetingList > li > ul > li { 
-        float:left;
-        font-size:12pt; /* 글씨 크기 */
-        border-bottom:1px solid silver;
-        vertical-align:baseline;
-}    
-
-	.playMeetingList > li > ul > li:first-child							{width:5%; height:50px;} /*체크박스 열,행 크기*/
-    .playMeetingList > li > ul > li:first-child +li              		{width:10%; height:50px;} /*번호 열,행 크기*/
-    .playMeetingList > li > ul > li:first-child +li+li           		{width:10%; height:50px;} /*말머리 열,행 크기*/
-    .playMeetingList > li > ul > li:first-child +li+li+li        		{width:30%; height:50px; text-align: center;} /*제목 열,행 크기*/
-    .playMeetingList > li > ul > li:first-child +li+li+li+li     		{width:10%; height:50px;} /*마감여부 열,행 크기*/
-    .playMeetingList > li > ul > li:first-child +li+li+li+li+li			{width:10%; height:50px;} /*작성자 열,행 크기*/
-    .playMeetingList > li > ul > li:first-child +li+li+li+li+li+li		{width:10%; height:50px;} /*조회수 열,행 크기*/
-    .playMeetingList > li > ul > li:first-child +li+li+li+li+li+li+li	{width:15%; height:50px;} /*작성일 열,행 크기*/    
-
-    .left {
-        text-align : left;
-	}
-
-	.playMeetingListBtn{
-		margin:1%;
-		padding:10px 20px;
-		float:right;
-		background:#440099;
-		color:white;
-		font-weight:bold;
-		font-size:17px;
-		border-style:none;
-		cursor:pointer;
-	}
-	
-
-
-	.playMeetingListSearchKey{
-		margin:1%;
-		margin-top:1%;
-		border:1px solid #ddd;
-		padding:7px 7px;
-		padding-left:1%;
-	}
-	.playMeetingListSearchTxt{
-		width:250px;
-		height:25px;
-		border-top:none;
-		border-left:none;
-		border-right:none;
-		border-bottom:1px solid #ddd;
-		outline:none;
-	}
-	.playMeetingListSearchBtn{
-		background:url("../img/icon/search.png");
-		border-style:none;
-		background-repeat: no-repeat;
-		margin:-0.5%;
-		width:25px;
-		height:25px;
-		cursor:pointer;
-	}
-</style>
+<link rel="stylesheet" href="/style/playMeetingListStyle.css">
 <script>
 	function checkAll(checkAll){
 		let checkboxes=document.getElementsByName("checkbox");
@@ -154,7 +22,6 @@
 	
     <form method="post" action="" class="playMeetingTable">
         <ul>
-            <!-- 게시판 목록  -->
             <li>
                 <ul class="playMeetingList">
                     <li>
@@ -242,5 +109,3 @@
 		</div>		
 		
     </form>
-</body>
-</html>
