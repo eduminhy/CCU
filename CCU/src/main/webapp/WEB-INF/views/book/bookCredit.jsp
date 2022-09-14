@@ -63,7 +63,7 @@
 			IMP.request_pay({
 		    pg : 'html5_inicis',//kg이니시스
 		    pay_method : 'card',
-		    merchant_uid: "order_no_0010", // 상점에서 관리하는 주문 번호
+		    merchant_uid: "order_no_0010", // 상점에서 관리하는 주문 번호 --> 공연번호
 		    name : '주문명:결제테스트',
 		    amount : 100,
 		    buyer_email : 'eduminhy@gmail.com',
@@ -90,7 +90,6 @@
 			    			msg += '\n상점 거래ID : ' + rsp.merchant_uid;
 			    			msg += '\결제 금액 : ' + rsp.paid_amount;
 			    			msg += '카드 승인번호 : ' + rsp.apply_num;
-			    			
 			    			alert(msg);
 			    		} else {
 			    			//[3] 아직 제대로 결제가 되지 않았습니다.
