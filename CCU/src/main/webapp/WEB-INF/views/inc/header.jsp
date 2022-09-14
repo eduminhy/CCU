@@ -13,17 +13,46 @@
 <link rel="stylesheet" href="/style/headerfooter.css">
 <style>
 </style>
+<script>
+	$(function(){
+		//검색창
+		$(".search-btn").click(function(){
+			$("#searchBar").toggle();
+		});
+		
+		$("#searchBar").keyup(function(key){
+			if(key.keyCode==13) {
+				if($("#searchBar").val()!=''){
+					alert("검색할까요?");
+				}else{
+					alert("검색어를 입력하세요");
+				}
+			}
+		});
+		
+		//사용자버튼
+		$(".user-btn").click(function(){
+			$("#toggleDiv").toggle();
+		});
+	});
+</script>
 </head>
-<body><div class="header">
+<body>
+<div class="header">
 <div id="top">
-	<button class="search-btn" type="submit"><i class="fas fa-search" id="searchBtn"></i></button>
+	<input type="text" id="searchBar"/>
+	<button class="search-btn" type="submit"><i class="fas fa-search" id="searchBtn"></i></button>	
 	<a href="/" id="mainLink">
 		<img src="../img/logo.png" id="logo"/>
 		<span>CCU</span>
 	</a>
-	<a href="#" class="member">로그인</a>
-	<a href="#" class="member">회원가입</a>
-	<a href="#" class="member">고객센터</a>
+	<button class="user-btn" type="submit"><i class="fas fa-user-circle" id="userBtn"></i></button>
+	<div id="toggleDiv">
+		<input type="text" id="userid" placeholder="ID"/><br/>
+		<input type="password" id="userpwd" placeholder="PW"/><br/>
+		<input type="submit" value="Login"/>
+		
+	</div>
 </div>
 
 <!-- 탭메뉴 -->
