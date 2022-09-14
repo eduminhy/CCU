@@ -6,13 +6,58 @@
 <title>Insert title here</title>
 <!-- JQ link -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <!-- favicon.ico 오류 지우기 & 웹 브라우저 아이콘 설정 -->
 <link rel="shortcut icon" href="#">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+<link rel="stylesheet" href="/style/headerfooter.css">
 <style>
 </style>
 </head>
-<body>
-<h1>CCU 홈</h1>
+<body><div class="header">
+<div id="top">
+	<button class="search-btn" type="submit"><i class="fas fa-search" id="searchBtn"></i></button>
+	<a href="/" id="mainLink">
+		<img src="../img/logo.png" id="logo"/>
+		<span>CCU</span>
+	</a>
+	<a href="#" class="member">로그인</a>
+	<a href="#" class="member">회원가입</a>
+	<a href="#" class="member">고객센터</a>
+</div>
+
+<!-- 탭메뉴 -->
+<div id="tapmenu">
+	<ul>
+		<li><a href="#">전체</a></li>
+	</ul>
+	<ul>
+		<li><a href="/show/showList">연극</a></li>
+	</ul>
+	<ul>
+		<li><a href="#">뮤지컬</a></li>
+	</ul>
+	<ul>
+		<li><a href="#">클래식/오페라</a></li>
+	</ul>
+	<ul>
+		<li><a href="#">무용</a></li>
+	</ul>
+	<ul>
+		<li><a href="#">국악</a></li>
+	</ul>
+	<ul>
+		<li><a href="#">아동</a></li>
+	</ul>
+	<ul>
+		<li><a href="/preferGenre">선호장르선택</a></li>
+	</ul>
+	<ul>
+		<li><a href="#">같이갈래요?</a></li>
+	</ul>
+</div>
+</div>
+<!-- <h1>CCU 홈</h1>
 	<ol>
 		<li><a href="/login">로그인</a></li>
 		<li><a href="/signup">회원가입</a></li>
@@ -28,4 +73,4 @@
 		<li><a href="/book/bookCredit">결제하기</a></li>
 		<li><a href="/book/bookCheck">예약내역확인하기</a></li>
 		<li><a href="/show/showDetail">공연상세보기</a></li>
-	</ol>
+	</ol> -->
