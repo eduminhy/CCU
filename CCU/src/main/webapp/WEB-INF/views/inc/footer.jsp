@@ -1,26 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-</head>
-
-<style>
-	.footer{
-		position:absoulte;
-		left: 0;
-		bottom: 0;
-		width: 100%;
-		padding: 15px 0;
-		text-align: center;
-		
-	}
-</style>
-<div class="footer">footer</div>>
-
+<div class="footer">
+	<div id="ccuimg">
+		<img src="../img/logo_footer.png"/>
+		<span>CCU</span>
+	</div>
+	<ul id="coinfo">
+		<li>서울특별시 강남구 도곡로 112 3층 (도곡동, 서한빌딩) | 사업자등록번호 149-89-78698</li>
+		<li>대표이사 김승욱 | 개인정보관리 최고책임자 김현진</li>
+		<li></li>
+		<li>통신판매신고번호 제1270호</li>
+		<li>고객센터 1544-1111</li>
+		<li>Copyright &copy; CCU Corp.All rights reserved.</li>
+	</ul>
+</div>
 </body>
 </html>
