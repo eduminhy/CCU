@@ -21,12 +21,12 @@ h1{color:rgb(68,0,153);}
 	body { margin: 1.6cm; page-break-after: avoid; page-break-before: avoid}
     #content{
     	position:absolute; left:250px; top:300px; 
-    	border-top:2px solid gray; border-bottom:2px solid gray; 
+    	border-top:2px solid gray; border-bottom:2px solid gray;
     }
     /*인쇄 배경색상적용*/
     #content th {
        background-color: rgb(224,224,224) !important;
        -webkit-print-color-adjust: exact; 
    }
-    #print, #imgdown, #check{display:none;}
+    .topUp, .topDown, .bottom, #print, #imgdown, #check{display:none;}
 }
