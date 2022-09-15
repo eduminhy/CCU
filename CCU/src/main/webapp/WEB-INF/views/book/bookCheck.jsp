@@ -74,5 +74,5 @@
 	
 	<input type="button" value="인쇄하기" class="btn" id="print"/>
 	<input type="button" value="예매내역 이미지로 저장" class="btn" id="imgdown"/><br/>
-	<input type="button" value="확인" class="btn" id="check"/>
+	<input type="button" value="확인" class="btn" id="check" onclick="location.href='/'"/>
 </div>
