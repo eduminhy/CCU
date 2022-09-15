@@ -1,74 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<style>
-	.MeetingTopContainer{
-		border:5px solid #440099;
-		width:80%;
-		margin:1% auto;
-        font-size:15px;
-        text-align:center;
-	}
-	.MeetingTopText{
-		color:#440099;
-	}
-	.MeetingWarning{
-		color: #FF5161;
-		margin-top:4%;
-		margin-left:11%;
-	}
+<link rel="stylesheet" href="/style/mainMeetingNoticeStyle.css">
 
-	.MeetingFormContainer{
-		width:80%;
-		margin:0 auto;
-	}
-	fieldset{
-		border:none;
-	}
-	.MeetingFormContainer table{
-		width:100%;
-		border-top:2px solid #7F7F7F;
-		border-bottom:2px solid #7F7F7F;
-		border-spacing:0;
-	}
-	.MeetingFormContainer td{
-		border-bottom:1px solid #B3B3B3;
-		padding:10px 0 10px 10px;
-		padding:1%;
-		padding-left:2%;
-	}
-	.MeetingFormContainer th{
-		width:10%;
-		padding-left:5px;
-		border-bottom:1px solid #B3B3B3;
-		padding:10px 0 10px 10px;
-		background:#E0E0E0;
-		text-align:center;
-	}
-	.meetingBackBtn{
-		text-align:right;
-		padding:10px 20px;
-		float:right;
-		background:#440099;
-		color:white;
-		font-weight:bold;
-		font-size:17px;
-		border-style:none;
-	}
-    .contentPart>td:last-child{
-    	vertical-align: top;
-    }
-	
-</style>
-<script>
-</script>
-</head>
-<body>
 	<div class="MeetingTopContainer">
 		<h1 class="MeetingTopText">미팅게시판</h1>
 	</div>
@@ -132,6 +65,3 @@
 		</form>
 	</div>
 	
-	
-</body>
-</html>

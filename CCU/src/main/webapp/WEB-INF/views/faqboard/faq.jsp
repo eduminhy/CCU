@@ -1,44 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>고객센터</title>
-</head>
-<style>
-	ul {
-		list-style : none;
-	}
-	#faqlist li{
-		float : left;
-		line-height : 40px;
-		border-bottom : 1px solid #ddd;
-		width : 10%;
-	}
-	#faqlist li:nth-child(n+3){
-		float:left;
-		line-height:40px;
-		width:55%;
-		background-color:yellow;
-	}
-	#cstext {
-		text-align:center;
-		font-size:3em;
-		color:#440099;
-		margin-bottom:100px;
-	}
-	#faqbox {
-	 	border:2px solid; color:#440099; 
-		height:50px; width:230px;
-		text-align:center;
-		font-weight:bold;
-		font-size:30px;
-		margin-left:34%;
-		margin-bottom:50px;
-	}
-	 
-</style>
+<link rel="stylesheet" href="/style/faqStyle.css">
+
 <body>
 <div>
 	<ul>

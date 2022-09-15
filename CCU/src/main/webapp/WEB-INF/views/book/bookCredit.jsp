@@ -63,6 +63,7 @@
 
 			//결제 요청하기
 			IMP.request_pay({
+      /* branch/Raccoon115
 				pg : 'html5_inicis',//kg이니시스
 				pay_method : 'card',
 				merchant_uid : "order_no_0000", // 상점에서 관리하는 주문 번호
@@ -73,6 +74,18 @@
 				buyer_tel : '010-1234-5678',
 				buyer_addr : '서울특별시 강남구 삼성동',
 				buyer_postcode : '123-456'
+       */
+		    pg : 'html5_inicis',//kg이니시스
+		    pay_method : 'card',
+		    merchant_uid: "order_no_0010", // 상점에서 관리하는 주문 번호 --> 공연번호
+		    name : '주문명:결제테스트',
+		    amount : 100,
+		    buyer_email : 'eduminhy@gmail.com',
+		    buyer_name : 'CCU_민하영',
+		    buyer_tel : '010-1234-5678',
+		    buyer_addr : '서울특별시 강남구 삼성동',
+		    buyer_postcode : '123-456'
+
 			}, function(rsp) {
 				// 			    if ( rsp.success ) {
 				// 			    	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
