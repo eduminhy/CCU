@@ -9,7 +9,7 @@
 <style>
 #chatboticon {
 	position: absolute;
-	right: 0px;
+	right: 10px;
 	bottom: 0px;
 }
 
