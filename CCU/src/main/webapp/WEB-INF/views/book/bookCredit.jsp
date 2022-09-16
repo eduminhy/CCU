@@ -147,62 +147,60 @@
 </script>
 <div class="container">
 	<div id="infoReceive">
-		<div>
-			<h1>STEP02 티켓수령정보</h1>
-		</div>
+		<div><h1>STEP02 티켓수령정보</h1></div>
 		<ul>
 			<li class="title">01. 수령방법</li>
-			<li><select id="selectbox">
-					<option value="op1">현장수령</option>
-					<option value="op2">택배배송(배송비 +3,000원)</option>
-			</select></li>
-			<hr />
-			<li class="title">02. 수령자 확인</li>
-			<li><span class="detail">이름</span>&nbsp;<input type="text"
-				name="buyer" id="buyer" /></li>
-			<li><span class="detail">긴급연락처</span> <input type="text"
-				name="tel1" id="tel1" size="3" maxlength="3" /> - <input type="text"
-				name="tel2" id="tel2" size="4" maxlength="4" /> - <input type="text"
-				name="tel3" id="tel3" size="4" maxlength="4" /></li>
-			<li><span class="detail">E-mail</span>&nbsp;<input type="text"
-				name="email" id="email" /></li>
-			<hr />
-
-			<li id="warn">주의사항<br /> * 부정확한 정보입력으로 인한 문제 발생 시 CCU는 책임을 지지
-				않습니다.<br /> 1) 배송 선택 시 티켓 수령자의 배송지 정보를 정확히 입력해주시기 바랍니다.<br /> 2) 티켓은
-				유가증권으로 본인에게 직접 전달해야하며, 분실된 티켓은 재발권 되지 않습니다.<br /> 3) 일괄배송의 경우 정해진
-				날짜에 티켓 배송이 시작되며, 주소 수정은 일괄배송일 2일 전까지 가능합니다.<br /> 4) 예매 티켓 배송은
-				예매완료일, 혹은 일괄배송일로부터 4~5일(영업일 기준) 이내 수령 가능합니다.<br /> 5) 긴급연락처는 공연 취소와
-				같은 유사 시 안내 받으실 연락처이므로 정확히 입력해주시기 바랍니다.<br /> 6) 이메일 정보 미 입력 시 예매 관련
-				안내 메일을 받을 수 없으니 이메일 받기를 원하시는 경우 마이페이지에서 회원정보를 수정해주시기 바랍니다.
+			<li>
+				<select id="selectbox">
+				<option value="op1">현장수령</option>
+				<option value="op2">택배배송(배송비 +3,000원)</option>
+				</select>
 			</li>
-			<li><input type="checkbox" name="caution" /> 주의사항을 확인하였으며,
-				동의합니다.</li>
-			<li><input type="checkbox" name="three" /> 제3자 정보제공 내용에 동의합니다.</li>
-		</ul>
+			<hr/>
+			<li class="title">02. 수령자 확인</li>
+			<li><span class="detail">이름</span>&nbsp;<input type="text" name="buyer" id="buyer"/></li>
+			<li><span class="detail">긴급연락처</span>
+				<input type="text" name="tel1" id="tel1" size="3" maxlength="3"/> - 
+				<input type="text" name="tel2" id="tel2" size="4" maxlength="4"/> - 
+				<input type="text" name="tel3" id="tel3" size="4" maxlength="4"/>
+			</li>	
+			<li><span class="detail">E-mail</span>&nbsp;<input type="text" name="email" id="email"/></li>
+			<hr/>
+			
+			<li id="warn"><span id="warnTitle">※주의사항※</span><br/><br/>
+			* 부정확한 정보입력으로 인한 문제 발생 시 CCU는 책임을 지지 않습니다.<br/>
+			1) 배송 선택 시 티켓 수령자의 배송지 정보를 정확히 입력해주시기 바랍니다.<br/>
+			2) 티켓은 유가증권으로 본인에게 직접 전달해야하며, 분실된 티켓은 재발권 되지 않습니다.<br/>
+			3) 일괄배송의 경우 정해진 날짜에 티켓 배송이 시작되며, 주소 수정은 일괄배송일 2일 전까지 가능합니다.<br/>
+			4) 예매 티켓 배송은 예매완료일, 혹은 일괄배송일로부터 4~5일(영업일 기준) 이내 수령 가능합니다.<br/>
+			5) 긴급연락처는 공연 취소와 같은 유사 시 안내 받으실 연락처이므로 정확히 입력해주시기 바랍니다.<br/>
+			6) 이메일 정보 미 입력 시 예매 관련 안내 메일을 받을 수 없으니 이메일 받기를 원하시는 경우 마이페이지에서 회원정보를 수정해주시기 바랍니다.</li>
+			<li><input type="checkbox" name="caution"/> 주의사항을 확인하였으며, 동의합니다.</li>
+			<li><input type="checkbox" name="three"/> 제3자 정보제공 내용에 동의합니다.</li>
+		</ul>			
 	</div>
 	<div id="infoBuy">
 		<ul id="info">
 			<li class="title">선택내역</li>
-			<hr />
+			<hr/>
 			<li><span class="showinfo">공연명</span>&nbsp;헤르츠클란</li>
 			<li><span class="showinfo">공연장소</span>&nbsp;브릭씨어터</li>
 			<li><span class="showinfo">공연날짜</span>&nbsp;2022.09.07(수)</li>
 			<li><span class="showinfo">공연시간</span>&nbsp;20시 00분</li>
 			<li><span class="showinfo">좌석선택</span></li>
-			<li>B구역 10열 8번, B구역 10열 9번, B구역 10열 10번</li>
-		</ul>
+			<li id="seatBox">B구역 10열 8번, B구역 10열 9번, B구역 10열 10번</li>
+			</ul>	
 		<ul id="price">
 			<span class="title">결제내역</span>
-			<hr />
+			<hr/>
 			<li>티켓금액</li>
 			<li id="ticket">165500</li>
 			<li>배송비</li>
 			<li id="deliver">0</li>
-			<hr />
+			<hr/>
 			<li class="total">최종결제금액</li>
 			<li class="total" id="total"></li>
 		</ul>
-		<input type="button" id="pay" value="결제하기" />
+		<input type="button" id="pay" value="결제하기"/>
 	</div>
 </div>

@@ -9,7 +9,9 @@ qna<%@ page language="java" contentType="text/html; charset=UTF-8"
 <style>
 #chatboticon {
 	position: absolute;
-	right: 0px;
+
+	right: 10px;
+
 	bottom: 0px;
 }
 
