@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+qna<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,9 @@
 <style>
 #chatboticon {
 	position: absolute;
+
 	right: 10px;
+
 	bottom: 0px;
 }
 

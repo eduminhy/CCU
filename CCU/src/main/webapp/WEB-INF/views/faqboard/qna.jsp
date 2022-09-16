@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <style>
+
 	#faqmenu {
 		list-style: none;
 		border: 1px solid purple;
@@ -90,17 +93,21 @@
 <img src="../img/chatbot_icon.png" id="chatboticon">
 	<div>
 		<ul id=faqmenu>
+
 			<a href="/faq" class="faqmenubar">FAQ</a>
 			<br />
 			<a href="/qna" class="faqmenubar">QNA</a>
 			<br />
 			<a href="/terms" class="faqmenubar">이용약관</a>
+
 		</ul>
+
 	</div>
 
 
 	<h1 id="cstext">- 고객센터 -</h1>
 	<h1 id="qnabox" text-align=center;>Q&A</h1>
+
 	
 
 		<ul id = "qnaboardtitle">
@@ -129,6 +136,7 @@
 	<input type="button" value="글쓰기"  class="writeqna">
 
 	
+
 
 
 </body>
