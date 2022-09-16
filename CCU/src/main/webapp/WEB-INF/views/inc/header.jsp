@@ -85,7 +85,7 @@
 			<li><a href="#">아동</a></li>
 		</ul>
 		<ul>
-			<li><a href="#">선호장르선택</a></li>
+			<li><a href="/preferGenre">선호장르선택</a></li>
 		</ul>
 		<ul>
 			<li><a href="#">같이갈래요?</a></li>
