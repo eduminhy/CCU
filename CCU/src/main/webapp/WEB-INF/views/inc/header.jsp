@@ -17,7 +17,12 @@
 	$(function(){
 		//검색창
 		$(".search-btn").click(function(){
-			$("#searchBar").toggle();
+			if($("#searchBar").css("display")=="none"){
+				$("#searchBar").show();
+				$("#searchBar").focus();
+			}else{
+				$("#searchBar").hide();
+			}
 		});
 		
 		$("#searchBar").keyup(function(key){
@@ -38,53 +43,54 @@
 </script>
 </head>
 <body>
-<div class="header">
-<div id="top">
-	<input type="text" id="searchBar"/>
-	<button class="search-btn" type="submit"><i class="fas fa-search" id="searchBtn"></i></button>	
-	<a href="/" id="mainLink">
-		<img src="../img/logo.png" id="logo"/>
-		<span>CCU</span>
-	</a>
-	<button class="user-btn" type="submit"><i class="fas fa-user-circle" id="userBtn"></i></button>
-	<div id="toggleDiv">
-		<input type="text" id="userid" placeholder="ID"/><br/>
-		<input type="password" id="userpwd" placeholder="PW"/><br/>
-		<input type="submit" value="Login"/>
-		
+<div class="topUp">
+	<div id="top">
+		<button class="search-btn" type="submit"><i class="fas fa-search" id="searchBtn"></i></button>
+		<input type="text" id="searchBar"/>	
+		<a href="/" id="mainLink">
+			<img src="../img/logo.png" id="logo"/>
+			<span>CCU</span>
+		</a>
+		<button class="user-btn" type="submit"><i class="fas fa-user-circle" id="userBtn"></i></button>
+		<div id="toggleDiv">
+			<input type="text" id="userid" placeholder="ID"/><br/>
+			<input type="password" id="userpwd" placeholder="PW"/><br/>
+			<input type="submit" value="Login"/>
+		</div>
 	</div>
 </div>
 
-<!-- 탭메뉴 -->
-<div id="tapmenu">
-	<ul>
-		<li><a href="#">전체</a></li>
-	</ul>
-	<ul>
-		<li><a href="/show/showList">연극</a></li>
-	</ul>
-	<ul>
-		<li><a href="#">뮤지컬</a></li>
-	</ul>
-	<ul>
-		<li><a href="#">클래식/오페라</a></li>
-	</ul>
-	<ul>
-		<li><a href="#">무용</a></li>
-	</ul>
-	<ul>
-		<li><a href="#">국악</a></li>
-	</ul>
-	<ul>
-		<li><a href="#">아동</a></li>
-	</ul>
-	<ul>
-		<li><a href="/preferGenre">선호장르선택</a></li>
-	</ul>
-	<ul>
-		<li><a href="#">같이갈래요?</a></li>
-	</ul>
-</div>
+<div class="topDown">
+	<!-- 탭메뉴 -->
+	<div id="tapmenu">
+		<ul>
+			<li><a href="#">전체</a></li>
+		</ul>
+		<ul>
+			<li><a href="/show/showList">연극</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">뮤지컬</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">클래식/오페라</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">무용</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">국악</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">아동</a></li>
+		</ul>
+		<ul>
+			<li><a href="/preferGenre">선호장르선택</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">같이갈래요?</a></li>
+		</ul>
+	</div>
 </div>
 <!-- <h1>CCU 홈</h1>
 	<ol>

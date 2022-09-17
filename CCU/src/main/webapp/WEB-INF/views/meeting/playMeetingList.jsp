@@ -1,16 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/style/playMeetingListStyle.css">
-<script>
-	function checkAll(checkAll){
-		let checkboxes=document.getElementsByName("checkbox");
-		console.log(checkboxes);
-		checkboxes.forEach((checkbox)=>{
-			console.log(checkbox);
-			checkbox.checked=checkAll.checked;
-		})
-	}
-</script>
+<script src="/script/playMeetingListScript.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="playMeetingTopContainer">
