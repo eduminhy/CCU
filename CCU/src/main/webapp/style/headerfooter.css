@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /* ======= Header ====== */
+
 body, ul, li{margin:0; padding:0; list-style-type:none;}
 a:link, a:visited, a:hover{text-decoration:none;}
 
@@ -43,14 +44,32 @@ a:link, a:visited, a:hover{text-decoration:none;}
 	text-align:center; float:left;
 	font-size:1.1em;
 	padding:0; margin:0 30px;
+
+
 }
-#tapmenu a:link, a:visited{color:black;}
-#tapmenu a:hover{color:rgb(68,0,153); font-weight:bold;}
+
+#tapmenu a:link, a:visited {
+	color: black;
+}
+
+#tapmenu a:hover {
+	color: rgb(68, 0, 153);
+	font-weight: bold;
+
+}
 
 /* ======= Footer ====== */
+
+
+
 .bottom{width:100%; height:175px; background-color:#ddd;}
 .footer{width:1200px; overflow:auto; margin:0 auto; background-color:#ddd; display:flex; height:175px;}
 #ccuimg>img{position:relative; top:40px; margin-left:150px; height:70px;}
 #ccuimg>span{position:relative; top:33px; margin-right:100px; font-size:70px; color:rgb(173,173,173);}
 
+
 #coinfo>li{position:relative; top:40px; font-size:10pt; color:rgb(173,173,173);}
+
+#coinfo>li{position:relative; top:40px; font-size:10pt; color:rgb(173,173,173);}
+
+
