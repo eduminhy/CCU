@@ -5,11 +5,13 @@
   		min-height: 100px;
 	}
 	.loginFrm{
+		width:1200px;
 		text-align: center;
 		border: 5px double; color:#440099;
 		border-radius: 15%;
-		margin-right:500px;
-		margin-left:500px;
+		margin:0 auto;
+		/*margin-right:500px;*/
+		/*margin-left:500px;*/
 		padding : 50px;
 	
 	}
