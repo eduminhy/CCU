@@ -53,13 +53,16 @@
 						<li class="CommentItem">
 							<div class="comment_area">
 								<div class="comment_box">
+									<div class="profile">
+										<img src="../img/profile.png"/>
+									</div>
 									<div class="comment_nick_box">
 										<div class="comment_nick_info">
 											<div class="comment_nickname">jhma</div>
 										</div>
 									</div>
 									
-									
+								
 									<div class="comment_text_box">
 										<p class="comment_text_view">
 											<span class="text_comment">
@@ -85,6 +88,9 @@
 						<li class="CommentItem CommentItem-reply">
 							<div class="comment_area">
 								<div class="comment_box">
+									<div class="profile">
+										<img src="../img/profile.png"/>
+									</div>								
 									<div class="comment_nick_box">
 										<div class="comment_nick_info">
 											<div class="comment_nickname">tylee</div>
@@ -112,6 +118,9 @@
 						<li class="CommentItem CommentItem-reply">
 							<div class="comment_area">
 								<div class="comment_box">
+									<div class="profile">
+										<img src="../img/profile.png"/>
+									</div>								
 									<div class="comment_nick_box">
 										<div class="comment_nick_info">
 											<div class="comment_nickname">jhma</div>
