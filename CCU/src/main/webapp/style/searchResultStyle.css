@@ -38,8 +38,8 @@
 	
 	.itemList{
 		margin-top:3%;
-		margin-left:15%;
-		margin-right:15%;
+		width:1200px;
+		margin:0 auto;
 		margin-bottom:4%;
 		/*background:red;*/
 		list-style: none;
