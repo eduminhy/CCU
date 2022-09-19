@@ -1,17 +1,11 @@
 @charset "UTF-8";
-	.wrap {
-		display: grid;
-  		place-items: center;
-  		min-height: 100px;
-	}
-	.loginFrm{
-		text-align: center;
-		border: 5px double; color:#440099;
-		border-radius: 15%;
-		margin-right:500px;
-		margin-left:500px;
-		padding : 50px;
-	
+
+	.logincontainer{
+		text-align:center;
+		background-color:beige;
+		width:1200px;
+		height:800px;
+		margin:0 auto 50px;
 	}
 	#userid, #userpwd {
 		border : 1px solid grey;

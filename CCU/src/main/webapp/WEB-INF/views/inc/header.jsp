@@ -56,6 +56,14 @@
 			<input type="text" id="userid" placeholder="ID"/><br/>
 			<input type="password" id="userpwd" placeholder="PW"/><br/>
 			<input type="submit" value="Login"/>
+			<img src="../img/navericon.png" width=40px; height=40px; id="navericon">
+			<img src="../img/kakaoicon.png" width=40px; height=40px; id="kakaoicon">
+			<img src="../img/googleicon.png" width=40px; height=40px; id="googleicon">
+			<br/>
+			<li><a href="/member/login">로그인</a></li>
+			<li><a href="/member/signup">회원가입</a></li>
+			<br/><br/>
+			<a href="/faq">고객센터</a>
 		</div>
 	</div>
 </div>
