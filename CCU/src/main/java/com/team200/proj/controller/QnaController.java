@@ -9,4 +9,8 @@ public class QnaController {
 	public String qna() {
 		return "faqboard/qna";
 	}
+	@RequestMapping("/faq")
+	public String faq() {
+		return "faqboard/faq";
+	}
 }
