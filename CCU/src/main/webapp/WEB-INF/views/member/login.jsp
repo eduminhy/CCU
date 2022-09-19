@@ -15,7 +15,8 @@
 		<br/>
 			<input type="submit" value="로그인" class="loginBtn">
 			<br/>
-			<input type="button" value="회원가입"  class="signupBtn">
+			<!-- <input type="button" value="회원가입"  class="signupBtn">  -->
+			<li><a href="/member/signup">회원가입</a></li>
 		<br/>
 		<br/>
 		<br/>
