@@ -24,17 +24,19 @@ public class homeController {
 		return "index";
 
 	}
-	@RequestMapping("/a")
-	public String a() {
-		return "meeting/meetingNotice";
-
-	}
-	@GetMapping("sms")
-	@ResponseBody
-	public ModelAndView sms() throws IOException {
-		System.out.println(11);
+	@GetMapping("/admin")
+	public ModelAndView admin(){
+		System.out.println("admin");
 		mav = new ModelAndView();
-		mav.setViewName("sms");
+		mav.setViewName("adminPage/admin");
+		return mav;
+	}
+//	@GetMapping("sms")
+//	@ResponseBody
+//	public ModelAndView sms() throws IOException {
+//		System.out.println(11);
+//		mav = new ModelAndView();
+//		mav.setViewName("sms");
 //		System.out.println();
 //		URL url = new URL("https://oauth2.cert.toss.im/token");
 //		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
@@ -57,16 +59,16 @@ public class homeController {
 //		Scanner s = new Scanner(responseStream).useDelimiter("\\A");
 //		String response = s.hasNext() ? s.next() : "";
 //		System.out.println(response);
-		return mav;
-	}
-	
-	@PostMapping("sms2")
-	@ResponseBody
-	public ModelAndView sms2(@RequestParam String imp_uid){
-		System.out.println(12);
-		System.out.println(imp_uid);
-		mav = new ModelAndView();
-		mav.setViewName("sms2");
-		return mav;
-	}
+//		return mav;
+//	}
+//	
+//	@PostMapping("sms2")
+//	@ResponseBody
+//	public ModelAndView sms2(@RequestParam String imp_uid){
+//		System.out.println(12);
+//		System.out.println(imp_uid);
+//		mav = new ModelAndView();
+//		mav.setViewName("sms2");
+//		return mav;
+//	}
 }
