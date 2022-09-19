@@ -50,25 +50,29 @@
 </script>
 </head>
 <body>
-	<div class="topUp">
-		<div id="top">
-			<button class="search-btn" type="submit">
-				<i class="fas fa-search" id="searchBtn"></i>
-			</button>
-			<input type="text" id="searchBar" /> <a href="/" id="mainLink"> <img
-				src="../img/logo.png" id="logo" /> <span>CCU</span>
-			</a>
-			<button class="user-btn" type="submit">
-				<i class="fas fa-user-circle" id="userBtn"></i>
-			</button>
-			<div id="toggleDiv">
-				<input type="text" id="userid" placeholder="ID"/><br/>
-				<input type="password" id="userpwd" placeholder="PW"/><br/>
-				<input type="button" value="Login"/><br/>
-				<a href="#">회원가입</a><br/>
-				<a href="/mypage/myInfo">마이페이지</a> |
-				<a href="#">고객센터</a>
-			</div>
+
+<div class="topUp">
+	<div id="top">
+		<button class="search-btn" type="submit"><i class="fas fa-search" id="searchBtn"></i></button>
+		<input type="text" id="searchBar"/>	
+		<a href="/" id="mainLink">
+			<img src="../img/logo.png" id="logo"/>
+			<span>CCU</span>
+		</a>
+		<button class="user-btn" type="submit"><i class="fas fa-user-circle" id="userBtn"></i></button>
+		<div id="toggleDiv">
+			<input type="text" id="userid" placeholder="ID"/><br/>
+			<input type="password" id="userpwd" placeholder="PW"/><br/>
+			<input type="submit" value="Login"/>
+			<img src="../img/navericon.png" width=40px; height=40px; id="navericon">
+			<img src="../img/kakaoicon.png" width=40px; height=40px; id="kakaoicon">
+			<img src="../img/googleicon.png" width=40px; height=40px; id="googleicon">
+			<br/>
+			<li><a href="/member/login">로그인</a></li>
+			<li><a href="/member/signup">회원가입</a></li>
+			<br/><br/>
+			<a href="/faq">고객센터</a>
+
 		</div>
 	</div>
 
