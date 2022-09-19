@@ -82,7 +82,8 @@
 	
 </style>
 <body>
-<div class="loginFrm">
+<div class="logincontainer">
+	<div class="loginFrm">
 	<h1><img src="../img/logo01.PNG" width=100px; height=100px;></h1>
 		
 			<input type="userid" placeholder="아이디를 입력해주세요" id="userid">
@@ -92,7 +93,8 @@
 		<br/>
 			<input type="submit" value="로그인" class="loginBtn">
 			<br/>
-			<input type="button" value="회원가입"  class="signupBtn">
+			<!-- <input type="button" value="회원가입"  class="signupBtn">  -->
+			<li><a href="/member/signup">회원가입</a></li>
 		<br/>
 		<br/>
 		<br/>
@@ -100,6 +102,7 @@
 			<img src="../img/navericon.png" width=80px; height=80px; id="navericon">
 			<img src="../img/kakaoicon.png" width=80px; height=80px; id="kakaoicon">
 			<img src="../img/googleicon.png" width=80px; height=80px; id="googleicon">
+	</div>
 </div>
 
 
