@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 	.searchTopContainer{
-		width:70%;
+		width:1200px;
 		/*width:64%;*/
 		height:160px;
 		background-color:#F2F2F2;
@@ -38,8 +38,9 @@
 	
 	.itemList{
 		margin-top:3%;
-		margin-left:15%;
-		margin-right:15%;
+		width:1200px;
+		margin:0 auto;
+		margin-bottom:4%;
 		/*background:red;*/
 		list-style: none;
 		border-top:2px solid #7F7F7F;
@@ -48,8 +49,7 @@
 	.itemList li{
 		/*background:yellow;*/
 		display: table;
-		margin-left:-3.1%;
-	    width: 103.1%;
+	    width: 100%;
 	    table-layout: fixed;
 	    padding: 20px 70px;
 	    box-sizing: border-box;
@@ -62,7 +62,7 @@
 		display: table-cell;
     	vertical-align: top;
 	}
-	
+
 
 	
 	.searchPanel a{

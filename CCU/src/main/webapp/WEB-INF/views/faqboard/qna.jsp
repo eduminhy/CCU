@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
 	pageEncoding="UTF-8"%>
+
+
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title></title>
 <style type="text/css">
 body {
@@ -123,16 +128,19 @@ ul, li {
 }
 </style>
 
+
 </head>
 <body>
 
 	<h1 id="cstext">- 고객센터 -</h1>
+
 
 	<div id="qnamenu">
 		<ul>
 			<li><a href="/faq">FAQ</a></li>
 			<li><a href="/qna">Q&A</a></li>
 			<li><a href="/terms">이용약관</a></li>
+
 		</ul>
 	</div>
 
@@ -191,6 +199,7 @@ ul, li {
 				</div>
 			</li>
 
+
 			<li id='searchkeyword'>
 				<div>
 					<select id='searchoption'>
@@ -203,5 +212,8 @@ ul, li {
 			</li>
 		</ul>
 	</div>
+
+
+
 </body>
 </html>
