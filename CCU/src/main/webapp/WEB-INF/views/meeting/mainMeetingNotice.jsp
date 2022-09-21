@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/style/mainMeetingNoticeStyle.css">
 
 	<div class="MeetingTopContainer">
-		<h1 class="MeetingTopText">미팅게시판</h1>
+		<h1 class="MeetingTopText">같이 갈래요?</h1>
 	</div>
 	
 	<p class="MeetingWarning">※ 개인정보 유출 및 피해에 유의하시고 금전 및 물품 피해에 대해 유의하십시오.</p>
