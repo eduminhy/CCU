@@ -1,4 +1,16 @@
 @charset "UTF-8";
+		
+	.signupcontainer{
+		text-align:center;
+		background-color:beige;
+		width:1200px;
+		height:800px;
+		margin:0 auto 50px;
+	}
+	.signuplogo{
+		text-align:center;
+		width:1200px;
+	}
 
 	#userid, #userpwd, #nickname, #username, #usertel, #useraddr {
 		border : 2px solid grey;
@@ -6,17 +18,7 @@
 		height:45px;
 		margin-bottom:10px;
 	}
-	div.signupfrm {
-		width:1200px;
-		text-align:center;
-		border: 5px double; color:#440099;
-		border-radius: 10%;
-		margin:0 auto;
-		/*margin-right:500px;*/
-		/*margin-left:500px;*/
-		padding : 50px;
 
-	}
 	.signupbtn {
 		width:300px;
 		height:45px;
