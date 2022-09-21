@@ -21,7 +21,7 @@ spring:
   ##추후 공유하지않는 파일로 변경이 가능하다면 할 것.
   dataSource: 
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1/show?characterEncoding=utf-8
+    url: jdbc:mysql://127.0.0.1/Team200?characterEncoding=utf-8
     username: root
     password: root1234
   ##파일업로드 제한용량 설정
