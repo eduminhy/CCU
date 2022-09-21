@@ -1,0 +1,32 @@
+package com.team200.proj.vo;
+
+public class showVO {
+private String id;
+private String concert_hall_name;
+private String statistics_search_by_production_company_id;
+private String name;
+private String startdate;
+private String enddate;
+private String performer;
+private String producer;
+private String runtime;
+private String minimum_age;
+private String price;
+private String mainposter;
+private String introduction_txt;
+private String genre;
+private String state;
+private String openrun;
+private String introduction_image1;
+private String introduction_image2;
+private String introduction_image3;
+private String introduction_image4;
+private String open_time;
+private String author;
+private String creator;
+
+	
+
+		
+	
+}
