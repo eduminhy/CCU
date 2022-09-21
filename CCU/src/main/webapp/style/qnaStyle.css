@@ -1,80 +1,147 @@
 @charset "UTF-8";
 
-#faqmenu {
-		list-style: none;
-		border: 1px solid purple;
-		background-color : purple;
-		opacity : 0.7;
-		height: 500px;
-		width: 10%;
-		float: left;
-		box-sizing: border-box;
+body {
+	line-height: 2em;
 }
-	.faqmenubar {
-	text-decoration-line: none;
-	color: white;
+
+ul, li {
+	text-align: center;
+
 }
-	#cstext {
-		text-align: center;
-		font-size: 3em;
-		color: #440099;
-		margin-bottom: 100px;
+.qnamenu {
+	width:1200px; 
+	overflow:auto; 
+	margin:0 auto; 
+	text-align:center;
 	}
-	#qnabox {
-		border: 2px solid;
-		color: #440099;
-		height: 50px;
-		width: 230px;
-		text-align: center;
-		font-weight: bold;
-		font-size: 30px;
-		margin-left: 34%;
-		margin-bottom: 50px;
-}
-	#qnaboardtitle{
-		overflow:auto;
-		list-style : none;
-		width: 1200px;
-		margin-left: 20%;
-		font-weight: bold;
-		background-color:title;
+a:link, a:visited {
+	text-decoration:none;
 	}
-	#qnaboard, #qnaboardtitle{
-		overflow:auto;
-		list-style : none;
-		width: 1200px;
-		margin-left: 20%;
+#myTapmenu li {
+	float:left; 
+	text-align:center;
+	width:16%; 
+	height:50px; 
+	line-height:50px; 
+	margin:40px 0 20px 0;
+	font-weight:bold; 
+	font-size:18px; 
+	border:3px solid #440099; 
+	border-left:none;
+ }
+#myTapmenu a {
+	color:#440099;
 	}
-	#qnaboard li, #qnaboardtitle li{
-		float : left;
-		width : 8%;
-		line-height : 43px;
-		border-bottom : 1px solid grey;
-		white-space : nowrap;
-		overflow : hidden;
-		text-overflow : ellipsis;
-		
-	}
-	#qnaboard li:nth-child(2){
-		width:40%
-	}
-	#qnaboardtitle li:nth-child(2){
-		width:40%
+#myTapmenu li:first-child {
+	border-left:3px solid #440099; 
+	margin-left:15px;
 	}
 
-	.writeqna {
-		
-		width:100px;
-		height:40x;
-		background-color:#440099;
-		color:white;
-		margin-top:10px;
-		margin-bottom:10px;
-		margin-left:52%;
-		font-size : 1.1em;
+#myTapmenu li:nth-child(1) {
+	background-color:#440099;
 	}
-	#chatboticon{
-		position: absolute; 
-		right: 0px; 
-		bottom: 0px;
+#myTapmenu li:nth-child(1)>a {
+	color:#fff;
 	}
+#container {
+	width:1200px; 
+	overflow:auto; 
+	margin:0 auto; 
+	text-align:center;
+}	
+
+
+#container>ul>li:first-child {
+	text-align: center;
+	font-size: 14pt;
+	height: 40px;
+	vertical-align: middle;
+	line-height: 30px;
+}
+
+#ulTable {
+	margin-top: 10px;
+}
+
+#ulTable>li:first-child>ul>li {
+	background-color: #c9c9c9;
+	font-weight: bold;
+	text-align: center;
+}
+
+#ulTable>li>ul {
+	clear: both;
+	padding: 0px auto;
+	position: relative;
+	min-width: 40px;
+}
+
+#ulTable>li>ul>li {
+	float: left;
+	font-size: 10pt;
+	border-bottom: 1px solid silver;
+	vertical-align: baseline;
+}
+
+#ulTable>li>ul>li:first-child {
+	width: 10%;
+} 
+#ulTable>li>ul>li:first-child+li {
+	width: 45%;
+} 
+#ulTable>li>ul>li:first-child+li+li {
+	width: 20%;
+} 
+#ulTable>li>ul>li:first-child+li+li+li {
+	width: 15%;
+}
+#ulTable>li>ul>li:first-child+li+li+li+li {
+	width: 10%;
+} 
+#paging {
+	clear: both;
+	margin: 0 auto;
+	width: 220px;
+	height: 50px;
+}
+
+#paging>div {
+	float: left;
+	width: 30px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+
+.left {
+	text-align: left;
+}
+
+#topul {
+	border-top: 3px solid grey;
+}
+#searchoption {
+	margin:1%;
+	margin-top:1%;
+	border:1px solid #ddd;
+	padding:7px 7px;
+	padding-left:1%;
+}
+.qnasearchbtn {
+		background:url("../img/icon/search.png");
+		border-style:none;
+		background-repeat: no-repeat;
+		margin:-0.5%;
+		width:25px;
+		height:25px;
+		cursor:pointer;
+}
+.keyword {
+	width:250px;
+	height:25px;
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	border-bottom:1px solid #ddd;
+	outline:none;
+}

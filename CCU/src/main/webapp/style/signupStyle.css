@@ -7,16 +7,25 @@
 		height:800px;
 		margin:0 auto 50px;
 	}
-	.signuplogo{
+	.cculogo{
 		text-align:center;
 		width:1200px;
+		margin : 0 auto;
 	}
 
-	#userid, #userpwd, #nickname, #username, #usertel, #useraddr {
+	#userid, #userpwd, #nickname, #username, #useraddr, 
+	#userbirth, #addr1, #addr2, #addr3 {
 		border : 2px solid grey;
 		width:300px;
 		height:45px;
 		margin-bottom:10px;
+	}
+	#usertel1, #usertel2, #usertel3 {
+		border : 2px solid grey;
+		width: 84px;
+		height:45px;
+		margin-bottom:10px;
+		margin-top:5px;
 	}
 
 	.signupbtn {
