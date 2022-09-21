@@ -4,5 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- dao뒤에 사용할DAO명을 입력해야함 ex)boardDAO -->
 <mapper namespace="com.team200.proj.dao.UserDAO">
-
+	<select id = "loginOk" resultType = "UserVO">
+		select id, username from user where id = #{id} and password = #{password}
+	</select>
 </mapper>
