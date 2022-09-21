@@ -1,6 +1,0 @@
-<div style="line-height:170%; font-size:12px; font-family:돋움;">
-   가나다라 abcd 1234<br>
-   가나다라 abcd 1234<br>
-   가나다라 abcd 1234<br>
-   가나다라 abcd 1234<br>
-</div>
