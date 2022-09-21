@@ -172,7 +172,7 @@
 	    width: 100%;
 	    zoom: 1;
 	}
-	ul{
+	.search-option-items{
 		
 		list-style: none;
 		padding: 0;
@@ -231,7 +231,7 @@
 	    width: 230px;
 	    height: 230px;
 	}
-	img {
+	.genreImage img {
 	    vertical-align: top;
 	    border: 0;
 	    margin-left:10%;

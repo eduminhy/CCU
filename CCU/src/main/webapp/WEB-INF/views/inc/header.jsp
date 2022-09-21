@@ -97,37 +97,38 @@
 		</div>
 	</div>
 
-	<div class="topDown">
-		<!-- 탭메뉴 -->
-		<div id="tapmenu">
-			<ul>
-				<li><a href="#">전체</a></li>
-			</ul>
-			<ul>
-				<li><a href="/show/showList">연극</a></li>
-			</ul>
-			<ul>
-				<li><a href="#">뮤지컬</a></li>
-			</ul>
-			<ul>
-				<li><a href="#">클래식/오페라</a></li>
-			</ul>
-			<ul>
-				<li><a href="#">무용</a></li>
-			</ul>
-			<ul>
-				<li><a href="#">국악</a></li>
-			</ul>
-			<ul>
-				<li><a href="#">아동</a></li>
-			</ul>
-			<ul>
-				<li><a href="/preferGenre">선호장르선택</a></li>
-			</ul>
-			<ul>
-				<li><a href="#">같이갈래요?</a></li>
-			</ul>
-		</div>
+
+<div class="topDown">
+	<!-- 탭메뉴 -->
+	<div id="tapmenu">
+		<ul>
+			<li><a href="#">전체</a></li>
+		</ul>
+		<ul>
+			<li><a href="/show/showList">연극</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">뮤지컬</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">클래식/오페라</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">무용</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">국악</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">아동</a></li>
+		</ul>
+		<ul>
+			<li><a href="/preferGenrePage/preferGenre">선호장르선택</a></li>
+		</ul>
+		<ul>
+			<li><a href="/meeting/mainMeeting">같이갈래요?</a></li>
+		</ul>
+
 	</div>
 
 	<!-- <h1>CCU 홈</h1>

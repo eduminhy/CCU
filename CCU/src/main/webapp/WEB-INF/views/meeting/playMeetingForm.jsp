@@ -28,7 +28,7 @@
 </head>
 <body>
 	<div class="playMeetingTopContainer">
-		<h1 class="playMeetingTopText">연극게시판</h1>
+		<h1 class="playMeetingTopText">같이 갈래요?</h1>
 	</div>
 	
 	
