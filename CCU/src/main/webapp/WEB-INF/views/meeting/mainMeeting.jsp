@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/style/mainMeetingStyle.css">
 
 	<div class="meetingMainTopContainer">
-		<h1 class="meetingMainTopText">미팅게시판</h1>
+		<h1 class="meetingMainTopText">같이 갈래요?</h1>
 	</div>
 	
 	<div class="searchTopContainer">
@@ -15,7 +15,7 @@
 
 	<div class="quick_wrap">
 		<div id="quick_menu" class="quick_menu" style="top: 245px;">
-			<a href="#">▶ 연극 게시판</a>
+			<a href="/meeting/playMeetingList">▶ 연극 게시판</a>
 			<a href="#">▶ 뮤지컬 게시판</a>
 			<a href="#">▶ 클래식/오페라 게시판</a>
 			<a href="#">▶ 아동 게시판</a>
@@ -52,7 +52,7 @@
 					<div class="colPhoto">
 						<a href="#" title="상세페이지로 이동" target="_blank" gtm-label="공연이미지">
 							<span class="itemImage">
-								<img src="../img/연극포스터3.jpg" alt="러브레터" style="visibility: visible; width:150px; height:200px;">
+								<img src="../img/연극포스터3.jpg" alt="러브레터" class="poster">
 							</span>
 						</a>
 					</div>
@@ -103,7 +103,7 @@
 					<div class="colPhoto">
 						<a href="#" title="상세페이지로 이동" target="_blank" gtm-label="공연이미지">
 							<span class="itemImage">
-								<img src="../img/미팅포스터1.jpg" alt="마틸다" style="visibility: visible; width:150px; height:200px;">
+								<img src="../img/미팅포스터1.jpg" alt="마틸다" class="poster">
 							</span>
 						</a>
 					</div>
@@ -156,7 +156,7 @@
 					<div class="colPhoto">
 						<a href="#" title="상세페이지로 이동" target="_blank" gtm-label="공연이미지">
 							<span class="itemImage">
-								<img src="../img/미팅포스터2.jpg" alt="로미오와 줄리엣" style="visibility: visible; width:150px; height:200px;">
+								<img src="../img/미팅포스터2.jpg" alt="로미오와 줄리엣" class="poster">
 							</span>
 						</a>
 					</div>
@@ -209,7 +209,7 @@
 					<div class="colPhoto">
 						<a href="#" title="상세페이지로 이동" target="_blank" gtm-label="공연이미지">
 							<span class="itemImage">
-								<img src="../img/미팅포스터3.jpg" alt="알사탕" style="visibility: visible; width:150px; height:200px;">
+								<img src="../img/미팅포스터3.jpg" alt="알사탕" class="poster">
 							</span>
 						</a>
 					</div>
@@ -262,7 +262,7 @@
 					<div class="colPhoto">
 						<a href="#" title="상세페이지로 이동" target="_blank" gtm-label="공연이미지">
 							<span class="itemImage">
-								<img src="../img/미팅포스터4.jpg" alt="드래곤 하이" style="visibility: visible; width:150px; height:200px;">
+								<img src="../img/미팅포스터4.jpg" alt="드래곤 하이" class="poster">
 							</span>
 						</a>
 					</div>
