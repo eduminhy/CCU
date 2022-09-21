@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/style/mainMeetingStyle.css">
+<script>
+$(document).ready(function(){
+	  var currentPosition = parseInt($(".quick_wrap").css("top"));
+	  $(window).scroll(function() {
+	    var position = $(window).scrollTop(); 
+	    $(".quick_wrap").stop().animate({"top":position+currentPosition+"px"},1000);
+	  });
+	});
+</script>
+
+
 
 	<div class="meetingMainTopContainer">
 		<h1 class="meetingMainTopText">같이 갈래요?</h1>
@@ -15,6 +26,7 @@
 
 	<div class="quick_wrap">
 		<div id="quick_menu" class="quick_menu" style="top: 245px;">
+			<p class="goBoard">게시판 바로가기</p>
 			<a href="/meeting/playMeetingList">▶ 연극 게시판</a>
 			<a href="#">▶ 뮤지컬 게시판</a>
 			<a href="#">▶ 클래식/오페라 게시판</a>
@@ -23,7 +35,7 @@
 	</div>
 
 
-
+<div class="listBody">
     <ul class="accList">
         <li >장르</li>
         <li >글번호</li>
@@ -294,6 +306,16 @@
 		</div>
 	</div>
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</div>	
 	
 	
 	
