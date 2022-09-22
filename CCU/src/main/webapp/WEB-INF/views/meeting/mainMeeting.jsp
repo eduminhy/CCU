@@ -18,7 +18,7 @@ $(document).ready(function(){
 	</div>
 	
 	<div class="searchTopContainer">
-		<input type="text" name="searchTopWriteTxt" class="searchTopWriteTxt" placeholder=""/>
+		<input type="text" name="searchTopWriteTxt" class="searchTopWriteTxt" placeholder="검색어를 입력하세요."/>
 		<input type="submit" value="" class="searchTopBtn"/>	
 	</div>
 	
