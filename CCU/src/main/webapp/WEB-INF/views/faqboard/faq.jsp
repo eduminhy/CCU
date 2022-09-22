@@ -1,7 +1,7 @@
 qna<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="/style/loginStyle.css">
+<link rel="stylesheet" href="/style/faqStyle.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
@@ -11,91 +11,21 @@ qna<%@ page language="java" contentType="text/html; charset=UTF-8"
 <meta charset="UTF-8">
 <title>고객센터</title>
 </head>
-<style>
-#chatboticon {
-	position: absolute;
 
-	right: 10px;
-
-	bottom: 0px;
-}
-.qnamenu {
-	width: 1200px;
-	margin : 0 auto;
-	text-align:center;
-}
-.qnamenuul{
-	float:left; 
-	text-align:center;
-	display: inline-block;
-}
-.qnamenu li {
-	list-style: none;
-	outline: 2px solid #440099;
-	margin-left: 6px;
-}
-#cstext {
-	text-align: center;
-	font-size: 3em;
-	color: #440099;
-	margin-bottom: 100px;
-}
-
-#faqbox {
-	border: 2px solid;
-	color: #440099;
-	height: 50px;
-	width: 230px;
-	text-align: center;
-	font-weight: bold;
-	font-size: 30px;
-	margin-left: 34%;
-	margin-bottom: 51px;
-}
-
-.answer {
-	display: none;
-	padding-bottom: 30px;
-}
-
-.faq-content {
-	border-bottom: 1px solid #e0e0e0;
-	margin-bottom: 0%;
-	margin-left: 30%;
-}
-
-.question {
-	font-size: 19px;
-	padding: 30px 0;
-	cursor: pointer;
-	border: none;
-	outline: none;
-	background: none;
-	width: 100%;
-	text-align: left;
-}
-
-.question:hover {
-	color: #2962ff;
-}
-
-[id$="-toggle"] {
-	margin-right: 15px;
-}
-</style>
 <body>
-	
-	<h1 id="cstext">- 고객센터 -</h1>
-
-	<div class="qnamenu">
-		<ul class="qnamenuul">
+<div class="qnamenu">
+	<h1><img src="../img/logo01.PNG" width=100px; height=100px;></h1>
+	<div id="myTapmenu">
+		<ul>
 			<li><a href="/faq">FAQ</a></li>
 			<li><a href="/qna">Q&A</a></li>
+			<li><a href="">챗봇이용하기</a>
+			<li><a href="">내질문글</a>
 			<li><a href="/terms">이용약관</a></li>
 		</ul>
 	</div>
+</div>
 
-	<h1 id="faqbox" text-align=center;>Q&A</h1>
 
 	<div class="faq-content">
 		<button class="question" id="que-1">

@@ -3,124 +3,171 @@ package com.team200.proj.vo;
 import java.util.Date;
 //15개
 public class UserVO {
-	private String user_id;
-	private String user_username;
-	private int user_role;
-	private String user_nickname;
-	private String user_phonenum;
-	private Date user_register_date;
-	private String user_gender;
-	private Date user_birth;
-	private String user_addr;
-	private int user_agree_to_receive_email;
-	private int user_agree_to_receive_msg;
-	private String user_ip;
-	private String user_route;
-	private int user_self_certification;
-	private String user_self_certification_num;
+	private String id;
+	private String password;
+	private String username;
+	private int role;
+	private String nickname;
+	private String img;
 	
+	private String tel;
+	private String tel1;
+	private String tel2;
+	private String tel3;
+	
+	private Date register_date;
+	private String gender;
+	private Date birth;
+	private String addr;
+	private String zipcode;
+	private int agree_to_receive_email;
+	private int agree_to_receive_msg;
+	private String ip;
+	private String route;
+	private int self_certification;
+	private String self_certification_num;
 	
 	
 	@Override
 	public String toString() {
-		return "UserVO [user_id=" + user_id + ", user_username=" + user_username + ", user_role=" + user_role
-				+ ", user_nickname=" + user_nickname + ", user_phonenum=" + user_phonenum + ", user_register_date="
-				+ user_register_date + ", user_gender=" + user_gender + ", user_birth=" + user_birth + ", user_addr="
-				+ user_addr + ", user_agree_to_receive_email=" + user_agree_to_receive_email
-				+ ", user_agree_to_receive_msg=" + user_agree_to_receive_msg + ", user_ip=" + user_ip + ", user_route="
-				+ user_route + ", user_self_certification=" + user_self_certification + ", user_self_certification_num="
-				+ user_self_certification_num + "]";
+		return "UserVO [id=" + id + ", password=" + password + ", username=" + username + ", role=" + role
+				+ ", nickname=" + nickname + ", img=" + img + ", tel=" + tel + ", tel1=" + tel1 + ", tel2=" + tel2
+				+ ", tel3=" + tel3 + ", register_date=" + register_date + ", gender=" + gender + ", birth=" + birth
+				+ ", addr=" + addr + ", zipcode=" + zipcode + ", agree_to_receive_email=" + agree_to_receive_email
+				+ ", agree_to_receive_msg=" + agree_to_receive_msg + ", ip=" + ip + ", route=" + route
+				+ ", self_certification=" + self_certification + ", self_certification_num=" + self_certification_num
+				+ "]";
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getId() {
+		return id;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getUser_username() {
-		return user_username;
+	public String getPassword() {
+		return password;
 	}
-	public void setUser_username(String user_username) {
-		this.user_username = user_username;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public int getUser_role() {
-		return user_role;
+	public String getUsername() {
+		return username;
 	}
-	public void setUser_role(int user_role) {
-		this.user_role = user_role;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public String getUser_nickname() {
-		return user_nickname;
+	public int getRole() {
+		return role;
 	}
-	public void setUser_nickname(String user_nickname) {
-		this.user_nickname = user_nickname;
+	public void setRole(int role) {
+		this.role = role;
 	}
-	public String getUser_phonenum() {
-		return user_phonenum;
+	public String getNickname() {
+		return nickname;
 	}
-	public void setUser_phonenum(String user_phonenum) {
-		this.user_phonenum = user_phonenum;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
-	public Date getUser_register_date() {
-		return user_register_date;
+	public String getImg() {
+		return img;
 	}
-	public void setUser_register_date(Date user_register_date) {
-		this.user_register_date = user_register_date;
+	public void setImg(String img) {
+		this.img = img;
 	}
-	public String getUser_gender() {
-		return user_gender;
+	public String getTel() {
+		return tel1+"-"+tel2+"-"+tel3;
 	}
-	public void setUser_gender(String user_gender) {
-		this.user_gender = user_gender;
+	public void setTel(String tel) {
+		this.tel = tel;
+		String telSplit[] = tel.split("-");
+		tel1 = telSplit[0];
+		tel2 = telSplit[1];
+		tel3 = telSplit[2];
 	}
-	public Date getUser_birth() {
-		return user_birth;
+	public String getTel1() {
+		return tel1;
 	}
-	public void setUser_birth(Date user_birth) {
-		this.user_birth = user_birth;
+	public void setTel1(String tel1) {
+		this.tel1 = tel1;
 	}
-	public String getUser_addr() {
-		return user_addr;
+	public String getTel2() {
+		return tel2;
 	}
-	public void setUser_addr(String user_addr) {
-		this.user_addr = user_addr;
+	public void setTel2(String tel2) {
+		this.tel2 = tel2;
 	}
-	public int getUser_agree_to_receive_email() {
-		return user_agree_to_receive_email;
+	public String getTel3() {
+		return tel3;
 	}
-	public void setUser_agree_to_receive_email(int user_agree_to_receive_email) {
-		this.user_agree_to_receive_email = user_agree_to_receive_email;
+	public void setTel3(String tel3) {
+		this.tel3 = tel3;
 	}
-	public int getUser_agree_to_receive_msg() {
-		return user_agree_to_receive_msg;
+	public Date getRegister_date() {
+		return register_date;
 	}
-	public void setUser_agree_to_receive_msg(int user_agree_to_receive_msg) {
-		this.user_agree_to_receive_msg = user_agree_to_receive_msg;
+	public void setRegister_date(Date register_date) {
+		this.register_date = register_date;
 	}
-	public String getUser_ip() {
-		return user_ip;
+	public String getGender() {
+		return gender;
 	}
-	public void setUser_ip(String user_ip) {
-		this.user_ip = user_ip;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
-	public String getUser_route() {
-		return user_route;
+	public Date getBirth() {
+		return birth;
 	}
-	public void setUser_route(String user_route) {
-		this.user_route = user_route;
+	public void setBirth(Date birth) {
+		this.birth = birth;
 	}
-	public int getUser_self_certification() {
-		return user_self_certification;
+	public String getAddr() {
+		return addr;
 	}
-	public void setUser_self_certification(int user_self_certification) {
-		this.user_self_certification = user_self_certification;
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
-	public String getUser_self_certification_num() {
-		return user_self_certification_num;
+	public String getZipcode() {
+		return zipcode;
 	}
-	public void setUser_self_certification_num(String user_self_certification_num) {
-		this.user_self_certification_num = user_self_certification_num;
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
 	}
-		
+	public int getAgree_to_receive_email() {
+		return agree_to_receive_email;
+	}
+	public void setAgree_to_receive_email(int agree_to_receive_email) {
+		this.agree_to_receive_email = agree_to_receive_email;
+	}
+	public int getAgree_to_receive_msg() {
+		return agree_to_receive_msg;
+	}
+	public void setAgree_to_receive_msg(int agree_to_receive_msg) {
+		this.agree_to_receive_msg = agree_to_receive_msg;
+	}
+	public String getIp() {
+		return ip;
+	}
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+	public String getRoute() {
+		return route;
+	}
+	public void setRoute(String route) {
+		this.route = route;
+	}
+	public int getSelf_certification() {
+		return self_certification;
+	}
+	public void setSelf_certification(int self_certification) {
+		this.self_certification = self_certification;
+	}
+	public String getSelf_certification_num() {
+		return self_certification_num;
+	}
+	public void setSelf_certification_num(String self_certification_num) {
+		this.self_certification_num = self_certification_num;
+	}
+	
 	
 }

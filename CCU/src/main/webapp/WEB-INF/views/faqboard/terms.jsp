@@ -12,46 +12,51 @@
 	right: 0px;
 	bottom: 0px;
 }
-#qnamenu {
-	width: 1200px;
-	margin : 0 auto;
-}
+.qnamenu {
+	width:1200px; 
+	overflow:auto; 
+	margin:0 auto; 
+	text-align:center;
+	}
+a:link, a:visited {
+	text-decoration:none;
+	}
+#myTapmenu li {
+	float:left; 
+	text-align:center;
+	width:16%; 
+	height:50px; 
+	line-height:50px; 
+	margin:40px 0 20px 0;
+	font-weight:bold; 
+	font-size:18px; 
+	border:3px solid #440099; 
+	border-left:none;
+ }
+#myTapmenu a {
+	color:#440099;
+	}
+#myTapmenu li:first-child {
+	border-left:3px solid #440099; 
+	margin-left:15px;
+	}
 
-#qnamenu li {
-	list-style: none;
-	float: left;
-	outline: 2px solid #440099;
-	margin-left: 6px;
-	position: relative;
-}
+#myTapmenu li:nth-child(1) {
+	background-color:#440099;
+	}
+#myTapmenu li:nth-child(1)>a {
+	color:#fff;
+	}
 
-#cstext {
-	text-align: center;
-	font-size: 3em;
-	color: #440099;
-	margin-bottom: 100px;
-}
+
 
 .termsbox {
-	border: 2px solid;
-	color: #440099;
-	height: 50px;
-	width: 200px;
-	text-align: center;
-	font-weight: bold;
-	font-size: 30px;
-	margin-top: 200px;
-	margin-left: 20%;
-}
-
-.terms01 {
 	width: 1200px;
-	border: 2px solid;
-	color: #440099;
+	border: 2px solid #440099;
 	text-align: left;
 	font-weight: bold;
 	font-size: 0.7em;
-	color: black;
+	padding : 10px;
 	margin-top: 100px;
 	margin-left: 20%;
 	margin-bottom: 51px;
@@ -61,20 +66,20 @@
 	<img src="../img/chatbot_icon.png" id="chatboticon">
 
 
-
-	<h1 id="cstext">- 고객센터 -</h1>
-
-	<div id="qnamenu">
+<div class="qnamenu">
+	<h1><img src="../img/logo01.PNG" width=100px; height=100px;></h1>
+	<div id="myTapmenu">
 		<ul>
 			<li><a href="/faq">FAQ</a></li>
 			<li><a href="/qna">Q&A</a></li>
+			<li><a href="">챗봇이용하기</a>
+			<li><a href="">내질문글</a>
 			<li><a href="/terms">이용약관</a></li>
 		</ul>
 	</div>
+</div>
 
-	<div class="termsbox">이용약관</div>
-
-	<div class="terms01">
+	<div class="termsbox">
 		제 1장 총칙 제 1조 목적<br /> 이 약관은 ㈜연극열전(이하 "회사")이 운영하는 회사 홈페이지
 		www.thebestplay.co.kr 의 모든 서비스(이하 "서비스")를 제공함에 있어서 그 이용조건과 이용절차 및 제반
 		필요사항을 규정함을 목적으로 합니다. <br /> 제 2조 약관의 공지 및 효력, 약관의 변경<br /> 1. 이 약관은

@@ -1,1 +1,86 @@
 @charset "UTF-8";
+
+
+#chatboticon {
+	position: absolute;
+
+	right: 10px;
+
+	bottom: 0px;
+}
+.qnamenu {
+	width:1200px; 
+	overflow:auto; 
+	margin:0 auto; 
+	text-align:center;
+	}
+a:link, a:visited {
+	text-decoration:none;
+	}
+#myTapmenu li {
+	float:left; 
+	text-align:center;
+	width:16%; 
+	height:50px; 
+	line-height:50px; 
+	margin:40px 0 20px 0;
+	font-weight:bold; 
+	font-size:18px; 
+	border:3px solid #440099; 
+	border-left:none;
+ }
+#myTapmenu a {
+	color:#440099;
+	}
+#myTapmenu li:first-child {
+	border-left:3px solid #440099; 
+	margin-left:15px;
+	}
+
+#myTapmenu li:nth-child(1) {
+	background-color:#440099;
+	}
+#myTapmenu li:nth-child(1)>a {
+	color:#fff;
+	}
+#faqbox {
+	border: 2px solid;
+	color: #440099;
+	height: 50px;
+	width: 230px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 30px;
+	margin-left: 34%;
+	margin-bottom: 51px;
+}
+
+.answer {
+	display: none;
+	padding-bottom: 30px;
+}
+
+.faq-content {
+	border-bottom: 1px solid #e0e0e0;
+	margin-bottom: 0%;
+	margin-left: 30%;
+}
+
+.question {
+	font-size: 19px;
+	padding: 30px 0;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background: none;
+	width: 100%;
+	text-align: left;
+}
+
+.question:hover {
+	color: #2962ff;
+}
+
+[id$="-toggle"] {
+	margin-right: 15px;
+}
