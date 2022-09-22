@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="/style/myInfoModifyStyle.css">
+<link rel="stylesheet" href="/style/mypage/myInfoModifyStyle.css">
 <script>
 	function readURL(input) {
 	  if (input.files && input.files[0]) {
