@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="/style/myQnaStyle.css">
+<link rel="stylesheet" href="/style/mypage/myQnaStyle.css">
 <script>
 	$(function(){
 		//리스트 전체선택

@@ -46,6 +46,7 @@
 		$(".user-btn").click(function() {
 			$("#toggleDiv").toggle();
 		});
+		
 	});
 </script>
 </head>
@@ -84,7 +85,7 @@
 		<div id="toggleDiv">
 			<input type="text" id="userid" placeholder="ID"/><br/>
 			<input type="password" id="userpwd" placeholder="PW"/><br/>
-			<input type="submit" value="Login"/>
+			<input type="submit" value="Login" id="logBtn"/>
 			<img src="../img/navericon.png" width=40px; height=40px; id="navericon">
 			<img src="../img/kakaoicon.png" width=40px; height=40px; id="kakaoicon">
 			<img src="../img/googleicon.png" width=40px; height=40px; id="googleicon">
