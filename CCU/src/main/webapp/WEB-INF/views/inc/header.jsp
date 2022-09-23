@@ -69,7 +69,8 @@
 
 		<li><a href="/playMeetingList">연극게시판목록페이지(임시)</a></li>
 		<li><a href="/admin">admin</a></li>
-		<li><a href="/dBData/showInputMain">DB에 데이터 넣기.!!</a></li>
+		<li><a href="/dBData/showInputMain">DB에 show데이터</a></li>
+		<li><a href="/dBData/palceInputMain">DB에 place데이터</a></li>
 	</ul>
 </div>
 <body>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- dao뒤에 사용할DAO명을 입력해야함 ex)boardDAO -->
+<mapper namespace="com.team200.proj.dao.DBdataDAO">
+	<insert id="inputPlaceData">
+		insert into place(
+id,
+name,
+seat_count,
+concert_hall_count,
+tel,
+url,
+addr,
+lat,
+lng
+		)
+		values (
+		#{id},
+		#{name},
+#{seats_count},
+#{concert_hall_count},
+#{tel},
+#{url},
+#{addr},
+
+#{lat},
+#{lng})
+	</insert>
+</mapper>
