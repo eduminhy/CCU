@@ -60,9 +60,7 @@
 	    width: 82px;
 	    text-align: center;
 	}
-	/*.quick_wrap{ /* 좌측 탭메뉴 고정 
-	    
-	}*/
+
 	.quick_wrap .quick_menu {
 		/*top: 245px;*/
 	    overflow: hidden;
