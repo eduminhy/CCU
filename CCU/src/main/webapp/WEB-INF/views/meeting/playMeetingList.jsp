@@ -84,7 +84,8 @@
         </ul>
         
 		<div>
-			<button class="playMeetingListBtn">글쓰기</button>
+			<!--  <button class="playMeetingListBtn">글쓰기</button>-->
+			<input type="button" value="글쓰기" class="playMeetingListBtn" id="modify" onclick="location.href='playMeetingForm'"/>
 		</div>
 		
 		<div class="playMeetingListSearch">
@@ -95,8 +96,13 @@
 					<option value="content">작성자</option>
 				</select>
 				<input type="text" name="searchWord" class="playMeetingListSearchTxt" placeholder=""/>
+				
 				<input type="submit" value="" class="playMeetingListSearchBtn"/>
 			</form>	
 		</div>		
 		
     </form>
+    
+    
+    
+    
