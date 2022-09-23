@@ -17,6 +17,7 @@ h1{color:rgb(68,0,153); margin:50px;}
 #profile{height:200px; width:200px; margin-right:10px;}
 #pre{height:200px; width:200px;}
 #filename{margin-top:140px; display: block;}
+#content #certification{width:100px; height:40px; line-height:40px; margin-top:10px; margin-left:10px; cursor:pointer; font-size:14px; background-color:lavender; color:#440099; font-weight:bold;}
 #content #addBtn{width:150px; height:40px; line-height:40px; margin-top:10px; cursor:pointer; font-size:14px; background-color:lavender; color:#440099; font-weight:bold;}
 #save{
 	height:40px; width:90px; float:right; margin:10px 5px 80px 5px;

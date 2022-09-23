@@ -11,4 +11,9 @@ public interface UserDAO {
 
 	//로그인
 	public UserVO loginOk(UserVO vo);
+	//회원가입 signup
+	public int signupWrite(UserVO vo);
+	//아이디 중복검사
+	public int idCheck(String id);
+	
 }

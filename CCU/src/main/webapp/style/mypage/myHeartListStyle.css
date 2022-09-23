@@ -1,0 +1,23 @@
+@charset "UTF-8";
+body{margin:0; padding:0;}
+.container{width:1200px; overflow:auto; margin:0 auto; text-align:center;}
+a:link, a:visited{text-decoration:none;}
+h1{color:rgb(68,0,153); margin:50px;}
+#myTapmenu li{
+	float:left; text-align:center;
+	width:16%; height:50px; line-height:50px; 
+	margin:40px 0 20px 0;
+	font-weight:bold; font-size:18px; 
+	border:3px solid #440099; border-left:none;
+}
+#myTapmenu a{color:#440099;}
+#myTapmenu li:first-child{border-left:3px solid #440099; margin-left:15px;}
+
+#myTapmenu li:nth-child(3){background-color:#440099;}
+#myTapmenu li:nth-child(3)>a{color:#fff;}
+
+#heartList>ul{float:left; text-align:center;}
+#heartList li:nth-child(2){font-weight:bold; margin-top:15px;}
+#heartList li:last-child{text-align:right; margin-bottom:80px;}
+#heartList img{width:200px; margin:50px 20px 0 20px;}
+.delBtn{margin:5px 15px 0 0; border:none; background-color:#fff; color:gray; cursor:pointer;}

@@ -1,7 +1,7 @@
 package com.team200.proj.vo;
 
 import java.util.Date;
-//15개
+//18개
 public class UserVO {
 	private String id;
 	private String password;
@@ -15,29 +15,17 @@ public class UserVO {
 	private String tel2;
 	private String tel3;
 	
-	private Date register_date;
+	private String register_date;
 	private String gender;
-	private Date birth;
+	private String birth;
 	private String addr;
 	private String zipcode;
+	private String road_name;
 	private int agree_to_receive_email;
 	private int agree_to_receive_msg;
-	private String ip;
 	private String route;
 	private int self_certification;
 	private String self_certification_num;
-	
-	
-	@Override
-	public String toString() {
-		return "UserVO [id=" + id + ", password=" + password + ", username=" + username + ", role=" + role
-				+ ", nickname=" + nickname + ", img=" + img + ", tel=" + tel + ", tel1=" + tel1 + ", tel2=" + tel2
-				+ ", tel3=" + tel3 + ", register_date=" + register_date + ", gender=" + gender + ", birth=" + birth
-				+ ", addr=" + addr + ", zipcode=" + zipcode + ", agree_to_receive_email=" + agree_to_receive_email
-				+ ", agree_to_receive_msg=" + agree_to_receive_msg + ", ip=" + ip + ", route=" + route
-				+ ", self_certification=" + self_certification + ", self_certification_num=" + self_certification_num
-				+ "]";
-	}
 	public String getId() {
 		return id;
 	}
@@ -102,10 +90,10 @@ public class UserVO {
 	public void setTel3(String tel3) {
 		this.tel3 = tel3;
 	}
-	public Date getRegister_date() {
+	public String getRegister_date() {
 		return register_date;
 	}
-	public void setRegister_date(Date register_date) {
+	public void setRegister_date(String register_date) {
 		this.register_date = register_date;
 	}
 	public String getGender() {
@@ -114,10 +102,10 @@ public class UserVO {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public Date getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public String getAddr() {
@@ -132,6 +120,12 @@ public class UserVO {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
+	public String getRoad_name() {
+		return road_name;
+	}
+	public void setRoad_name(String road_name) {
+		this.road_name = road_name;
+	}
 	public int getAgree_to_receive_email() {
 		return agree_to_receive_email;
 	}
@@ -143,12 +137,6 @@ public class UserVO {
 	}
 	public void setAgree_to_receive_msg(int agree_to_receive_msg) {
 		this.agree_to_receive_msg = agree_to_receive_msg;
-	}
-	public String getIp() {
-		return ip;
-	}
-	public void setIp(String ip) {
-		this.ip = ip;
 	}
 	public String getRoute() {
 		return route;
@@ -170,4 +158,7 @@ public class UserVO {
 	}
 	
 	
+	
 }
+	
+
