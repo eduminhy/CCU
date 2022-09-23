@@ -108,15 +108,7 @@
 			</ul>
 		</div>
 	</div>
-		<div id = "topMenu">
-					<c:if test = "${logStatus!='Y' }">
-						<a href = "/user/login">로그인123</a>
-						<a href = "/user/signup">회원가입</a>
-					</c:if>
-					<c:if test = "${logStatus=='Y' }">
-						<a href = "/user/logout">로그아웃</a>
-						<a href = "">mypage</a>
-					</c:if>
+	
 	<div class="asdfqwer">
 		<ul>
 			
