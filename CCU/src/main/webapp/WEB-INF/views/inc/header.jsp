@@ -127,7 +127,7 @@
 					<li><a href="#">아동</a></li>
 				</ul>
 				<ul>
-					<li><a href="/preferGenre">선호장르선택</a></li>
+					<li><a href="/preferGenrePage/preferGenre">선호장르선택</a></li>
 				</ul>
 				<ul>
 					<li><a href="/meeting/mainMeeting">같이갈래요?</a></li>

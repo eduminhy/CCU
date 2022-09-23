@@ -142,7 +142,7 @@
 	}
 	.item {
 		font-size: 19px;
-		padding: 10px 0;
+		/*padding: 10px 0;*/
 		cursor: pointer;
 		border: none;
 		outline: none;
@@ -155,7 +155,9 @@
 		font-weight:bold;
 		color:#440099;
 	}
-
+    .accList>li{
+    	background-color:#ddd;
+    }
 
 
 	.accList{
@@ -194,7 +196,7 @@
         line-height:50px;
         border-top:2px solid #7F7F7F;
         border-bottom:2px solid #7F7F7F;
-        width:12.5%;
+        width:12.9%;
         font-weight:bold;
     }
     .accList>li:nth-child(5n+3){
@@ -362,3 +364,12 @@
 		font-size: 14px;
     
 	}
+	
+	
+	
+	
+
+	
+	
+	
+	
