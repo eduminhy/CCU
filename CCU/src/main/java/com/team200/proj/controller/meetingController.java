@@ -1,30 +1,47 @@
 package com.team200.proj.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
+@RequestMapping("/meeting/*")
 public class meetingController {
-	@RequestMapping("mainMeetingNotice")
-	public String meetingNotice() { // 메인미팅공지
-		return "meeting/mainMeetingNotice";
+	@GetMapping("mainMeeting")
+	public ModelAndView mainMeeting() { // 미팅메인게시판
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("meeting/mainMeeting");
+		return mav;
+	}	
+	
+	@GetMapping("mainMeetingNotice")
+	public ModelAndView mainMeetingNotice() { // 메인미팅공지
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("meeting/mainMeetingNotice");
+		return mav;
 	}
 	
-	@RequestMapping("/playMeetingList")
-	public String playMeetingListMain() { // 연극게시판목록
-		return "meeting/playMeetingList";
+	@GetMapping("playMeetingList")
+	public ModelAndView playMeetingList() { // 연극게시판목록
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("meeting/playMeetingList");
+		return mav;
+	}	
+	
+	@GetMapping("playMeetingForm")
+	public ModelAndView playMeetingForm() { // 연극게시판글쓰기폼
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("meeting/playMeetingForm");
+		return mav;
 	}
 	
-	@RequestMapping("/playMeetingForm")
-	public String playMeetingForm() {// 연극게시판글쓰기폼
-		return "meeting/playMeetingForm";
-	}
-	
-	@RequestMapping("/playMeetingComment")
-	public String playMeetingComment() {// 연극게시판댓글폼
-		return "meeting/playMeetingComment";
-	}
-	
+	@GetMapping("playMeetingComment")
+	public ModelAndView playMeetingComment() { // 연극게시판댓글폼
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("meeting/playMeetingComment");
+		return mav;
+	}	
 
 
 }

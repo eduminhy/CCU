@@ -1,68 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<style>
-#chatboticon {
-	position: absolute;
-	right: 0px;
-	bottom: 0px;
-}
-.qnamenu {
-	width:1200px; 
-	overflow:auto; 
-	margin:0 auto; 
-	text-align:center;
-	}
-a:link, a:visited {
-	text-decoration:none;
-	}
-#myTapmenu li {
-	float:left; 
-	text-align:center;
-	width:16%; 
-	height:50px; 
-	line-height:50px; 
-	margin:40px 0 20px 0;
-	font-weight:bold; 
-	font-size:18px; 
-	border:3px solid #440099; 
-	border-left:none;
- }
-#myTapmenu a {
-	color:#440099;
-	}
-#myTapmenu li:first-child {
-	border-left:3px solid #440099; 
-	margin-left:15px;
-	}
+<link rel="stylesheet" href="/style/termsStyle.css">
 
-#myTapmenu li:nth-child(1) {
-	background-color:#440099;
-	}
-#myTapmenu li:nth-child(1)>a {
-	color:#fff;
-	}
-
-
-
-.termsbox {
-	width: 1200px;
-	border: 2px solid #440099;
-	text-align: left;
-	font-weight: bold;
-	font-size: 0.7em;
-	padding : 10px;
-	margin-top: 100px;
-	margin-left: 20%;
-	margin-bottom: 51px;
-}
-</style>
-<body>
 	<img src="../img/chatbot_icon.png" id="chatboticon">
 
 

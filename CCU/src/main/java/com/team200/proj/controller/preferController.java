@@ -1,13 +1,18 @@
 package com.team200.proj.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
+@RequestMapping("/preferGenrePage/*")
 public class preferController {
-	@RequestMapping("/preferGenre")
-	public String prefer() {
-		return "preferGenrePage/preferGenre";
+	@GetMapping("preferGenre")
+	public ModelAndView preferGenre() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("preferGenrePage/preferGenre");
+		return mav;
 	}
 
 }

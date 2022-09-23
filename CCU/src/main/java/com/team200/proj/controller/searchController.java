@@ -1,13 +1,18 @@
 package com.team200.proj.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
+@RequestMapping("/searchPage/*")
 public class searchController {
-	@RequestMapping("/searchResult")
-	public String search() {
-		return "searchPage/searchResult";
+	@GetMapping("/searchResult")
+	public ModelAndView searchResult() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("searchPage/searchResult");
+		return mav;
 	}
 	
 
