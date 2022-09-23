@@ -172,7 +172,8 @@
 				
 				
 				<p class="inputBtn">
-					<button class="playMeetingBackBtn">뒤로가기</button>
+					<!--  <button class="playMeetingBackBtn">뒤로가기</button>-->
+					<input type="button" value="뒤로가기" class="playMeetingBackBtn" id="back" onclick="location.href='playMeetingList'"/>
 				</p>
 			</fieldset>
 		</form>

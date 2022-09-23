@@ -21,7 +21,7 @@
 						<tr>
 							<th scope="row">
 							<label for="writeSubject">제목</label></th>
-							<td>*** 범죄 및 사기 주의 ***</td>
+							<td><span style="color:red;"><b>*** 범죄 및 사기 주의 ***</b></span></td>
 						</tr>
 						<tr>
 							<th scope="row">
@@ -59,7 +59,8 @@
 					</tbody>
 				</table>
 				<p class="inputBtn">
-					<button class="meetingBackBtn">뒤로가기</button>
+					<!--  <button class="meetingBackBtn">뒤로가기</button>-->
+					<input type="button" value="뒤로가기" class="meetingBackBtn" id="back" onclick="location.href='playMeetingList'"/>
 				</p>
 			</fieldset>
 		</form>
