@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="/style/myCommentStyle.css">
+<link rel="stylesheet" href="/style/mypage/myCommentStyle.css">
 <script>
 	$(function(){
 		//리스트 전체선택

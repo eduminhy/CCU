@@ -162,7 +162,7 @@
 				name="password" id="password"> <br /> <br /> <input
 				type="submit" value="로그인" class="loginBtn"> <br />
 			<!-- <input type="button" value="회원가입"  class="signupBtn">  -->
-			<li><a href="/user/signup">회원가입하기</a></li> <br /> <br /> <br /> <br />
+			<li><a href="/user/signup">회원가입</a></li> <br /> <br /> <br /> <br />
 		</form>
 		</div>
 		
