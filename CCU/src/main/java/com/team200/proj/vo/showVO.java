@@ -27,6 +27,19 @@ private String introduction_image1;
 private String introduction_image2;
 private String introduction_image3;
 private String introduction_image4;
+
+
+@Override
+public String toString() {
+	return "showVO [id=" + id + ", name=" + name + ", startdate=" + startdate + ", enddate=" + enddate + ", place_name="
+			+ place_name + ", performer=" + performer + ", producer=" + producer + ", open_time=" + open_time
+			+ ", runtime=" + runtime + ", minimum_age=" + minimum_age
+			+ ", statistics_search_by_production_company_name=" + statistics_search_by_production_company_name
+			+ ", price=" + price + ", mainposter=" + mainposter + ", introduction_txt=" + introduction_txt + ", genre="
+			+ genre + ", state=" + state + ", openrun=" + openrun + ", introduction_image1=" + introduction_image1
+			+ ", introduction_image2=" + introduction_image2 + ", introduction_image3=" + introduction_image3
+			+ ", introduction_image4=" + introduction_image4 + "]";
+}
 public String getId() {
 	return id;
 }
