@@ -81,4 +81,37 @@ introduction_image4
 #{introduction_image4}
 )
 	</insert>
+			<insert id="inputFestivalData">
+		insert into festival(
+id,
+name,
+
+startdate,
+enddate,
+place,
+
+
+
+poster,
+
+
+genre,
+state
+
+		)
+		values (
+#{id},
+#{name},
+#{startdate},
+#{enddate},
+#{place_name},
+
+
+#{mainposter},
+
+#{genre},
+#{state}
+
+)
+	</insert>
 </mapper>

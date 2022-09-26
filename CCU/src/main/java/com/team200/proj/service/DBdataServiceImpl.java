@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team200.proj.dao.DBdataDAO;
+import com.team200.proj.vo.festivalVO;
 import com.team200.proj.vo.placeVO;
 import com.team200.proj.vo.showVO;
 
@@ -23,5 +24,12 @@ public class DBdataServiceImpl implements DBdataService {
 	public void inputShowData(showVO sVO) {
 		// TODO Auto-generated method stub
 		dao.inputShowData(sVO);
+	}
+
+	@Override
+	public void inputFestivalData(festivalVO fVO) {
+		// TODO Auto-generated method stub
+		dao.inputFestivalData(fVO);
+		
 	}
 }
