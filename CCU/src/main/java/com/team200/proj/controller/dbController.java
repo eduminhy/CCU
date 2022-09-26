@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.team200.proj.service.DBdataService;
 import com.team200.proj.vo.concertHallVO;
+import com.team200.proj.vo.festivalVO;
 import com.team200.proj.vo.placeVO;
 import com.team200.proj.vo.showVO;
 
@@ -364,4 +365,91 @@ public class dbController {
 ////		System.out.println();
 //
 //	}
+
+	@GetMapping("festivalInputMain")
+	public String festivalInputMain() throws IOException, ParseException {
+		Calendar mon = Calendar.getInstance();
+		mon.add(Calendar.MONTH, -2);
+		String sD = new java.text.SimpleDateFormat("yyyyMMdd").format(mon.getTime());
+//		System.out.println(beforeMonth);
+		Calendar mon2 = Calendar.getInstance();
+		mon.add(Calendar.MONTH, +6);
+		String eD = new java.text.SimpleDateFormat("yyyyMMdd").format(mon.getTime());
+		System.out.println(sD);
+		System.out.println(eD);
+//		String sD = "20220801";
+//		String eD = "20220920";
+		// http://www.kopis.or.kr/openApi/restful/pblprfr?service=983f7e00b8104d7aa07995c22ee98fde&cpage=1&rows=9999&stdate=20220826&eddate=20221126
+		StringBuilder urlBuilder = new StringBuilder("http://www.kopis.or.kr/openApi/restful/prfawad"); /* URL */
+		urlBuilder.append(
+				"?" + URLEncoder.encode("service", "UTF-8") + "=983f7e00b8104d7aa07995c22ee98fde"); /* Service Key */
+		urlBuilder.append(
+				"&" + URLEncoder.encode("cpage", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /* 페이지 번호 1부터 시작 */
+		urlBuilder.append("&" + URLEncoder.encode("rows", "UTF-8") + "="
+				+ URLEncoder.encode("9999", "UTF-8")); /* 한 페이지 결과 수 9999 */
+
+		urlBuilder
+				.append("&" + URLEncoder.encode("stdate", "UTF-8") + "=" + URLEncoder.encode(sD, "UTF-8")); /* 검색시작일자 */
+		urlBuilder.append("&" + URLEncoder.encode("eddate", "UTF-8") + "=" + URLEncoder.encode(eD, "UTF-8")); /* 종료 */
+//		urlBuilder.append("&" + URLEncoder.encode("prfstate", "UTF-8") + "="
+//				+ URLEncoder.encode("02", "UTF-8")); /* 공연상태여부 00~02 */
+//		urlBuilder.append("&" + URLEncoder.encode("type", "UTF-8") + "="+ URLEncoder.encode("json", "UTF-8"));
+		URL url = new URL(urlBuilder.toString());
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("Content-type", "application/json");
+		System.out.println("Response code: " + conn.getResponseCode());
+		BufferedReader rd;
+		if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+			rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		} else {
+			rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		}
+		StringBuilder sb = new StringBuilder();
+		String line;
+		while ((line = rd.readLine()) != null) {
+			sb.append(line);
+		}
+		// 북촌향우극장 (
+		rd.close();
+		conn.disconnect();
+		String sb2 = sb.toString();
+		System.out.println(sb.toString());
+		String resultString = XML.toJSONObject(sb2).toString();
+		JSONParser parse = new JSONParser();
+		JSONObject jsonObject = (JSONObject) parse.parse(resultString);
+		System.out.println(jsonObject);
+		JSONObject jsonObject2 = (JSONObject) jsonObject.get("dbs");
+		System.out.println(jsonObject2);
+		JSONArray parse_items = (JSONArray) jsonObject2.get("db");
+		System.out.println(parse_items);
+//		
+//		
+//		
+		festivalVO fVO;
+		for (int i = 0; i < parse_items.size(); i++) { // 배열의 길이만큼 반복
+			JSONObject imsi = (JSONObject) parse_items.get(i);
+			fVO = new festivalVO();
+			fVO.setId((String) imsi.get("mt20id"));
+			fVO.setName((String) imsi.get("prfnm"));
+			fVO.setStartdate((String) imsi.get("prfpdfrom"));
+			fVO.setEnddate((String) imsi.get("prfpdto"));
+			fVO.setPlace_name((String) imsi.get("fcltynm"));
+			fVO.setMainposter((String) imsi.get("poster"));
+			fVO.setGenre((String) imsi.get("genrenm"));
+			fVO.setState((String) imsi.get("prfstate"));
+			
+//			System.out.println(imsi.get("mt20id"));
+			
+			System.out.println(i);
+	
+			service.inputFestivalData(fVO);	
+		}
+		
+		
+		
+//		System.out.println();
+		return "index";
+
+	}
 }
