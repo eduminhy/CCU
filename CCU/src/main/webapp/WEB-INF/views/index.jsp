@@ -7,21 +7,58 @@
 <!-- JS -->
 <script type="text/javascript"
 	src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+
 <!-- indexPage style -->
 <link rel="stylesheet" href="/style/indexStyle.css">
 <!-- indexPage script -->
-<script src="/script/indexScript.js" type="text/javascript"></script>
+<!-- <script src="/script/indexScript.js" type="text/javascript"></script> -->
 <script>
+$(document).ready(function() {
+	//--MontlyRanking 색변경-------------------------------------------------------------------------------------------
+	$(".indexRank_menu>div").click(function() {
+		$(".indexRank_menu>div").css("color", "rgba(59, 0,148)");
+		$(this).css("color", "rgba(255, 81,87)");
+	});
+	
+	
+	var img = $("#slider img");
+	
+	
+	var imgX = img.offset().left;
+	var imgY = img.offset().top;
+	var imgarr = [imgX, imgY];
+	console.log(imgX);
+	console.log(Math.floor(imgX)+","+imgY);
+	console.log(imgarr);
+	
+	
+	var canvas = $("#myCanvas").get(0);
+	var context = canvas.getContext("2d");
+	var pixelData = context.getImageData(imgX, imgY, 1, 1);
+	var data = pixelData.data;
+	var pixelColor = "rgba("+data[0]+", "+data[1]+", "+data[2]+", "+data[3]+")";
+	$("#slidercolor").css("backgroundColor", pixelColor);
+
+	
+		
+	var imgurl = img.attr("src")
+	var newImg;
+	console.log(imgurl);
+});
+
 </script>
 <br/>
 <div class="slider-back">
 	<br/>
 	<div class="slider-for">
-		<div class="slider-div2">
+		<div class="slider-div2" id="slider">
 			<div>
 				<a href=""><img src="img/poster/1.jpg"/></a>
-				<div class="slider-div">
+				<div class="slider-div" id="slidercolor">
 					1 asasad
+					<canvas id="myCanvas"></canvas>
 				</div>
 			</div>
 		</div>

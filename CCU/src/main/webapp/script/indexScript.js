@@ -10,8 +10,11 @@ $(document).ready(function() {
 		$(this).css("color", "rgba(255, 81,87)");
 	});
 });
-//---------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------
 
+ //var colorThief = new ColorThief();
+ //var color = colorThief.getColor($('.slider-div2 img')[0]);
+ //document.querySelector('.slider-div').style.backgroundColor='rgb('+color+')';
+ //var colors = colorThief.getPalette($('.slider-div2 img')[0], 10);
+ //for(var i=0; i<colors.length; i++) {
+   //$(".slider-div").after($('<div style="display:inline-block; width:100px; height:100px; border-radius:50%;">').css("background-color", "rgb("+colors[i]+")"));
+ //}
