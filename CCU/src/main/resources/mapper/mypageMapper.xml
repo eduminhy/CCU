@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team200.proj.dao.MypageDAO">
+	<select id="getMyinfo" resultType="UserVO">
+		select id, img, nickname, username, tel, zipcode, road_name, addr, self_certification from user where id = #{param1} 
+	</select>
+	<select id="getImgname" resultType="UserVO">
+		select img from user where id = #{param1}
+	</select>
+	<update id="profileUpdate">
+		update user set password=#{password}, img=#{img}, nickname=#{nickname}, road_name=#{road_name}, addr=#{addr} where id = #{id}
+	</update>
+</mapper> 
