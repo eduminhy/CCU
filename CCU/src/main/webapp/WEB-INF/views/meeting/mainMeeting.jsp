@@ -38,14 +38,23 @@
 
 
 <div class="listBody">
-
+	
+	
 	<div>
-	    <ul class="accList">
+	    <ul id="accList">
 	        <li >장르</li>
 	        <li >글번호</li>
-	        <li >내용</li>
+	        <li >제목</li>
 	        <li >작성자</li>
 	        <li >작성일</li>
+	        
+	    <c:forEach var = "vo" items = "${list }">
+			<li>${vo.showdb_id }</li>
+			<li>${vo.id }</li>
+			<li>${vo.title }</li>
+			<li>${vo.user_id }</li>
+			<li>${vo.writedate }</li>
+		</c:forEach>
 	    </ul>
 	</div>
 

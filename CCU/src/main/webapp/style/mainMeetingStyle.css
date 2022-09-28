@@ -153,12 +153,12 @@
 		font-weight:bold;
 		color:#440099;
 	}
-    .accList>li{
+    #accList>li{
     	background-color:#ddd;
     }
 
 
-	.accList{
+	#accList{
 		width:1200px;
 		padding:0;
 		margin:0 auto;
@@ -177,7 +177,7 @@
 	}
 	
 	
-	.accList>li{
+	#accList>li{
 				width:1200px;
 		padding:0;
 		margin:0 auto;
@@ -188,7 +188,7 @@
 	
 	
 	
-    .accList>li{
+    #accList>li{
         float:left;
         height: 50px;
         line-height:50px;
@@ -197,10 +197,10 @@
         width:12.9%;
         font-weight:bold;
     }
-    .accList>li:nth-child(5n+3){
+    #accList>li:nth-child(5n+3){
     	width:50%;
     }
-    .accList>li:nth-child(5n+5){
+    #accList>li:nth-child(5n+5){
     	width:10%;
     }
     

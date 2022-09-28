@@ -3,6 +3,17 @@
 <link rel="stylesheet" href="/style/playMeetingListStyle.css">
 <script src="/script/playMeetingListScript.js" type="text/javascript"></script>
 </head>
+
+<script>
+	$(function(){
+		$("#playMeetingListSearchFrm").submit(function(){
+			if($("#searchWord").val()==""){
+				alert("내용을 입력하시오");
+				return false;
+			}
+			return true;
+		});
+</script>
 <body>
 	<div class="playMeetingTopContainer">
 		<h1 class="playMeetingTopText">같이 갈래요?</h1>
@@ -88,18 +99,18 @@
 			<input type="button" value="글쓰기" class="playMeetingListBtn" id="modify" onclick="location.href='playMeetingForm'"/>
 		</div>
 		
-		<div class="playMeetingListSearch">
-			<form method="get" action="" class="playMeetingListSearchFrm">
-				<select name="searchKey" class="playMeetingListSearchKey">
+		<!--  <div class="playMeetingListSearch"> -->
+		<div>
+			<form method = "get" action = "/meeting/mainMeeting" id = "playMeetingListSearchFrm">
+				<select name="searchKey" id="playMeetingListSearchKey">
 					<option value="subject">제목</option>
-					<option value="nickname">내용</option>
-					<option value="content">작성자</option>
+					<option value="content">내용</option>
+					<option value="id">작성자</option>
 				</select>
-				<input type="text" name="searchWord" class="playMeetingListSearchTxt" placeholder=""/>
-				
-				<input type="submit" value="" class="playMeetingListSearchBtn"/>
+				<input type="text" name="searchWord" id="searchWord" placeholder=""/>
+				<input type="submit" name="Search" id="Search"/>
 			</form>	
-		</div>		
+		</div>
 		
     </form>
     

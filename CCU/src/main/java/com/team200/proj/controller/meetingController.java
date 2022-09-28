@@ -1,20 +1,44 @@
 package com.team200.proj.controller;
 
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team200.proj.service.MeetingService;
+
 @RestController
 @RequestMapping("/meeting/*")
+@Controller
 public class meetingController {
-	@GetMapping("mainMeeting")
+	@Inject
+	MeetingService service;
+	
+	//dong
+	@RequestMapping("mainMeeting")
+	public ModelAndView mainMeeting() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("meeting/mainMeeting");
+		return mav;
+	}
+
+	//dong
+	@RequestMapping("meeting/meetingWrite")
+	public String mettingWrite() {
+		return "meeting/meetingWrite";
+	}
+			
+/*	@GetMapping("mainMeeting")
 	public ModelAndView mainMeeting() { // 미팅메인게시판
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
 	}	
-	
+*/	
 	@GetMapping("mainMeetingNotice")
 	public ModelAndView mainMeetingNotice() { // 메인미팅공지
 		ModelAndView mav = new ModelAndView();

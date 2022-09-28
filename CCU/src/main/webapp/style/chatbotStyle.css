@@ -1,33 +1,41 @@
 @charset "UTF-8";
 
-	#qnabox {
-	 	border:2px solid; color:#440099; 
-		height:50px; width:230px;
-		text-align:center;
-		font-weight:bold;
-		font-size:30px;
-		margin-left:34%;
-		margin-bottom:50px;
-	}
-	.chatbotbox {
-		text-align: center;
-		border: 5px double; color:#440099;
-		border-radius: 10%;
-		margin-right:500px;
-		margin-left:500px;
-		padding : 50px;
-	}
-	.usechatbot {
-		width:230px;
-		height:50px;
-		background-color:#440099;
-		color:white;
-		margin-bottom:10px;
-		font-size : 1.1em;
-	}
-	#cstext {
-		text-align:center;
-		font-size:3em;
-		color:#440099;
-		margin-bottom:100px;
-	}
+#chatboticon {
+	position: absolute;
+
+	right: 10px;
+
+	bottom: 0px;
+}
+#cculogo{
+	text-align:center;
+	margin:0 auto;
+	overflow:auto;
+}
+.csmenu{
+	width: 1200px;
+	margin: 0 auto;
+	text-align:center;
+	
+}
+.csmenu>div {
+	
+	border : solid 3px #440099;
+	border-left:none;
+	text-align : center;
+	float:left;
+	width:200px;
+	height:50px;
+	line-height:50px; 
+	font-size:20px;
+	font-weight:bold;
+	margin:0 auto;
+
+}
+.csmenu a{
+	color:#440099;
+}
+.csmenu>div:first-child{
+	border-left: solid 3px #440099;
+	margin-left : 16%;
+}
