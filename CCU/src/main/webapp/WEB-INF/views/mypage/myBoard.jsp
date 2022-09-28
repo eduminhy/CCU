@@ -1,10 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/style/mypage/myBoardStyle.css">
 <script>
 	$(function(){
 		//리스트 전체선택
 		$("#allChk").click(function(){
 			$(".board input[type=checkbox]").prop("checked", $("#allChk").prop("checked"));
+		});
+		
+		$("#DeleteBtn").click(function(){
+			var countChk = 0;
+			$(".board input[name=noList]").each(function(idx, obj){
+				if(obj.checked){
+					countChk++;
+				}
+			});
+			if(countChk<=0){
+				alert("삭제할 글을 선택해주세요.");
+				return false;
+			}
+			$("#boardFrm").submit();
 		});
 		
 	});
@@ -22,50 +37,30 @@
 		</ul>
 	</div>
 		
-	<form method="post" action="#" id="boardFrm">
+	<form method="post" action="/mypage/myBoardDel" id="boardFrm">
 		<ul>
 			<li>
 				<ul id="boardList">
 					<li>
 						<ul class="board">
 							<li><input type="checkbox" id="allChk"/></li>
+							<li>글번호</li>
 							<li>게시판분류</li>
 							<li>게시글</li>
 							<li>작성날짜</li>
 						</ul>
 					</li>
-					<li>
-						<ul class="board">
-							<li><input type="checkbox"/></li>
-							<li>연극</li>
-							<li><a href="#">요즘 연극 뭐가 재밌나요?</a></li>
-							<li>2022.04.30</li>
-						</ul>
-					</li>
-					<li>
-						<ul class="board">	
-							<li><input type="checkbox"/></li>
-							<li>뮤지컬</li>
-							<li><a href="#">제발 엘리자벳 다들 꼭 보시라고요!!</a></li>
-							<li>2022.03.31</li>
-						</ul>
-					</li>
-					<li>
-						<ul class="board">	
-							<li><input type="checkbox"/></li>
-							<li>오페라</li>
-							<li><a href="#">잔잔한 오페라 추천해주세요</a></li>
-							<li>2022.02.04</li>
-						</ul>
-					</li>
-					<li>
-						<ul class="board">	
-							<li><input type="checkbox"/></li>
-							<li>기타</li>
-							<li><a href="#">요즘 볼 것들이 많아서 행복해요ㅠㅠ</a></li>
-							<li>2022.01.22</li>
-						</ul>
-					</li>
+					<c:forEach var="bvo" items="${bvo}">
+						<li>
+							<ul class="board">
+									<li><input type="checkbox" name="noList" value="${bvo.id}"/></li>
+									<li>${bvo.id }</li>
+									<li>${bvo.genre}</li>
+									<li><a href="#">${bvo.title }</a></li>
+									<li>${bvo.writedate }</li>
+							</ul>
+						</li>
+					</c:forEach>	
 				</ul>
 			</li>
 		</ul>

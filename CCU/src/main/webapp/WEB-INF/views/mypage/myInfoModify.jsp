@@ -49,8 +49,8 @@
 	           console.log(fullRoadAddr);
 	           
 	           $("[name=zipcode]").val(data.zonecode);
-	           $("[name=address]").val(fullRoadAddr);
-	           $("[name=detailaddr]").val("");
+	           $("[name=road_name]").val(fullRoadAddr);
+	           $("[name=addr]").val("");
 	           /* document.getElementById('signUpUserPostNo').value = data.zonecode; //5자리 새우편번호 사용
 	           document.getElementById('signUpUserCompanyAddress').value = fullRoadAddr;
 	           document.getElementById('signUpUserCompanyAddressDetail').value = data.jibunAddress; */
@@ -98,15 +98,24 @@
 	<table id="content">
 		<tr class="rows">
 			<th>아이디</th>
-			<td>${vo.id }</td>
+			<td><input type="text" name="id" value="${vo.id}" readonly/></td>
 		</tr>
 		<tr class="rows">
 			<th>비밀번호*</th>
-			<td><input type="password" id="password" value="" placeholder="비밀번호를 입력하세요."/></td>
+			<td><input type="password" name="password" id="password" value="" placeholder="비밀번호를 입력하세요."/></td>
 		</tr>
 		<tr class="rows">
 			<th>프로필*</th>
-			<td><div id="profile"><img src="${vo.img }" id="pre"></div><input type="file" name="fname" id="filename" accept="image/*" onchange="readURL(this);"/></td>
+			<td>
+				<c:if test="${empty vo.img}">
+						<div id="profile"><img src="../profileImg/profile.jpg" id="pre"/></div>
+				</c:if>	
+				<c:if test="${vo.img  ne null}">
+					<div id="profile"><img src="../profileImg/${vo.img}" id="pre"/></div>
+				</c:if>
+			
+				<input type="file" name="fname" id="filename" accept="image/*" onchange="readURL(this);"/>
+			</td>
 		</tr>
 		<tr class="rows">
 			<th>본인인증</th>
@@ -117,15 +126,15 @@
 		</tr>
 		<tr class="rows">
 			<th>닉네임*</th>
-			<td><input type="text" value="${vo.nickname }"/></td>
+			<td><input type="text" name="nickname" value="${vo.nickname }"/></td>
 		</tr>
 		<tr class="rows">
 			<th>이름</th>
-			<td>${vo.username }</td>
+			<td><input type="text" name="username" value="${vo.username }" readonly/></td>
 		</tr>
 		<tr class="rows">
 			<th>연락처</th>
-			<td>${vo.tel }</td>
+			<td><input type="text" name="tel" value="${vo.tel }" readonly/></td>
 		</tr>
 		<tr class="rows">
 			<th rowspan='3'>주소*</th>
@@ -135,12 +144,12 @@
 		</tr>
 		<tr class="rows">
 			<td>
-				<input type="text" name="address" value="${vo.road_name}" size=100/>
+				<input type="text" name="road_name" value="${vo.road_name}" size=100/>
 			</td>
 		</tr>
 		<tr class="rows">
 			<td>
-				<input type="text" name="detailaddr" value="${vo.addr }" placeholder="상세주소를 입력하세요." size=100/>	
+				<input type="text" name="addr" value="${vo.addr }" placeholder="상세주소를 입력하세요." size=100/>	
 			</td>
 		</tr>
 	</table>

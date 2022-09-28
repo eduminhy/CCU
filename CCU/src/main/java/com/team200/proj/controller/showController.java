@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/show/*")
-public class ShowController {
+public class showController {
 	@GetMapping("showList")
 	public ModelAndView showList() {
 		ModelAndView mav = new ModelAndView();

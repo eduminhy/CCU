@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <link rel="stylesheet" href="/style/mypage/myCommentStyle.css">
 <script>
@@ -8,6 +9,19 @@
 			$(".comment input[type=checkbox]").prop("checked", $("#allChk").prop("checked"));
 		});
 		
+		$("#DeleteBtn").click(function(){
+			var countChk = 0;
+			$(".comment input[name=noList]").each(function(idx, obj){
+				if(obj.checked){
+					countChk++;
+				}
+			});
+			if(countChk<=0){
+				alert("삭제할 글을 선택해주세요.");
+				return false;
+			}
+			$("#commentFrm").submit();
+		});
 	});
 </script>
 <div class="container">
@@ -23,50 +37,30 @@
 		</ul>
 	</div>
 		
-	<form method="post" action="#" id="commentFrm">
+	<form method="post" action="/mypage/myCommentDel" id="commentFrm">
 		<ul>
 			<li>
 				<ul id="commentList">
 					<li>
 						<ul class="comment">
 							<li><input type="checkbox" id="allChk"/></li>
+							<li>글번호</li>
 							<li>게시판분류</li>
 							<li>댓글</li>
 							<li>작성날짜</li>
 						</ul>
 					</li>
-					<li>
-						<ul class="comment">
-							<li><input type="checkbox"/></li>
-							<li>연극</li>
-							<li><a href="#">아 진짜요? 저는 재밌게 봤는데..</a></li>
-							<li>2022.04.30</li>
-						</ul>
-					</li>
+					<c:forEach var="rvo" items="${rvo }">
 					<li>
 						<ul class="comment">	
-							<li><input type="checkbox"/></li>
-							<li>뮤지컬</li>
-							<li><a href="#">최재림 연기 겁나 잘함요ㅇㅇ</a></li>
-							<li>2022.03.31</li>
+							<li><input type="checkbox" name="noList" value="${rvo.id }"/></li>
+							<li>${rvo.board_id }</li>
+							<li>${rvo.genre }</li>
+							<li><a href="#">${rvo.content }</a></li>
+							<li>${rvo.writedate }</li>
 						</ul>
 					</li>
-					<li>
-						<ul class="comment">	
-							<li><input type="checkbox"/></li>
-							<li>오페라</li>
-							<li><a href="#">투란도트 완전 추천해요!</a></li>
-							<li>2022.02.04</li>
-						</ul>
-					</li>
-					<li>
-						<ul class="comment">	
-							<li><input type="checkbox"/></li>
-							<li>기타</li>
-							<li><a href="#">제가 가는 곳 의자는 불편하더라구요ㅠ</a></li>
-							<li>2022.01.22</li>
-						</ul>
-					</li>
+					</c:forEach>
 				</ul>
 			</li>
 		</ul>

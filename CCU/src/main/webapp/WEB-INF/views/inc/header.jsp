@@ -88,8 +88,8 @@
 			<img src="../img/kakaoicon.png" width=40px; height=40px; id="kakaoicon">
 			<img src="../img/googleicon.png" width=40px; height=40px; id="googleicon">
 			<br/>
-			<li><a href="/member/login">로그인</a></li>
-			<li><a href="/member/signup">회원가입</a></li>
+			<li><a href="/user/login">로그인</a></li>
+			<li><a href="/user/signup">회원가입</a></li>
 			<br/><br/>
 			<a href="/faq">고객센터</a>
 
@@ -121,4 +121,3 @@
 				</ul>
 			</div>
 		</div>
-
