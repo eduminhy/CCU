@@ -1,6 +1,6 @@
 package com.team200.proj.vo;
 
-public class showVO {
+public class ShowVO {
 private String id;
 private String name;
 

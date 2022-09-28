@@ -1,10 +1,14 @@
 package com.team200.proj.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
 import com.team200.proj.dao.MypageDAO;
+import com.team200.proj.vo.BoardVO;
+import com.team200.proj.vo.ReplyVO;
 import com.team200.proj.vo.UserVO;
 
 @Service
@@ -18,7 +22,7 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	@Override
-	public UserVO getImgname(String id) {
+	public String getImgname(String id) {
 		return dao.getImgname(id);
 	}
 
@@ -27,6 +31,32 @@ public class MypageServiceImpl implements MypageService {
 		return dao.profileUpdate(vo);
 	}
 
+	@Override
+	public int myInfoDel(UserVO vo) {
+		return dao.myInfoDel(vo);
+	}
+	
+	@Override
+	public List<BoardVO> myBoardList(String user_id) {
+		return dao.myBoardList(user_id);
+	}
+
+	@Override
+	public int myBoardDel(BoardVO vo) {
+		return dao.myBoardDel(vo);
+	}
+
+	@Override
+	public List<ReplyVO> myReplyList(String user_id) {
+		return dao.myReplyList(user_id);
+	}
+
+	@Override
+	public int myCommentDel(ReplyVO vo) {
+		return dao.myCommentDel(vo);
+	}
+
 	
 	
+
 }

@@ -3,8 +3,12 @@
 <link rel="stylesheet" href="/style/mypage/myInfoStyle.css">
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script>
-
-
+$(function(){
+	$("#leave").click(function(){
+		window.open("/mypage/myInfoErase", "leave", "width=400, height:300px");
+	});
+});
+	
 </script>
 
 <div class="container">
@@ -26,7 +30,15 @@
 		</tr>
 		<tr class="rows">
 			<th>프로필</th>
-			<td><div id="profile"><img src="${vo.img}" id="pre"/></div></td>
+			<td>
+				<c:if test="${empty vo.img}">
+					<div id="profile"><img src="../profileImg/profile.jpg" id="pre"/></div>
+				</c:if>	
+				<c:if test="${vo.img  ne null}">
+					<div id="profile"><img src="../profileImg/${vo.img}" id="pre"/></div>
+				</c:if>
+			</td>
+					
 		</tr>
 		<tr class="rows">
 			<th>본인인증</th>

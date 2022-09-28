@@ -3,7 +3,6 @@ package com.team200.proj.controller;
 
 import java.io.File;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,6 +23,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team200.proj.service.MypageService;
+import com.team200.proj.vo.BoardVO;
+import com.team200.proj.vo.ReplyVO;
 import com.team200.proj.vo.UserVO;
 
 
@@ -62,27 +63,17 @@ public class MypageController {
 	//프로필 이미지파일 업로드
 	@PostMapping("myInfoModifyOk")
 	public ResponseEntity<String> myInfoModifyOk(UserVO vo, HttpServletRequest request){
+		vo.setId((String)request.getSession().getAttribute("logId"));
 		//파일명 보관
-		UserVO dbFile = service.getImgname(vo.getId());
-		System.out.println("id=>"+service.getImgname(vo.getId()));
-		//최종 사용할 파일명정리하는 컬렉션
-		List<String> editFileList = new ArrayList<String>();
-		//DB에서 선택한 파일을 컬렉션에 담기
-		if(dbFile.getImg()!=null) {
-			editFileList.add(dbFile.getImg());
-		}
-		//삭제파일명과 같은 파일을 최종컬렉션에서 제거
-		if(vo.getDelImg()!=null) {
-			for(String del : vo.getDelImg()) {
-				editFileList.remove(del);
-			}
-		}
-
+		String dbFile = service.getImgname(vo.getId());
+		System.out.println("id=>"+vo.getId());
+		System.out.println("dbFile"+dbFile);
+		
 		//업로드할 위치의 절대경로
 		String path = request.getServletContext().getRealPath("/profileImg");
 		System.out.println("path=>"+path);
 		//새로 업로드한 파일명 보관할 컬렉션
-		List<String> newUpload = new ArrayList<String>();
+		String newUpload = null;
 		
 		//스크립트 넣을 변수 선언
 		String msg = "";
@@ -116,27 +107,24 @@ public class MypageController {
 						}
 						//파일 업로드 실행
 						mf.transferTo(file);
-						newUpload.add(file.getName());
-						editFileList.add(file.getName());
+						newUpload=file.getName();						
 					}
 				}
 			}
 			//DB등록
-			
-			for(int i=0; i<editFileList.size();i++) {
-				if(i==0) vo.setImg(editFileList.get(0));
+			if(newUpload!=null) {//파일 새로 업로드한 경우
+				vo.setImg(newUpload);
+			}else {//새로 업로드 안한 경우
+				vo.setImg(dbFile);
 			}
-			vo.setId((String)request.getSession().getAttribute("logId"));
 			int result = service.profileUpdate(vo);
 			if(result>0) {
-				if(vo.getDelImg()!=null) {
-					for(String f : vo.getDelImg()) {
-						fileDelete(path, f);
-					}
+				if(dbFile!=null) {//원래 있는 파일 삭제
+					fileDelete(path,dbFile);
 				}
 				//나의 정보 페이지로 이동
 				msg += "<script>";
-				msg += "alert('나의 정보가 수정되었습니다.')";
+				msg += "alert('나의 정보가 수정되었습니다.');";
 				msg += "location.href='/mypage/myInfo';";
 				msg += "</script>";
 			}else {//수정실패
@@ -145,9 +133,9 @@ public class MypageController {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			//등록실패
-			for(String f : newUpload) {
-				fileDelete(path, f);
+			//새로업로드된 파일 삭제....등록실패
+			if(newUpload!=null) {
+				fileDelete(path, newUpload);
 			}
 			msg += "<script>";
 			msg += "alert('내정보 수정에 실패하였습니다.');";
@@ -173,6 +161,15 @@ public class MypageController {
 		}
 	}
 	
+	//회원탈퇴
+	@GetMapping("myInfoErase")
+	public ModelAndView myInfoErase() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("mapage/myinfoErase");
+		return mav;
+	}
+	
 	//2. 나의 예매내역
 	@GetMapping("myReservation")
 	public ModelAndView myReservation() {
@@ -191,17 +188,40 @@ public class MypageController {
 	
 	//4. 나의 게시글 페이지
 	@GetMapping("myBoard")
-	public ModelAndView myBoard() {
+	public ModelAndView myBoard(HttpSession session) {
+		String id = (String)session.getAttribute("logId"); 
 		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("bvo", service.myBoardList(id));
 		mav.setViewName("mypage/myBoard");
+		return mav;
+	}
+	
+	@PostMapping("myBoardDel")
+	public ModelAndView myBoardDel(BoardVO vo) {
+		int cnt = service.myBoardDel(vo);
+		System.out.println("삭제된 레코드 수 : "+cnt);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:myBoard");
 		return mav;
 	}
 	
 	//5. 나의 댓글 페이지
 	@GetMapping("myComment")
-	public ModelAndView myComment() {
+	public ModelAndView myComment(HttpSession session) {
+		String id = (String)session.getAttribute("logId"); 
 		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("rvo", service.myReplyList(id));
 		mav.setViewName("mypage/myComment");
+		return mav;
+	}
+	@PostMapping("myCommentDel")
+	public ModelAndView myCommentDel(ReplyVO vo) {
+		int cnt = service.myCommentDel(vo);
+		System.out.println("삭제된 레코드 수 : "+cnt);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:myComment");
 		return mav;
 	}
 	

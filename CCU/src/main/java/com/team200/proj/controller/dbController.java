@@ -11,7 +11,7 @@ import com.team200.proj.service.DBdataService;
 import com.team200.proj.vo.concertHallVO;
 import com.team200.proj.vo.festivalVO;
 import com.team200.proj.vo.placeVO;
-import com.team200.proj.vo.showVO;
+import com.team200.proj.vo.ShowVO;
 
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -106,10 +106,10 @@ public class dbController {
 //		
 //		
 //		
-		showVO sVO;
+		ShowVO sVO;
 		for (int i = 0; i < parse_items.size(); i++) { // 배열의 길이만큼 반복
 			JSONObject imsi = (JSONObject) parse_items.get(i);
-			sVO = new showVO();
+			sVO = new ShowVO();
 			sVO.setId((String) imsi.get("mt20id"));
 //			System.out.println(imsi.get("mt20id"));
 			StringBuilder urlBuilder1 = new StringBuilder("http://www.kopis.or.kr/openApi/restful/pblprfr"); /* URL */
