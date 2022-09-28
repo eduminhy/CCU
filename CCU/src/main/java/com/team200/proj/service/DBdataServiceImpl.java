@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.team200.proj.dao.DBdataDAO;
 import com.team200.proj.vo.festivalVO;
 import com.team200.proj.vo.placeVO;
-import com.team200.proj.vo.ShowVO;
+import com.team200.proj.vo.showVO;
 
 @Service
 public class DBdataServiceImpl implements DBdataService {
@@ -15,21 +15,38 @@ public class DBdataServiceImpl implements DBdataService {
 
 	@Override
 	public void inputPlaceData(placeVO pVO) {
-		// TODO Auto-generated method stub
-//		System.out.println(1234);
+
 		dao.inputPlaceData(pVO);
 	}
 
 	@Override
-	public void inputShowData(ShowVO sVO) {
-		// TODO Auto-generated method stub
+	public void inputShowData(showVO sVO) {
+
 		dao.inputShowData(sVO);
 	}
 
 	@Override
 	public void inputFestivalData(festivalVO fVO) {
-		// TODO Auto-generated method stub
+	
 		dao.inputFestivalData(fVO);
+		
+	}
+
+	@Override
+	public void popularInputMain(showVO sVO) {
+		
+		dao.popularInputMain(sVO);
+	}
+
+	@Override
+	public void popularWInputMain(showVO sVO) {
+		dao.popularWInputMain(sVO);
+		
+	}
+
+	@Override
+	public void popularMInputMain(showVO sVO) {
+		dao.popularMInputMain(sVO);
 		
 	}
 }

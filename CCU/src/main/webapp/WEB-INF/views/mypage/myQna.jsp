@@ -72,6 +72,15 @@
 							<li>답변완료</li>
 						</ul>
 					</li>
+					<li>
+						<ul class="qna">	
+							<li><input type="checkbox"/></li>
+							<li>기타</li>
+							<li><a href="#">제가 가는 곳 의자는 불편하더라구요ㅠ</a></li>
+							<li>2022.01.22</li>
+							<li>답변완료</li>
+						</ul>
+					</li>
 				</ul>
 			</li>
 		</ul>
