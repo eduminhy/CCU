@@ -28,6 +28,9 @@ private String introduction_image2;
 private String introduction_image3;
 private String introduction_image4;
 
+private int showRank;
+
+
 
 @Override
 public String toString() {
@@ -38,7 +41,13 @@ public String toString() {
 			+ ", price=" + price + ", mainposter=" + mainposter + ", introduction_txt=" + introduction_txt + ", genre="
 			+ genre + ", state=" + state + ", openrun=" + openrun + ", introduction_image1=" + introduction_image1
 			+ ", introduction_image2=" + introduction_image2 + ", introduction_image3=" + introduction_image3
-			+ ", introduction_image4=" + introduction_image4 + "]";
+			+ ", introduction_image4=" + introduction_image4 + ", showRank=" + showRank + "]";
+}
+public int getShowRank() {
+	return showRank;
+}
+public void setShowRank(int showRank) {
+	this.showRank = showRank;
 }
 public String getId() {
 	return id;

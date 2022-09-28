@@ -15,21 +15,38 @@ public class DBdataServiceImpl implements DBdataService {
 
 	@Override
 	public void inputPlaceData(placeVO pVO) {
-		// TODO Auto-generated method stub
-//		System.out.println(1234);
+
 		dao.inputPlaceData(pVO);
 	}
 
 	@Override
 	public void inputShowData(showVO sVO) {
-		// TODO Auto-generated method stub
+
 		dao.inputShowData(sVO);
 	}
 
 	@Override
 	public void inputFestivalData(festivalVO fVO) {
-		// TODO Auto-generated method stub
+	
 		dao.inputFestivalData(fVO);
+		
+	}
+
+	@Override
+	public void popularInputMain(showVO sVO) {
+		
+		dao.popularInputMain(sVO);
+	}
+
+	@Override
+	public void popularWInputMain(showVO sVO) {
+		dao.popularWInputMain(sVO);
+		
+	}
+
+	@Override
+	public void popularMInputMain(showVO sVO) {
+		dao.popularMInputMain(sVO);
 		
 	}
 }

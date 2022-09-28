@@ -8,4 +8,7 @@ public interface DBdataService {
 	public void inputPlaceData(placeVO pVO); 
 	public void inputShowData(showVO sVO);
 	public void inputFestivalData(festivalVO fVO);
+	public void popularInputMain(showVO sVO);
+	public void popularWInputMain(showVO sVO);
+	public void popularMInputMain(showVO sVO);
 }

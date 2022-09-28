@@ -1,6 +1,6 @@
 package com.team200.proj.vo;
 
-import java.util.Date;
+
 //18개
 public class UserVO {
 	private String id;

@@ -4,13 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import com.team200.proj.service.DBdataService;
-import com.team200.proj.vo.concertHallVO;
 import com.team200.proj.vo.festivalVO;
-import com.team200.proj.vo.placeVO;
 import com.team200.proj.vo.showVO;
 
 import java.io.InputStreamReader;
@@ -18,9 +15,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 import java.util.Calendar;
+
 
 import javax.inject.Inject;
 
@@ -49,12 +46,12 @@ public class dbController {
 //		LocalDate now = LocalDate.now();
 //		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 		Calendar mon = Calendar.getInstance();
-		mon.add(Calendar.MONTH, -1);
+		mon.add(Calendar.MONTH, -2);
 		String sD = new java.text.SimpleDateFormat("yyyyMMdd").format(mon.getTime());
 //		System.out.println(beforeMonth);
 		Calendar mon2 = Calendar.getInstance();
-		mon.add(Calendar.MONTH, +3);
-		String eD = new java.text.SimpleDateFormat("yyyyMMdd").format(mon.getTime());
+		mon2.add(Calendar.MONTH, +6);
+		String eD = new java.text.SimpleDateFormat("yyyyMMdd").format(mon2.getTime());
 		System.out.println(sD);
 		System.out.println(eD);
 //		String sD = "20220801";
@@ -207,7 +204,7 @@ public class dbController {
 					sVO.setIntroduction_image3(str[2]);
 					sVO.setIntroduction_image4(str[3]);
 				} catch (Exception e) {
-					// TODO: handle exception
+					e.printStackTrace();
 				}
 //				System.out.println(1);
 				
@@ -372,15 +369,15 @@ public class dbController {
 		mon.add(Calendar.MONTH, -2);
 		String sD = new java.text.SimpleDateFormat("yyyyMMdd").format(mon.getTime());
 //		System.out.println(beforeMonth);
-		Calendar mon2 = Calendar.getInstance();
-		mon.add(Calendar.MONTH, +6);
+//		Calendar mon2 = Calendar.getInstance();
+		mon.add(Calendar.MONTH, +10);
 		String eD = new java.text.SimpleDateFormat("yyyyMMdd").format(mon.getTime());
 		System.out.println(sD);
 		System.out.println(eD);
 //		String sD = "20220801";
 //		String eD = "20220920";
 		// http://www.kopis.or.kr/openApi/restful/pblprfr?service=983f7e00b8104d7aa07995c22ee98fde&cpage=1&rows=9999&stdate=20220826&eddate=20221126
-		StringBuilder urlBuilder = new StringBuilder("http://www.kopis.or.kr/openApi/restful/prfawad"); /* URL */
+		StringBuilder urlBuilder = new StringBuilder("http://www.kopis.or.kr/openApi/restful/prffest"); /* URL */
 		urlBuilder.append(
 				"?" + URLEncoder.encode("service", "UTF-8") + "=983f7e00b8104d7aa07995c22ee98fde"); /* Service Key */
 		urlBuilder.append(
@@ -452,4 +449,106 @@ public class dbController {
 		return "index";
 
 	}
+	@GetMapping("popularInputMain")
+	public String popularInputMain() throws IOException, ParseException {
+		Calendar mon = Calendar.getInstance();
+		mon.add(Calendar.DATE , -1);
+		int co = 0;
+		String dwm = "";
+		for(co=0;co<=2;co++) {
+			if(co==0) {
+				dwm = "day";
+			}else if(co==1) {
+				dwm = "week";
+			}else if(co==2) {
+				dwm = "month";
+			}
+		String sD = new java.text.SimpleDateFormat("yyyyMMdd").format(mon.getTime());
+		System.out.println(sD);
+		StringBuilder urlBuilder = new StringBuilder("http://kopis.or.kr/openApi/restful/boxoffice"); /* URL */
+		urlBuilder.append(
+				"?" + URLEncoder.encode("service", "UTF-8") + "=983f7e00b8104d7aa07995c22ee98fde"); /* Service Key */
+		urlBuilder
+		.append("&" + URLEncoder.encode("ststype", "UTF-8") + "=" + URLEncoder.encode(dwm, "UTF-8")); 
+		urlBuilder.append("&" + URLEncoder.encode("date", "UTF-8") + "=" + URLEncoder.encode(sD, "UTF-8")); /* 종료 */
+		urlBuilder.append(
+				"&" + URLEncoder.encode("area", "UTF-8") + "=" + URLEncoder.encode("11", "UTF-8"));
+
+		URL url = new URL(urlBuilder.toString());
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("Content-type", "application/json");
+//		System.out.println("Response code: " + conn.getResponseCode());
+		BufferedReader rd;
+		if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+			rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		} else {
+			rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		}
+		StringBuilder sb = new StringBuilder();
+		String line;
+		while ((line = rd.readLine()) != null) {
+			sb.append(line);
+		}
+		rd.close();
+		conn.disconnect();
+		String sb2 = sb.toString();
+		System.out.println(sb.toString());
+		String resultString = XML.toJSONObject(sb2).toString();
+		JSONParser parse = new JSONParser();
+		JSONObject jsonObject = (JSONObject) parse.parse(resultString);
+		System.out.println(jsonObject);
+		JSONObject jsonObject2 = (JSONObject) jsonObject.get("boxofs");
+		System.out.println(jsonObject2);
+		JSONArray parse_items = (JSONArray) jsonObject2.get("boxof");
+		System.out.println(parse_items);
+//		
+//		<area>서울</area>
+//	      <prfdtcnt>8</prfdtcnt>
+//	      <nmrs>669</nmrs>
+//	      <prfpd>2016.06.07~2016.07.24</prfpd>
+//	      <cate>연극</cate>
+//	      <prfplcnm>1관</prfplcnm>
+//	      <prfnm>아들</prfnm>
+//	      <rnum>2</rnum>
+//	      <seatcnt>393</seatcnt>
+//	      <poster>http://www.kopis.or.kr/upload/pfmPoster/PF_PF131558_160613_103734.jpg</poster>
+//	      <mt20id>PF131558</mt20id>
+//		
+		showVO sVO;
+//		List<showVO> slist = new ArrayList<showVO>();
+		for (int i = 0; i < parse_items.size(); i++) { // 배열의 길이만큼 반복
+			JSONObject imsi = (JSONObject) parse_items.get(i);
+			sVO = new showVO();
+			sVO.setId((String) imsi.get("mt20id"));
+//			sVO.setName((String) imsi.get("prfnm"));
+//			sVO.setStartdate((String) imsi.get("prfpd"));
+//			sVO.setMainposter((String)"http://www.kopis.or.kr"+imsi.get("poster"));
+//			sVO.setGenre((String) imsi.get("cate"));
+			sVO.setShowRank(Integer.parseInt(String.valueOf(imsi.get("rnum"))));
+			
+			System.out.println(imsi.get("mt20id"));
+//			slist.add(sVO);
+			try {
+				
+			if(co==0) {
+				service.popularInputMain(sVO);
+			}else if(co==1) {
+				service.popularWInputMain(sVO);
+			}else if(co==2) {
+				service.popularMInputMain(sVO);
+			}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println(i);
+//			if (i==20) {
+//				break;
+//			}
+		}
+		}
+		return "index";
+
+	}
+	
 }

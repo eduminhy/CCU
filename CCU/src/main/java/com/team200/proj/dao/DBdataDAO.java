@@ -13,4 +13,7 @@ public interface DBdataDAO {
 	public void inputPlaceData(placeVO pVO);
 	public void inputShowData(showVO sVO);
 	public void inputFestivalData(festivalVO sVO);
+	public void popularInputMain(showVO sVO);
+	public void popularWInputMain(showVO sVO);
+	public void popularMInputMain(showVO sVO);
 }

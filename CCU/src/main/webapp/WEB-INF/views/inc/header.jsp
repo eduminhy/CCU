@@ -8,8 +8,8 @@
 <!-- JQ link -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+	
+<script type="text/javascript"	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <!-- favicon.ico 오류 지우기 & 웹 브라우저 아이콘 설정 -->
 <link rel="shortcut icon" href="#">
 <link rel="stylesheet"
@@ -17,9 +17,6 @@
 <link rel="stylesheet" href="/style/headerfooter.css">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-.asdfqwer {
-	position: relative;
-}
 </style>
 <script>
 	$(function() {
@@ -53,36 +50,22 @@
 			$("#toggleDiv").toggle();
 		});
 		
+		
 	});
+
 </script>
 </head>
-<div class="asdfqwer">
-	<ul>
-		<li><a href="/login">로그인</a></li>
-		<li><a href="/signup">회원가입</a></li>
-		<li><a href="/searchResult">검색결과페이지</a></li>
-		<li><a href="/preferGenre">선호도장르페이지</a></li>
-		<li><a href="/mainMeetingNotice">미팅게시판전체공지(임시)</a></li>
-		<li><a href="/playMeetingList">연극게시판목록페이지(임시)</a></li>
-		<li><a href="/playMeetingForm">연극게시판 글쓰기(임시)</a></li>
-		<li><a href="/playMeetingComment">연극게시판 댓글(임시)</a></li>
-		<li><a href="/faq">고객센터</a></li>
-		<li><a href="/show/showList">연극</a></li>
-		<li><a href="/book/bookSeat">좌석선택</a></li>
-		<li><a href="/book/bookCredit">결제하기</a></li>
-		<li><a href="/book/bookCheck">예약내역확인하기</a></li>
-		<li><a href="/show/showDetail">공연상세보기</a></li>
-
-		<li><a href="/playMeetingList">연극게시판목록페이지(임시)</a></li>
-		<li><a href="/admin">admin</a></li>
-
-		<li><a href="/dBData/showInputMain">DB에 show데이터</a></li>
-		<li><a href="/dBData/palceInputMain">DB에 place데이터</a></li>
-
-	</ul>
-</div>
 <body>
-
+		<div id="topMenu">
+			<c:if test="${logStatus!='Y' }">
+				<a href="/user/login">로그인123</a>
+				<a href="/user/signup">회원가입</a>
+			</c:if>
+			<c:if test="${logStatus=='Y' }">
+				<a href="/user/logout">로그아웃</a>
+				<a href="">mypage</a>
+			</c:if>
+		</div>
 <div class="topUp">
 	<div id="top">
 		<button class="search-btn" type="submit"><i class="fas fa-search" id="searchBtn"></i></button>
@@ -137,47 +120,4 @@
 			</div>
 		</div>
 
-	</div>
-	
-	<div class="asdfqwer">
-		<ul>
-			
-				<li><a href="/user/login">로그인</a></li>
-				<li><a href="/user/signup">회원가입</a></li>
-				<li>${logName }님<a href="/user/logout">로그아웃</a></li>
-				<li><a href="">마이페이지</a></li>
-				<!-- 
-			
-				
-				
-				 -->
-			
-				<li><a href="/searchResult">검색결과페이지</a></li>
-				<li><a href="/preferGenre">선호도장르페이지</a></li>
-				<li><a href="/mainMeetingNotice">미팅게시판전체공지(임시)</a></li>
-				<li><a href="/playMeetingList">연극게시판목록페이지(임시)</a></li>
-				<li><a href="/playMeetingForm">연극게시판 글쓰기(임시)</a></li>
-				<li><a href="/playMeetingComment">연극게시판 댓글(임시)</a></li>
-				<li><a href="/faq">고객센터</a></li>
-				<li><a href="/show/showList">연극</a></li>
-				<li><a href="/book/bookSeat">좌석선택</a></li>
-				<li><a href="/book/bookCredit">결제하기</a></li>
-				<li><a href="/book/bookCheck">예약내역확인하기</a></li>
-				<li><a href="/show/showDetail">공연상세보기</a></li>
-	
-				<li><a href="/playMeetingList">연극게시판목록페이지(임시)</a></li>
-				<li><a href="/sms">sms</a></li>
-		</ul>
-	</div>
-
-		<div id="topMenu">
-			<c:if test="${logStatus!='Y' }">
-				<a href="/user/login">로그인123</a>
-				<a href="/user/signup">회원가입</a>
-			</c:if>
-			<c:if test="${logStatus=='Y' }">
-				<a href="/user/logout">로그아웃</a>
-				<a href="">mypage</a>
-			</c:if>
-		</div>
 
