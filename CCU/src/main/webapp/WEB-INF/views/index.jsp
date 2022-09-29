@@ -80,7 +80,7 @@
 
 					<img src="${R.mainposter }" />
 					 <a href="">
-					  <span class="indexFav_circle">aa</span>
+					  <span class="indexFav_circle">&nbsp;</span>
 					 <span class="indexFav_count" >${R.showRank }</span>
 					 <span class="indexFav_text">
 						 <span class="textcon">

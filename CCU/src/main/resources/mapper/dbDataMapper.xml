@@ -124,4 +124,7 @@ state
 		<insert id="popularMInputMain">
 		insert into popularM( showdb_id, showRank) values ( #{id}, #{showRank})
 	</insert>
+			<insert id="popularChildInputMain">
+		insert into child ( showdb_id, showRank) values ( #{id}, #{showRank})
+	</insert>
 </mapper>
