@@ -241,6 +241,7 @@ function onSignInFailure(t){
 		<a href = "/user/logout">로그아웃</a> 
 		<a href="/faq">고객센터</a>
 		<a href="/board/boardform">게시판</a>
+	<!-- 게시판 -->
 	</div>
 
 	
