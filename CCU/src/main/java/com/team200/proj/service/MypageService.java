@@ -10,7 +10,7 @@ public interface MypageService {
 	public UserVO getMyinfo(String id);
 	public String getImgname(String id);
 	public int profileUpdate(UserVO vo);
-	public int myInfoDel(UserVO vo);
+	public int myInfoEraseOk(String id, String password);
 	public List<BoardVO> myBoardList(String user_id);
 	public int myBoardDel(BoardVO vo);
 	public List<ReplyVO> myReplyList(String user_id);
