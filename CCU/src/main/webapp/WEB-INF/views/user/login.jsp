@@ -30,7 +30,7 @@
 			return true;
 		});
 	});
-
+/*
 	Kakao.init('f2b41f54011f5a39affde978dd2c424f'); //발급받은 키 중 javascript키를 사용해준다.
 	console.log(Kakao.isInitialized()); // sdk초기화여부판단
 	//카카오로그인
@@ -67,6 +67,7 @@
 			Kakao.Auth.setAccessToken(undefined)
 		}
 	}
+	*/
 	//네이버
 	var naverLogin = new naver.LoginWithNaverId(
 		{
@@ -158,9 +159,9 @@
 	<div class="logincontainer">
 		<form method="post" action="/user/loginOk" id="log">
 			<input type="text" placeholder="아이디를 입력해주세요" name="id" id="id">
-			<br /> <input type="password" placeholder="비밀번호를 입력해주세요"
-				name="password" id="password"> <br /> <br /> <input
-				type="submit" value="로그인" class="loginBtn"> <br />
+			<br /> 
+			<input type="password" placeholder="비밀번호를 입력해주세요" name="password" id="password"> <br /> <br /> 
+			<input type="submit" value="로그인" class="loginBtn"> <br />
 			<!-- <input type="button" value="회원가입"  class="signupBtn">  -->
 			<li><a href="/user/signup">회원가입</a></li> <br /> <br /> <br /> <br />
 		</form>

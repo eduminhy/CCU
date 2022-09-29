@@ -36,6 +36,15 @@ public class UserController {
 		return mav;
 		
 	}
+	/*
+	@GetMapping("agreements") 
+	public ModelAndView agreements() {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user/agreements");
+		return mav;
+	} 
+	*/
 	@GetMapping("idCheck") 
 	//아이디 중복검사
 	public ModelAndView idCheck(String id) {
