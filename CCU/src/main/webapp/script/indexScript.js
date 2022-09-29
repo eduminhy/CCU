@@ -62,12 +62,12 @@ $(function() {
 			data: { a: date, b: genre },
 			success: function(data) {
 				console.log(data);
-				var msg = "<div class = 'indexRankSlide'>";
-
+								var msg = "";
+				 msg += "<div class = 'indexRankSlide'>";
 				$.each(data, function(index, i) { // 데이터 =item
-					msg += "<div>";
+					msg += "<span class = 'indexRankSlide2'>";
 					msg += "<span class='indexRank_img2'>";
-					msg += "<div class='indexRank_img'>";
+					msg += "<span class='indexRank_img'>";
 					msg += "<img src=" + i.mainposter + " />";
 					msg += "<a href='" + "/" + "'>";
 					msg += "<span class='indexRank_text'>";
@@ -79,22 +79,21 @@ $(function() {
 					msg += "</span>";
 					msg += "</span>";
 					msg += "</a>";
-					msg += "</div>";
 					msg += "</span>";
-					msg += "</div>";
+					msg += "</span>";
+					msg += "</span>";
 
 
 
 
 				});
 				msg += "</div>";
-				$(".indexRank_post").append(msg);
 				var msg = "";
 				 msg += "<div class = 'indexRankSlide'>";
 				$.each(data, function(index, i) { // 데이터 =item
-					msg += "<div class = 'indexRankSlide2'>";
-					msg += "<div class='indexRank_img2'>";
-					msg += "<div class='indexRank_img'>";
+					msg += "<span class = 'indexRankSlide2'>";
+					msg += "<span class='indexRank_img2'>";
+					msg += "<span class='indexRank_img'>";
 					msg += "<img src=" + i.mainposter + " />";
 					msg += "<a href='" + "/" + "'>";
 					msg += "<span class='indexRank_text'>";
@@ -106,9 +105,38 @@ $(function() {
 					msg += "</span>";
 					msg += "</span>";
 					msg += "</a>";
-					msg += "</div>";
-					msg += "</div>";
-					msg += "</div>";
+					msg += "</span>";
+					msg += "</span>";
+					msg += "</span>";
+
+
+
+
+				});
+				msg += "</div>";
+				
+				msg += "</div>";
+				$(".indexRank_post").append(msg);
+				var msg = "";
+				 msg += "<div class = 'indexRankSlide'>";
+				$.each(data, function(index, i) { // 데이터 =item
+					msg += "<span class = 'indexRankSlide2'>";
+					msg += "<span class='indexRank_img2'>";
+					msg += "<span class='indexRank_img'>";
+					msg += "<img src=" + i.mainposter + " />";
+					msg += "<a href='" + "/" + "'>";
+					msg += "<span class='indexRank_text'>";
+					msg += "<span class='textconRank'>";
+					msg += "<span class='spanRanktxt1'>" + i.genre + "</span>";
+					msg += "<span class='spanRanktxt2'>" + i.name + "</span>";
+					msg += "<span class='spanRanktxt3'>" + i.startdate + "~" + i.enddate + "</span>";
+					msg += "<br />";
+					msg += "</span>";
+					msg += "</span>";
+					msg += "</a>";
+					msg += "</span>";
+					msg += "</span>";
+					msg += "</span>";
 
 
 
