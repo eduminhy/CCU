@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team200.proj.dao.MypageDAO">
+	<select id="getMyinfo" resultType="UserVO">
+		select id, img, nickname, username, tel, zipcode, road_name, addr, self_certification from user where id = #{param1} 
+	</select>
+	<select id="getImgname" resultType="string">
+		select img from user where id = #{param1}
+	</select>
+	<update id="profileUpdate">
+		update user set password=#{password}, img=#{img}, nickname=#{nickname}, road_name=#{road_name}, addr=#{addr} where id = #{id}
+	</update>
+	<delete id="myInfoDel">
+		delete from user where id = #{param1} and password = #{param2}
+	</delete>
+	<select id="myBoardList" resultType="BoardVO">
+		select a.id, a.showdb_id, a.title, date_format(a.writedate, '%Y.%m.%e') writedate, b.genre
+		from board 
+		a join showdb b on a.showdb_id=b.id 
+		where a.user_id = #{param1} order by a.id desc 
+	</select>
+	<delete id="myBoardDel">
+		delete from board
+		<where>
+			<foreach item="item" index="index" collection="noList" open="id in (" separator="," close=")">
+				${item}
+			</foreach>
+		</where>
+	</delete>
+	<select id="myReplyList" resultType="ReplyVO">
+		select a.board_id, a.id, a.content, date_format(a.writedate, '%Y.%m.%e') writedate, c.genre
+        from reply a
+        inner join board b on a.board_id=b.id
+        inner join showdb c on b.showdb_id = c.id
+		where a.user_id = #{param1} order by b.id desc, writedate desc 
+	</select>
+	<delete id="myCommentDel">
+		delete from reply
+		<where>
+			<foreach item="item" index="index" collection="noList" open="id in (" separator="," close=")">
+				${item}
+			</foreach>
+		</where>
+	</delete>
+</mapper> 
