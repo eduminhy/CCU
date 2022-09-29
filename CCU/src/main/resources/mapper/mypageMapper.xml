@@ -12,7 +12,7 @@
 	<update id="profileUpdate">
 		update user set password=#{password}, img=#{img}, nickname=#{nickname}, road_name=#{road_name}, addr=#{addr} where id = #{id}
 	</update>
-	<delete id="myInfoDel">
+	<delete id="myInfoEraseOk">
 		delete from user where id = #{param1} and password = #{param2}
 	</delete>
 	<select id="myBoardList" resultType="BoardVO">

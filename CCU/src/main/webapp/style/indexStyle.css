@@ -219,10 +219,10 @@
 	width:18%;
 }
 
-.indexRank_post img {
-	width: 100%;
-	margin: 0 auto;
-}
+/* .indexRank_post img { */
+/* 	width: 100%; */
+/* 	margin: 0 auto; */
+/* } */
 
 @media ( min-width : 1750px) {
 	.indexRank_post img {
@@ -316,6 +316,9 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+.slick-slide img{
+	display: inline;
 }
 /* Total CSS---------------------------------------- */
 .indexRank_title, .indexRank_menu>div, .indexFes, .indexFes_post>div {
