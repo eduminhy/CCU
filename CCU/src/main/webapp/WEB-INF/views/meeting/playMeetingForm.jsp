@@ -36,7 +36,7 @@
 
 
 	<div class="playMeetingFormContainer">
-		<form method="post" action="" class="playMeetingWritingFrm">
+		<form method="post" action="/meeting/writeOk" class="playMeetingWritingFrm">
 			<fieldset>
 				<table summary="연극미팅글쓰기폼">
 					<tbody>
@@ -48,6 +48,14 @@
 									<option value="selectSubject">-선택-</option>
 									<option value="searchSomeone">모집</option>
 									<option value="lookSomeone">찾아요</option>
+								</select>
+								<select name="playSubject" class="playSubject">
+									<option value="selectSubject">-선택-</option>
+									<option value="genre">연극</option>
+									<option value="genre">뮤지컬</option>
+									<option value="genre">클래식/오페라</option>
+									<option value="genre">아동</option>
+									
 								</select>
 							</td>
 						</tr>

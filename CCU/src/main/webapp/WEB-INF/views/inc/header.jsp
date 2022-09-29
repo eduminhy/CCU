@@ -72,7 +72,7 @@
 </script>
 
 <script>
-
+/*
 Kakao.init('f2b41f54011f5a39affde978dd2c424f'); //발급받은 키 중 javascript키를 사용해준다.
 console.log(Kakao.isInitialized()); // sdk초기화여부판단
 //카카오로그인
@@ -109,6 +109,8 @@ function kakaoLogout() {
 		Kakao.Auth.setAccessToken(undefined)
 	}
 }
+*/
+/*
 //네이버
 var naverLogin = new naver.LoginWithNaverId(
 	{
@@ -156,7 +158,7 @@ var naverLogin = new naver.LoginWithNaverId(
 		
 		
 }
-
+*/
 //구글
 function init() {
 	gapi.load('auth2', function() {

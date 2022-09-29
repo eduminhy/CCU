@@ -61,7 +61,8 @@
 #tab-2:checked ~ .tab label:nth-child(2),
 #tab-3:checked ~ .tab label:nth-child(3),
 #tab-4:checked ~ .tab label:nth-child(4) {
-	background-color: orange;
+	background:black;
+	color:white;
   	box-shadow: none;
 }
 .content > div {
@@ -96,8 +97,9 @@
     -webkit-user-select: none;
 }
 .content {
-  background-color: orange;
+  background:rgb(245,242,250);
   min-height: 250px;
+  border : 1px solid #440099;
 }
 .content > div{
    padding: 30px;

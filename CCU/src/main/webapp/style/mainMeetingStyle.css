@@ -364,6 +364,19 @@
 	}
 	
 	
+	.playMeetingListBtn{
+		margin:1%;
+		padding:10px 20px;
+		float:right;
+		background:#440099;
+		color:white;
+		font-weight:bold;
+		font-size:17px;
+		border-style:none;
+		cursor:pointer;
+	}
+	
+	
 	
 	
 

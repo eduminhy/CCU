@@ -49,7 +49,7 @@
 	        <li >작성일</li>
 	        
 	    <c:forEach var = "vo" items = "${list }">
-			<li>${vo.showdb_id }</li>
+			<li>${vo.genre }</li>
 			<li>${vo.id }</li>
 			<li>${vo.title }</li>
 			<li>${vo.user_id }</li>
@@ -57,6 +57,12 @@
 		</c:forEach>
 	    </ul>
 	</div>
+	<!-- 
+		<div>
+		<input type="button" value="글쓰기" class="playMeetingListBtn" id="modify" onclick="location.href='playMeetingForm'"/>
+	</div>
+	 -->
+	 
 
 
 
@@ -66,6 +72,7 @@
 
 
 
+<!-- 
 	<div class="board-content">
 		<button class="item" id="sub-0" onclick="location.href='mainMeetingNotice'">
 			<div>
@@ -730,7 +737,7 @@
 		
 	</div>	
 
-
+ -->
 
 
 
