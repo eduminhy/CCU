@@ -46,7 +46,6 @@ $(document).ready(
 			dataType: "json",
 			data: { a: date, b: genre },
 			success: function(data) {
-				console.log("통신성공");
 				console.log(data);
 				$.each(data, function(index, i) { // 데이터 =item
 					
