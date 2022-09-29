@@ -18,4 +18,5 @@
 		values(#{id}, #{password}, #{nickname}, #{username}, #{birth}, #{gender}, #{tel},
 				#{zipcode}, #{road_name}, #{addr}, #{agree_to_receive_email}, #{agree_to_receive_msg}, #{route})
 	</insert>
+
 </mapper>

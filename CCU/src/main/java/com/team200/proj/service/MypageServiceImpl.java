@@ -32,8 +32,8 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public int myInfoDel(UserVO vo) {
-		return dao.myInfoDel(vo);
+	public int myInfoEraseOk(String id, String password) {
+		return dao.myInfoEraseOk(id, password);
 	}
 	
 	@Override
@@ -55,6 +55,10 @@ public class MypageServiceImpl implements MypageService {
 	public int myCommentDel(ReplyVO vo) {
 		return dao.myCommentDel(vo);
 	}
+
+	
+
+	
 
 	
 	

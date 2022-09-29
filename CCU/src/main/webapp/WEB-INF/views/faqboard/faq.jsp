@@ -1,9 +1,8 @@
-qna<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/style/faqStyle.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <!DOCTYPE html>
 <html>
@@ -13,20 +12,21 @@ qna<%@ page language="java" contentType="text/html; charset=UTF-8"
 </head>
 
 <body>
-<div class="qnamenu">
-	<h1><img src="../img/logo01.PNG" width=100px; height=100px;></h1>
-	<div id="myTapmenu">
-		<ul>
-			<li><a href="/faq">FAQ</a></li>
-			<li><a href="/qna">Q&A</a></li>
-			<li><a href="">챗봇이용하기</a>
-			<li><a href="">내질문글</a>
-			<li><a href="/terms">이용약관</a></li>
-		</ul>
-	</div>
+
+<img src="../img/chatbot_icon.png" id="chatboticon">
+<div id="cculogo">
+<img src="../img/logo01.PNG" width=100px; height=100px;">
 </div>
 
 
+	<div class="csmenu">
+		<div><a href="/faq">FAQ</a></div>
+		<div><a href="/qna">Q&A</a></div>
+		<div><a href="/chatbot">ChatBot</a></div>
+		<div><a href="/terms">이용약관</a></div>
+	</div>
+
+<div class="faqbox">
 	<div class="faq-content">
 		<button class="question" id="que-1">
 			<span id="que-1-toggle">+</span><span>공연예매 후 언제까지 입금해야
@@ -60,7 +60,8 @@ qna<%@ page language="java" contentType="text/html; charset=UTF-8"
 		</button>
 		<div class="answer" id="ans-4">예약내역 확인시에 가능합니다.</div>
 	</div>
-<img src="../img/chatbot_icon.png" id="chatboticon">
+</div>	
+
 	<script>
   const items = document.querySelectorAll('.question');
 

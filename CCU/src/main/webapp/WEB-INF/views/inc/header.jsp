@@ -73,7 +73,7 @@
 			</c:if>
 			<c:if test="${logStatus=='Y' }">
 				<a href="/user/logout">로그아웃</a>
-				<a href="">mypage</a>
+				<a href="/mypage/myInfo">mypage</a>
 			</c:if>
 		</div>
 <div class="topUp">
