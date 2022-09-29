@@ -240,7 +240,7 @@
 	top: 0px;
 	width: 95%;
 	height: 100%;
-	/* 	height: 305.33px; */
+/* 		height: 305.33px; */
 	margin: 0 auto;
 	border-radius: 9%;
 	position: absolute;
@@ -259,6 +259,7 @@
 .spanRanktxt1 {
 	font-size: 21px;
 	font-weight: bold;
+	/* 		height: 305.33px; */
 }
 
 .spanRanktxt2 {
