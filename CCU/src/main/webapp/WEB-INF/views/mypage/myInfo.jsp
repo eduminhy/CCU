@@ -3,11 +3,6 @@
 <link rel="stylesheet" href="/style/mypage/myInfoStyle.css">
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script>
-$(function(){
-	$("#leave").click(function(){
-		window.open("/mypage/myInfoErase", "leave", "width=400, height:300px");
-	});
-});
 	
 </script>
 
@@ -65,6 +60,6 @@ $(function(){
 		</tr>
 	</table>
 	
-	<input type="button" value="회원탈퇴" class="btn" id="leave"/>
+	<input type="button" value="회원탈퇴" class="btn" id="leave" onclick="location.href='/mypage/myInfoErase'"/>
 	<input type="button" value="수정" class="btn" id="modify" onclick="location.href='myInfoModify'"/>
 </div>
