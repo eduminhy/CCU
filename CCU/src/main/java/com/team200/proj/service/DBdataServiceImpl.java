@@ -49,4 +49,10 @@ public class DBdataServiceImpl implements DBdataService {
 		dao.popularMInputMain(sVO);
 		
 	}
+
+	@Override
+	public void popularChildInputMain(showVO sVO) {
+		dao.popularChildInputMain(sVO);
+		
+	}
 }

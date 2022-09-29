@@ -12,18 +12,19 @@
 
 </head>
 <body>
-<div class="qnamenu">
-	<h1><img src="../img/logo01.PNG" width=100px; height=100px;></h1>
-	<div id="myTapmenu">
-		<ul>
-			<li><a href="/faq">FAQ</a></li>
-			<li><a href="/qna">Q&A</a></li>
-			<li><a href="">챗봇이용하기</a>
-			<li><a href="">내질문글</a>
-			<li><a href="/terms">이용약관</a></li>
-		</ul>
-	</div>
+
+<img src="../img/chatbot_icon.png" id="chatboticon">
+<div id="cculogo">
+<img src="../img/logo01.PNG" width=100px; height=100px;">
 </div>
+
+
+	<div class="csmenu">
+		<div><a href="/faq">FAQ</a></div>
+		<div><a href="/qna">Q&A</a></div>
+		<div><a href="/chatbot">ChatBot</a></div>
+		<div><a href="/terms">이용약관</a></div>
+	</div>
 
 	<div id="container">
 		<ul id="ulTable">

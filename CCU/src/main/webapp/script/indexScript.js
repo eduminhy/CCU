@@ -1,4 +1,4 @@
-////-------------------------------------------------------------------
+//--좌측 따라다니는 배너-------------------------------------------------------------------------------------------
 
 $(function() {
 	var quick_menu = $('#quick');
@@ -17,29 +17,44 @@ $(function() {
 
 });
 
-$(document).ready(
-	function() {
-		//--MontlyRanking 색변경-------------------------------------------------------------------------------------------
-		$(".indexRank_menu>div").click(function() {
-			$(".indexRank_menu>div").css("color", "rgba(59, 0,148)");
-			$(this).css("color", "rgba(255, 81,87)");
-		});
+$(function() {
+	var date = 1;
+	var genre = "연극";
+	monthlyRankingDE();
+	//--인기상활판 마우스 오버시 정보 보이고 어둡게-------------------------------------------------------------------------------------------
+	$('.indexFav_text').hide();
+	$('.indexFav_img').hover(function() {
+		$(this).find(".indexFav_text").show();
+		$(this).find('img').css("filter", "brightness(0.3)");
+		//			$('.indexFav_text').show();
+		//			.css("z-index"," 3")
+	}, function() {
 		$('.indexFav_text').hide();
-		$('.indexFav_img').hover(function() {
-			$(this).find(".indexFav_text").show();
-			$(this).find('img').css("filter", "brightness(0.3)");
-			//			$('.indexFav_text').show();
-			//			.css("z-index"," 3")
-		}, function() {
-			$('.indexFav_text').hide();
-			$('.indexFav_img').find('img').css("filter", "brightness(1)");
-		});
-
+		$('.indexFav_img').find('img').css("filter", "brightness(1)");
 	});
-var date = 1;
-var genre = "연극";
-$(document).ready(
-	function getJSON() {
+	//--MontlyRanking 색변경-------------------------------------------------------------------------------------------
+	$(".indexRank_menu>div:first-child").css("color", "rgba(255, 81,87)");
+	$(".indexRank_menu>div").click(function() {
+		$(".indexRank_menu>div").css("color", "rgba(59, 0,148)");
+		$(this).css("color", "rgba(255, 81,87)");
+		$(".indexRank_post").empty();
+		//			console.log($(this).index());
+		if ($(this).index() == 0) {
+			genre = "연극";
+		} else if ($(this).index() == 1) {
+			genre = "뮤지컬";
+		} else if ($(this).index() == 2) {
+			genre = "클래식";
+		} else if ($(this).index() == 3) {
+			genre = "아동";
+		}
+
+		date = 7;
+		monthlyRankingDE();
+	});
+
+
+	function monthlyRankingDE() {
 		$.ajax({
 			type: "get",
 			url: "/popl",
@@ -47,18 +62,97 @@ $(document).ready(
 			data: { a: date, b: genre },
 			success: function(data) {
 				console.log(data);
+				var msg = "<div class = 'indexRankSlide'>";
+
 				$.each(data, function(index, i) { // 데이터 =item
-					
-					var msg = "";
-					msg += "<div><img src='"+i.mainposter+"' /></div>";
-					$(".indexRank_post").append(msg);
+					msg += "<div>";
+					msg += "<span class='indexRank_img2'>";
+					msg += "<div class='indexRank_img'>";
+					msg += "<img src=" + i.mainposter + " />";
+					msg += "<a href='" + "/" + "'>";
+					msg += "<span class='indexRank_text'>";
+					msg += "<span class='textconRank'>";
+					msg += "<span class='spanRanktxt1'>" + i.genre + "</span>";
+					msg += "<span class='spanRanktxt2'>" + i.name + "</span>";
+					msg += "<span class='spanRanktxt3'>" + i.startdate + "~" + i.enddate + "</span>";
+					msg += "<br />";
+					msg += "</span>";
+					msg += "</span>";
+					msg += "</a>";
+					msg += "</div>";
+					msg += "</span>";
+					msg += "</div>";
+
+
+
+
 				});
+				msg += "</div>";
+				$(".indexRank_post").append(msg);
+				var msg = "";
+				 msg += "<div class = 'indexRankSlide'>";
+				$.each(data, function(index, i) { // 데이터 =item
+					msg += "<div class = 'indexRankSlide2'>";
+					msg += "<div class='indexRank_img2'>";
+					msg += "<div class='indexRank_img'>";
+					msg += "<img src=" + i.mainposter + " />";
+					msg += "<a href='" + "/" + "'>";
+					msg += "<span class='indexRank_text'>";
+					msg += "<span class='textconRank'>";
+					msg += "<span class='spanRanktxt1'>" + i.genre + "</span>";
+					msg += "<span class='spanRanktxt2'>" + i.name + "</span>";
+					msg += "<span class='spanRanktxt3'>" + i.startdate + "~" + i.enddate + "</span>";
+					msg += "<br />";
+					msg += "</span>";
+					msg += "</span>";
+					msg += "</a>";
+					msg += "</div>";
+					msg += "</div>";
+					msg += "</div>";
+
+
+
+
+				});
+				msg += "</div>";
+				$(".indexRank_post").append(msg);
+
+
+				$('.indexRank_post').slick({
+
+		slidesToShow : 1,
+		slidesToScroll : 1,
+		arrows : false,
+		pauseOnHover : true,
+		autoplay : true,
+		autoplaySpeed : 8000,
+
+
+
+				});
+//
+
+				//--인기상활판 마우스 오버시 정보 보이고 어둡게-------------------------------------------------------------------------------------------
+				$('.indexRank_text').hide();
+				$('.indexRank_img').hover(function() {
+					$(this).find(".indexRank_text").show();
+					$(this).find('img').css("filter", "brightness(0.3)");
+					//			$('.indexFav_text').show();
+					//			.css("z-index"," 3")
+				}, function() {
+					$('.indexRank_text').hide();
+					$('.indexRank_img').find('img').css("filter", "brightness(1)");
+				});
+
+
+				//				$(".indexRank_post").append(msg);
 			},
 			error: function() {
-				console.log("통신에러");
+				console.log("error");
 			}
+
+
+
 		})
 	}
-
-);
-
+});

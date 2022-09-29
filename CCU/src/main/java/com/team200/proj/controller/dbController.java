@@ -551,5 +551,93 @@ public class dbController {
 		return "index";
 
 	}
+	@GetMapping("ChildInputMain")
+	public String ChildInputMain() throws IOException, ParseException {
+		Calendar mon = Calendar.getInstance();
+		mon.add(Calendar.DATE , -1);
+		int co = 0;
+//		for(co=0;co<=2;co++) {
+//			if(co==0) {
+////				mon.add(Calendar.MONTH, -1);
+//			}else if(co==1) {
+//				mon.add(Calendar.MONTH, -1);
+//			}else if(co==2) {
+//				mon.add(Calendar.MONTH, -2);
+//			}
+		String sD = new java.text.SimpleDateFormat("yyyyMMdd").format(mon.getTime());
+		System.out.println(sD);
+		StringBuilder urlBuilder = new StringBuilder("http://kopis.or.kr/openApi/restful/boxoffice"); /* URL */
+		urlBuilder.append(
+				"?" + URLEncoder.encode("service", "UTF-8") + "=983f7e00b8104d7aa07995c22ee98fde"); /* Service Key */
+		urlBuilder
+		.append("&" + URLEncoder.encode("ststype", "UTF-8") + "=" + URLEncoder.encode("month", "UTF-8")); 
+		urlBuilder.append("&" + URLEncoder.encode("date", "UTF-8") + "=" + URLEncoder.encode(sD, "UTF-8")); /* 종료 */
+		urlBuilder.append(
+				"&" + URLEncoder.encode("catecode", "UTF-8") + "=" + URLEncoder.encode("KID", "UTF-8"));
+		urlBuilder.append(
+				"&" + URLEncoder.encode("area", "UTF-8") + "=" + URLEncoder.encode("11", "UTF-8"));
+		URL url = new URL(urlBuilder.toString());
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("Content-type", "application/json");
+//		System.out.println("Response code: " + conn.getResponseCode());
+		BufferedReader rd;
+		if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+			rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		} else {
+			rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		}
+		StringBuilder sb = new StringBuilder();
+		String line;
+		while ((line = rd.readLine()) != null) {
+			sb.append(line);
+		}
+		rd.close();
+		conn.disconnect();
+		String sb2 = sb.toString();
+		System.out.println(sb.toString());
+		String resultString = XML.toJSONObject(sb2).toString();
+		JSONParser parse = new JSONParser();
+		JSONObject jsonObject = (JSONObject) parse.parse(resultString);
+		System.out.println(jsonObject);
+		JSONObject jsonObject2 = (JSONObject) jsonObject.get("boxofs");
+		System.out.println(jsonObject2);
+		JSONArray parse_items = (JSONArray) jsonObject2.get("boxof");
+		System.out.println(parse_items);
+//		
+//		<area>서울</area>
+//	      <prfdtcnt>8</prfdtcnt>
+//	      <nmrs>669</nmrs>
+//	      <prfpd>2016.06.07~2016.07.24</prfpd>
+//	      <cate>연극</cate>
+//	      <prfplcnm>1관</prfplcnm>
+//	      <prfnm>아들</prfnm>
+//	      <rnum>2</rnum>
+//	      <seatcnt>393</seatcnt>
+//	      <poster>http://www.kopis.or.kr/upload/pfmPoster/PF_PF131558_160613_103734.jpg</poster>
+//	      <mt20id>PF131558</mt20id>
+//		
+		showVO sVO;
+//		List<showVO> slist = new ArrayList<showVO>();
+		for (int i = 0; i < parse_items.size(); i++) { // 배열의 길이만큼 반복
+			JSONObject imsi = (JSONObject) parse_items.get(i);
+			sVO = new showVO();
+			sVO.setId((String) imsi.get("mt20id"));
+			sVO.setShowRank(Integer.parseInt(String.valueOf(imsi.get("rnum"))));
+			System.out.println(imsi.get("mt20id"));
+			try {
+				service.popularChildInputMain(sVO);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println(i);
+//			if (i==20) {
+//				break;
+//			}
+		}
+		
+		return "index";
+
+	}
 	
 }

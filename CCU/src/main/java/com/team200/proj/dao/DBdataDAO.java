@@ -16,4 +16,6 @@ public interface DBdataDAO {
 	public void popularInputMain(showVO sVO);
 	public void popularWInputMain(showVO sVO);
 	public void popularMInputMain(showVO sVO);
+	public void popularChildInputMain(showVO sVO);
+
 }

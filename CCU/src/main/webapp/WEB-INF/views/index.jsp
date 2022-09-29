@@ -80,7 +80,7 @@
 
 					<img src="${R.mainposter }" />
 					 <a href="">
-					  <span class="indexFav_circle">aa</span>
+					  <span class="indexFav_circle">&nbsp;</span>
 					 <span class="indexFav_count" >${R.showRank }</span>
 					 <span class="indexFav_text">
 						 <span class="textcon">
@@ -109,13 +109,14 @@
 	// 		variableWidth: true,
 
 	});
+
 </script>
 <br />
 <br />
 <div class="indexBody">
 	<br /> <br /> <br />
 	<div class="indexRank">
-		<span class="index_title">- Monthly Ranking -</span>
+		<span class="index_title"><div>- Monthly Ranking -</div><div>- Weekly Ranking -</div><div>- Daily Ranking -</div></span>
 		<div class="indexRank_menu">
 			<div>#연극&nbsp;&nbsp;</div>
 			<div>#뮤지컬&nbsp;&nbsp;</div>
@@ -125,11 +126,11 @@
 		</div>
 		<br />
 		<div class="indexRank_post">
-
 		</div>
 		<br />
 	</div>
 	<br /> <br />
+
 	<%-- 	${fest[0].name} --%>
 	<div class="indexFes">
 		<span class="index_title">- Festival -</span>
@@ -145,4 +146,5 @@
 		</div>
 		<br />
 	</div>
-	<br />​
+	<br />
+​

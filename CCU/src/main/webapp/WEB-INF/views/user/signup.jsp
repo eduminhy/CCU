@@ -117,25 +117,33 @@
 	<ul>	
 		<li><input type="text" name="id" id="id" placeholder="아이디를 입력해주세요"></li>
 		<li><input type="button" value="아이디중복검사" id="idChk"/></li>
-		<li><input type="text" id="idCheckStatus" value="N"/></li> 
+		<br/>
+		<!-- <li><input type="text" id="idCheckStatus" value="N"/></li>   -->
 		<li><input type="text" name="password" id="password" placeholder="비밀번호를 입력해주세요"></li>
 		<li><input type="text" name="password2" id="password2" placeholder="비밀번호를 확인해주세요"></li>
 		<li><input type="text" name="nickname" id="nickname" placeholder="닉네임을 입력해주세요"></li>
 		<li><input type="text" name="username" id="username" placeholder="이름을 입력해주세요"></li>
 		<li><input type="text" name="birth" id="birth" placeholder="생년월일을 입력해주세요 (8자리) EX:19990101"></li>
-		<li><input type="text" name="gender" id="gender" placeholder="성별을 기입해주세요 M / F"></li>
-		<!--	<li><label><input name="sex" type="radio" checked value="male">남</label></li>	-->
-		<!--    <li><input id="female" name="sex" type="radio" value="female"><label for="female">여</label></li> -->
+		<li><input type="radio" name="gender" value="M" checked>남성
+		<input type="radio" name="gender" value="F" checked>여성</li>
 		<li><input type="text" name="tel1" id="tel1" class="tel" placeholder="연락처"> -
 			<input type="text" name="tel2" id="tel2" class="tel" placeholder="연락처"> -
 			<input type="text" name="tel3" id="tel3" class="tel" placeholder="연락처"></li> 
+		<br/>
+		<br/>
 		<li><button type="button" onclick="execPostCode();" class="zipcodebtn">우편번호 찾기</button></li>
+		<br/>
 		<li><input type="text" name="zipcode" id="addr1" readonly="readonly"  placeholder="우편번호"></li>
 		<li><input type="text" name="road_name" id="addr2"  readonly="readonly" placeholder="도로명 주소"  /> </li>
 		<li><input type="text" name="addr" id="addr3" placeholder="상세주소를 입력해주세요"></li>
-		
-		<li><input type="text" name="rcvmail" id="rcvemail" placeholder="광고 및 이벤트성 메일 수신동의 여부 '1'or'2'"></li>
-		<li><input type="text" name="rcvmsg" id="rcvmsg" placeholder="광고 및 이벤트성 문자 수신동의 여부 '1'or'2'"></li>
+		<span>광고 및 이벤트성 '이메일' 수신동의 여부</span>
+		<li><input type="radio" name="rcvmail" value="0" checked>동의함
+		<input type="radio" name="rcvmail" value="1" checked>동의하지않음</li>
+		<br/>
+		<span>광고 및 이벤트성 '문자' 수신동의 여부</span>
+		<li><input type="radio" name="rcvmsg" value="0" checked>동의함
+		<input type="radio" name="rcvmsg" value="1" checked>동의하지않음</li>
+		<br/>
 		<li><input type="text" name="route" id="route" placeholder= "가입경로를 입력해주세요"></li>
 		
 		<li><input type="submit" value="회원가입" class="signupbtn"></li>
