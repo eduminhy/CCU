@@ -1,6 +1,9 @@
 package com.team200.proj.vo;
 
 
+import java.util.List;
+
+
 //18개
 public class UserVO {
 	private String id;
@@ -26,6 +29,9 @@ public class UserVO {
 	private String route;
 	private int self_certification;
 	private String self_certification_num;
+	
+	private List<String> delImg;
+	
 	public String getId() {
 		return id;
 	}
@@ -155,6 +161,12 @@ public class UserVO {
 	}
 	public void setSelf_certification_num(String self_certification_num) {
 		this.self_certification_num = self_certification_num;
+	}
+	public List<String> getDelImg() {
+		return delImg;
+	}
+	public void setDelImg(List<String> delImg) {
+		this.delImg = delImg;
 	}
 	
 	
