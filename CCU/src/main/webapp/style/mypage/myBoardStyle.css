@@ -19,10 +19,11 @@ h1{color:rgb(68,0,153); margin:50px;}
 
 #boardFrm a{color:black;}
 .board li{float:left; height:50px; line-height:50px; border-bottom:1px solid #ddd;}
-.board li:nth-child(4n+1){width:5%;}
-.board li:nth-child(4n+2){width:20%;}
-.board li:nth-child(4n+3){width:55%;}
-.board li:nth-child(4n+4){width:20%;}
+.board li:nth-child(5n+1){width:5%;}
+.board li:nth-child(5n+2){width:5%;}
+.board li:nth-child(5n+3){width:15%;}
+.board li:nth-child(5n+4){width:55%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.board li:nth-child(5n+5){width:20%;}
 
 #boardList>li:first-child>ul>li{margin-top:50px; background-color:#E0E0E0; font-weight:bold; border-top:2px solid #7F7F7F;}
 #boardList>li:last-child>ul>li{border-bottom:2px solid #7F7F7F;}
