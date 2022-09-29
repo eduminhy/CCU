@@ -67,7 +67,8 @@
 	// 	 <span class="festname">
 	// 						${R.name }<span><br /> <span>${R.startdate }<span><span>${R.genre }<span>
 </script>
-			<br />			<br />
+<br />
+<br />
 <div class="indexFav">
 	<div>
 		<h1 class="indexFav_title">- 인기상황판 -</h1>
@@ -75,23 +76,19 @@
 	<div class="indexFav_post">
 		<c:forEach var="R" items="${popl}">
 			<div>
-			<div class="indexFav_img2">
-				<div class="indexFav_img">
+				<div class="indexFav_img2">
+					<div class="indexFav_img">
 
-					<img src="${R.mainposter }" />
-					 <a href="">
-					  <span class="indexFav_circle">&nbsp;</span>
-					 <span class="indexFav_count" >${R.showRank }</span>
-					 <span class="indexFav_text">
-						 <span class="textcon">
-						 	<span class="spantxt1">${R.genre }</span>
-						 	<span class="spantxt2">${R.name }</span>
-							<span class="spantxt3">${R.startdate }~${R.enddate }</span>
-							<br />
+						<img src="${R.mainposter }" /> <a href=""> <span
+							class="indexFav_circle">&nbsp;</span> <span
+							class="indexFav_count">${R.showRank }</span> <span
+							class="indexFav_text"> <span class="textcon"> <span
+									class="spantxt1">${R.genre }</span> <span class="spantxt2">${R.name }</span>
+									<span class="spantxt3">${R.startdate }~${R.enddate }</span> <br />
+							</span>
 						</span>
-					</span>
-					</a>
-				</div>
+						</a>
+					</div>
 				</div>
 			</div>
 		</c:forEach>
@@ -106,27 +103,34 @@
 		pauseOnHover : true,
 		autoplay : true,
 		autoplaySpeed : 8000,
-	// 		variableWidth: true,
 
 	});
-
 </script>
 <br />
 <br />
 <div class="indexBody">
 	<br /> <br /> <br />
 	<div class="indexRank">
-		<span class="index_title"><div>- Monthly Ranking -</div><div>- Weekly Ranking -</div><div>- Daily Ranking -</div></span>
+		<div class="index_title">
+			<div>- Monthly Ranking -</div>
+			<div>- Weekly Ranking -</div>
+			<div>- Daily Ranking -</div>
+		</div>
+		<script>
+	$('.index_title').slick({
+		arrows : false,
+		dots : true,
+	});
+</script>
 		<div class="indexRank_menu">
 			<div>#연극&nbsp;&nbsp;</div>
 			<div>#뮤지컬&nbsp;&nbsp;</div>
 			<div>#클래식/오페라&nbsp;&nbsp;</div>
 			<div>#아동&nbsp;&nbsp;</div>
-<!-- 			<div>#관람객참여</div> -->
+			<!-- 			<div>#관람객참여</div> -->
 		</div>
 		<br />
-		<div class="indexRank_post">
-		</div>
+		<div class="indexRank_post"></div>
 		<br />
 	</div>
 	<br /> <br />
@@ -147,4 +151,3 @@
 		<br />
 	</div>
 	<br />
-​
