@@ -18,7 +18,7 @@ $(function() {
 });
 
 $(function() {
-	var date = 1;
+	var date = 30;
 	var genre = "연극";
 	monthlyRankingDE();
 	//--인기상활판 마우스 오버시 정보 보이고 어둡게-------------------------------------------------------------------------------------------
@@ -32,6 +32,20 @@ $(function() {
 		$('.indexFav_text').hide();
 		$('.indexFav_img').find('img').css("filter", "brightness(1)");
 	});
+
+	$('.index_title').on('afterChange ', function(event, slick, currentSlide, nextSlide) {
+		$(".indexRank_post").empty();
+		//		console.log($(this).slick('slickCurrentSlide'));
+		if ($(this).slick('slickCurrentSlide') == 0) {
+			date = 30;
+		} else if ($(this).slick('slickCurrentSlide') == 1) {
+			date = 7;
+		} else if ($(this).slick('slickCurrentSlide') == 2) {
+			date = 1;
+		}
+		monthlyRankingDE();
+
+	})
 	//--MontlyRanking 색변경-------------------------------------------------------------------------------------------
 	$(".indexRank_menu>div:first-child").css("color", "rgba(255, 81,87)");
 	$(".indexRank_menu>div").click(function() {
@@ -49,7 +63,6 @@ $(function() {
 			genre = "아동";
 		}
 
-		date = 7;
 		monthlyRankingDE();
 	});
 
@@ -62,38 +75,9 @@ $(function() {
 			data: { a: date, b: genre },
 			success: function(data) {
 				console.log(data);
-				var msg = "<div class = 'indexRankSlide'>";
-
-				$.each(data, function(index, i) { // 데이터 =item
-					msg += "<div>";
-					msg += "<span class='indexRank_img2'>";
-					msg += "<div class='indexRank_img'>";
-					msg += "<img src=" + i.mainposter + " />";
-					msg += "<a href='" + "/" + "'>";
-					msg += "<span class='indexRank_text'>";
-					msg += "<span class='textconRank'>";
-					msg += "<span class='spanRanktxt1'>" + i.genre + "</span>";
-					msg += "<span class='spanRanktxt2'>" + i.name + "</span>";
-					msg += "<span class='spanRanktxt3'>" + i.startdate + "~" + i.enddate + "</span>";
-					msg += "<br />";
-					msg += "</span>";
-					msg += "</span>";
-					msg += "</a>";
-					msg += "</div>";
-					msg += "</span>";
-					msg += "</div>";
-
-
-
-
-				});
-				msg += "</div>";
-				$(".indexRank_post").append(msg);
 				var msg = "";
-				 msg += "<div class = 'indexRankSlide'>";
+
 				$.each(data, function(index, i) { // 데이터 =item
-					msg += "<div class = 'indexRankSlide2'>";
-					msg += "<div class='indexRank_img2'>";
 					msg += "<div class='indexRank_img'>";
 					msg += "<img src=" + i.mainposter + " />";
 					msg += "<a href='" + "/" + "'>";
@@ -107,30 +91,10 @@ $(function() {
 					msg += "</span>";
 					msg += "</a>";
 					msg += "</div>";
-					msg += "</div>";
-					msg += "</div>";
-
-
-
-
 				});
-				msg += "</div>";
 				$(".indexRank_post").append(msg);
 
-
-				$('.indexRank_post').slick({
-
-		slidesToShow : 1,
-		slidesToScroll : 1,
-		arrows : false,
-		pauseOnHover : true,
-		autoplay : true,
-		autoplaySpeed : 8000,
-
-
-
-				});
-//
+				//
 
 				//--인기상활판 마우스 오버시 정보 보이고 어둡게-------------------------------------------------------------------------------------------
 				$('.indexRank_text').hide();
