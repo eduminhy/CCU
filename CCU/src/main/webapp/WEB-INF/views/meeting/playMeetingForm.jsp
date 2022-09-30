@@ -9,30 +9,31 @@
 <script src="//cdn.ckeditor.com/4.19.1/full/ckeditor.js"></script>
 
 <script>
-	$(function(){
-		CKEDITOR.replace("writeContent",{width:'100%', height:'300px'}); // CKEDITOR 크기 조절
+//에러나서 주석처리 해두었습니다..
+// 	$(function(){
+// 		CKEDITOR.replace("#content",{width:'100%', height:'300px'}); // CKEDITOR 크기 조절
 		
-		$("#writeSubject").submit(function(){
-			if($("#playSubject").val()==""){
-				alert("제목을 입력하세요!");
-				return false;
-			}
-			if(CKEDITOR.instances.content.getData()==""){
-				alert("글내용을 입력하세요!");
-				return false;
-			}
-			return true;
-		});
-	});
+// 		$("#writeSubject").submit(function(){
+// 			if($("#playSubject").val()==""){
+// 				alert("제목을 입력하세요!");
+// 				return false;
+// 			}
+// 			if(CKEDITOR.instances.content.getData()==""){
+// 				alert("글내용을 입력하세요!");
+// 				return false;
+// 			}
+// 			return true;
+// 		});
+// 	});
 	
 	$(function(){
-		
+		console.log(12);
 		$("#showSearchBtn").click(function(){
 		console.log(1);
 			window.open("/meeting/showSearchOk", "name", "width=500, height=400");
 		
 		});
-
+	});
 </script>
 </head>
 <body>

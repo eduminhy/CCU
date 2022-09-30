@@ -33,6 +33,7 @@ public class ShowServiceImpl implements ShowService {
   	public showVO showDetail(String show_id) {
 		// TODO Auto-generated method stub
 		return dao.showDetail(show_id);
+  	}
 
 
 	

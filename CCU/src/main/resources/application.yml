@@ -23,14 +23,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1/Team200?characterEncoding=utf-8
     username: root
-
-<<<<<<< HEAD
-=======
-
-
-    password: root1234
->>>>>>> 733af5d1abaa19fc35c44ea2a69c29342c540a78
-
     password: akflfls8dfh115!
 
 

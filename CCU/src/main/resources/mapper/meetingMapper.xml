@@ -6,7 +6,7 @@
 <mapper namespace="com.team200.proj.dao.MeetingDAO">
 
 	<select id="showSearch" resultType="showVO">
-	 select id, name from showdb where id= name='%${param1}%' order by name desc;
+	 select id, name from showdb where name like '%${param1}%' order by name desc;
 	</select>
 
     <select id="mainMeeting" resultType="MeetingVO">
