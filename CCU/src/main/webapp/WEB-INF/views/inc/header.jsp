@@ -110,19 +110,19 @@
 			<!-- 탭메뉴 -->
 			<div id="tapmenu">
 				<ul>
-					<li><a href="#">전체</a></li>
+					<li><a href="/show/showList?genre=전체">전체</a></li>
 				</ul>
 				<ul>
-					<li><a href="/show/showList">연극</a></li>
+					<li><a href="/show/showList?genre=연극">연극</a></li>
 				</ul>
 				<ul>
-					<li><a href="#">뮤지컬</a></li>
+					<li><a href="/show/showList?genre=뮤지컬">뮤지컬</a></li>
 				</ul>
 				<ul>
-					<li><a href="#">클래식/오페라</a></li>
+					<li><a href="/show/showList?genre=클래식&오페라">클래식/오페라</a></li>
 				</ul>
 				<ul>
-					<li><a href="#">아동</a></li>
+					<li><a href="/show/showList?genre=아동">아동</a></li>
 				</ul>
 				<ul>
 					<li><a href="/meeting/mainMeeting">같이갈래요?</a></li>

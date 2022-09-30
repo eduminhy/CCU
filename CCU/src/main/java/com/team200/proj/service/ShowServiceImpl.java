@@ -20,13 +20,13 @@ public class ShowServiceImpl implements ShowService {
 	}
 
 	@Override
-	public int getShowNum() {
-		return dao.getShowNum();
+	public List<showVO> getNewList(String genre) {
+		return dao.getNewList(genre);
 	}
 
 	@Override
-	public List<String> getShowGenre() {
-		return dao.getShowGenre();
+	public List<showVO> WeeklyRankingList(String genre) {
+		return dao.WeeklyRankingList(genre);
 	}
 
 	

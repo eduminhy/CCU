@@ -9,7 +9,7 @@
 	#hot li:nth-child(2), #new li:nth-child(2){font-weight:bold; margin-top:15px;}
 	#hot li:last-child{margin-bottom:80px;}
 	#new li:last-child{margin-bottom:100px;}
-	#hot img, #new img{width:200px; margin:0 20px;}
+	#hot img, #new img{width:200px; height:250px; margin:0 20px;}
 	
 	#rank{width:30%; border:3px solid rgb(68,0,153); border-radius: 10px; background:rgb(245,242,250); text-align:center; margin:20px; padding:0 20px 40px 20px;}
 	#playBoard{width:70%; border:3px solid rgb(68,0,153); border-radius: 10px; background:rgb(245,242,250); text-align:center; margin:20px; padding:0 20px 40px 20px;}
@@ -19,8 +19,8 @@
 	#playBoard li:first-child, #playBoard li:nth-child(2), #playBoard li:nth-child(3){border-top:1px solid rgb(208,206,213);}
 	#playBoard>h2>a{color:rgb(68,0,153);}
 	
-	#rank li:nth-child(2n+1){width:25%; text-align:right;}
-	#rank li:nth-child(2n+2){width:75%; text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+	#rank li:nth-child(2n+1){width:20%; text-align:right;}
+	#rank li:nth-child(2n+2){width:80%; text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 	#rank a{color:black;}
 	#rank a:hover{font-weight:bold;}
 	

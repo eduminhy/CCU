@@ -11,6 +11,6 @@ import com.team200.proj.vo.showVO;
 @Repository
 public interface ShowDAO {
 	public List<showVO> getShowList(String genre);
-	public int getShowNum();
-	public List<String> getShowGenre();
+	public List<showVO> getNewList(String genre);
+	public List<showVO> WeeklyRankingList(String genre);
 }
