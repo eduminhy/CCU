@@ -5,6 +5,25 @@
 
 <!-- dao뒤에 사용할DAO명을 입력해야함 ex)boardDAO -->
 <mapper namespace="com.team200.proj.dao.ShowDAO">
+
+	<select id="getShowList" resultType="showVO">
+		select 
+		a.name, a.place_name, date_format(a.startdate, '%Y.%m.%d')startdate, 
+		date_format(a.enddate, '%Y.%m.%d')enddate, a.genre, a.mainposter, 
+		<if test="param1=='아동'">
+			c.showRank from showdb as a inner join child as c on a.id=c.showdb_id
+			where a.state='공연중' order by c.showRank asc limit 0,10
+		</if>
+		<if test="param1!='아동'">
+			b.showRank from showdb as a inner join popular as b on a.id=b.showdb_id
+			<if test="param1=='전체'"></if>
+			<if test="param1=='연극'">where genre=#{param1} </if>
+			<if test="param1=='뮤지컬'">where genre=#{param1} </if>
+			<if test="param1=='클래식'">where (genre='클래식' or genre='오페라') </if>
+			order by b.showRank asc limit 0,10
+		</if>
+		
+
 	<select id="showDetail" resultType="showVO">
 		select id,
 name,
@@ -36,17 +55,43 @@ introduction_image4
  from showdb where id=#{param1};
 	</select>
 
-	<select id="getShowList" resultType="showVO" parameterType="string">
-		select name, place_name, date_format(startdate, '%Y.%m.%e')startdate, date_format(enddate, '%Y.%m.%e')enddate, genre, openrun, mainposter
-		from showdb
-		where genre=#{param1}
+	<select id="WeeklyRankingList" resultType="showVO">
+		<if test="param1=='아동'">
+		select a.name, c.showRank from showdb as a inner join child as c on a.id=c.showdb_id
+		where state='공연중'
+		order by c.showRank asc limit 0,5
+		</if>
+		<if test="param1!='아동'">
+		select a.name, b.showRank from showdb as a inner join popularW as b on a.id=b.showdb_id
+			<if test="param1=='전체'"></if> 
+			<if test="param1=='연극'">where genre=#{param1}</if>
+			<if test="param1=='뮤지컬'">where genre=#{param1}</if>
+			<if test="param1=='클래식'">where (genre='클래식' or a.genre='오페라') </if>
+		order by b.showRank asc limit 0,5   
+		</if>
 	</select>
-	<select id="getShowNum" resultType="int">
-		select count(DISTINCT genre) from showdb
+	<select id="getNewList" resultType="showVO"> 
+		<if test="param1=='아동'">
+			select
+			a.name, a.place_name, date_format(a.startdate, '%Y.%m.%d')startdate, 
+			date_format(a.enddate, '%Y.%m.%d')enddate, a.genre, a.mainposter
+			from showdb as a inner join child as c on a.id=c.showdb_id
+			where a.state='공연중' and
+			a.startdate between subdate(now(), interval 30 DAY) and date_format(now(), '%Y.%m.%d')   
+			order by a.startdate desc limit 0,5
+		</if>
+		<if test="param1!='아동'">
+			select
+			name, place_name, date_format(startdate, '%Y.%m.%d')startdate, 
+			date_format(enddate, '%Y.%m.%d')enddate, genre, mainposter
+			from showdb
+			<if test="param1=='전체'">where </if> 
+			<if test="param1=='연극'">where genre=#{param1} and </if>
+			<if test="param1=='뮤지컬'">where genre=#{param1} and </if>
+			<if test="param1=='클래식'">where (genre='클래식' or genre='오페라') and </if> 
+			state='공연중' and startdate between subdate(now(), interval 7 DAY) and date_format(now(), '%Y.%m.%d') 
+	        order by startdate desc limit 0,5
+	    </if>
+	        
 	</select>
-	<select id="getShowGenre" resultType="string">
-		select DISTINCT genre from showdb
-	</select>
-
 </mapper>
-
