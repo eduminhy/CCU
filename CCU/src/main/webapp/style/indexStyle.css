@@ -217,6 +217,7 @@
 }
 .indexRank_post>div {
 	width:18%;
+	display: flex;
 }
 
 /* .indexRank_post img { */
@@ -233,9 +234,13 @@
 	margin: 0 auto;
 	position: relative;
 	overflow: hidden;
-	width: 95%;
+	width:18%;
+	display: flex;
 }
-
+.indexRank_post img{
+	width:100%;
+	height:auto;
+}
 .indexRank_text {
 	left: 0px;
 	top: -30px;
@@ -307,7 +312,7 @@
 }
 
 .indexFes_post img {
-	height: 100%;
+	width: 100%;
 }
 
 .festname {
