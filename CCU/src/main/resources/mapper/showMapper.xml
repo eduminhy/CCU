@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team200.proj.dao.ShowDAO">
+	<select id="getShowList" resultType="showVO" parameterType="string">
+		select name, place_name, date_format(startdate, '%Y.%m.%e')startdate, date_format(enddate, '%Y.%m.%e')enddate, genre, openrun, mainposter
+		from showdb
+		where genre=#{param1}
+	</select>
+	<select id="getShowNum" resultType="int">
+		select count(DISTINCT genre) from showdb
+	</select>
+	<select id="getShowGenre" resultType="string">
+		select DISTINCT genre from showdb
+	</select>
+
+</mapper>
