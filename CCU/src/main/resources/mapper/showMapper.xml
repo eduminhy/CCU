@@ -22,37 +22,37 @@
 			<if test="param1=='클래식'">where (genre='클래식' or genre='오페라') </if>
 			order by b.showRank asc limit 0,10
 		</if>
-		
+	</select>	
 
 	<select id="showDetail" resultType="showVO">
 		select id,
-name,
-
-startdate,
-enddate,
-place_name,
-
-performer,
-producer,
-open_time,
-runtime,
-
-minimum_age,
-production_company_name,
-price,
-mainposter,
-introduction_txt,
-
-genre,
-state,
-openrun,
-
-introduction_image1,
-introduction_image2,
-introduction_image3,
-introduction_image4
-
- from showdb where id=#{param1};
+		name,
+		
+		startdate,
+		enddate,
+		place_name,
+		
+		performer,
+		producer,
+		open_time,
+		runtime,
+		
+		minimum_age,
+		production_company_name,
+		price,
+		mainposter,
+		introduction_txt,
+		
+		genre,
+		state,
+		openrun,
+		
+		introduction_image1,
+		introduction_image2,
+		introduction_image3,
+		introduction_image4
+		
+		 from showdb where id=#{param1};
 	</select>
 
 	<select id="WeeklyRankingList" resultType="showVO">
@@ -94,4 +94,5 @@ introduction_image4
 	    </if>
 	        
 	</select>
+
 </mapper>
