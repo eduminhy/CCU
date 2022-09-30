@@ -1,5 +1,8 @@
 package com.team200.proj.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.team200.proj.service.MeetingService;
 import com.team200.proj.vo.MeetingVO;
+import com.team200.proj.vo.showVO;
 
 @Slf4j
 @RestController
@@ -19,6 +23,7 @@ import com.team200.proj.vo.MeetingVO;
 public class meetingController {
 	@Inject
 	MeetingService service;
+	
 	
 	//dong
 	@RequestMapping(value = "mainMeeting", method = RequestMethod.GET)
@@ -85,6 +90,7 @@ public class meetingController {
 	*/
 
 	//dong
+	
 	// ---------------------------------------------------------------------------------
 	@RequestMapping(value = "meeting/meetingWrite", method = RequestMethod.POST)
 	public ModelAndView mettingWrite(MeetingVO vo, HttpServletRequest request) {
@@ -102,6 +108,27 @@ public class meetingController {
 		} else {
 			mav.setViewName("meeting/playmeetingForm");
 		}
+		return mav;
+	}
+	@GetMapping("showSearch")
+	public ModelAndView showSearch(String name) {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		
+		 List<showVO> list = service.showSearch(name);
+		
+		
+		mav.addObject("showList", list);
+		
+		mav.setViewName("meeting/showSearch");
+		return mav;
+	}
+	@GetMapping("showSearchOk")
+	public ModelAndView showSearchOk() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("meeting/showSearchOk");
 		return mav;
 	}
 
