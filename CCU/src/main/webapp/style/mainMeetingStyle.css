@@ -1,4 +1,17 @@
 @charset "UTF-8";
+
+	.meetingwirteBtn{
+		margin:1%;
+		padding:10px 20px;
+		float:right;
+		background:#440099;
+		color:white;
+		font-weight:bold;
+		font-size:17px;
+		border-style:none;
+		cursor:pointer;
+	}
+	
 	.meetingMainTopContainer{
 		/*margin-top:1%;*/
 		border:5px solid #440099;
