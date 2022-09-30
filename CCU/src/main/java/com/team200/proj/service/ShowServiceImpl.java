@@ -2,28 +2,37 @@ package com.team200.proj.service;
 
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
-
-
 
 import com.team200.proj.dao.ShowDAO;
 import com.team200.proj.vo.showVO;
 
-
 @Service
 public class ShowServiceImpl implements ShowService {
-	@Autowired
+	@Inject
 	ShowDAO dao;
 
 	@Override
-	public showVO showDetail(String show_id) {
-		// TODO Auto-generated method stub
-		return dao.showDetail(show_id);
+	public List<showVO> getShowList(String genre) {
+		return dao.getShowList(genre);
 	}
 
+	@Override
+	public int getShowNum() {
+		return dao.getShowNum();
+	}
 
-
+	@Override
+	public List<String> getShowGenre() {
+		return dao.getShowGenre();
+	}
+  	public showVO showDetail(String show_id) {
+		// TODO Auto-generated method stub
+		return dao.showDetail(show_id);
 
 
 	
