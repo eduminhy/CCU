@@ -1,0 +1,19 @@
+@charset "UTF-8";
+	body{margin:0; padding:0;}
+	.container{width:1200px; overflow:auto; margin:0 auto; text-align:center;}
+	#eraseFrm{padding:60px;}
+	#eraseTitle{
+		color:#440099; font-size:40px; font-weight:bold;
+	}
+	#warn{color:red; font-weight:bold;}
+	#password{
+		height:40px; line-height:40px; width:300px;
+		border:none; background-color:lavender; font-size:17px;
+	}
+	#password:focus{outline:none;}
+	#eraseBtn{
+		height:40px; width:90px; margin:10px 5px 80px 15px;
+		border:none; background-color:#440099; color:#fff;
+		font-weight:bold; font-size:17px; 
+		cursor:pointer;
+	}

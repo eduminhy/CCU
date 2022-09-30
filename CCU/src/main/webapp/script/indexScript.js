@@ -18,9 +18,9 @@ $(function() {
 });
 
 $(function() {
-		var date = 1;
+	var date = 30;
 	var genre = "연극";
-monthlyRankingDE();
+	monthlyRankingDE();
 	//--인기상활판 마우스 오버시 정보 보이고 어둡게-------------------------------------------------------------------------------------------
 	$('.indexFav_text').hide();
 	$('.indexFav_img').hover(function() {
@@ -32,6 +32,20 @@ monthlyRankingDE();
 		$('.indexFav_text').hide();
 		$('.indexFav_img').find('img').css("filter", "brightness(1)");
 	});
+
+	$('.index_title').on('afterChange ', function(event, slick, currentSlide, nextSlide) {
+		$(".indexRank_post").empty();
+		//		console.log($(this).slick('slickCurrentSlide'));
+		if ($(this).slick('slickCurrentSlide') == 0) {
+			date = 30;
+		} else if ($(this).slick('slickCurrentSlide') == 1) {
+			date = 7;
+		} else if ($(this).slick('slickCurrentSlide') == 2) {
+			date = 1;
+		}
+		monthlyRankingDE();
+
+	})
 	//--MontlyRanking 색변경-------------------------------------------------------------------------------------------
 	$(".indexRank_menu>div:first-child").css("color", "rgba(255, 81,87)");
 	$(".indexRank_menu>div").click(function() {
@@ -49,7 +63,6 @@ monthlyRankingDE();
 			genre = "아동";
 		}
 
-		date = 7;
 		monthlyRankingDE();
 	});
 
@@ -62,11 +75,13 @@ monthlyRankingDE();
 			data: { a: date, b: genre },
 			success: function(data) {
 				console.log(data);
+
+				var msg = "";
+
 				$.each(data, function(index, i) { // 데이터 =item
-					var msg = "";
-					msg += "<div>";
-					msg += "<div class='indexRank_img2'>";
+
 					msg += "<div class='indexRank_img'>";
+
 					msg += "<img src=" + i.mainposter + " />";
 					msg += "<a href='" + "/" + "'>";
 					msg += "<span class='indexRank_text'>";
@@ -78,27 +93,33 @@ monthlyRankingDE();
 					msg += "</span>";
 					msg += "</span>";
 					msg += "</a>";
-					msg += "</div>";
-					msg += "</div>";
-					msg += "</div>";
-					$(".indexRank_post").append(msg);
 
-					//--인기상활판 마우스 오버시 정보 보이고 어둡게-------------------------------------------------------------------------------------------
-					$('.indexRank_text').hide();
-					$('.indexRank_img').hover(function() {
-						$(this).find(".indexRank_text").show();
-						$(this).find('img').css("filter", "brightness(0.3)");
-						//			$('.indexFav_text').show();
-						//			.css("z-index"," 3")
-					}, function() {
-						$('.indexRank_text').hide();
-						$('.indexRank_img').find('img').css("filter", "brightness(1)");
-					});
+					msg += "</div>";
+
 				});
+				$(".indexRank_post").append(msg);
+
+				//
+
+				//--인기상활판 마우스 오버시 정보 보이고 어둡게-------------------------------------------------------------------------------------------
+				$('.indexRank_text').hide();
+				$('.indexRank_img').hover(function() {
+					$(this).find(".indexRank_text").show();
+					$(this).find('img').css("filter", "brightness(0.3)");
+					//			$('.indexFav_text').show();
+					//			.css("z-index"," 3")
+				}, function() {
+					$('.indexRank_text').hide();
+					$('.indexRank_img').find('img').css("filter", "brightness(1)");
+				});
+
+
+				//				$(".indexRank_post").append(msg);
 			},
 			error: function() {
 				console.log("error");
 			}
+
 
 
 		})
