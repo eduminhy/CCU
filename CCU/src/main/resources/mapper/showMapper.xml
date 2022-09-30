@@ -2,7 +2,10 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao뒤에 사용할DAO명을 입력해야함 ex)boardDAO -->
 <mapper namespace="com.team200.proj.dao.ShowDAO">
+
 	<select id="getShowList" resultType="showVO">
 		select 
 		a.name, a.place_name, date_format(a.startdate, '%Y.%m.%d')startdate, 
@@ -20,7 +23,38 @@
 			order by b.showRank asc limit 0,10
 		</if>
 		
+
+	<select id="showDetail" resultType="showVO">
+		select id,
+name,
+
+startdate,
+enddate,
+place_name,
+
+performer,
+producer,
+open_time,
+runtime,
+
+minimum_age,
+production_company_name,
+price,
+mainposter,
+introduction_txt,
+
+genre,
+state,
+openrun,
+
+introduction_image1,
+introduction_image2,
+introduction_image3,
+introduction_image4
+
+ from showdb where id=#{param1};
 	</select>
+
 	<select id="WeeklyRankingList" resultType="showVO">
 		<if test="param1=='아동'">
 		select a.name, c.showRank from showdb as a inner join child as c on a.id=c.showdb_id

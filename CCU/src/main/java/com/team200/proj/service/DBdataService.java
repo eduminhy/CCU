@@ -1,5 +1,7 @@
 package com.team200.proj.service;
 
+import java.util.List;
+
 import com.team200.proj.vo.festivalVO;
 import com.team200.proj.vo.placeVO;
 import com.team200.proj.vo.showVO;
@@ -12,4 +14,7 @@ public interface DBdataService {
 	public void popularWInputMain(showVO sVO);
 	public void popularMInputMain(showVO sVO);
 	public void popularChildInputMain(showVO sVO);
+	
+	
+
 }

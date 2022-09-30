@@ -1,5 +1,9 @@
 package com.team200.proj.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,8 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.team200.proj.service.MeetingService;
 import com.team200.proj.vo.MeetingVO;
+import com.team200.proj.vo.showVO;
 
 @Slf4j
 @RestController
@@ -19,6 +25,7 @@ import com.team200.proj.vo.MeetingVO;
 public class meetingController {
 	@Inject
 	MeetingService service;
+	
 	
 	//dong
 	@RequestMapping(value = "mainMeeting", method = RequestMethod.GET)
@@ -85,6 +92,7 @@ public class meetingController {
 	*/
 
 	//dong
+	
 	// ---------------------------------------------------------------------------------
 	@RequestMapping(value = "meeting/meetingWrite", method = RequestMethod.POST)
 	public ModelAndView mettingWrite(MeetingVO vo, HttpServletRequest request) {
@@ -102,6 +110,27 @@ public class meetingController {
 		} else {
 			mav.setViewName("meeting/playmeetingForm");
 		}
+		return mav;
+	}
+	@RequestMapping("showSearch" )
+	public String showSearch(@RequestParam("name") String name){
+//		ModelAndView mav = new ModelAndView("jsonView");
+//		System.out.println(name);
+//		System.out.println(data.get("name"));
+//		
+		 List<showVO> list = service.showSearch(name);
+		System.out.println(list);
+		
+//		mav.addObject("showList", list);
+		String json = new Gson().toJson(list);
+//		mav.setViewName("meeting/showSearchOK");
+		return json;
+	}
+	@GetMapping("showSearchOk")
+	public ModelAndView showSearchOk() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("meeting/showSearchOk");
 		return mav;
 	}
 
@@ -176,4 +205,3 @@ public class meetingController {
 	}
 
 }
-

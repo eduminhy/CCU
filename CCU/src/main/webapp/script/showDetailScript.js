@@ -68,20 +68,31 @@ function fn_selectDate(date) {
 		$("#period_2").val("");
 		selectCk = date;
 		selectCk = 0;
-	} 
-//	else {
-//		$("#date_" + date).css("background-color", "red");
-//		$("#date_" + date).css("color", "white");
-//		for (var i = selectCk + 1; i < date; i++) {
-//			$("#date_" + i).css("background-color", "#FFDDDD");
-//		}
+	}
+	//	else {
+	//		$("#date_" + date).css("background-color", "red");
+	//		$("#date_" + date).css("color", "white");
+	//		for (var i = selectCk + 1; i < date; i++) {
+	//			$("#date_" + i).css("background-color", "#FFDDDD");
+	//		}
 
-//		$("#period_2").val(year + "-" + month + "-" + date);
-//		selectCk = 0;
-//	}
+	//		$("#period_2").val(year + "-" + month + "-" + date);
+	//		selectCk = 0;
+	//	}
 
 }
 
+function getDayOfWeek(날짜문자열) {
+	//								console.log(날짜문자열);
+	const week = ['일', '월', '화', '수', '목', '금',
+		'토'];
+
+	const dayOfWeek = week[new Date(날짜문자열).getDay()];
+	//								console.log(dayOfWeek);
+	return document.write(dayOfWeek);
+
+}
 $(document).ready(function() {
 	buildcalendar();
+
 });

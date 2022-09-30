@@ -5,15 +5,19 @@
 
 <mapper namespace="com.team200.proj.dao.MeetingDAO">
 
+	<select id="showSearch" resultType="showVO">
+	 select id, name from showdb where name like '%${param1}%' order by name desc;
+	</select>
+
     <select id="mainMeeting" resultType="MeetingVO">
         select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
-        from board a left outer join showdb b on a.showdb_id = b.id
+        from board a inner join showdb b on a.showdb_id = b.id
     </select>
 
     <select id="mainMeetingGenre" resultType="MeetingVO">
         select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
         from board a
-                 left outer join showdb b on a.showdb_id = b.id
+                 inner join showdb b on a.showdb_id = b.id
         where b.genre = #{genre}
         order by id desc;
 --         select *
@@ -23,9 +27,9 @@
     <select id="mainMeetingGenre2" resultType="MeetingVO">
         select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
         from board a
-                 left outer join showdb b on a.showdb_id = b.id
-        where b.genre = #{genre1}
-        or b.genre = #{genre2}
+                 inner join showdb b on a.showdb_id = b.id
+        where b.genre = #{param1}
+        or b.genre = #{param2}
         order by id desc;
         --         select *
 --         from board

@@ -555,7 +555,7 @@ public class dbController {
 	public String ChildInputMain() throws IOException, ParseException {
 		Calendar mon = Calendar.getInstance();
 		mon.add(Calendar.DATE , -1);
-		int co = 0;
+//		int co = 0;
 //		for(co=0;co<=2;co++) {
 //			if(co==0) {
 ////				mon.add(Calendar.MONTH, -1);

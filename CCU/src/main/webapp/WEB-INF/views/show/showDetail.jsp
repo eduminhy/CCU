@@ -13,12 +13,12 @@
 <script src="/script/showDetailScript.js" type="text/javascript"></script>
 <div class="showDetail">
 	<div class="showDetailTitle">
-		<div>분류:제목&nbsp;</div>
+		<div>${show.genre}:${show.name}&nbsp;</div>
 		<div>♥</div>
 	</div>
 	<div class="showBody">
 		<div class="showDetailImgDiv">
-			<img src="../img/poster/1.jpg" />
+			<img src="${show.mainposter}" />
 			<div>
 				<br /> <br />
 			</div>
@@ -64,59 +64,73 @@
 				<tbody>
 					<tr>
 						<th scope="row"><label for="">공연기간</label></th>
-						<td>2022.09.05(월)~2022.11.13(일)</td>
+						<td>${show.startdate}<script
+								type="text/javascript">
+							getDayOfWeek('${show.startdate}');
+
+							
+						</script>&nbsp;~&nbsp;${show.enddate}
+						<script
+								type="text/javascript">
+							getDayOfWeek('${show.enddate}');
+
+							
+						</script></td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="">공연장소</label></th>
-						<td>브릭스 씨어터</td>
+						<td>${show.place_name}</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="">공연시간</label></th>
-						<td>월요일 ~ 화요일(20:00)<br /> 수요일(16:00,20:00)<br /> 목요일 ~
-							금요일(20:00)<br /> 토요일(15:00,19:00)<br /> 일요일(14:00,18:00)<br />
-							공휴일(14:00,18:00)<br /> *9/6(화) 오후8시 공연 *9/10토 공연없음
+						<td>${show.open_time}
+						</td>
+					</tr>
+										<tr>
+						<th scope="row"><label for="">런타임</label></th>
+						<td>${show.runtime}
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="">관람연령</label></th>
-						<td>만 13세 이상</td>
+						<td>${show.minimum_age}</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="">줄거리</label></th>
-						<td>줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리
-							줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리
-							줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리
-							줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리</td>
-					</tr>
+						<td>${show.introduction_txt}</tr>
 					<tr class="">
 						<th scope="row"><label for="">티켓가격</label></th>
-						<td>전석 55,000</td>
+						<td>${show.price}</td>
 					</tr>
 					<tr class="">
 						<th scope="row"><label for="">출연진</label></th>
-						<td>김도빈, 조풍래, 성연, 최호승, 순유동, 강은빈, 허영손 등</td>
+						<td>${show.performer}</td>
 					</tr>
-					<tr class="">
-						<th scope="row"><label for="">원작자</label></th>
-						<td>안리준</td>
-					</tr>
+<!-- 					<tr class=""> -->
+<!-- 						<th scope="row"><label for="">원작자</label></th> -->
+<%-- 						<td>${show.producer}</td> --%>
+<!-- 					</tr> -->
 					<tr class="">
 						<th scope="row"><label for="">제작진</label></th>
-						<td>고강민, 박인선, 서정완 등</td>
+						<td>${show.producer}</td>
 					</tr>
 					<tr class="">
-						<th scope="row"><label for="">주최기간</label></th>
-						<td>해당정보 없음</td>
+						<th scope="row"><label for="">공연상태</label></th>
+						<td>${show.state}</td>
 					</tr>
 					<tr class="">
 						<th scope="row"><label for="">기획 제작</label></th>
-						<td>(주)엠비제트컴퍼니(제작)</td>
+						<td>${show.statistics_search_by_production_company_name}</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
 	<br />
+	<img src="${show.introduction_image1}" />
+	<img src="${show.introduction_image2}" />
+	<img src="${show.introduction_image3}" />
+	<img src="${show.introduction_image4}" />
 	<div class="detailTag">
 		<div>#드라마</div>
 		<div>#성장</div>

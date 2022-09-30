@@ -1,5 +1,7 @@
 package com.team200.proj.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -17,5 +19,7 @@ public interface DBdataDAO {
 	public void popularWInputMain(showVO sVO);
 	public void popularMInputMain(showVO sVO);
 	public void popularChildInputMain(showVO sVO);
+	
+	
 
 }

@@ -45,6 +45,7 @@ body, ul, li{margin:0; padding:0; list-style-type:none;}
 		text-align:center;  
 		background-color:#ddd; color:black;
 		position:absolute; right:200px;
+		z-index:3;
 	}
 	#toggleDiv>input{margin:5px; width:150px; height:20px;}
 	#toggleDiv>a{font-size:15px;}
