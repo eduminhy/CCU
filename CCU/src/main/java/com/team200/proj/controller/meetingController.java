@@ -3,6 +3,7 @@ package com.team200.proj.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team200.proj.service.MeetingService;
@@ -25,7 +27,7 @@ public class meetingController {
 	MeetingService service;
 	
 	
-	//dong
+
 	@RequestMapping(value = "mainMeeting", method = RequestMethod.GET)
 	public ModelAndView mainMeeting() {
 		ModelAndView mav = new ModelAndView();
@@ -36,37 +38,7 @@ public class meetingController {
 		return mav;
 	}
 
-	// --------------------------------------------------------------------------------
 
-	//	mainMeeting?genre=연극
-	@RequestMapping(value = "mainMeeting/{genre}", method = RequestMethod.GET)
-	public ModelAndView meetingFindGenre(@PathVariable String genre) {
-		ModelAndView mav = new ModelAndView();
-
-	
-
-
-
-		mav.addObject("list", service.mainMeetingGenre(genre));
-
-
-		mav.setViewName("meeting/mainMeeting");
-		return mav;
-	}
-
-	@RequestMapping(value = "mainMeeting2/{genre1}&{genre2}", method = RequestMethod.GET)
-	public ModelAndView meetingFindGenre(@PathVariable String genre1, @PathVariable String genre2) {
-		ModelAndView mav = new ModelAndView();
-
-		
-
-		mav.addObject("list", service.mainMeetingGenre2(genre1, genre2));
-
-		mav.setViewName("meeting/mainMeeting");
-		return mav;
-	}
-
-	// --------------------------------------------------------------------------------
 
 	@RequestMapping("playMeetingList")
 	public ModelAndView playMeetingList1() {
@@ -89,76 +61,7 @@ public class meetingController {
 	}	
 	*/
 
-	//dong
-	
-	// ---------------------------------------------------------------------------------
-	@RequestMapping(value = "meeting/meetingWrite", method = RequestMethod.POST)
-	public ModelAndView mettingWrite(MeetingVO vo, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		String user_id = (String) session.getAttribute("logId");
-		vo.setUser_id("1");
-//		vo.setUser_id(user_id);
 
-		int cnt = service.meetingWriteOk(vo);
-
-		ModelAndView mav = new ModelAndView();
-
-		if (cnt > 0) {
-			mav.setViewName("redirect:/meeting/mainMeeting");
-		} else {
-			mav.setViewName("meeting/playmeetingForm");
-		}
-		return mav;
-	}
-	@GetMapping("showSearch")
-	public ModelAndView showSearch(String name) {
-		ModelAndView mav = new ModelAndView();
-		
-		
-		
-		 List<showVO> list = service.showSearch(name);
-		
-		
-		mav.addObject("showList", list);
-		
-		mav.setViewName("meeting/showSearch");
-		return mav;
-	}
-	@GetMapping("showSearchOk")
-	public ModelAndView showSearchOk() {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("meeting/showSearchOk");
-		return mav;
-	}
-
-	@RequestMapping(value = "meeting/meetingEdit/{id}", method = RequestMethod.GET)
-	public ModelAndView meetingEdit(@RequestParam Long id) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("board", service.mainMeetingGet(id));
-
-		mav.setViewName("meeting/playMeetingForm");
-		return mav;
-	}
-
-	@RequestMapping(value = "meeting/meetingEdit", method = RequestMethod.PUT)
-	public ModelAndView mettingEdit(MeetingVO vo, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		String user_id = (String) session.getAttribute("logId");
-
-		int cnt = service.meetingEdit(vo, user_id);
-
-		ModelAndView mav = new ModelAndView();
-
-		if (cnt > 0) {
-			mav.setViewName("redirect:/meeting/mainMeeting");
-		} else {
-			mav.setViewName("meeting/playmeetingForm");
-		}
-		return mav;
-	}
-
-	// ---------------------------------------------------------------------------------
 	@RequestMapping(value = "meeting/meetingDelete/{id}", method = RequestMethod.DELETE)
 	public ModelAndView mettingDelete(@RequestParam Long id, HttpServletRequest request) {
 		HttpSession session = request.getSession();
