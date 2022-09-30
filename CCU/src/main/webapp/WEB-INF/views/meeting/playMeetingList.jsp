@@ -25,20 +25,56 @@
     <form method="post" action="" class="playMeetingTable">
         <ul>
             <li>
-                <ul class="playMeetingList">
+                <ul id="playMeetingList">
                     <li>
                         <ul>
-                        	<li><input type="checkbox" name="checkbox" value="checkbox" onclick="checkAll(this)"></li>
-                            <li>번호</li>
-                            <li>말머리</li>
+                        	
+                            <li>장르</li>
+                            <li>글번호</li>
                             <li>제목</li>
-                            <li>마감여부</li>
                             <li>작성자</li>
                             <li>조회수</li>
 	        				<li>작성일</li>
+	        				
+	        		    <c:forEach var = "vo" items = "${list }">
+							<li>${vo.genre }</li>
+							<li>${vo.id }</li>
+							<li>${vo.title }</li>
+							<li>${vo.user_id }</li>
+							<li>${vo.hit }</li>
+							<li>${vo.writedate }</li>
+						</c:forEach>
                         </ul>
                     </li>
-                    <!-- 게시물이 출력될 영역 -->
+                    
+                    
+                    
+                    
+                    <!-- 
+                    <div class="listBody">
+	
+	
+	<div>
+	    <ul id="accList">
+	        <li >장르</li>
+	        <li >글번호</li>
+	        <li >제목</li>
+	        <li >작성자</li>
+	        <li >작성일</li>
+	        
+	    <c:forEach var = "vo" items = "${list }">
+			<li>${vo.genre }</li>
+			<li>${vo.id }</li>
+			<li>${vo.title }</li>
+			<li>${vo.user_id }</li>
+			<li>${vo.writedate }</li>
+		</c:forEach>
+	    </ul>
+	</div>
+            -->         
+                    
+                    <!--  
+                    
                     <li>
                         <ul>
                         	<li><input type="checkbox" name="checkbox" value="checkbox"></li>
@@ -93,7 +129,7 @@
                 </ul>
             </li>
         </ul>
-        
+       -->
 		<div>
 			<!--  <button class="playMeetingListBtn">글쓰기</button>-->
 			<input type="button" value="글쓰기" class="playMeetingListBtn" id="modify" onclick="location.href='playMeetingForm'"/>

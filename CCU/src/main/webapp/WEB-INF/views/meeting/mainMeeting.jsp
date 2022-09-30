@@ -27,10 +27,10 @@
 	<div class="quick_wrap">
 		<div id="quick_menu" class="quick_menu" style="top: 245px;">
 			<p class="goBoard">게시판 바로가기</p>
-			<a href="/meeting/playMeetingList">▶ 연극 게시판</a>
-			<a href="#">▶ 뮤지컬 게시판</a>
-			<a href="#">▶ 클래식/오페라 게시판</a>
-			<a href="#">▶ 아동 게시판</a>
+			<a href="/meeting/mainMeeting/연극">▶ 연극 게시판</a>
+			<a href="/meeting/mainMeeting/뮤지컬">▶ 뮤지컬 게시판</a>
+			<a href="/meeting/mainMeeting2/클래식&오페라">▶ 클래식/오페라 게시판</a>
+			<a href="/meeting/mainMeeting/아동">▶ 아동 게시판</a>
 		</div> 
 		
 
@@ -63,8 +63,11 @@
 	</div>
 	 -->
 	 
-
-
+		<div id="meetingWrite">
+		
+			<a href = "/meeting/playMeetingForm">글쓰기</a>
+		
+		</div>
 
 
 
