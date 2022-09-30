@@ -3,6 +3,7 @@ package com.team200.proj.service;
 import java.util.List;
 
 import com.team200.proj.vo.MeetingVO;
+import com.team200.proj.vo.showVO;
 
 public interface MeetingService {
 
@@ -21,5 +22,7 @@ public interface MeetingService {
 	public int meetingEdit(MeetingVO vo, String user_id);
 
 	public void meetingDelete(Long id, String user_id);
+	
+	public List<showVO> showSearch(String name);
 
 }

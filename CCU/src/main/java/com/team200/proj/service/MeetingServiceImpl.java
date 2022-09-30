@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.team200.proj.dao.MeetingDAO;
 import com.team200.proj.vo.MeetingVO;
+import com.team200.proj.vo.showVO;
 
 @Service
 public class MeetingServiceImpl implements MeetingService {
@@ -59,6 +60,11 @@ public class MeetingServiceImpl implements MeetingService {
 	public void meetingDelete(Long id, String user_id) {
 		// TODO Auto-generated method stub
 		dao.meetingDelete(id);
+	}
+	@Override
+	public List<showVO> showSearch(String name) {
+		// TODO Auto-generated method stub
+		return dao.showSearch(name);
 	}
 
 }

@@ -24,6 +24,15 @@
 			return true;
 		});
 	});
+	
+	$(function(){
+		
+		$("#showSearchBtn").click(function(){
+		console.log(1);
+			window.open("/meeting/showSearchOk", "name", "width=500, height=400");
+		
+		});
+
 </script>
 </head>
 <body>
@@ -47,12 +56,20 @@ public class MeetingVO {
 	
 	
 	<p class="playMeetingWarning">※ 개인정보 유출 및 피해에 유의하시고 금전 및 물품 피해에 대해 유의하십시오.</p>
-
-
+	
+	
+	
+	
 	<div class="playMeetingFormContainer">
 		<form method="post" action="/meeting/meetingWrite" class="playMeetingWritingFrm">
 			<table summary="연극미팅글쓰기폼">
+			
+	<ul>
+		<li><input type = "button" value = "공연검색" id = "showSearchBtn"/></li>
+		<li><input type = "text" name = "name" id = "name"/></li> 
+	</ul>
 				<tbody>
+				
 				<tr>
 					<th scope="row">
 						<label for="playSubject">말머리</label></th>
@@ -61,36 +78,12 @@ public class MeetingVO {
 							<option value="selectSubject">-선택-</option>
 							<option value="searchSomeone">모집</option>
 							<option value="lookSomeone">찾아요</option>
-						<th scope="row">
-						<label for="playSubject">showdb_id</label></th>
-					<td>
-						<select name="playSubject" class="playSubject">
-							<option value="PF198249">연극</option>
-							<option value="PF198250">뮤지컬</option>
-							<option value="PF198251">클래식/오페라</option>
-							<option value="PF198252">아동</option>
 						</select>
-						<ul>
-						<li><input type="radio" name="showdb_id" value="PF198249" checked>showdb_id
-						<input type="radio" name="showdb_id" value="PF198249" checked>showdb_id</li>
-						</ul>
-					</td>
+						<th scope="row">
+						
+				
 				</tr>
-				<div class = "">
-	<p>
-		공연을 선택해주세요
-	</p>
-	<form method = "get" action = "/meeting/showDb" id = "showDb">
-		공연 검색 : <input type = "text" name = "name" id = "name">
-		<input type = "submit" value = "공연검색">
-	</form>
-	<ul id = "showList">
-		<c:forEach var = "showVO" items = "${showList}">
-			<li>${showVO.name }</li>
-			<li class = "address">${zipVO.sido }&nbsp;${zipVO.doro }&nbsp;${zipVO.buildingname }&nbsp;${zipVO.buildingnum1 }&nbsp;<c:if test = "${zilVO.buildingnum2 != '0'}">${zilVO.buildingnum2}</c:if>&nbsp;(${zipVO.dong }&nbsp;${zipVO.num1 }<c:if test = "${zipVO.num2 != '0'}">${zipVO.num2 }</c:if>)</li>
-		</c:forEach>
-	</ul>
-</div>
+	
 				<tr>
 					<th scope="row">
 						<label for="writeSubject">제목</label></th>

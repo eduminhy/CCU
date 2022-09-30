@@ -70,5 +70,6 @@ public class showController {
 		mav.setViewName("show/showDetail");
 		return mav;
 	}
+	
 }
 

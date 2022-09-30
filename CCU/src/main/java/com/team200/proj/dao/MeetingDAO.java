@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.team200.proj.vo.MeetingVO;
+import com.team200.proj.vo.showVO;
 
 @Mapper
 @Repository
@@ -26,5 +27,7 @@ public interface MeetingDAO {
 	public int meetingEdit(MeetingVO vo, String user_id);
 
 	public int meetingDelete(Long id);
+	
+	public List<showVO> showSearch(String name);
 
 }
