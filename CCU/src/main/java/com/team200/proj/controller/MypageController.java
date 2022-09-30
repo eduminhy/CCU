@@ -165,9 +165,44 @@ public class MypageController {
 	@GetMapping("myInfoErase")
 	public ModelAndView myInfoErase() {
 		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("mapage/myinfoErase");
+		mav.setViewName("mypage/myInfoErase");
 		return mav;
+	}
+	@PostMapping("myInfoEraseOk")
+	public ResponseEntity<String> myInfoEraseOk(HttpSession session, HttpServletRequest request){
+		
+		String id = (String)session.getAttribute("logId");
+		System.out.println("id=>"+id);
+		String Chpwd = request.getParameter("password");
+		System.out.println("Chpwd=>"+Chpwd);
+		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders(); 
+		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		
+		try {//성공
+			int result = service.myInfoEraseOk(id, Chpwd);
+			System.out.println("result=>"+result);
+			if(result>0) {
+				String msg = "<script>";
+				msg += "alert('성공적으로 탈퇴되었습니다. 이용해주셔서 감사합니다.');";
+				msg += "location.href='/'";
+				msg += "</script>";
+				session.setAttribute("logStatus", "N");
+				entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+			}else {
+				String msg = "<script>";
+				msg += "alert('아이디와 비밀번호가 일치하지 않습니다.');";
+				msg += "location.href='/mypage/myInfoErase'";
+				msg += "</script>";
+				entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
+			}
+			
+		}catch(Exception e) {//실패
+			e.printStackTrace();
+		}
+		return entity;		
 	}
 	
 	//2. 나의 예매내역
