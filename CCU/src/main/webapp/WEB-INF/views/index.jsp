@@ -148,6 +148,12 @@
 				</div>
 			</c:forEach>
 		</div>
-		<br />
+
 	</div>
 	<br />
+			<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />

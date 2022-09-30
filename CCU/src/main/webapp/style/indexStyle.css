@@ -322,9 +322,9 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
-.slick-slide img{
-	display: inline;
-}
+/* .slick-slide img{ */
+/* 	display: inline; */
+/* } */
 /* Total CSS---------------------------------------- */
 .indexRank_title, .indexRank_menu>div, .indexFes, .indexFes_post>div {
 	color: rgba(59, 0, 148);

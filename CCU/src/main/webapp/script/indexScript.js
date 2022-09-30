@@ -4,7 +4,7 @@ $(function() {
 	var quick_menu = $('#quick');
 	var quick_top = 470;
 	$(function() {
-		console.log(11)
+//		console.log(11)
 		quick_menu.css('top', $(window).height());
 		$(document).ready(function() {
 			quick_menu.animate({ "top": $(document).scrollTop() + quick_top + "px" }, 200);
@@ -32,10 +32,10 @@ $(function() {
 		$('.indexFav_text').hide();
 		$('.indexFav_img').find('img').css("filter", "brightness(1)");
 	});
-
+	//--MontlyRanking 타이틀 변경 , 슬라이드시 날자 설정 설정-------------------------------------------------------------------------------------------
 	$('.index_title').on('afterChange ', function(event, slick, currentSlide, nextSlide) {
 		$(".indexRank_post").empty();
-		//		console.log($(this).slick('slickCurrentSlide'));
+//				console.log($(this).slick('slickCurrentSlide'));
 		if ($(this).slick('slickCurrentSlide') == 0) {
 			date = 30;
 		} else if ($(this).slick('slickCurrentSlide') == 1) {
@@ -46,7 +46,7 @@ $(function() {
 		monthlyRankingDE();
 
 	})
-	//--MontlyRanking 색변경-------------------------------------------------------------------------------------------
+	//--MontlyRanking 색변경 , 클릭시 장르설정-------------------------------------------------------------------------------------------
 	$(".indexRank_menu>div:first-child").css("color", "rgba(255, 81,87)");
 	$(".indexRank_menu>div").click(function() {
 		$(".indexRank_menu>div").css("color", "rgba(59, 0,148)");
@@ -74,7 +74,7 @@ $(function() {
 			dataType: "json",
 			data: { a: date, b: genre },
 			success: function(data) {
-				console.log(data);
+//				console.log(data);
 
 				var msg = "";
 
