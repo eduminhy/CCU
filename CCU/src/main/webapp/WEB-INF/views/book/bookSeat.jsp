@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/style/bookSeatStyle.css">
+
 <script>
 	$(function(){
 		var cnt = 0;
@@ -27,6 +28,23 @@
 	});
 </script>
 	
+
+
+<style>
+	#stage{height:20px; line-height:20px; padding:10px 300px; margin:30px 0 10px 0; background-color:#ddd;}
+	.seatBox{display:flex;}
+	.firstCol{color:white; background-color:black; margin: 5px 3px; padding:0 3px; font-size:13px; font-weight:bold; width:20px; height:20px; line-height:20px;}
+	.s{width:20px; height:20px; background-color:lavender; margin:5px;}
+</style>
+<div>
+${logId}<br/>
+${logStatus}<br/>
+${day}<br/>
+${date}<br/>
+${time}<br/>
+${price}<br/>
+${id}<br/></div>
+
 <div class="container">
 	<div><h1>STEP01 좌석예약</h1></div>
 	<div id="content">
@@ -336,7 +354,6 @@
 					<div class = "s"></div>
 				</div>
 			</div>
-		</div>	
 		<div id="detail">
 		<h3>선택확인</h3>
 		<ul>
