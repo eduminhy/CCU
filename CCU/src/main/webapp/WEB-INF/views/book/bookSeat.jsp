@@ -8,6 +8,14 @@
 	.firstCol{color:white; background-color:black; margin: 5px 3px; padding:0 3px; font-size:13px; font-weight:bold; width:20px; height:20px; line-height:20px;}
 	.s{width:20px; height:20px; background-color:lavender; margin:5px;}
 </style>
+<div>
+${logId}<br/>
+${logStatus}<br/>
+${day}<br/>
+${date}<br/>
+${time}<br/>
+${price}<br/>
+${id}<br/></div>
 <div class="container">
 	<div><h1>STEP01 좌석예약</h1></div>
 	<div id="content">
@@ -250,7 +258,7 @@
 				<div class="s" id="j5"></div>
 				<div class="s" id="j6"></div>
 				<div class="s" id="j7"></div>
-				<div class="s" id="j8"></div>
+				<div class="s" id="j8"></div >
 				<div class="s" id="j9"></div>
 				<div class="s" id="j10"></div>
 				<div class="s" id="j11"></div>

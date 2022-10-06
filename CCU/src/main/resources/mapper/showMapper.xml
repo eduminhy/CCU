@@ -54,6 +54,9 @@
 		
 		 from showdb where id=#{param1};
 	</select>
+	<select id="getReview" resultType="ReviewVO">
+		select user_id, content, rate, viewdate, date_format(writedate, '%m-%d %h:%i') writedate
+
 
 	<select id="WeeklyRankingList" resultType="showVO">
 		<if test="param1=='아동'">
@@ -69,6 +72,7 @@
 			<if test="param1=='클래식'">where (genre='클래식' or a.genre='오페라') </if>
 		order by b.showRank asc limit 0,5   
 		</if>
+
 	</select>
 	<select id="getNewList" resultType="showVO"> 
 		<if test="param1=='아동'">

@@ -12,6 +12,18 @@
 <!-- indexPage script -->
 <script src="/script/showDetailScript.js" type="text/javascript"></script>
 <div class="showDetail">
+	<script type="text/javascript">
+		getshow('${dvo.monday}', '${dvo.tuesday}', '${dvo.wednesday}',
+				'${dvo.thursday}', '${dvo.friday}', '${dvo.saturday}',
+				'${dvo.sunday}', '${dvo.holiday}');
+		// 		getshow2('${dvo.tuesday}');
+		// 		getshow2('${dvo.wednesday}');
+		// 		getshow2('${dvo.thursday}');
+		// 		getshow2('${dvo.friday}');
+		// 		getshow2('${dvo.saturday}');
+		// 		getshow2('${dvo.sunday}');
+		// 		getshow2('${dvo.holiday}');
+	</script>
 	<div class="showDetailTitle">
 		<div>${show.genre}:${show.name}&nbsp;</div>
 		<div>♥</div>
@@ -46,13 +58,20 @@
 				<hr />
 				<div class="calanderSelect">
 					회차선택
-					<div class="calanderSelectDiv">
-						<div>1회차 20:00</div>
-						<div>2회차 22:00</div>
-						<div>3회차 24:00</div>
-					</div>
+					<div class="calanderSelectDiv"></div>
 				</div>
 				<hr />
+
+				<form class="form" action="/book/bookSeat" method="post">
+					<input class="Sdate" name="Sdate" type="text"> <input
+						class="Sdate2" name="Sdate2" type="text"> <input
+						class="userD" name="userD" type="text"> <input
+						class="price" name="price" type="text" value="${show.price}">
+					<input class="id" name="id" type="text" value="${show.id}">
+					<!-- 							<div class="calanderButten"> -->
+					<!-- 					<button>예매하기</button> -->
+					<!-- 				</div> -->
+				</form>
 				<div class="calanderButten">
 					<div>예매하기</div>
 				</div>
@@ -64,17 +83,10 @@
 				<tbody>
 					<tr>
 						<th scope="row"><label for="">공연기간</label></th>
-						<td>${show.startdate}<script
-								type="text/javascript">
+						<td>${show.startdate}<script type="text/javascript">
 							getDayOfWeek('${show.startdate}');
-
-							
-						</script>&nbsp;~&nbsp;${show.enddate}
-						<script
-								type="text/javascript">
+						</script>&nbsp;~&nbsp;${show.enddate} <script type="text/javascript">
 							getDayOfWeek('${show.enddate}');
-
-							
 						</script></td>
 					</tr>
 					<tr>
@@ -83,13 +95,11 @@
 					</tr>
 					<tr>
 						<th scope="row"><label for="">공연시간</label></th>
-						<td>${show.open_time}
-						</td>
+						<td>${show.open_time}</td>
 					</tr>
-										<tr>
+					<tr>
 						<th scope="row"><label for="">런타임</label></th>
-						<td>${show.runtime}
-						</td>
+						<td>${show.runtime}</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="">관람연령</label></th>
@@ -97,7 +107,8 @@
 					</tr>
 					<tr>
 						<th scope="row"><label for="">줄거리</label></th>
-						<td>${show.introduction_txt}</tr>
+						<td>${show.introduction_txt}
+					</tr>
 					<tr class="">
 						<th scope="row"><label for="">티켓가격</label></th>
 						<td>${show.price}</td>
@@ -106,10 +117,10 @@
 						<th scope="row"><label for="">출연진</label></th>
 						<td>${show.performer}</td>
 					</tr>
-<!-- 					<tr class=""> -->
-<!-- 						<th scope="row"><label for="">원작자</label></th> -->
-<%-- 						<td>${show.producer}</td> --%>
-<!-- 					</tr> -->
+					<!-- 					<tr class=""> -->
+					<!-- 						<th scope="row"><label for="">원작자</label></th> -->
+					<%-- 						<td>${show.producer}</td> --%>
+					<!-- 					</tr> -->
 					<tr class="">
 						<th scope="row"><label for="">제작진</label></th>
 						<td>${show.producer}</td>
@@ -126,11 +137,17 @@
 			</table>
 		</div>
 	</div>
+	<div class="scroll">
+		<div>후기보기</div>
+		<div>분석표</div>
+	</div>
 	<br />
-	<img src="${show.introduction_image1}" />
-	<img src="${show.introduction_image2}" />
-	<img src="${show.introduction_image3}" />
-	<img src="${show.introduction_image4}" />
+	<div class="detailImg">
+		<img src="${show.introduction_image1}" /> <img
+			src="${show.introduction_image2}" /> <img
+			src="${show.introduction_image3}" /> <img
+			src="${show.introduction_image4}" />
+	</div>
 	<div class="detailTag">
 		<div>#드라마</div>
 		<div>#성장</div>
@@ -143,29 +160,47 @@
 	<div class="detailRating">
 		<hr />
 		<div class="detailRatingTitle">관람 평점</div>
-		<div class="detailRatingStar">★★★★☆ 4.6</div>
-		<div class="detailRatingLink">후기 더보기</div>
+		<div class="detailRatingStar">
+			<script type="text/javascript">
+         document.write(getstar(${starResult}));
+    </script>&nbsp;&nbsp;${starResult}</div>
+		<br />
 		<div class="detailRatingContent">
-			<div class="detailRatingContentInnerDiv">
-				<div>
-					3.5<br />★★★☆
+			<c:forEach var="R" items="${rVO}">
+				<div class="detailRatingContentInnerDiv">
+					<div>${R.rate }<br />
+						<script type="text/javascript">
+         document.write(getstar(${R.rate }));
+    </script>
+					</div>
+					<div>
+						${R.user_id}<br />${R.content}
+					</div>
 				</div>
-				<div>
-					닉네임<br />~~배우님 목소리 너무 좋아요
-				</div>
-			</div>
-			<br />
-			<div class="detailRatingContentInnerDiv">
-				<div>
-					1.0<br />★
-				</div>
-				<div>
-					닉네임<br />~~배우님 목소리 너무 좋아요 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-				</div>
-			</div>
+				<br />
+			</c:forEach>
+			<c:forEach var="R" items="${r6VO}">
+				<div class="hiddenDiv">
+					<div class="detailRatingContentInnerDiv">
+						<div>${R.rate }<br />
+
+
+
+							<script type="text/javascript">
+         document.write(getstar(${R.rate }));
+    </script>
+						</div>
+						<div>
+							${R.user_id}<br />${R.content}
+						</div>
+					</div>
+					<br />
+			</c:forEach>
 		</div>
-
-
-
+		<div class="detailRatingLink">후기 더보기</div>
+		<br />
 	</div>
+</div>
+<br />
+<br />
 </div>

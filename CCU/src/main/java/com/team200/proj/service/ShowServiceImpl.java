@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.team200.proj.dao.ShowDAO;
+import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.showVO;
 
 @Service
@@ -34,6 +35,12 @@ public class ShowServiceImpl implements ShowService {
 		// TODO Auto-generated method stub
 		return dao.showDetail(show_id);
   	}
+
+	@Override
+	public List<ReviewVO> getReview(String show_id) {
+		// TODO Auto-generated method stub
+		return dao.getReview(show_id);
+	}
 
 
 	
