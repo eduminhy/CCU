@@ -83,7 +83,7 @@ $(function() {
 					msg += "<div class='indexRank_img'>";
 
 					msg += "<img src=" + i.mainposter + " />";
-					msg += "<a href='" + "/" + "'>";
+					msg += "<a href='/show/showDetail?show_id=" + i.id + "'>";
 					msg += "<span class='indexRank_text'>";
 					msg += "<span class='textconRank'>";
 					msg += "<span class='spanRanktxt1'>" + i.genre + "</span>";

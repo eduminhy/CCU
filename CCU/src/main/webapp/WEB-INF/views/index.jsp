@@ -79,7 +79,7 @@
 				<div class="indexFav_img2">
 					<div class="indexFav_img">
 
-						<img src="${R.mainposter }" /> <a href=""> <span
+						<img src="${R.mainposter }" /> <a href="/show/showDetail?show_id=${R.id}"> <span
 							class="indexFav_circle">&nbsp;</span> <span
 							class="indexFav_count">${R.showRank }</span> <span
 							class="indexFav_text"> <span class="textcon"> <span

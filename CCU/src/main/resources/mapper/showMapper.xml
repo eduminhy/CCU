@@ -35,7 +35,11 @@ introduction_image4
 
  from showdb where id=#{param1};
 	</select>
+	<select id="getReview" resultType="ReviewVO">
+		select user_id, content, rate, viewdate, date_format(writedate, '%m-%d %h:%i') writedate
 
+ from review where show_id=#{param1}  order by id asc;;
+	</select>
 	<select id="getShowList" resultType="showVO" parameterType="string">
 		select name, place_name, date_format(startdate, '%Y.%m.%e')startdate, date_format(enddate, '%Y.%m.%e')enddate, genre, openrun, mainposter
 		from showdb

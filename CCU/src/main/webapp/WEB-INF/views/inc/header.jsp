@@ -68,7 +68,7 @@
 <body>
 		<div id="topMenu">
 			<c:if test="${logStatus!='Y' }">
-				<a href="/user/login">로그인123</a>
+				<a href="/user/login">로그인   </a>
 				<a href="/user/signup">회원가입</a>
 			</c:if>
 			<c:if test="${logStatus=='Y' }">
@@ -91,15 +91,16 @@
 		<div id="toggleDiv">
 			<input type="text" id="userid" placeholder="ID"/><br/>
 			<input type="password" id="userpwd" placeholder="PW"/><br/>
-			<input type="submit" value="Login" id="logBtn"/>
+			<input type="submit" value="Login" id="logBtn" width=160px;/>
+			<Div>
 			<img src="../img/navericon.png" width=40px; height=40px; id="navericon">
 			<img src="../img/kakaoicon.png" width=40px; height=40px; id="kakaoicon">
 			<img src="../img/googleicon.png" width=40px; height=40px; id="googleicon">
+			</Div>
 			<br/>
-			<li><a href="/user/login">로그인</a></li>
-			<li><a href="/user/signup">회원가입</a></li>
-			<br/><br/>
-			<a href="/faq">고객센터</a>
+			<div><a href="/user/login">로그인</a></div>
+			<div><a href="/user/signup">회원가입</a></div>
+			<div><a href="/faq">고객센터</a></div>
 
 
 			</div>
