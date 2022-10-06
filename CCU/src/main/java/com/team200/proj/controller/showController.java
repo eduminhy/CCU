@@ -248,7 +248,6 @@ public class showController {
 					dVO.setThursday(spi[i].split("\\(")[1]);
 				}
 			} else if (spi[i].contains("토요일")) {
-//				System.out.println("토요일" + spi[i]);
 				dVO.setSaturday(spi[i].split("\\(")[1]);
 				if (spi[i].contains("일요일")) {
 
