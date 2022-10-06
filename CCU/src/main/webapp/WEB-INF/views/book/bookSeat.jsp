@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/style/bookSeatStyle.css">
 
 <style>
-	#stage{height:20px; line-height:20px; padding:10px 300px; background-color:#ddd;}
+	#stage{height:20px; line-height:20px; padding:10px 300px; margin:30px 0 10px 0; background-color:#ddd;}
 	.seatBox{display:flex;}
 	.firstCol{color:white; background-color:black; margin: 5px 3px; padding:0 3px; font-size:13px; font-weight:bold; width:20px; height:20px; line-height:20px;}
 	.s{width:20px; height:20px; background-color:lavender; margin:5px;}
@@ -21,7 +21,7 @@ ${id}<br/></div>
 	<div id="content">
 		<!-- 좌석 -->
 		<div id="selectSeat">
-		<div><span id="stage">STAGE</span></div>
+		<div id="stage">STAGE</div>
 		<div>
 			<div class="seatBox">
 				<!-- A열 -->
