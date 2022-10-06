@@ -52,12 +52,12 @@
 		introduction_image3,
 		introduction_image4
 		
-		 from showdb where id=#{param1};
+		from showdb where id=#{param1};
 	</select>
 	<select id="getReview" resultType="ReviewVO">
 		select user_id, content, rate, viewdate, date_format(writedate, '%m-%d %h:%i') writedate
-
-
+		 from review where show_id=#{param1}  order by id asc;
+	</select>
 	<select id="WeeklyRankingList" resultType="showVO">
 		<if test="param1=='아동'">
 		select a.name, c.showRank from showdb as a inner join child as c on a.id=c.showdb_id
