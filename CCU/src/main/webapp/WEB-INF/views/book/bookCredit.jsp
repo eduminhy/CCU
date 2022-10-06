@@ -158,11 +158,11 @@
 			</li>
 			<hr/>
 			<li class="title">02. 수령자 확인</li>
-			<li><span class="detail">이름</span>&nbsp;<input type="text" name="buyer" id="buyer"/></li>
+			<li><span class="detail">이름</span>&nbsp;<input type="text" name="buyer" id="buyer" value="${vo.username }"/></li>
 			<li><span class="detail">긴급연락처</span>
-				<input type="text" name="tel1" id="tel1" size="3" maxlength="3"/> - 
-				<input type="text" name="tel2" id="tel2" size="4" maxlength="4"/> - 
-				<input type="text" name="tel3" id="tel3" size="4" maxlength="4"/>
+				<input type="text" name="tel1" id="tel1" size="3" maxlength="3" value="${vo.tel1 }"/> - 
+				<input type="text" name="tel2" id="tel2" size="4" maxlength="4" value="${vo.tel2 }"/> - 
+				<input type="text" name="tel3" id="tel3" size="4" maxlength="4" value="${vo.tel3 }"/>
 			</li>	
 			<li><span class="detail">E-mail</span>&nbsp;<input type="text" name="email" id="email"/></li>
 			<hr/>
@@ -183,12 +183,13 @@
 		<ul id="info">
 			<li class="title">선택내역</li>
 			<hr/>
-			<li><span class="showinfo">공연명</span>&nbsp;헤르츠클란</li>
-			<li><span class="showinfo">공연장소</span>&nbsp;브릭씨어터</li>
-			<li><span class="showinfo">공연날짜</span>&nbsp;2022.09.07(수)</li>
-			<li><span class="showinfo">공연시간</span>&nbsp;20시 00분</li>
+			<li><span class="showinfo">공연명</span>&nbsp;<input type="text" name="" value="${svo.name}" readonly></li>
+			<li><span class="showinfo">공연장소</span>&nbsp;<input type="text" value="${svo.place_name }" readonly></li>
+			<li><span class="showinfo">공연날짜</span>&nbsp;<input type="text" name="showWatchDate" value="${datevo.showdate }"/></li>
+			<li><span class="showinfo">공연시간</span>&nbsp;<input type="text" name="showWatchTime" value="${datevo.showtime }"/></li>
 			<li><span class="showinfo">좌석선택</span></li>
-			<li id="seatBox">B구역 10열 8번, B구역 10열 9번, B구역 10열 10번</li>
+			<li><input type="hidden" name="seat_count" value=""></li>
+			<li id="seatBox"><input type="text" name="seat_num" value=""/></li>
 			</ul>	
 		<ul id="price">
 			<span class="title">결제내역</span>

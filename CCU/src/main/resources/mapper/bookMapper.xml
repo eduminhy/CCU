@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team200.proj.dao.BookDAO">
+	<select id="getDateInfo" resultType="ScheduledateVO">
+		select showdb_id, showdate, showtime from scheduledate 
+		where showdb_id=#{param1} and showdate=#{param2} and showtime=#{param3}
+	</select>
+	<select id="getPriceInfo" resultType="String">
+		select price from showdb where id=#{id}
+	</select>
+	<select id="getShowInfo" resultType="showVO">
+		select a.id, a.name, a.place_name, a.price, b.showdate, b.showtime 
+		from showdb as a inner join scheduledate as b 
+		on a.id=b.showdb_id 
+		where a.id=#{param1} and b.showdate=#{param2} and b.showtime=#{param3}   
+	</select>
+	<select id="getUserInfo" resultType="UserVO">
+		select username, tel from user
+	</select>
+</mapper>

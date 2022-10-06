@@ -61,25 +61,12 @@
 		<div id="playBoard">
 			<h2><a href="#">${genre} Meeting 게시판</a></h2>
 			<ul>
-				<li>1198.&nbsp;</li>
-				<li class="subject"><a href="#">대학로에서 만나실 분 계시면 댓글주세요</a></li>
-				<li class="more"><a href="#">더보기</a></li>
+				<c:forEach var="bno" items="${boardlist }">
+					<li>${bno.id }.&nbsp;</li>
+					<li class="subject"><a href="#">${bno.title }</a></li>
+					<li class="more"><a href="#">더보기</a></li>
+				</c:forEach>
 				
-				<li>1197.&nbsp;</li>
-				<li class="subject"><a href="#">지금 급하게 사람 구합니다! 연극 경험 있으신분</a></li>
-				<li class="more"><a href="#">더보기</a></li>
-				
-				<li>1196.&nbsp;</li>
-				<li class="subject"><a href="#">참여형 연극 좋아하시는 분 계세요?</a></li>
-				<li class="more"><a href="#">더보기</a></li>
-				
-				<li>1195.&nbsp;</li>
-				<li class="subject"><a href="#">홍대 근처에서 밥 먹고 오만과 편견보려는데</a></li>
-				<li class="more"><a href="#">더보기</a></li>
-				
-				<li>1194.&nbsp;</li>
-				<li class="subject"><a href="#">스릴러 장르인데 같이 보실 분!!! 한명 구해요 스릴러 처음이신 분 원합니다.</a></li>
-				<li class="more"><a href="#">더보기</a></li>
 			</ul>
 		</div>
 	</div>

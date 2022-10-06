@@ -12,7 +12,7 @@
 		date_format(a.enddate, '%Y.%m.%d')enddate, a.genre, a.mainposter, 
 		<if test="param1=='아동'">
 			c.showRank from showdb as a inner join child as c on a.id=c.showdb_id
-			where a.state='공연중' order by c.showRank asc limit 0,10
+			order by c.showRank asc limit 0,10
 		</if>
 		<if test="param1!='아동'">
 			b.showRank from showdb as a inner join popular as b on a.id=b.showdb_id
@@ -70,6 +70,24 @@
 		order by b.showRank asc limit 0,5   
 		</if>
 	</select>
+	<select id="getBoardList" resultType="BoardVO">
+		<if test="param1=='아동'">
+			select b.id, b.title from showdb as a 
+			inner join board as b on a.id = b.showdb_id
+			inner join child as c on a.id = c.showdb_id 
+			order by b.id desc limit 0,5
+		</if>
+		<if test="param1!='아동'">
+			select b.id, b.title from showdb as a 
+			inner join board as b on a.id = b.showdb_id
+			left join child as c on a.id = c.showdb_id  
+				<if test="param1=='전체'"></if> 
+				<if test="param1=='연극'">where genre=#{param1} and c.showdb_id is null</if>
+				<if test="param1=='뮤지컬'">where genre=#{param1} and c.showdb_id is null</if>
+				<if test="param1=='클래식'">where (genre='클래식' or a.genre='오페라') and c.showdb_id is null</if>
+			order by b.id desc limit 0,5	
+		</if>
+	</select>
 	<select id="getNewList" resultType="showVO"> 
 		<if test="param1=='아동'">
 			select
@@ -77,7 +95,7 @@
 			date_format(a.enddate, '%Y.%m.%d')enddate, a.genre, a.mainposter
 			from showdb as a inner join child as c on a.id=c.showdb_id
 			where a.state='공연중' and
-			a.startdate between subdate(now(), interval 30 DAY) and date_format(now(), '%Y.%m.%d')   
+			a.startdate between subdate(now(), interval 60 DAY) and date_format(now(), '%Y.%m.%d')   
 			order by a.startdate desc limit 0,5
 		</if>
 		<if test="param1!='아동'">
@@ -91,8 +109,7 @@
 			<if test="param1=='클래식'">where (genre='클래식' or genre='오페라') and </if> 
 			state='공연중' and startdate between subdate(now(), interval 7 DAY) and date_format(now(), '%Y.%m.%d') 
 	        order by startdate desc limit 0,5
-	    </if>
-	        
+	    </if>   
 	</select>
 
 </mapper>
