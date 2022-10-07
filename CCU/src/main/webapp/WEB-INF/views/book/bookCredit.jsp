@@ -9,6 +9,10 @@
 		var ticket = $("#ticket").text();
 		var ticketStr = ticket.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 		$("#total").text(ticketStr + "원");//초기 결제가격
+		//var ticketprice = parseInt(ticket);
+		//console.log(ticketprice);
+		//$("#price").val(ticketprice);
+		//console.log($("#price").val());
 		$("#selectbox").on('change', function() {
 			var state = $('#selectbox option:selected').val();
 			if (state == 'op1') {
@@ -23,6 +27,7 @@
 			var totalStr = String(total);//문자형으로 변환
 			var totalPrice = totalStr.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 			$("#total").text(totalPrice + "원");
+			$("#price").val(total);
 		});
 
 		$("#pay").on('click', function() {
@@ -59,7 +64,7 @@
 
 			//결제하기
 			var IMP = window.IMP; // 생략 가능
-			IMP.init("imp76154120");
+			IMP.init("imp52376674");
 
 			//결제 요청하기
 			IMP.request_pay({
@@ -77,13 +82,13 @@
        */
 		    pg : 'html5_inicis',//kg이니시스
 		    pay_method : 'card',
-		    merchant_uid: "order_no_0010", // 상점에서 관리하는 주문 번호 --> 공연번호
-		    name : '주문명:결제테스트',
-		    amount : 100,
-		    buyer_email : 'eduminhy@gmail.com',
-		    buyer_name : 'CCU_민하영',
-		    buyer_tel : '010-1234-5678',
-		    buyer_addr : '서울특별시 강남구 삼성동',
+		    merchant_uid: "order_no_0116", // 상점에서 관리하는 주문 번호 --> 공연번호
+		    name : $("#showname").val()+'_'+$("#scheduleDate_id").val(),
+		    amount : 10,
+		    buyer_email : $("#email").val(),
+		    buyer_name : $("#buyer").val(),
+		    buyer_tel : $("#tel1").val()+'-'+ $("#tel2").val()+'-'+ $("#tel3").val(),
+		    buyer_addr : $("#addr").val(),
 		    buyer_postcode : '123-456'
 
 			}, function(rsp) {
@@ -136,16 +141,42 @@
 					var msg = '결제에 실패하였습니다.';
 					msg += '에러내용 : ' + rsp.error_msg;
 					result = '1';
+					alert(msg);
 				}
 				if (result == '0') {
-					location.href = "bookCheck";
+					alert(msg);
+					console.log(33333);
+					$.ajax({
+						url:"/book/bookCreditOk",
+						type:"post",
+						data:{
+								email: $("#email").val(),
+								name: $("#buyer").val(),
+								addr: $("#addr").val(),
+								tel: $("#tel1").val()+'-'+ $("#tel2").val()+'-'+ $("#tel3").val(),
+								shipno: rsp.merchant_uid,
+								paidAmount: rsp.paid_amount,
+								paytype: rsp.pay_method,
+								applyNum: rsp.apply_num
+								},
+						dataType:"json",
+						success:function(data){
+							
+						},error:function(error){
+							console.log(error);
+						}
+					});
+					//$("#creditFrm").submit();
+					//location.href='/book/bookChe';
 				}
-				alert(msg);
 			});
 		});
 	});
 </script>
 <div class="container">
+	<form method="post" action="/book/bookCreditOk" id="creditFrm">
+	<div class="context">
+	<input type="hidden" id="scheduleDate_id" name="scheduleDate_id" value="${sdvo.id}"/>
 	<div id="infoReceive">
 		<div><h1>STEP02 티켓수령정보</h1></div>
 		<ul>
@@ -164,7 +195,8 @@
 				<input type="text" name="tel2" id="tel2" size="4" maxlength="4" value="${vo.tel2 }"/> - 
 				<input type="text" name="tel3" id="tel3" size="4" maxlength="4" value="${vo.tel3 }"/>
 			</li>	
-			<li><span class="detail">E-mail</span>&nbsp;<input type="text" name="email" id="email"/></li>
+			<li><span class="detail">E-mail</span>&nbsp;<input type="text" name="email" id="email" value="eduminhy@gmail.com"/></li>
+			<li><input type="hidden" id="addr" value="${vo.addr }"/></li>
 			<hr/>
 			
 			<li id="warn"><span id="warnTitle">※주의사항※</span><br/><br/>
@@ -183,19 +215,22 @@
 		<ul id="info">
 			<li class="title">선택내역</li>
 			<hr/>
-			<li><span class="showinfo">공연명</span>&nbsp;<input type="text" name="" value="${svo.name}" readonly></li>
-			<li><span class="showinfo">공연장소</span>&nbsp;<input type="text" value="${svo.place_name }" readonly></li>
-			<li><span class="showinfo">공연날짜</span>&nbsp;<input type="text" name="showWatchDate" value="${datevo.showdate }"/></li>
-			<li><span class="showinfo">공연시간</span>&nbsp;<input type="text" name="showWatchTime" value="${datevo.showtime }"/></li>
+			<li><span class="showinfo">공연명</span>&nbsp;<input type="text" id="showname" name="" value="${shvo.name }" readonly></li>
+			<li><span class="showinfo">공연장소</span>&nbsp;<input type="text" id="showplace" value="${shvo.place_name }" readonly></li>
+			<li><span class="showinfo">공연날짜</span>&nbsp;<input type="text" name="showWatchDate" value="${shvo.showDate}" readonly/></li>
+			<li><span class="showinfo">공연시간</span>&nbsp;<input type="text" name="showWatchTime" value="${shvo.showTime }" readonly/></li>
 			<li><span class="showinfo">좌석선택</span></li>
-			<li><input type="hidden" name="seat_count" value=""></li>
-			<li id="seatBox"><input type="text" name="seat_num" value=""/></li>
+			<li id="seatBox">
+			<c:forEach var="no" items="${svo}">
+			<input type="text" name="id" value="${no.id}" readonly/>
+			</c:forEach>
+			</li>
 			</ul>	
 		<ul id="price">
 			<span class="title">결제내역</span>
 			<hr/>
 			<li>티켓금액</li>
-			<li id="ticket">165500</li>
+			<li id="ticket">10</li>
 			<li>배송비</li>
 			<li id="deliver">0</li>
 			<hr/>
@@ -204,4 +239,6 @@
 		</ul>
 		<input type="button" id="pay" value="결제하기"/>
 	</div>
+	</div>
+	</form>
 </div>

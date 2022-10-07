@@ -32,6 +32,7 @@
 	
 </script>
 <div class="container">
+	<input type="text" id="scheduleDate_id" name="scheduleDate_id" value="${sdvo.id}"/>
 	<table id="content">
 		<caption><h1>예매내역 확인</h1></caption>
 		<tr class="rows" id="name">

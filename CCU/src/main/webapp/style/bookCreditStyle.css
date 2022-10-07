@@ -1,6 +1,7 @@
 @charset "UTF-8";
 	body, ul, li{margin:0; padding:0; list-style-type:none;}
-	.container{width:1200px; overflow:auto; margin:0 auto; display:flex;}
+	.container{width:1200px; overflow:auto; margin:0 auto;}
+	.context{ display:flex;}
 	h1{color:rgb(68,0,153); margin:0; padding:20px 0; text-align:center; border-bottom:4px solid rgb(68,0,153);}
 	input::placeholder{color:rgb(204,204,204);}
 	

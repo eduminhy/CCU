@@ -30,7 +30,8 @@ private String introduction_image4;
 
 private int showRank;
 
-
+private String showDate;
+private String showTime;
 
 @Override
 public String toString() {
@@ -174,6 +175,18 @@ public String getIntroduction_image4() {
 }
 public void setIntroduction_image4(String introduction_image4) {
 	this.introduction_image4 = introduction_image4;
+}
+public String getShowDate() {
+	return showDate;
+}
+public void setShowDate(String showDate) {
+	this.showDate = showDate;
+}
+public String getShowTime() {
+	return showTime;
+}
+public void setShowTime(String showTime) {
+	this.showTime = showTime;
 }
 
 

@@ -3,20 +3,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team200.proj.dao.BookDAO">
-	<select id="getDateInfo" resultType="ScheduledateVO">
-		select showdb_id, showdate, showtime from scheduledate 
-		where showdb_id=#{param1} and showdate=#{param2} and showtime=#{param3}
+	<select id="getScheduleInfo" resultType="scheduleDateVO">
+		select id, showDate, showTime from scheduleDate
 	</select>
-	<select id="getPriceInfo" resultType="String">
-		select price from showdb where id=#{id}
+	<select id="getSeatState" resultType="SeatVO">
+		select a.id, a.scheduleDate_id, a.state from seat as a inner join scheduleDate as b on a.scheduleDate_id=b.id
+	</select>
+	<update id="bookSeatOk" parameterType="SeatVO">
+		update seat set state = 2 where id=#{id} and scheduleDate_id=${scheduleDate_id}
+	</update>
+	<select id="getUserInfo" resultType="UserVO">
+		select username, tel, addr from user
 	</select>
 	<select id="getShowInfo" resultType="showVO">
-		select a.id, a.name, a.place_name, a.price, b.showdate, b.showtime 
-		from showdb as a inner join scheduledate as b 
-		on a.id=b.showdb_id 
-		where a.id=#{param1} and b.showdate=#{param2} and b.showtime=#{param3}   
+		select a.id, a.showDate, a.showTime, b.name, b.place_name from scheduleDate as a 
+		inner join showdb as b on a.showdb_id = b.id where a.id=${param1}
 	</select>
-	<select id="getUserInfo" resultType="UserVO">
-		select username, tel from user
+	<select id="getSeatNum" resultType="SeatVO">
+		select id from seat where scheduleDate_id=${param1} and state=2
 	</select>
+	<update id="bookSeatComplete" parameterType="SeatVO">
+		update seat set state = 1 where id=#{id} and scheduleDate_id=${scheduleDate_id}
+	</update>
+	<!-- <insert id="putOrderlist">
+		insert into order_list where 
+	</insert> -->
 </mapper>
