@@ -1,32 +1,39 @@
 package com.team200.proj.controller;
 
-
-import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
+import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.team200.proj.service.DBdataService;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import com.team200.proj.service.ShowService;
 import com.team200.proj.vo.ReviewVO;
 
-
-
-import com.team200.proj.vo.UserVO;
 import com.team200.proj.vo.dateVO;
-import com.team200.proj.service.ShowService;
 
 import com.team200.proj.vo.showVO;
-
 
 @RestController
 @RequestMapping("/show/*")
@@ -35,12 +42,11 @@ public class showController {
 	@Autowired
 	ShowService service;
 
-	
 	@GetMapping("showList")
 	public ModelAndView showList(String genre) {
 
 		ModelAndView mav = new ModelAndView();
-		
+
 		mav.addObject("genre", genre);
 		mav.addObject("showlist", service.getShowList(genre));
 		mav.addObject("weeklylist", service.WeeklyRankingList(genre));
@@ -340,9 +346,9 @@ public class showController {
 			star += Double.valueOf(rVO.get(i).getRate());
 			System.out.println(star);
 		}
-		System.out.println(star/rVO.size());
+		System.out.println(star / rVO.size());
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("starResult", String.format("%.2f", star/rVO.size()));
+		mav.addObject("starResult", String.format("%.2f", star / rVO.size()));
 		mav.addObject("rVO", r5VO);
 		mav.addObject("r6VO", r6VO);
 		mav.addObject("dvo", dVO);
@@ -353,4 +359,63 @@ public class showController {
 		return mav;
 	}
 
+	@RequestMapping(value = "report", method = RequestMethod.POST)
+	@ResponseBody
+	public void report(HttpServletRequest request) throws IOException, ParseException {
+		HttpSession session = request.getSession();
+		String user_id = (String) (request.getSession()).getAttribute("logId");
+//		System.out.println(session.getAttribute("logId"));
+
+		String str = readBody(request);
+		System.out.println(str);
+//		String str = "{\"name\":\"dong\"}";
+//		readBody(request).replace("\"", "\\\"");
+//		System.out.println(str);
+//		System.out.println(readBody(request).replace("\"", "\\\""));
+//		System.out.println((readBody(request)).toString());
+//		System.out.println((readBody(request)).toString().replace("\"", "\\\""));
+        JSONParser parser = new JSONParser();
+    org.json.simple.JSONObject jsonObject = (org.json.simple.JSONObject) parser.parse(str);
+
+    	String logid = (String) session.getAttribute("logId");
+    	int id = Integer.parseInt(String.valueOf(jsonObject.get("id")));
+    	String content = (String) jsonObject.get("content");
+    	service.setReport(id, content,logid);
+//		String str = readBody(request);
+//		JSONObject jsonObject = new JSONObject(str.toString());
+//        System.out.println("OBJECT : "+jsonObject.toString());
+//		JsonObject array = new Gson().fromJson(str, JsonObject.class);
+//		System.out.println(array);
+
+//		readBody(request).toString();
+//		JSONParser parser = new JSONParser();
+//		JSONObject jsonObject = (JSONObject) parser.parse(readBody(request).toString());
+//		System.out.println(jsonObject.get("name"));
+//		JsonParser parser = new JsonParser();
+//		JsonElement element = parser.parse((readBody(request).toString()));
+//		JsonObject rootob = element.getAsJsonObject().get("response").getAsJsonObject();
+//		JsonObject body = rootob.getAsJsonObject().get("body").getAsJsonObject();
+//		JsonObject items = body.getAsJsonObject().get("items").getAsJsonObject();
+
+	}
+
+	public static String readBody(HttpServletRequest request) throws IOException {
+		BufferedReader input = new BufferedReader(new InputStreamReader(request.getInputStream()));
+		StringBuilder builder = new StringBuilder();
+		String buffer;
+		while ((buffer = input.readLine()) != null) {
+			if (builder.length() > 0) {
+				builder.append("\n");
+			}
+			builder.append(buffer);
+		}
+		return builder.toString();
+	}
+//	@GetMapping("report")
+//	public ModelAndView report() {
+//
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("show/report");
+//		return mav;
+//	}
 }

@@ -25,6 +25,10 @@ public interface ShowDAO {
 	public List<showVO> getShowList(String genre);
 	public List<showVO> getNewList(String genre);
 	public List<showVO> WeeklyRankingList(String genre);
+
+	public void setReport(int id,String content,String logid);
+
 	public List<BoardVO> getBoardList(String genre);
+
 
 }
