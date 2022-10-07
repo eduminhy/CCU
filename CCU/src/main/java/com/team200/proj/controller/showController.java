@@ -50,6 +50,7 @@ public class showController {
 		mav.addObject("genre", genre);
 		mav.addObject("showlist", service.getShowList(genre));
 		mav.addObject("weeklylist", service.WeeklyRankingList(genre));
+		mav.addObject("boardlist",service.getBoardList(genre));
 		mav.addObject("newlist", service.getNewList(genre));
 
 		mav.setViewName("show/showList");

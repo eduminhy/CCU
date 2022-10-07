@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.team200.proj.dao.ShowDAO;
+import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.showVO;
 
@@ -30,7 +31,14 @@ public class ShowServiceImpl implements ShowService {
 		return dao.WeeklyRankingList(genre);
 	}
 
-	public showVO showDetail(String show_id) {
+	
+	@Override
+	public List<BoardVO> getBoardList(String genre) {
+		return dao.getBoardList(genre);
+	}
+	
+  	public showVO showDetail(String show_id) {
+		// TODO Auto-generated method stub
 
 		return dao.showDetail(show_id);
 	}
@@ -40,10 +48,12 @@ public class ShowServiceImpl implements ShowService {
 		return dao.getReview(show_id);
 	}
 
+
 	@Override
 	public void setReport(int id, String content, String logid) {
 		// TODO Auto-generated method stub
 		dao.setReport(id,content,logid);
 	}
+
 
 }

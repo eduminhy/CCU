@@ -2,6 +2,7 @@ package com.team200.proj.service;
 
 import java.util.List;
 
+import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.showVO;
 
@@ -17,4 +18,7 @@ public interface ShowService {
 	public List<showVO> WeeklyRankingList(String genre);
 	
 	public void setReport(int id,String content,String logid);
+
+	public List<BoardVO> getBoardList(String genre);
+
 }
