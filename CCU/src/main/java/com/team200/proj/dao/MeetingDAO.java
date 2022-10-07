@@ -12,7 +12,7 @@ import com.team200.proj.vo.showVO;
 @Repository
 public interface MeetingDAO {
 
-	public MeetingVO mainMeetingGet();
+	public MeetingVO mainMeetingGet(Long id);
 
 	public List<MeetingVO> mainMeeting();
 
@@ -24,10 +24,16 @@ public interface MeetingDAO {
 
 	public int meetingWriteOk(MeetingVO vo);
 
-	public int meetingEdit(MeetingVO vo, String user_id);
+	public int meetingEdit(MeetingVO vo);
 
-	public int meetingDelete(Long id);
+	public void meetingDelete(Long id);
 	
 	public List<showVO> showSearch(String name);
+
+	public List<showVO> showModalAll();
+
+	public List<showVO> showModal(String name);
+
+	public MeetingVO meetingView(Long id);
 
 }

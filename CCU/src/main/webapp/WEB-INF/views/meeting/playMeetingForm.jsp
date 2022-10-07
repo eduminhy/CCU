@@ -32,6 +32,7 @@
                 window.open("/meeting/showSearchOk", "name", "width=500, height=400");
             })
         });
+//         $("#id").hide();
     </script>
 </head>
 
@@ -47,11 +48,11 @@
     <form method="post" action="/meeting/meetingWrite" id="playMeetingWritingFrm" class="playMeetingWritingFrm">
         <table summary="연극미팅글쓰기폼">
 
-            <input type="hidden" name="id" id="id" value="${board.id}">
+<%--             <input type="hidden" name="id" id="id" value="${board.id}"> --%>
 
             <ul>
                 <li>
-                    <input type="text" name="showdb_id" id="showdb_id" value="${board.showdb_id}" readonly="readonly">
+                    <input type="hidden" name="showdb_id" id="showdb_id" value="${board.showdb_id}" readonly="readonly">
                     <input type="text" id="name" value="${board.name}">
                     <button class="showId_btn">공연검색</button>
                 </li>

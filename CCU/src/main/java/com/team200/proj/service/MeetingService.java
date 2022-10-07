@@ -19,10 +19,15 @@ public interface MeetingService {
 	
 	public int meetingWriteOk(MeetingVO vo);
 
-	public int meetingEdit(MeetingVO vo, String user_id);
+	public int meetingEdit(MeetingVO vo);
 
-	public void meetingDelete(Long id, String user_id);
+	public void meetingDelete(Long id);
 	
 	public List<showVO> showSearch(String name);
 
+	public List<showVO> showModalAll();
+
+    public List<showVO> showModal(String name);
+
+    public MeetingVO meetingView(Long id);
 }

@@ -1,8 +1,10 @@
 package com.team200.proj.vo;
 
+
+
 public class MeetingVO {
 	
-	private int id;
+	private Long id;
 	private String user_id;
 	private String showdb_id;
 	private String title;
@@ -10,24 +12,26 @@ public class MeetingVO {
 	private String writedate;
 	private int hit;
 	private String genre;
-	
-	
-	
+	private String name;
+
+
+
 	@Override
 	public String toString() {
 		return "MeetingVO [id=" + id + ", user_id=" + user_id + ", showdb_id=" + showdb_id + ", title=" + title
 				+ ", content=" + content + ", writedate=" + writedate + ", hit=" + hit + ", genre=" + genre + "]";
 	}
+
 	public String getGenre() {
 		return genre;
 	}
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getUser_id() {
@@ -66,6 +70,12 @@ public class MeetingVO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

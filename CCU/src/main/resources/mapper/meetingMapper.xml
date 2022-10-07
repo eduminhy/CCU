@@ -5,11 +5,27 @@
 
 <mapper namespace="com.team200.proj.dao.MeetingDAO">
 
+    <select id="showModalAll" resultType="showVO">
+        select id, name from showdb
+    </select>
+
+    <select id="showModal" resultType="showVO">
+        select id, name from showdb where name like CONCAT('%', #{name}, '%')
+    </select>
+
 	<select id="showSearch" resultType="showVO">
-	 select id, name from showdb where name like '%${param1}%' order by name desc;
+	 select id, name from showdb where id= name='%${param1}%' order by name desc;
 	</select>
 
     <select id="mainMeeting" resultType="MeetingVO">
+        select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
+        from board a inner join showdb b on a.showdb_id = b.id
+        <if test = "meetingkeyword != null">
+        where (title like '%${meetingkeyword}%' or content like '%${meetingkeyword}%')
+        </if>
+    </select>
+    
+      <select id="meetingsearch" resultType="MeetingVO">
         select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
         from board a inner join showdb b on a.showdb_id = b.id
     </select>
@@ -44,32 +60,31 @@
 <!--    </select>-->
 
     <insert id="meetingWriteOk">
-        insert into board(user_id, title, content)
-        values (#{user_id}, #{title}, #{content})
+        insert into board(user_id, showdb_id, title, content)
+        values (#{user_id}, #{showdb_id}, #{title}, #{content})
     </insert>
 
-    <update id="meetingEdit">
+    <select id="mainMeetingGet" resultType="MeetingVO">
+        select * from board where id = #{id}
+    </select>
+
+    <update id="meetingEdit" parameterType="map">
         update board
-        set title   = #{name},
-            content = #{content}
+        set title   = #{title},
+            content = #{content},
+            showdb_id = #{showdb_id}
         where id = #{id}
-          and user_id = #{user_id}
     </update>
 
     <delete id="meetingDelete">
         delete
         from board
-        where id = 1
-          AND board.user_id = {user_id}
+        where id = #{id}
     </delete>
-	
-    
-    
-    
-    <select id="meetingFindBytheatrical">
 
+    <select id="meetingView" resultType="MeetingVO">
+        select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%y-%m-%d %h:%i') writedate, a.showdb_id, b.genre, b.name
+        from board a inner join showdb b on a.showdb_id = b.id where a.id = #{id}
     </select>
-    
-    
 
 </mapper>

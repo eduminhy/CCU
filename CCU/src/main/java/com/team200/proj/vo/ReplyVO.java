@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ReplyVO {
 	private int id;
-	private String board_id;
+	private int board_id;
 	private String user_id;
 	private String content;
 	private String writedate;
@@ -30,11 +30,11 @@ public class ReplyVO {
 		this.id = id;
 	}
 
-	public String getBoard_id() {
+	public int getBoard_id() {
 		return board_id;
 	}
 
-	public void setBoard_id(String board_id) {
+	public void setBoard_id(int board_id) {
 		this.board_id = board_id;
 	}
 
