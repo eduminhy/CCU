@@ -1,29 +1,34 @@
 package com.team200.proj.vo;
 
 public class ScheduledateVO {
+	String id;
 	String showdb_id;
-	String showdate;
-	String showtime;
+	String showDate;
+	String showTime;
 	
-	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getShowdb_id() {
 		return showdb_id;
 	}
 	public void setShowdb_id(String showdb_id) {
 		this.showdb_id = showdb_id;
 	}
-	public String getShowdate() {
-		return showdate;
+	public String getShowDate() {
+		return showDate;
 	}
-	public void setShowdate(String showdate) {
-		this.showdate = showdate;
+	public void setShowDate(String showDate) {
+		this.showDate = showDate;
 	}
-	public String getShowtime() {
-		return showtime;
+	public String getShowTime() {
+		return showTime;
 	}
-	public void setShowtime(String showtime) {
-		this.showtime = showtime;
+	public void setShowTime(String showTime) {
+		this.showTime = showTime;
 	}
-	
 	
 }

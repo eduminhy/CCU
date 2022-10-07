@@ -40,7 +40,7 @@
 		<h2>What's HOT? [${genre}]</h2>
 		<c:forEach var="svo" items="${showlist }">
 			<ul>
-				<li><a href="#"><img src="${svo.mainposter }"/></a></li>
+				<li><a href="/show/showDetail?show_id=${svo.id}"><img src="${svo.mainposter }"/></a></li>
 				<li class="showname">${svo.name }</li>
 				<li>${svo.startdate } ~ ${svo.enddate }</li>
 				<li class="placename">${svo.place_name}</li>
@@ -54,7 +54,7 @@
 			<ul>
 				<c:forEach var="wvo" items="${weeklylist }" varStatus="status">
 				<li>${status.count }위&nbsp;</li>
-				<li><a href="#">${wvo.name }</a></li>
+				<li><a href="/show/showDetail?show_id=${wvo.id}">${wvo.name }</a></li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -75,7 +75,7 @@
 		<h2>신작 살펴보기</h2>
 		<c:forEach var="nvo" items="${newlist }">
 			<ul>
-				<li><a href="#"><img src="${nvo.mainposter }"/></a></li>
+				<li><a href="/show/showDetail?show_id=${nvo.id}"><img src="${nvo.mainposter }"/></a></li>
 				<li class="nshowname">${nvo.name }</li>
 				<li>${nvo.startdate } ~ ${nvo.enddate }</li>
 				<li class="nplacename">${nvo.place_name}</li>

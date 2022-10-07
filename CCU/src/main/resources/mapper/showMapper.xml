@@ -8,7 +8,7 @@
 
 	<select id="getShowList" resultType="showVO">
 		select 
-		a.name, a.place_name, date_format(a.startdate, '%Y.%m.%d')startdate, 
+		a.id, a.name, a.place_name, date_format(a.startdate, '%Y.%m.%d')startdate, 
 		date_format(a.enddate, '%Y.%m.%d')enddate, a.genre, a.mainposter, 
 		<if test="param1=='아동'">
 			c.showRank from showdb as a inner join child as c on a.id=c.showdb_id
@@ -62,12 +62,12 @@
 	</select>
 		<select id="WeeklyRankingList" resultType="showVO">
 		<if test="param1=='아동'">
-		select a.name, c.showRank from showdb as a inner join child as c on a.id=c.showdb_id
+		select a.id, a.name, c.showRank from showdb as a inner join child as c on a.id=c.showdb_id
 		where state='공연중'
 		order by c.showRank asc limit 0,5
 		</if>
 		<if test="param1!='아동'">
-		select a.name, b.showRank from showdb as a inner join popularW as b on a.id=b.showdb_id
+		select a.id, a.name, b.showRank from showdb as a inner join popularW as b on a.id=b.showdb_id
 			<if test="param1=='전체'"></if> 
 			<if test="param1=='연극'">where genre=#{param1}</if>
 			<if test="param1=='뮤지컬'">where genre=#{param1}</if>
@@ -98,7 +98,7 @@
 	<select id="getNewList" resultType="showVO"> 
 		<if test="param1=='아동'">
 			select
-			a.name, a.place_name, date_format(a.startdate, '%Y.%m.%d')startdate, 
+			a.id, a.name, a.place_name, date_format(a.startdate, '%Y.%m.%d')startdate, 
 			date_format(a.enddate, '%Y.%m.%d')enddate, a.genre, a.mainposter
 			from showdb as a inner join child as c on a.id=c.showdb_id
 			where a.state='공연중' and
@@ -107,7 +107,7 @@
 		</if>
 		<if test="param1!='아동'">
 			select
-			name, place_name, date_format(startdate, '%Y.%m.%d')startdate, 
+			id, name, place_name, date_format(startdate, '%Y.%m.%d')startdate, 
 			date_format(enddate, '%Y.%m.%d')enddate, genre, mainposter
 			from showdb
 			<if test="param1=='전체'">where </if> 

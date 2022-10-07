@@ -5,10 +5,23 @@
 <script>
 	$(function(){
 		var cnt = 0;
+		var showdb_id = $("#showdb_id").val();
+		var showDate = $("#showDate").val();
+		var showTime = $("#showTime").val();
+		var seatCnt = "";
+		var priceText = $("#priceText").val();
+		var priceLength = $("#priceText").val().length;
+		var priceStr = priceText.substring(4, priceLength-1);//가격숫자추출
+		var priceSpl = priceStr.split(",");//콤마기준으로 나눔
+		var priceInt = parseInt(priceSpl[0]+priceSpl[1]);//문자를 합쳐서 숫자로 변환
+		var price = "";
+		//var seatNameArr = [];
+		
+		$("#price").val(priceInt);
 		$("input[name='seatNum']").click(function(){
 				if($(this).is(":checked")==true){//체크되면
-					console.log(this.id);
-					$("#seatBox").append("<span>"+this.value+"</span> ");//좌석출력
+					//console.log(this.id);
+					$("#seatBox").append("<input type='text' name='id' value='"+this.value+"'/> ");//좌석출력
 					cnt++;
 					$("#seatCnt").val(cnt);
 				}
@@ -19,33 +32,25 @@
 					for(var i=0;i<cnt+1;i++){
 						//console.log("for문=>"+$("#seatBox>span").eq(i).text());
 						//console.log("this=>"+this.value);
-						if($("#seatBox>span").eq(i).text()==this.value){
-							$("#seatBox>span").eq(i).remove();
+						if($("#seatBox>input").eq(i).val()==this.value){
+							$("#seatBox>input").eq(i).remove();
 						}
 					}
 				}
 		});
+		
+				
+		$("#completeSeat").submit(function(){
+			seatCnt = $("#seatCnt").val();
+			price = $("#price").val();
+		});
+		
+		
 	});
 </script>
-	
-
-
-<style>
-	#stage{height:20px; line-height:20px; padding:10px 300px; margin:30px 0 10px 0; background-color:#ddd;}
-	.seatBox{display:flex;}
-	.firstCol{color:white; background-color:black; margin: 5px 3px; padding:0 3px; font-size:13px; font-weight:bold; width:20px; height:20px; line-height:20px;}
-	.s{width:20px; height:20px; background-color:lavender; margin:5px;}
-</style>
-<div>
-${logId}<br/>
-${logStatus}<br/>
-${day}<br/>
-${date}<br/>
-${time}<br/>
-${price}<br/>
-${id}<br/></div>
 
 <div class="container">
+	<form method="post" action="/book/bookSeatOk" id="seatFrm">
 	<div><h1>STEP01 좌석예약</h1></div>
 	<div id="content">
 		<!-- 좌석 -->
@@ -354,19 +359,22 @@ ${id}<br/></div>
 					<div class = "s"></div>
 				</div>
 			</div>
+		</div>	
 		<div id="detail">
 		<h3>선택확인</h3>
 		<ul>
-			<li><input type="hidden" id="showdb_id" value="${datevo.showdb_id }"/></li>
-			<li>관람일 : <input type="text" id="showdate" value="${datevo.showdate }"/></li> 
-			<li>관람시간 : <input type="text" id="showtime" value="${datevo.showtime }"/></li>
-			<li>좌석수 : <input type="text" id="seatCnt" name="seat_count" value="0"/>매</li>
+			<li><input type="hidden" name="scheduleDate_id" id="scheduleDate_id" value="${vo.id}"/></li>
+			<li><input type="hidden" name="showdb_id" id="showdb_id" value="${id}"/></li>
+			<li>관람일 : <input type="text" name="showDate" id="showDate" value="${date} (${day})"/></li> 
+			<li>관람시간 : <input type="text" name="showTime" id="showTime" value="${time}"/></li>
+			<li>좌석수 : <input type="text" id="seatCnt" name="seatCnt" value=""/>매</li>
 			<li>좌석번호</li>
 			<li id="seatBox"></li>
-			<li>가격 : ${price }</li>
+			<li>가격 : <input type="text" name="priceText" id="priceText" value="${price}"/></li>
+			<li><input type="hidden" name="price" id="price" value=""></li>
 		</ul>
-		<input type="submit" value="좌석선택완료" id="completeSeat" 
-		onclick="location.href='bookCredit?showdb_id=${datevo.showdb_id}&showdate=${datevo.showdate }&showtime=${datevo.showtime }'"/>
+		<input type="submit" value="좌석선택완료" id="completeSeat"/>
 		</div>
 	</div>
+	</form>
 </div>
