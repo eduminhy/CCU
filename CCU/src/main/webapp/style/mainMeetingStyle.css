@@ -29,7 +29,7 @@
 		background-color:#F2F2F2;
 		margin:1% auto;
 	}
-	.searchTopWriteTxt{
+	#meetingkeyword{
 		margin-top:4%;
 		margin-left:37%;
 		background-color:#F2F2F2;
@@ -43,7 +43,11 @@
 		float:left;	
 		text-align:center;
 	}
-	.searchTopBtn{
+	.meetingKeyword{
+		
+		text-align:center;
+	}
+	.meetingkeywordBtn{
 		margin-top:4%;
 		background:url("../img/search_black.png");
 		background-repeat: no-repeat;
