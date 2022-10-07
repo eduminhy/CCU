@@ -1,7 +1,5 @@
 package com.team200.proj.service;
 
-
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -31,17 +29,21 @@ public class ShowServiceImpl implements ShowService {
 	public List<showVO> WeeklyRankingList(String genre) {
 		return dao.WeeklyRankingList(genre);
 	}
-  	public showVO showDetail(String show_id) {
-		// TODO Auto-generated method stub
+
+	public showVO showDetail(String show_id) {
+
 		return dao.showDetail(show_id);
-  	}
+	}
 
 	@Override
 	public List<ReviewVO> getReview(String show_id) {
-		// TODO Auto-generated method stub
 		return dao.getReview(show_id);
 	}
 
+	@Override
+	public void setReport(int id, String content, String logid) {
+		// TODO Auto-generated method stub
+		dao.setReport(id,content,logid);
+	}
 
-	
 }

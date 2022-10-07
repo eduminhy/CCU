@@ -161,8 +161,13 @@
 .detailRatingContentInnerDiv>div:nth-child(2) {
 	font-size: 20px;
 	font-weight: bold;
-	width: 73%;
+	width: 70%;
 	text-align: left;
+}
+
+.detailRatingContentInnerDiv>div:nth-child(3) {
+	/* 	margin: 0 0 0 auto; */
+	width: 5%;
 }
 
 .calendar {
@@ -251,20 +256,22 @@
 .calanderSelect {
 	height: 100px;
 }
-.calanderSelectDiv{
+
+.calanderSelectDiv {
 	display: flex;
-	flex-flow:wrap;
+	flex-flow: wrap;
 }
+
 .calanderSelectDiv>div {
 	display: flex;
-/* 	margin:auto; */
-justify-content : center;
+	/* 	margin:auto; */
+	justify-content: center;
 	align-items: center;
-	width:48%;
+	width: 48%;
 	height: 35px;
 	border-radius: 5px;
 	border: solid rgba(59, 0, 148) 1px;
-	background-color :rgba(247, 247, 247);
+	background-color: rgba(247, 247, 247);
 }
 
 .calanderButten {
@@ -280,14 +287,62 @@ justify-content : center;
 	margin: auto;
 	color: white;
 }
-.form{
-	display:none;
+
+.form {
+	display: none;
 }
-.detailImg{
-	display:flex;
-	width:100%;
-	flex-direction: column
+
+.detailImg {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	margin: 0 auto;
 }
-.detailImg img{
-	width:100%;
+
+.detailImg img {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.setreview {
+	width: 100%;
+}
+
+.setreviewForm {
+	width: 100%;
+	height: 100px;
+	border-radius: 5px;
+	border: solid rgba(59, 0, 148) 1px;
+	background-color: rgba(247, 247, 247);
+}
+/* 별점----------------------------------------------------------------------------------------- */
+.star-rating {
+	display: flex;
+	flex-direction: row-reverse;
+	font-size: 2.25rem;
+	line-height: 2.5rem;
+	justify-content: space-around;
+	padding: 0 0.2em;
+	text-align: center;
+	width: 5em;
+}
+
+.star-rating input {
+	display: none;
+}
+
+.star-rating label {
+	-webkit-text-fill-color: transparent;
+	/* Will override color (regardless of order) */
+	-webkit-text-stroke-width: 2.3px;
+	-webkit-text-stroke-color: red;
+	cursor: pointer;
+}
+
+.star-rating :checked ~ label {
+	-webkit-text-fill-color: red;
+}
+
+.star-rating label:hover, .star-rating label:hover ~ label {
+	-webkit-text-fill-color: orange;
 }

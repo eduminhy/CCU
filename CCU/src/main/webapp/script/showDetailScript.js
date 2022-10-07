@@ -193,23 +193,23 @@ function getshow(MM, TT, WW, TT2, FF, SS, SS2, HH) {
 	//console.log(S2)
 }
 function getstar(rate) {
-console.log(rate);
-console.log(Math.round(rate));
-var starString = "";
-if(Math.round(rate)<1){
-	starString = "☆☆☆☆☆";
-}else if(Math.round(rate)<2){
-	starString = "★☆☆☆☆";
-}else if(Math.round(rate)<3){
-	starString = "★★☆☆☆";
-}else if(Math.round(rate)<4){
-	starString = "★★★☆☆";
-}else if(Math.round(rate)<5){
-	starString = "★★★★☆";
-}else {
-	starString = "★★★★★";
-}
-return starString;
+	console.log(rate);
+	console.log(Math.round(rate));
+	var starString = "";
+	if (Math.round(rate) < 1) {
+		starString = "☆☆☆☆☆";
+	} else if (Math.round(rate) < 2) {
+		starString = "★☆☆☆☆";
+	} else if (Math.round(rate) < 3) {
+		starString = "★★☆☆☆";
+	} else if (Math.round(rate) < 4) {
+		starString = "★★★☆☆";
+	} else if (Math.round(rate) < 5) {
+		starString = "★★★★☆";
+	} else {
+		starString = "★★★★★";
+	}
+	return starString;
 	//console.log(12123)
 	//console.log(S2)
 }
@@ -250,4 +250,36 @@ $(document).ready(function() {
 	$('.detailRatingLink').click(function() {
 		$('.hiddenDiv').show();
 	});
+	let myWindow;
+	$('.detailRatingContentInnerDiv>div:nth-child(3)').click(function() {
+		 var rcontent = prompt("신고하시는 이유를 적어주세요", "여기에!!");
+//		 console.log(userName  );
+//		myWindow = window.open('/show/report', '네이버팝업',
+//			'width=500, height=400, scrollbars=yes, resizable=no')
+//		$('.reportSM').click(function() {
+//			myWindow.close();
+//		});
+
+//				console.log($(this).attr('name'));
+//				console.log($(this).parent().children().eq(1).children().eq(0).text());
+//				console.log($(this).parent().children().eq(1).children().eq(1).text());
+		//		.html() .text()
+				var rname = $(this).parent().children().eq(1).children().eq(0).text();
+				var rid = $(this).attr('name');
+				var content = $(this).parent().children().eq(1).children().eq(1).text();
+											$.ajax({
+								url: '/show/report', //request 보낼 서버의 경로
+								type: 'post', // 메소드(get, post, put 등)
+								 async: false,
+								data: JSON.stringify({ 'name': rname,
+								'id': rid,
+								'content':content,
+								'rcontent':rcontent }), //보낼 데이터
+								'Content-Type': 'application/json',
+								success: function(data) {        //서버로부터 정상적으로 응답이 왔을 때 실행
+								}, error: function(err) {		//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+								}
+							});
+	});
+
 });

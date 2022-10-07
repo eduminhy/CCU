@@ -56,7 +56,23 @@
 	</select>
 	<select id="getReview" resultType="ReviewVO">
 
-		select user_id, content, rate, viewdate, date_format(writedate, '%m-%d %h:%i') writedate from review where show_id=#{param1}  order by id asc;
+		select id, user_id, content, rate, viewdate, date_format(writedate, '%m-%d %h:%i') writedate from review where show_id=#{param1}  order by id asc;
+
+	</select>
+		<select id="WeeklyRankingList" resultType="showVO">
+		<if test="param1=='아동'">
+		select a.name, c.showRank from showdb as a inner join child as c on a.id=c.showdb_id
+		where state='공연중'
+		order by c.showRank asc limit 0,5
+		</if>
+		<if test="param1!='아동'">
+		select a.name, b.showRank from showdb as a inner join popularW as b on a.id=b.showdb_id
+			<if test="param1=='전체'"></if> 
+			<if test="param1=='연극'">where genre=#{param1}</if>
+			<if test="param1=='뮤지컬'">where genre=#{param1}</if>
+			<if test="param1=='클래식'">where (genre='클래식' or a.genre='오페라') </if>
+		order by b.showRank asc limit 0,5   
+		</if>
 
 	</select>
 	<select id="getNewList" resultType="showVO"> 
@@ -83,5 +99,7 @@
 	    </if>
 	        
 	</select>
-
+		<insert id="setReport">
+		insert into report( user_id, type, content, postNum) values ( #{param3}, 'review',#{param2},#{param1})
+	</insert>
 </mapper>
