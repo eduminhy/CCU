@@ -172,9 +172,10 @@
 				
 				
 				<p class="inputBtn">
-					<!--  <button class="playMeetingBackBtn">뒤로가기</button>-->
-					<input type="button" value="뒤로가기" class="playMeetingBackBtn" id="back" onclick="location.href='playMeetingList'"/>
-				</p>
+					<!--  <button class="playMeetingBackBtn">뒤로가기</button>-->	
+					<!-- <input type="button" value="뒤로가기" class="playMeetingBackBtn" id="back" onclick="location.href='playMeetingList'"/> -->
+				 <button class="meetingBackBtn" id="back" onclick="history.back()">뒤로가기</button>
+				 </p>
 			</fieldset>
 		</form>
 	</div>
