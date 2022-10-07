@@ -18,7 +18,7 @@ public class MeetingServiceImpl implements MeetingService {
 	@Override
 	public MeetingVO mainMeetingGet(Long id) {
 		// TODO Auto-generated method stub
-		return dao.mainMeetingGet();
+		return dao.mainMeetingGet(id);
 	}
 
 	@Override
@@ -51,13 +51,13 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 
 	@Override
-	public int meetingEdit(MeetingVO vo, String user_id) {
+	public int meetingEdit(MeetingVO vo) {
 		// TODO Auto-generated method stub
-		return dao.meetingEdit(vo, user_id);
+		return dao.meetingEdit(vo);
 	}
 
 	@Override
-	public void meetingDelete(Long id, String user_id) {
+	public void meetingDelete(Long id) {
 		// TODO Auto-generated method stub
 		dao.meetingDelete(id);
 	}
@@ -67,4 +67,21 @@ public class MeetingServiceImpl implements MeetingService {
 		return dao.showSearch(name);
 	}
 
+	@Override
+	public List<showVO> showModalAll() {
+		// TODO Auto-generated method stub
+		return dao.showModalAll();
+	}
+
+	@Override
+	public List<showVO> showModal(String name) {
+		// TODO Auto-generated method stub
+		return dao.showModal(name);
+	}
+
+	@Override
+	public MeetingVO meetingView(Long id) {
+		// TODO Auto-generated method stub
+		return dao.meetingView(id);
+	}
 }
