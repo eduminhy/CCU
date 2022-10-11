@@ -207,8 +207,11 @@ public class MypageController {
 	
 	//2. 나의 예매내역
 	@GetMapping("myReservation")
-	public ModelAndView myReservation() {
+	public ModelAndView myReservation(HttpSession session) {
+		String id = (String)session.getAttribute("logId"); 
 		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("booklist", service.getBookInfo(id));
 		mav.setViewName("mypage/myReservation");
 		return mav;
 	}

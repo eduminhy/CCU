@@ -20,13 +20,12 @@
 	#bookFrm a{color:black;}
 	.book li{float:left; height:50px; line-height:50px; border-bottom:1px solid #ddd;}
 	.book li:nth-child(7n+1){width:15%;}
-	.book li:nth-child(7n+2){width:20%;}
+	.book li:nth-child(7n+2){width:20%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 	.book li:nth-child(7n+3){width:15%;}
 	.book li:nth-child(7n+4){width:15%;}
 	.book li:nth-child(7n+5){width:10%;}
 	.book li:nth-child(7n+6){width:10%;}
 	.book li:nth-child(7n+7){width:15%;}
-	
 	#bookList>li:first-child>ul>li{margin-top:30px; background-color:#E0E0E0; font-weight:bold; border-top:2px solid #7F7F7F;}
 	#bookList>li:last-child>ul>li{margin-bottom:80px; border-bottom:2px solid #7F7F7F;}
 	
@@ -49,4 +48,4 @@
         cursor: pointer;
 	}
 	#searchFrm>span{margin:10px 10px 0 10px; padding:5px 15px; border:1px solid lavender; border-radius:20px; background-color:lavender; color:#440099; font-weight:bold;}
-	.reviewBtn, .cancleBtn{border:none; background-color:lavender; color:#440099; font-weight:bold; font-size:13px; border-radius:10px; padding:5px; cursor: pointer;}
+	.reviewBtn, .checkBtn{border:none; background-color:lavender; color:#440099; font-weight:bold; font-size:13px; border-radius:10px; padding:5px; cursor: pointer;}

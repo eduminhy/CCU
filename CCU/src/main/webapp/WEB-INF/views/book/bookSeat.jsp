@@ -9,48 +9,80 @@
 		var showDate = $("#showDate").val();
 		var showTime = $("#showTime").val();
 		var seatCnt = "";
-		var priceText = $("#priceText").val();
-		var priceLength = $("#priceText").val().length;
-		var priceStr = priceText.substring(4, priceLength-1);//가격숫자추출
-		var priceSpl = priceStr.split(",");//콤마기준으로 나눔
-		var priceInt = parseInt(priceSpl[0]+priceSpl[1]);//문자를 합쳐서 숫자로 변환
-		var price = "";
-		//var seatNameArr = [];
 		
-		$("#price").val(priceInt);
 		$("input[name='seatNum']").click(function(){
-				if($(this).is(":checked")==true){//체크되면
-					//console.log(this.id);
-					$("#seatBox").append("<input type='text' name='id' value='"+this.value+"'/> ");//좌석출력
-					cnt++;
-					$("#seatCnt").val(cnt);
-				}
-				if($(this).is(":checked")==false){
-					//console.log(this.id+"해제");
-					cnt--;
-					$("#seatCnt").val(cnt);
-					for(var i=0;i<cnt+1;i++){
-						//console.log("for문=>"+$("#seatBox>span").eq(i).text());
-						//console.log("this=>"+this.value);
-						if($("#seatBox>input").eq(i).val()==this.value){
-							$("#seatBox>input").eq(i).remove();
-						}
+			if($(this).is(":checked")==true){//체크되면
+				//console.log(this.id);
+				$("#seatBox").append("<input type='text' name='id' value='"+this.value+"'/> ");//좌석출력
+				cnt++;
+				$("#seatCnt").val(cnt);
+			}
+			if($(this).is(":checked")==false){
+				//console.log(this.id+"해제");
+				cnt--;
+				$("#seatCnt").val(cnt);
+				for(var i=0;i<cnt+1;i++){
+					//console.log("for문=>"+$("#seatBox>span").eq(i).text());
+					//console.log("this=>"+this.value);
+					if($("#seatBox>input").eq(i).val()==this.value){
+						$("#seatBox>input").eq(i).remove();
 					}
 				}
+			}
 		});
 		
-				
+		
+		
 		$("#completeSeat").submit(function(){
-			seatCnt = $("#seatCnt").val();
-			price = $("#price").val();
+			//seatCnt = $("#seatCnt").val();
+			var url = "/book/bookCredit?scheduleDate="+$("#scheduleDate_id").val();
+			$.ajax({
+				url:url,
+				type:"get",
+				dateType:"json",
+				data:{
+					seatNum : $("input[name=seatNum]:checked").val(),
+					seatCnt : $("#seatCnt").val()
+				},
+				success:function(data){
+						
+				},error:function(error){
+					console.log(error);
+				}
+			});
+			
 		});
+		
+		
+		//예약된 좌석 disable하기
+		//console.log($("input[name=seatNum]").val());
+		var sncnt = $("input[name=seatNum]").length;
+		var cnt = $(".sn").length;//개수
+		var arr = [];
+		//console.log(cnt);
+		//console.log($(".sn").val());
+		for(var i=0;i<cnt;i++){
+			arr.push($(".sn").eq(i).val());
+		}
+		for(var i=0;i<cnt;i++){
+			$("input[name=seatNum]").each(function(){
+				//console.log(this.value);
+				if(this.value==arr[i]){
+					$(this).attr("disabled", true);
+				}
+			});
+		}
+		
+		
+		
+		
 		
 		
 	});
 </script>
 
 <div class="container">
-	<form method="post" action="/book/bookSeatOk" id="seatFrm">
+	<form method="get" action="/book/bookCredit?scheduleDate=${sdvo.id}" id="seatFrm">
 	<div><h1>STEP01 좌석예약</h1></div>
 	<div id="content">
 		<!-- 좌석 -->
@@ -363,14 +395,14 @@
 		<div id="detail">
 		<h3>선택확인</h3>
 		<ul>
-			<li><input type="hidden" name="scheduleDate_id" id="scheduleDate_id" value="${vo.id}"/></li>
-			<li><input type="hidden" name="showdb_id" id="showdb_id" value="${id}"/></li>
-			<li>관람일 : <input type="text" name="showDate" id="showDate" value="${date} (${day})"/></li> 
-			<li>관람시간 : <input type="text" name="showTime" id="showTime" value="${time}"/></li>
+			<li><input type="hidden" name="scheduleDate_id" id="scheduleDate_id" value="${sdvo.id}"/></li>
+			<li><input type="hidden" name="showdb_id" id="showdb_id" value="${sdvo.showdb_id }"/></li>
+			<li>관람일 : <input type="text" name="showDate" id="showDate" value="${sdvo.showDate }"/></li> 
+			<li>관람시간 : <input type="text" name="showTime" id="showTime" value="${sdvo.showTime }"/></li>
 			<li>좌석수 : <input type="text" id="seatCnt" name="seatCnt" value=""/>매</li>
 			<li>좌석번호</li>
 			<li id="seatBox"></li>
-			<li>가격 : <input type="text" name="priceText" id="priceText" value="${price}"/></li>
+			<li>가격 : <input type="text" name="priceText" id="priceText" value="${sdvo.showPrice }"/>원</li>
 			<li><input type="hidden" name="price" id="price" value=""></li>
 		</ul>
 		<input type="submit" value="좌석선택완료" id="completeSeat"/>
@@ -378,3 +410,6 @@
 	</div>
 	</form>
 </div>
+<c:forEach var="seatNum" items="${sn }">
+	<input type="text" class="sn" value="${seatNum}"/>
+</c:forEach>
