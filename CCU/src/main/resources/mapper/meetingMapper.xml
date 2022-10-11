@@ -23,6 +23,12 @@
         <if test = "meetingkeyword != null">
         where (title like '%${meetingkeyword}%' or content like '%${meetingkeyword}%')
         </if>
+        order by id desc
+    </select>
+
+    <select id="searchByTitle" resultType="MeetingVO">
+        select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
+        from board a inner join showdb b on a.showdb_id = b.id where title like CONCAT('%', #{title}, '%')
     </select>
     
       <select id="meetingsearch" resultType="MeetingVO">

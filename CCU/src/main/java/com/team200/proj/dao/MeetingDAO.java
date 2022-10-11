@@ -16,6 +16,8 @@ public interface MeetingDAO {
 
 	public List<MeetingVO> mainMeeting();
 
+	public List<MeetingVO> searchByTitle(String title);
+
 	public List<MeetingVO> mainMeetingGenre(String genre);
 
 	public List<MeetingVO> mainMeetingGenre2(String genre1, String genre2);

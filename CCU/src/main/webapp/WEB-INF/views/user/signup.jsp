@@ -13,7 +13,10 @@
 <script>
 	$(function(){
 		$("#idChk").click(function(){
-			window.open("/user/idCheck?id="+$("#id").val(),"idChk","width=400, height=300px");
+			
+			
+			
+			window.open("/user/idCheck?id="+$("#id").val(),"idChk","width=400, height=300px",  style="display:none;");
 		});
 		
 		$("#id").change(function(){
@@ -28,6 +31,8 @@
 				alert("아이디를 입력하세요");
 				return false;
 			}
+			
+			console.log("eeeeee00", $("#idCheckStatus").val());
 			
 			// id 중복 검사 여부
 			if($("#idCheckStatus").val()!="Y"){
@@ -118,7 +123,7 @@
 		<li><input type="text" name="id" id="id" placeholder="아이디를 입력해주세요"></li>
 		<li><input type="button" value="아이디중복검사" id="idChk"/></li>
 		<br/>
-		<!-- <li><input type="text" id="idCheckStatus" value="N"/></li>   -->
+		<li><input type="hidden" id="idCheckStatus" value="N"/></li>  
 		<li><input type="text" name="password" id="password" placeholder="비밀번호를 입력해주세요"></li>
 		<li><input type="text" name="password2" id="password2" placeholder="비밀번호를 확인해주세요"></li>
 		<li><input type="text" name="nickname" id="nickname" placeholder="닉네임을 입력해주세요"></li>
