@@ -1,8 +1,13 @@
 package com.team200.proj.controller;
 
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -14,18 +19,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.mysql.cj.util.StringUtils;
 import com.team200.proj.service.BookService;
+import com.team200.proj.vo.BookVO;
+import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.ScheduledateVO;
 import com.team200.proj.vo.SeatVO;
 import com.team200.proj.vo.UserVO;
-import com.team200.proj.vo.showVO;
 
 
 @RestController
@@ -34,135 +42,154 @@ public class BookController {
 	@Inject
 	BookService service;
 	
-	@GetMapping("bookCheck")
-	public ModelAndView bookCheck(String scheduleDate_id) {
-		ScheduledateVO sdvo = service.getScheduleInfo(scheduleDate_id);
+	@PostMapping("scheduleOk")
+	public ModelAndView scheduleOk(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("sdvo", sdvo);
-		mav.setViewName("book/bookCheck");
+		
+		String showdb_id = request.getParameter("id"); 
+		String showdate = request.getParameter("Sdate2")+"("+request.getParameter("Sdate")+")";
+		String showtime = request.getParameter("userD");
+		String[] ArraysStr = request.getParameter("price").split("원,");
+		String arr = ArraysStr[ArraysStr.length-1];//S석 55,000원
+		int a = arr.indexOf("석");
+		int b = arr.indexOf("원");
+		int c = arr.indexOf(",");
+		String price1 = arr.substring(a+2,c);//String 60
+		String price2 = arr.substring(c+1, b);//String 000
+		int price = Integer.parseInt(price1+price2);//60000
+
+		//System.out.println("a=>"+a+"b=>"+b+"c=>"+c);
+		//System.out.println("day=>"+request.getParameter("Sdate"));//목
+		//System.out.println("date=>"+request.getParameter("Sdate2"));//2022-10-27
+		//System.out.println("time=>"+showtime);//18:00
+		//System.out.println("showdate=>"+showdate);//2022-10-27(목)
+		//System.out.println("arr=>"+arr);
+		//System.out.println("price=>"+price);
+		//System.out.println("id=>"+showdb_id);
+		
+		List<ScheduledateVO> scheduleList = service.getSchedule(showdb_id, showdate, showtime);
+
+		int result = 0;//있는 공연인지 확인하는 결과값
+		String scheduleDate_id = "";
+		for(int i=0;i<scheduleList.size();i++) {
+			ScheduledateVO schvo = scheduleList.get(i);
+			String db_showid = schvo.getShowdb_id();
+			String db_showdate = schvo.getShowDate();
+			String db_showtime = schvo.getShowTime();
+			
+			//System.out.println(db_showid);
+			//System.out.println(db_showdate);
+			//System.out.println(db_showtime);
+			
+			if(db_showid.equals(showdb_id)&&db_showdate.equals(showdate)&&db_showtime.equals(showtime)) {
+				//동일한 공연아이디일 때
+				result = 1;
+				scheduleDate_id=schvo.getId();
+				System.out.println(scheduleDate_id);
+			}
+		}
+		System.out.println("result=>"+result);
+		switch(result) {
+		case 0:
+			System.out.println("존재하지 않는 공연입니다.");
+			service.putSchedule(showdb_id, showdate, showtime, price);
+			List<ScheduledateVO> sdnewlist = service.getSchedule(showdb_id, showdate, showtime);
+			ScheduledateVO sdnew = sdnewlist.get(sdnewlist.size()-1);
+			scheduleDate_id = sdnew.getId();
+			System.out.println(scheduleDate_id);
+			break;
+		case 1:
+			System.out.println("이미 있는 공연입니다.");
+			break;
+		}
+		mav.setViewName("redirect:bookSeat?scheduleDate_id="+scheduleDate_id);
 		return mav;
 	}
 	
-	@PostMapping("bookSeat")
+	
+	@GetMapping("bookSeat")
 	public ModelAndView bookSeat(HttpServletRequest request, String scheduleDate_id) {
 		ModelAndView mav = new ModelAndView();
-		ScheduledateVO vo = service.getScheduleInfo(scheduleDate_id);
-		List<SeatVO> statelist = service.getSeatState(scheduleDate_id);
-		mav.addObject("vo",vo);
-		mav.addObject("statelist", statelist);
 
-		String[] ArraysStr = request.getParameter("price").split("원,");
-		String arr = ArraysStr[ArraysStr.length-1];
-
-		mav.addObject("day", request.getParameter("Sdate"));
-		mav.addObject("date", request.getParameter("Sdate2"));
-		mav.addObject("time", request.getParameter("userD"));
-		mav.addObject("price",arr);
-		mav.addObject("id", request.getParameter("id"));
+		List<SeatVO> svo = service.getSeatInfo(scheduleDate_id);
+		if(svo!=null) {
+			int size = svo.size();
+			String arr="";
+			System.out.println("size=>"+size);
+			StringBuffer sb = new StringBuffer();
+			
+			for(int j=0;j<size;j++) {
+				String seatNum = svo.get(j).getSeat_num();
+				System.out.println("svo=>"+seatNum);//[A-7, A-8, A-9]
+				System.out.println(seatNum.length());
+				int endidx = seatNum.length();
+				arr = seatNum.substring(1, endidx-1);
+				System.out.println("arr=>"+arr);
+				sb.append(arr);
+				sb.append(", ");
+			}
+			System.out.println(sb.toString());
+			String sn[] = sb.toString().split(", ");
+			for(int i=0;i<sn.length;i++) {
+				System.out.println(sn[i]);
+			}
+			mav.addObject("sn",sn);
+		}
+		
+		ScheduledateVO sdvo = service.getScheduleInfo(scheduleDate_id);
+		mav.addObject("sdvo",sdvo);
+		
 		mav.setViewName("book/bookSeat");
 		return mav;
 	}
 	
-	@PostMapping("bookSeatOk")
-	public ResponseEntity<String> bookSeatOk(SeatVO vo, HttpServletRequest request){
-		//vo.setId((String)request.getSession().getAttribute("logId"));
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
-		headers.add("Content-Type", "text/html; charset=UTF-8");
-		
-		String msg = "<script>";
-		try {
-			System.out.println("schedule_id=>"+vo.getScheduleDate_id());
-			//String seatNum[] = request.getParameterValues("seatNum");
-			//System.out.println("seatNum=>"+seatNum[0]);
-			System.out.println("scheduleDate_id=>"+request.getParameter("scheduleDate_id"));
-			service.bookSeatOk(vo);
-			msg += "alert('좌석이 선택되었습니다. 결제페이지로 이동합니다.');";
-			msg += "";
-			msg += "location.href='bookCredit?scheduleDate_id="+vo.getScheduleDate_id()+"';";
-		}catch(Exception e) {
-			msg += "alert('좌석등록에 실패하였습니다.');";
-			msg += "history.go(-1);";
-		}
-		msg += "</script>";
-		
-		ResponseEntity<String> entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-		return entity;
-	}
-	
 	
 	@GetMapping("bookCredit") 
-	public ModelAndView bookCredit(HttpSession session, HttpServletRequest request, String scheduleDate_id) { 
-		String userid = (String)session.getAttribute("logId"); 
-		UserVO vo = service.getUserInfo(userid);
-		ScheduledateVO sdvo = service.getScheduleInfo(scheduleDate_id);
-		showVO shvo = service.getShowInfo(scheduleDate_id);
-		List<SeatVO> svo = service.getSeatNum(scheduleDate_id);
+	public ModelAndView bookCredit(@RequestParam("seatNum") List<String> seatNum, @RequestParam("seatCnt") String seatCnt,
+								   HttpSession session, HttpServletRequest request, String scheduleDate_id) { 
+		String id = (String)session.getAttribute("logId"); 
+		ScheduledateVO sdvo = service.getShowInfo(scheduleDate_id);
+		UserVO vo = service.getUserInfo(id);
+		
+		System.out.println("seatNum=>"+seatNum);
+		System.out.println("seatCnt=>"+seatCnt);
+		int ticketPrice = Integer.parseInt(sdvo.getShowPrice())*Integer.parseInt(seatCnt);
+		
 		ModelAndView mav = new ModelAndView(); 
-		mav.addObject("vo", vo);
+		mav.addObject("seatNum", seatNum);
+		mav.addObject("seatCnt", seatCnt);
+		mav.addObject("ticketPrice",ticketPrice);
 		mav.addObject("sdvo", sdvo);
-		mav.addObject("shvo", shvo);
-		mav.addObject("svo", svo);
+		mav.addObject("vo", vo);
 		mav.setViewName("book/bookCredit"); 
 		return mav; 
 	}
 	
-	/*@PostMapping("bookCreditOk")
-	public ResponseEntity<String> bookCreditOk(HttpSession session, HttpServletRequest request){
-		String id = (String)session.getAttribute("logId");
-		//String impnum = request.getParameter("rsp.imp_uid");
-		//String 
-		System.out.println("id=>"+id);
-		//System.out.println("impnum=>"+impnum);
-		
-		ResponseEntity<String> entity = null;
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
-		headers.add("Content-Type", "text/html; charset=UTF-8");
-		
-		try {
-			
-		}catch(Exception e) {
-			
-		}
-		
-		return entity;
-	}*/
-	
 	@PostMapping("bookCreditOk")
-	public ResponseEntity<String> bookCreditOk(@RequestParam("email") String email,
-											   @RequestParam("name") String name,
-											   @RequestParam("addr") String addr,
-											   @RequestParam("tel") String tel,
-											   @RequestParam("shipno") String shipno, 
-											   @RequestParam("paidAmount") String paidAmount,
-											   @RequestParam("applyNum") String applyNum,
-											   SeatVO vo, HttpSession session, HttpServletRequest request
-											   ) {
-		System.out.println("shipno=>"+shipno);
-		System.out.println("paidAmount=>"+paidAmount);
-		
+	public void bookCreditOk(
+			BookVO vo, HttpSession session, HttpServletRequest request) {
+		System.out.println(vo.toString());
+		//BookVO [imp_uid=imp_633585644318, orderno=order_1665448585282, applynum=07452022, price=10, addr=역삼 역삼동, email=eduminhy@gmail.com, seatNum=[A-1], seatCnt=1]
 		String id = (String)session.getAttribute("logId");
+		//String scheduleDate_id = request.getParameter("scheduleDate_id");
+		service.putOrderlist(vo.getOrderno(), id, vo.getScheduleDate_id(), vo.getImp_uid(), vo.getApplynum(), vo.getPrice(), vo.getAddr(), vo.getEmail());
+		System.out.println("orderlist data 넣기 성공");
+		System.out.println(vo.getSeatNum());
 		
-		ResponseEntity<String> entity = null;
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
-		headers.add("Content-Type", "text/html; charset=UTF-8");
+		List<String> snlist = vo.getSeatNum();
+		String sn = snlist.toString();
+		System.out.println(sn);
+		service.putSeatInfo(sn, vo.getOrderno(), vo.getSeatCnt());
+		System.out.println("seat data 넣기 성공");
 		
-		String msg="<script>";
-		try {
-			System.out.println("좌석상태 변경전...");
-			service.bookSeatComplete(vo);
-			msg += "alert('결제가 완료되었습니다.');";
-			msg += "location.href='bookCheck?scheduleDate_id="+vo.getScheduleDate_id()+"';";
-		}catch(Exception e) {
-			msg += "alert('결제실패하였습니다.');";
-			msg += "history.go(-1);";
-		}
-		msg += "</script>";
-		entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-		return entity;
 	}
-	 
 	
+	@GetMapping("bookCheck")
+	public ModelAndView bookCheck(String no) {
+		OrderlistVO ovo = service.getOrder(no);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("ovo", ovo);
+		mav.setViewName("book/bookCheck");
+		return mav;
+	}
 }

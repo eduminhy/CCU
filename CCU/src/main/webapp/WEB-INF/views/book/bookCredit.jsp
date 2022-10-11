@@ -6,32 +6,37 @@
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
 	$(function() {
-		var ticket = $("#ticket").text();
+		//ticket 가격변동부분
+		var ticket = $("#ticket").val();
 		var ticketStr = ticket.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-		$("#total").text(ticketStr + "원");//초기 결제가격
-		//var ticketprice = parseInt(ticket);
-		//console.log(ticketprice);
-		//$("#price").val(ticketprice);
-		//console.log($("#price").val());
+		$("#total").val(ticket);//초기 결제가격
 		$("#selectbox").on('change', function() {
 			var state = $('#selectbox option:selected').val();
 			if (state == 'op1') {
 				var deliver = 0;
-				console.log(deliver);
 			} else {
 				deliver = 3000;
 			}
-			$("#deliver").text(deliver);
+			$("#deliver").val(deliver);
 			ticket = parseInt(ticket);
-			var total = ticket + deliver;//정수형
-			var totalStr = String(total);//문자형으로 변환
-			var totalPrice = totalStr.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-			$("#total").text(totalPrice + "원");
-			$("#price").val(total);
+			var total = ticket + deliver;
+			$("#total").val(total);
 		});
+		
+		
+
+		var sn = [];
+		for(var i=0;i<$("#seatCnt").val();i++){
+			//console.log($("input[name=seatNum]").eq(i).val());
+			var seatnum = $("input[name=seatNum]").eq(i).val();
+			sn.push(seatnum);
+		}
+		console.log(sn);//['A-7', 'A-8', 'A-9']
+		
+		//=========================================================
 
 		$("#pay").on('click', function() {
-			//수령자확인
+			//수령자확인=====================================
 			if ($("#buyer").val() == "") {
 				alert("이름을 입력해주세요.");
 				return false;
@@ -62,121 +67,78 @@
 				return false;
 			}
 
-			//결제하기
 			var IMP = window.IMP; // 생략 가능
 			IMP.init("imp52376674");
 
 			//결제 요청하기
 			IMP.request_pay({
-      /* branch/Raccoon115
-				pg : 'html5_inicis',//kg이니시스
-				pay_method : 'card',
-				merchant_uid : "order_no_0000", // 상점에서 관리하는 주문 번호
-				name : '주문명:결제테스트',
-				amount : 100,
-				buyer_email : '@gmail.com',
-				buyer_name : 'CCU_홍길동',
-				buyer_tel : '010-1234-5678',
-				buyer_addr : '서울특별시 강남구 삼성동',
-				buyer_postcode : '123-456'
-       */
-		    pg : 'html5_inicis',//kg이니시스
-		    pay_method : 'card',
-		    merchant_uid: "order_no_0116", // 상점에서 관리하는 주문 번호 --> 공연번호
-		    name : $("#showname").val()+'_'+$("#scheduleDate_id").val(),
-		    amount : 10,
-		    buyer_email : $("#email").val(),
-		    buyer_name : $("#buyer").val(),
-		    buyer_tel : $("#tel1").val()+'-'+ $("#tel2").val()+'-'+ $("#tel3").val(),
-		    buyer_addr : $("#addr").val(),
-		    buyer_postcode : '123-456'
+	      		pg : 'html5_inicis',//kg이니시스
+			    pay_method : 'card',
+			    merchant_uid: "order_"+new Date().getTime(), // 상점에서 관리하는 주문 번호 --> 공연번호
+			    name : $("#showname").val()+'_'+$("#scheduleDate_id").val(),
+			    amount : 10,
+			    buyer_email : $("#email").val(),
+			    buyer_name : $("#buyer").val(),
+			    buyer_tel : $("#tel1").val()+'-'+ $("#tel2").val()+'-'+ $("#tel3").val(),
+			    buyer_addr : $("#addr").val(),
+			    buyer_postcode : $("#postcode").val()
 
 			}, function(rsp) {
-				// 			    if ( rsp.success ) {
-				// 			    	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
-				// 			    	jQuery.ajax({
-				// 			    		url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
-				// 			    		type: 'POST',
-				// 			    		dataType: 'json',
-				// 			    		data: {
-				// 				    		imp_uid : rsp.imp_uid
-				// 				    		//기타 필요한 데이터가 있으면 추가 전달
-				// 			    		}
-				// 			    	}).done(function(data) {
-				// 			    		//[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
-				// 			    		if ( everythings_fine ) {
-				// 			    			console.log(1123);
-				// 			    			var msg = '결제가 완료되었습니다.';
-				// 			    			msg += '\n고유ID : ' + rsp.imp_uid;
-				// 			    			msg += '\n상점 거래ID : ' + rsp.merchant_uid;
-				// 			    			msg += '\결제 금액 : ' + rsp.paid_amount;
-				// 			    			msg += '카드 승인번호 : ' + rsp.apply_num;
-				// 			    			alert(msg);
-				// 			    		} else {
-				// 			    			//[3] 아직 제대로 결제가 되지 않았습니다.
-				// 			    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
-				// 			    		}
-				// 			    	});
-				// 			    	location.href="bookCheck";
-				// 			    } else {
-				// 			        var msg = '결제에 실패하였습니다.';
-				// 			        msg += '에러내용 : ' + rsp.error_msg;
-				// 			        alert(msg);
-				// 			    }
-				// 			}
-				// https://docs.iamport.kr/tech/access-token?lang=ko
-				// 결제 검증 시도..
-				// console에 찍힌 값 : {success: true, imp_uid: 'imp_962452551026', pay_method: 'card', merchant_uid: 'order_no_0013', name: '주문명:결제테스트', …}
-				// msg내용 : 결제가 완료되었습니다.고유ID : imp_962452551026상점 거래ID : order_no_0013결제 금액 : 100카드 승인번호 : 53769428
 				var result = '';
 				if (rsp.success) {
-				//	console.log(rsp);
+					//console.log(rsp);
 					var msg = '결제가 완료되었습니다.';
 					msg += '고유ID : ' + rsp.imp_uid;
 					msg += '상점 거래ID : ' + rsp.merchant_uid;
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					result = '0';
-				} else {
+					
+				}else {
 					var msg = '결제에 실패하였습니다.';
 					msg += '에러내용 : ' + rsp.error_msg;
 					result = '1';
 					alert(msg);
 				}
 				if (result == '0') {
-					alert(msg);
-					console.log(33333);
+					//alert(msg);
+					
+					var params = {
+							imp_uid:rsp.imp_uid,
+							orderno:rsp.merchant_uid,
+							applynum:rsp.apply_num,
+							price:rsp.paid_amount,
+							addr:$("#addr").val(),
+							email:$("#email").val(),//
+							seatNum:sn,
+							seatCnt:$("#seatCnt").val(),
+							scheduleDate_id:$("#scheduleDate_id").val()//
+							};
+					console.log(params);
 					$.ajax({
 						url:"/book/bookCreditOk",
 						type:"post",
-						data:{
-								email: $("#email").val(),
-								name: $("#buyer").val(),
-								addr: $("#addr").val(),
-								tel: $("#tel1").val()+'-'+ $("#tel2").val()+'-'+ $("#tel3").val(),
-								shipno: rsp.merchant_uid,
-								paidAmount: rsp.paid_amount,
-								paytype: rsp.pay_method,
-								applyNum: rsp.apply_num
-								},
-						dataType:"json",
+						data:params,
+						//dataType:"json",
+						//contentType:"application/json; charset=utf-8",
 						success:function(data){
-							
+							// 티켓 페이지로 이동
+							location.href='/book/bookCheck?no='+rsp.merchant_uid;
 						},error:function(error){
 							console.log(error);
 						}
 					});
 					//$("#creditFrm").submit();
-					//location.href='/book/bookChe';
 				}
 			});
-		});
-	});
+			
+		});//결제하기 click 닫는부분
+	});//jqeury 닫는 부분
 </script>
 <div class="container">
-	<form method="post" action="/book/bookCreditOk" id="creditFrm">
-	<div class="context">
+	<form method="post" id="creditFrm">
 	<input type="hidden" id="scheduleDate_id" name="scheduleDate_id" value="${sdvo.id}"/>
+	<div class="context">
 	<div id="infoReceive">
 		<div><h1>STEP02 티켓수령정보</h1></div>
 		<ul>
@@ -196,7 +158,7 @@
 				<input type="text" name="tel3" id="tel3" size="4" maxlength="4" value="${vo.tel3 }"/>
 			</li>	
 			<li><span class="detail">E-mail</span>&nbsp;<input type="text" name="email" id="email" value="eduminhy@gmail.com"/></li>
-			<li><input type="hidden" id="addr" value="${vo.addr }"/></li>
+			<li><input type="hidden" id="postcode" value="${vo.zipcode}"/><input type="hidden" id="addr" name="addr" value="${vo.road_name }&nbsp;${vo.addr }"/></li>
 			<hr/>
 			
 			<li id="warn"><span id="warnTitle">※주의사항※</span><br/><br/>
@@ -215,27 +177,29 @@
 		<ul id="info">
 			<li class="title">선택내역</li>
 			<hr/>
-			<li><span class="showinfo">공연명</span>&nbsp;<input type="text" id="showname" name="" value="${shvo.name }" readonly></li>
-			<li><span class="showinfo">공연장소</span>&nbsp;<input type="text" id="showplace" value="${shvo.place_name }" readonly></li>
-			<li><span class="showinfo">공연날짜</span>&nbsp;<input type="text" name="showWatchDate" value="${shvo.showDate}" readonly/></li>
-			<li><span class="showinfo">공연시간</span>&nbsp;<input type="text" name="showWatchTime" value="${shvo.showTime }" readonly/></li>
+			<li><span class="showinfo">공연명</span>&nbsp;<input type="text" id="showname" name="" value="${sdvo.name }" readonly></li>
+			<li><span class="showinfo">공연장소</span>&nbsp;<input type="text" id="showplace" value="${sdvo.place_name }" readonly></li>
+			<li><span class="showinfo">공연날짜</span>&nbsp;<input type="text" name="showWatchDate" value="${sdvo.showDate}" readonly/></li>
+			<li><span class="showinfo">공연시간</span>&nbsp;<input type="text" name="showWatchTime" value="${sdvo.showTime }" readonly/></li>
 			<li><span class="showinfo">좌석선택</span></li>
-			<li id="seatBox">
-			<c:forEach var="no" items="${svo}">
-			<input type="text" name="id" value="${no.id}" readonly/>
+			<li><input type="hidden" name="seatCnt" id="seatCnt" value="${seatCnt }"/></li>
+			<li id="seatBox"></li>
+			<li>
+			<c:forEach var="no" items="${seatNum}">
+			<input type="text" name="seatNum" class="seatNum" value="${no }" readonly/>
 			</c:forEach>
 			</li>
-			</ul>	
+		</ul>	
 		<ul id="price">
 			<span class="title">결제내역</span>
 			<hr/>
 			<li>티켓금액</li>
-			<li id="ticket">10</li>
+			<li><input type="text" name="ticket" id="ticket" value="${ticketPrice}" size="6"/></li>
 			<li>배송비</li>
-			<li id="deliver">0</li>
+			<li><input type="text" name="deliver" id="deliver" value="0" size="6"/></li>
 			<hr/>
 			<li class="total">최종결제금액</li>
-			<li class="total" id="total"></li>
+			<li class="total"><input type="text" name="total" id="total" value="" size="6"/></li>
 		</ul>
 		<input type="button" id="pay" value="결제하기"/>
 	</div>

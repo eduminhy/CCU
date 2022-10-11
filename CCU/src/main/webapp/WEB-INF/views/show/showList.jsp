@@ -59,12 +59,12 @@
 			</ul>
 		</div>
 		<div id="playBoard">
-			<h2><a href="#">${genre} Meeting 게시판</a></h2>
+			<h2><a href="/meeting/mainMeeting/${genre }">${genre} Meeting 게시판</a></h2>
 			<ul>
 				<c:forEach var="bno" items="${boardlist }">
 					<li>${bno.id }.&nbsp;</li>
-					<li class="subject"><a href="#">${bno.title }</a></li>
-					<li class="more"><a href="#">더보기</a></li>
+					<li class="subject"><a href="/meeting/view/${bno.id }">${bno.title }</a></li>
+					<li class="more"><a href="/meeting/view/${bno.id }">더보기</a></li>
 				</c:forEach>
 				
 			</ul>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.team200.proj.dao.MypageDAO;
 import com.team200.proj.vo.BoardVO;
+import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.ReplyVO;
 import com.team200.proj.vo.UserVO;
 
@@ -56,11 +57,9 @@ public class MypageServiceImpl implements MypageService {
 		return dao.myCommentDel(vo);
 	}
 
-	
-
-	
-
-	
-	
+	@Override
+	public List<OrderlistVO> getBookInfo(String id) {
+		return dao.getBookInfo(id);
+	}
 
 }
