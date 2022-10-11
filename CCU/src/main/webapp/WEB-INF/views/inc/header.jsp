@@ -62,18 +62,49 @@
 		
 		
 	});
-
+	
+	$(function() {
+		$("#log").submit(function() {
+			if ($("#id").val() == "") {
+				alert("아이디를 입력하십시오.");
+				return false;
+			}
+			if ($("#password").val() == "") {
+				alert("비밀번호를 입력하십시오.");
+				return false;
+			}
+			return true;
+		});
+	});
+	/*
+	function logoutFunc(logoutId) {
+		console.log("logoutId",logoutId);
+		if( confirm("로그아웃 하시겠습니까?") ) {
+			$.ajax({
+	             url: "/user/logout"+logoutId,
+	             type: 'post',
+	             async: false,
+	         }).done(function () {
+	        	 document.location.href = '/user/logout';
+	         }).fail(function (error) {
+	             alert(JSON.stringify(error))
+	         })
+		}
+	}
+*/
 </script>
 </head>
 <body>
 		<div id="topMenu">
 			<c:if test="${logStatus!='Y' }">
-				<a href="/user/login">로그인   </a>
+				<a href="/user/login">로그인</a>
 				<a href="/user/signup">회원가입</a>
+				<a href="/qna">1:1문의</a>
 			</c:if>
 			<c:if test="${logStatus=='Y' }">
 				<a href="/user/logout">로그아웃</a>
 				<a href="/mypage/myInfo">mypage</a>
+				<a href="/qna">1:1문의</a>
 			</c:if>
 		</div>
 <div class="topUp">
@@ -88,17 +119,38 @@
 		<button class="user-btn" type="submit"><i class="fas fa-user-circle" id="userBtn"></i></button>
 		<div id="bellDiv">
 		</div>
-		<div id="toggleDiv">
+
+		
+
+		<form method="post" action="/user/loginOk" id="log">
+			<div id="toggleDiv">
+		
+			<input type="text" placeholder="아이디를 입력해주세요" name="id" id="id">
+			<br /> 
+			<input type="password" placeholder="비밀번호를 입력해주세요" name="password" id="password"> <br /> <br /> 
+				<c:if test="${logStatus!='Y' }">
+				<input type="submit" value="로그인" class="loginBtn"> <br />
+			</c:if>
+			<c:if test="${logStatus=='Y' }">
+			<!-- 	<button onclick="logoutFunc();">로그아웃</button>  -->
+		<a href="/user/logout" class="logoutBtn">로그아웃</a> 
+			</c:if>
+		</form>
+		<!-- 
 			<input type="text" id="userid" placeholder="ID"/><br/>
 			<input type="password" id="userpwd" placeholder="PW"/><br/>
 			<input type="submit" value="Login" id="logBtn" width=160px;/>
-			<Div>
+		 -->
+		 
+		 <!-- 
+		<Div>
 			<img src="../img/navericon.png" width=40px; height=40px; id="navericon">
 			<img src="../img/kakaoicon.png" width=40px; height=40px; id="kakaoicon">
 			<img src="../img/googleicon.png" width=40px; height=40px; id="googleicon">
-			</Div>
+		</Div>
+		 -->
+		 
 			<br/>
-			<div><a href="/user/login">로그인</a></div>
 			<div><a href="/user/signup">회원가입</a></div>
 			<div><a href="/faq">고객센터</a></div>
 

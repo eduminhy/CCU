@@ -25,11 +25,14 @@ public class meetingController {
 	
 	//같이갈래요 list
 	@RequestMapping(value = "mainMeeting", method = RequestMethod.GET)
-	public ModelAndView mainMeeting() {
+	public ModelAndView mainMeeting(@RequestParam(required = false) String title) {
 		ModelAndView mav = new ModelAndView();
 
-		mav.addObject("list", service.mainMeeting());
-		System.out.println("AAAAAAAAAAAAAAAAAAA : " + service.mainMeeting());
+		if (title == null) {
+			mav.addObject("list", service.mainMeeting());
+		} else {
+			mav.addObject("list", service.searchByTitle(title));
+		}
 
 		mav.setViewName("meeting/mainMeeting");
 		return mav;

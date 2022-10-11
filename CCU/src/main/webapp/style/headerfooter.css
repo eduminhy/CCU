@@ -131,8 +131,8 @@ a:link, a:visited, a:hover {
 	display: flex;
 	flex-direction: column;
 	padding: 25px;
-	width: 170px;
-	height: 240px;
+	width: 200px;
+	height: 300px;
 	line-height: 20px;
 	text-align: center;
 /* 	background-color: #ddd; */
@@ -149,7 +149,7 @@ a:link, a:visited, a:hover {
 #toggleDiv>input {
 	margin: 0 auto;
 	width: 160px;
-	height: 20px;
+	
 }
 
 #toggleDiv>a {
@@ -162,6 +162,28 @@ a:link, a:visited, a:hover {
 	float: left;
 	margin-top: 10px;
 	margin-left: 30px;
+}
+.loginBtn {
+		width:100px;
+		text-align:center;
+		padding:10px 20px;
+		float:right;
+		background:#440099;
+		color:white;
+		font-weight:bold;
+		font-size:17px;
+		border-style:none;
+}
+.logoutBtn {
+		width:100px;
+		text-align:center;
+		padding:10px 20px;
+		float:right;
+		background:#440099;
+		color:white;
+		font-weight:bold;
+		font-size:17px;
+		border-style:none;
 }
 
 #navericon, #kakaoicon, #googleicon {
