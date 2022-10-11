@@ -140,6 +140,7 @@ public class BookController {
 		mav.addObject("sdvo",sdvo);
 		
 		mav.setViewName("book/bookSeat");
+		
 		return mav;
 	}
 	

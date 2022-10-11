@@ -55,5 +55,23 @@ public class ShowServiceImpl implements ShowService {
 		dao.setReport(id,content,logid);
 	}
 
+	@Override
+	public void setMyFav(String user_id, String showdb_id) {
+		dao.setMyFav(user_id, showdb_id);
+		
+	}
+
+	@Override
+	public void delMyFav(String user_id, String showdb_id) {
+		dao.delMyFav(user_id, showdb_id);
+		
+	}
+
+	@Override
+	public int getmyheart(String user_id, String showdb_id) {
+		// TODO Auto-generated method stub
+		return dao.getmyheart( user_id,  showdb_id);
+	}
+
 
 }

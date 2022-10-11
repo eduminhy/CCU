@@ -16,7 +16,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -68,7 +68,7 @@ public class showController {
 	// http://localhost:8020/show/showDetail?show_id=1234
 
 	@GetMapping("showDetail")
-	public ModelAndView showDetail(String show_id, HttpSession session) {
+	public ModelAndView showDetail(String show_id, HttpSession session ) {
 
 //	showVO abc = service.showDetail(show_id);
 //	System.out.println(abc.getStartdate().replaceAll("[^0-9]",""));
@@ -353,6 +353,15 @@ public class showController {
 		mav.addObject("r6VO", r6VO);
 		mav.addObject("dvo", dVO);
 		mav.addObject("show", vo);
+
+		String user_id = (String) (session.getAttribute("logId"));
+//		System.out.println(user_id);
+		if(user_id != null) {
+//			System.out.println(vo.getId());
+//			System.out.println(service.getmyheart(user_id, vo.getId()));
+			mav.addObject("myheart", service.getmyheart(user_id, vo.getId()));
+		}
+
 		mav.addObject("sd", vo.getStartdate().replaceAll("[^0-9]", ""));
 		mav.addObject("ed", vo.getEnddate().replaceAll("[^0-9]", ""));
 		mav.setViewName("show/showDetail");
@@ -379,8 +388,9 @@ public class showController {
 
     	String logid = (String) session.getAttribute("logId");
     	int id = Integer.parseInt(String.valueOf(jsonObject.get("id")));
-    	String content = (String) jsonObject.get("content");
-    	service.setReport(id, content,logid);
+//    	String content = (String) jsonObject.get("content");
+    	String rcontent = (String) jsonObject.get("rcontent");
+    	service.setReport(id, rcontent,logid);
 //		String str = readBody(request);
 //		JSONObject jsonObject = new JSONObject(str.toString());
 //        System.out.println("OBJECT : "+jsonObject.toString());
@@ -418,4 +428,34 @@ public class showController {
 //		mav.setViewName("show/report");
 //		return mav;
 //	}
+	@PostMapping("setReview")
+	@ResponseBody
+	public void setReview(HttpServletRequest request, ReviewVO vo){
+		HttpSession session = request.getSession();
+		String user_id = (String) (request.getSession()).getAttribute("logId");
+		System.out.println(vo.toString());
+
+
+
+	}
+	@GetMapping("setMyFav")
+	public void setMyFav(HttpServletRequest request, String a){
+		HttpSession session = request.getSession();
+		String user_id = (String) (request.getSession()).getAttribute("logId");
+		System.out.println(user_id);
+		System.out.println(a);
+		service.setMyFav(user_id, a);
+
+
+	}
+	@GetMapping("delMyFav")
+	public void delMyFav(HttpServletRequest request, String a){
+		HttpSession session = request.getSession();
+		String user_id = (String) (request.getSession()).getAttribute("logId");
+		System.out.println(user_id);
+		System.out.println(a);
+		service.delMyFav(user_id, a);
+
+
+	}
 }

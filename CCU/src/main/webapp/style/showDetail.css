@@ -9,6 +9,9 @@
 	padding: 0px 0px 10px;
 }
 
+.showDetailTitle>div:nth-child(1) {
+	color: red;
+}
 .showDetailTitle>div:nth-child(2) {
 	color: red;
 }
