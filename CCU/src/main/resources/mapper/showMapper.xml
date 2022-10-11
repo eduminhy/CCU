@@ -121,4 +121,16 @@
 		<insert id="setReport">
 		insert into report( user_id, type, content, postNum) values ( #{param3}, 'review',#{param2},#{param1})
 	</insert>
+
+		<insert id="setMyFav">
+		insert into myFavorite( user_id, showdb_id) values ( #{param1},#{param2})
+	</insert>
+
+	  <delete id="delMyFav">
+    delete from myFavorite where showdb_id = #{param2} and user_id = #{param1}
+  </delete>
+  	<select id="getmyheart" resultType="int"> 
+  	select count(user_id) from myFavorite where showdb_id = #{param2} and user_id = #{param1};
+	</select>
+
 </mapper>

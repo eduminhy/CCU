@@ -23,13 +23,17 @@
 		// 		getshow2('${dvo.saturday}');
 		// 		getshow2('${dvo.sunday}');
 		// 		getshow2('${dvo.holiday}');
+		getname('${show.id}','${myheart}');
 	</script>
-	 <br />
+	<br />
 	<div class="showDetailTitle">
-	<div>♥</div>
+			<div class="fullheart">♥</div>
+		<div class="emptyheart">♡</div>
 		<div>${show.genre}:${show.name}&nbsp;</div>
+
 	</div>
-	 <br />
+
+	<br />
 	<div class="showBody">
 		<div class="showDetailImgDiv">
 			<img src="${show.mainposter}" />
@@ -143,12 +147,11 @@
 			src="${show.introduction_image3}" /> <img
 			src="${show.introduction_image4}" />
 	</div>
-		<br />
-			<br />
+	<br /> <br />
 	<div class="detailTag">
-<!-- 		<div>#드라마</div> -->
-<!-- 		<div>#성장</div> -->
-<!-- 		<div>#철학</div> -->
+		<!-- 		<div>#드라마</div> -->
+		<!-- 		<div>#성장</div> -->
+		<!-- 		<div>#철학</div> -->
 	</div>
 	<div class="detailChart"></div>
 	<br />
@@ -156,30 +159,28 @@
 		<br />
 		<form class="setreviewForm">
 			<div class="star-rating space-x-4 mx-auto">
-				<input type="radio" id="5-stars" name="rating" value="5"
+				<input type="radio" id="5-stars" name="rate" value="5"
 					v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
-				<input type="radio" id="4-stars" name="rating" value="4"
+				<input type="radio" id="4-stars" name="rate" value="4"
 					v-model="ratings" /> <label for="4-stars" class="star">★</label> <input
-					type="radio" id="3-stars" name="rating" value="3" v-model="ratings" />
+					type="radio" id="3-stars" name="rate" value="3" v-model="ratings" />
 				<label for="3-stars" class="star">★</label> <input type="radio"
-					id="2-stars" name="rating" value="2" v-model="ratings" /> <label
+					id="2-stars" name="rate" value="2" v-model="ratings" /> <label
 					for="2-stars" class="star">★</label> <input type="radio"
-					id="1-star" name="rating" value="1" v-model="ratings" /> <label
+					id="1-star" name="rate" value="1" v-model="ratings" /> <label
 					for="1-star" class="star">★</label>
 			</div>
 
-
-			<input type="text" value="${show.id}" name="show_id" /> <input
-				type="text" name="content" value="공연이 재미있고 맛있서요" /> <input
-				type="text" id="reviewRateForm" name="reviewRateForm" value="0" />
-			<br />
-			<script type="text/javascript">											
-	         document.write(getstar($('#reviewRateForm').val()));
-	         $('#reviewRateForm').keyup( function() {
-	        	 getstar($('#reviewRateForm').val());
-	       	 });							
-         	</script>
-			<button>후기 등록하기</button>
+			<input type="text" name="viewdate" value="2022-10-11" /> <input
+				type="text" value="${show.id}" name="showdb_id" /> <input
+				type="text" name="content" value="공연이 재미있고 맛있서요" /> <br />
+			<!-- 			<script type="text/javascript">											 -->
+			<!-- // 	         document.write(getstar($('#reviewRateForm').val())); -->
+			<!-- // 	         $('#reviewRateForm').keyup( function() { -->
+			<!-- // 	        	 getstar($('#reviewRateForm').val()); -->
+			<!-- // 	       	 });							 -->
+			<!--          	</script> -->
+			<button class="setReviewBtn">후기 등록하기</button>
 
 		</form>
 		<br />

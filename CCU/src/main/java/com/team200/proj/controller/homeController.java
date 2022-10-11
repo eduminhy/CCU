@@ -105,4 +105,10 @@ public class homeController {
 //		mav.setViewName("sms2");
 //		return mav;
 //	}
+	@RequestMapping("/mychatt")
+	public ModelAndView chatt() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("chatting");
+		return mv;
+	}
 }

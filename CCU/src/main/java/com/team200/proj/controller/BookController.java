@@ -60,6 +60,7 @@ public class BookController {
 		mav.addObject("price",arr);
 		mav.addObject("id", request.getParameter("id"));
 		mav.setViewName("book/bookSeat");
+		
 		return mav;
 	}
 	
