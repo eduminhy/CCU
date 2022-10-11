@@ -28,6 +28,12 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 
 	@Override
+	public List<MeetingVO> searchByTitle(String title) {
+		// TODO Auto-generated method stub
+		return dao.searchByTitle(title);
+	}
+
+	@Override
 	public List<MeetingVO> mainMeetingGenre(String genre) {
 		// TODO Auto-generated method stub
 		return dao.mainMeetingGenre(genre);

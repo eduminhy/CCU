@@ -5,6 +5,9 @@ public class ScheduledateVO {
 	String showdb_id;
 	String showDate;
 	String showTime;
+	String showPrice;
+	String name;
+	String place_name;
 	
 	public String getId() {
 		return id;
@@ -30,5 +33,24 @@ public class ScheduledateVO {
 	public void setShowTime(String showTime) {
 		this.showTime = showTime;
 	}
+	public String getShowPrice() {
+		return showPrice;
+	}
+	public void setShowPrice(String showPrice) {
+		this.showPrice = showPrice;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPlace_name() {
+		return place_name;
+	}
+	public void setPlace_name(String place_name) {
+		this.place_name = place_name;
+	}
+	
 	
 }

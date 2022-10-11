@@ -7,3 +7,9 @@ branch/ 닉네임 or 이름
 * Merge 규칙
 작업 > branch에서 pull > branch로 push > branch에서 Main으로 Merge Request 요청 > 충돌사항 확인 후 완료
 (Main에서 Pull 받을 시 문제 발생가능..)
+
+*
+Git repository
+> Clone a Git repository > 로컬 위치 설정하기
+initial branch 설정 후 받기 >
+Configure > add Gradle Nature

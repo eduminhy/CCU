@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/style/mainMeetingStyle.css">
+
+
 <script>
     $(document).ready(function () {
         var currentPosition = parseInt($(".quick_wrap").css("top"));
@@ -9,7 +11,7 @@
             $(".quick_wrap").stop().animate({"top": position + currentPosition + "px"}, 1000);
         });
     });
-    
+
     const items = document.querySelectorAll('.item');
 
     function openCloseitemDetail() {
@@ -23,16 +25,14 @@
     }
 
     items.forEach(item => item.addEventListener('click', openCloseitemDetail));
-    
-    
-    $(function(){
-		$("#meetingsearchFrm").submit(function(){
-			if($("meetingkeyword").val()==""){
-				alert("검색어를 입력해주세요");
-				return false;
-			}
-			return true;
-		});
+
+    function search() {
+        let title = document.getElementById('meetingkeyword').value;
+        let form = document.forms["searchForm"];
+        form.action = "/meeting/mainMeeting?title=" + title;
+        form.submit();
+    }
+
 </script>
 
 
@@ -41,25 +41,22 @@
 </div>
 <!-- 돋보기모양 클래스명 : class="searchTopBtn" -->
 <div class="searchTopContainer">
-
-	<form method = "get" action = "/meeting/mainMeeting" id = "meetingsearchFrm">
-	
-	    <input type="text" name="meetingkeyword" id="meetingkeyword" placeholder="검색어를 입력하세요."/>
-	    <input type="submit" name="meetingSearch" value="" class="meetingkeywordBtn"/>
-	    
-	</form>
+    <form name="searchForm" id="searchForm">
+        <input type="text" name="title" id="meetingkeyword" placeholder="검색어를 입력하세요."/>
+        <input type="button" name="meetingSearch" onclick="search()" class="meetingkeywordBtn"/>
+    </form>
 </div>
 
 <!--
-현진님 기존 작업 
+현진님 기존 작업
 <div class="searchTopContainer">
 
-	    <input type="text" name="searchTopWriteTxt" class="searchTopWriteTxt" placeholder="검색어를 입력하세요."/>
-	    <input type="submit" value="" class="searchTopBtn"/>
-	    
-	</form>
+<input type="text" name="searchTopWriteTxt" class="searchTopWriteTxt" placeholder="검색어를 입력하세요."/>
+<input type="submit" value="" class="searchTopBtn"/>
+
+</form>
 </div>
- -->
+-->
 
 
 <p class="playMeetingWarning">※ 개인정보 유출 및 피해에 유의하시고 금전 및 물품 피해에 대해 유의하십시오.</p>
@@ -67,6 +64,7 @@
 <div class="quick_wrap">
     <div id="quick_menu" class="quick_menu" style="top: 245px;">
         <p class="goBoard">게시판 바로가기</p>
+        <a href="/meeting/mainMeeting">▶ 전체 게시판</a>
         <a href="/meeting/mainMeeting/연극">▶ 연극 게시판</a>
         <a href="/meeting/mainMeeting/뮤지컬">▶ 뮤지컬 게시판</a>
         <a href="/meeting/mainMeeting2/클래식&오페라">▶ 클래식/오페라 게시판</a>
@@ -94,6 +92,7 @@
                 <li title=${vo.content }><a href="/meeting/view/${vo.id}">${vo.title }</a></li>
                 <li>${vo.user_id }</li>
                 <li>${vo.writedate }</li>
+           
             </c:forEach>
         </ul>
     </div>

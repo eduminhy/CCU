@@ -44,4 +44,13 @@
 			</foreach>
 		</where>
 	</delete>
+	<select id="getBookInfo" resultType="OrderlistVO">
+		select a.id, a.genre, a.name, date_format(b.showDate, '%Y.%m.%d') showdate, b.showTime, 
+		date_format(d.writedate, '%Y.%m.%e') writedate, c.seatcnt, d.no from showdb as a
+		inner join scheduleDate as b on a.id=b.showdb_id
+		inner join order_list as d on d.scheduleDate_id = b.id
+		inner join seat as c on c.order_list_no=d.no 
+		where d.user_id=#{param1}
+		order by b.showdate desc
+	</select>
 </mapper> 

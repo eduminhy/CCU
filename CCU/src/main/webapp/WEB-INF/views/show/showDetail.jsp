@@ -68,7 +68,7 @@
 				</div>
 				<hr />
 
-				<form class="form" action="/book/bookSeat" method="post">
+				<form class="form" action="/book/scheduleOk" method="post">
 					<input class="Sdate" name="Sdate" type="text"> <input
 						class="Sdate2" name="Sdate2" type="text"> <input
 						class="userD" name="userD" type="text"> <input
