@@ -17,6 +17,11 @@ public class ShowServiceImpl implements ShowService {
 	ShowDAO dao;
 
 	@Override
+	public List<showVO> search(String search) {
+		return dao.search(search);
+	}
+
+	@Override
 	public List<showVO> getShowList(String genre) {
 		return dao.getShowList(genre);
 	}

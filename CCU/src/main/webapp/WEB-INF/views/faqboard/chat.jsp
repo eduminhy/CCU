@@ -12,14 +12,17 @@
 	}
 </script>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>채팅</title>
-</head>
 
 <body>
+
+	<div class="csmenu">
+		<div><a href="/faq">FAQ</a></div>
+		<div><a href="/qna">Q&A</a></div>
+		<div><a href="/chatbot">ChatBot</a></div>
+		<div><a href="/terms">이용약관</a></div>
+	</div>
+
+	
 	<div class="chatqnabox">
 		<ul>
 			<li>관리자와의 1:1대화함으로 문의사항을 알려주세요</li>
