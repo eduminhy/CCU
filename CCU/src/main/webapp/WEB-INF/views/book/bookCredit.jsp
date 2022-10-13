@@ -76,7 +76,7 @@
 			    pay_method : 'card',
 			    merchant_uid: "order_"+new Date().getTime(), // 상점에서 관리하는 주문 번호 --> 공연번호
 			    name : $("#showname").val()+'_'+$("#scheduleDate_id").val(),
-			    amount : 10,
+			    amount : 100,
 			    buyer_email : $("#email").val(),
 			    buyer_name : $("#buyer").val(),
 			    buyer_tel : $("#tel1").val()+'-'+ $("#tel2").val()+'-'+ $("#tel3").val(),

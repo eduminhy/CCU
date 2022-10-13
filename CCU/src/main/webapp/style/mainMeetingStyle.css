@@ -211,15 +211,18 @@
         line-height:50px;
         border-top:2px solid #7F7F7F;
         border-bottom:2px solid #7F7F7F;
-        width:12.9%;
+        width:13%;
         font-weight:bold;
     }
-    #accList>li:nth-child(5n+3){
-    	width:50%;
+    #accList>li:nth-child(7n+3){
+    	width:30%;
     }
-    #accList>li:nth-child(5n+4){
-    	width:10%;
+        #accList>li:nth-child(7n+1){
+    	width:5%;
     }
+/*     #accList>li:nth-child(7n+4){ */
+/*     	width:10%; */
+/*     } */
 /*  	#accList>li:nth-child(6n+3){ */
 /*     	width:50%; */
 /*     } */

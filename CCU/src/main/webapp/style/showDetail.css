@@ -9,11 +9,18 @@
 	padding: 0px 0px 10px;
 }
 
-.showDetailTitle>div:nth-child(1) {
-	color: red;
-}
 .showDetailTitle>div:nth-child(2) {
 	color: red;
+}
+
+.showDetailTitle>div:nth-child(3) {
+	color: red;
+}
+
+.fullheart, .emptyheart {
+	margin-left: auto;
+	font-size: 30px;
+	font-weight: bold;
 }
 
 .showDetail {
@@ -306,17 +313,41 @@
 	width: 55%;
 	margin: 0 auto;
 }
-
+/* 별점----------------------------------------------------------------------------------------- */
 .setreview {
 	width: 100%;
 }
 
 .setreviewForm {
 	width: 100%;
-	height: 100px;
+	height: 230px;
 	border-radius: 5px;
 	border: solid rgba(59, 0, 148) 1px;
-	background-color: rgba(247, 247, 247);
+	display:flex;
+	flex-direction: column;
+		border-radius: 15px;
+	border: solid rgba(59, 0, 148);
+/* 	background-color: rgba(247, 247, 247); */
+}
+.setreviewForm>div {
+	margin:0 auto;
+	
+}
+.setReviewBtn{
+	width: 67px;
+	height:67px;
+color: rgba(59, 0, 148);
+font-size: 1.0rem;
+font-weight: bold;
+}
+.setReviewdiv1{
+	display:flex;
+	justify-content: space-between;
+}
+textarea{
+	resize: none;
+/* 	rows:"4"; */
+/* 	 cols:"50" */
 }
 /* 별점----------------------------------------------------------------------------------------- */
 .star-rating {
@@ -348,4 +379,89 @@
 
 .star-rating label:hover, .star-rating label:hover ~ label {
 	-webkit-text-fill-color: orange;
+}
+/* Banner SCSS---------------------------------------- */
+#asdf1111 {
+	margin: 0;
+}
+
+#wrap {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#quick_bg {
+	margin: 0 auto;
+	text-align: center;
+	width: 1200px;
+	position: relative;
+}
+
+#quick {
+	position: absolute;
+	z-index: 2;
+	top: 15px;
+	/* 	width: 153px; */
+	right: -100px;
+	heightL: 70px;
+}
+
+#container12 {
+	position: relative;
+}
+
+#quick>div {
+	margin: 0px;
+	border: 0px;
+}
+
+#quick>div {
+	/* 	heightL: 70px;  */
+	font-weight: bold;
+	color: rgba(59, 0, 148);
+	/* 	margin: 0px; */
+	/* 	border: 0px; */
+	font-size: 40px;
+}
+
+/* .scroll123 { */
+/* 	margin: 0px; */
+/* 	border: 0px; */
+/* 	font-size: 20px; */
+/* 	font-weight: bold; */
+/* } */
+hr {
+	width: 50px;
+	height: 3px;
+	background-color: rgba(59, 0, 148);
+}
+/* Banner SCSS---------------------------------------- */
+.scroll {
+	width: 1200px;
+	justify-content: space-around;
+	display: flex;
+	height: 70px;
+}
+
+.scroll>div {
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	width: 250px;
+	height: 50px;
+	text-align: center;
+
+	border-radius: 5px;
+	border: solid rgba(59, 0, 148) 2px;
+	background-color: rgba(248, 245, 251);
+}
+
+.scroll>div>div {
+	margin: auto;
+	height: 20px;
+	color:rgba(59, 0, 148);
+		font-weight: bold;
+	
+
+
 }

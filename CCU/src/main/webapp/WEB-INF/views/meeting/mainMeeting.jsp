@@ -85,14 +85,16 @@
             <li>제목</li>
             <li>작성자</li>
             <li>작성일</li>
-
+            <li>작성자</li>
+            <li>작성일</li>
             <c:forEach var="vo" items="${list }">
                 <li>${vo.genre }</li>
                 <li>${vo.id }</li>
                 <li title=${vo.content }><a href="/meeting/view/${vo.id}">${vo.title }</a></li>
                 <li>${vo.user_id }</li>
                 <li>${vo.writedate }</li>
-           
+                       <li>작성자</li>
+            <li>작성일</li>
             </c:forEach>
         </ul>
     </div>

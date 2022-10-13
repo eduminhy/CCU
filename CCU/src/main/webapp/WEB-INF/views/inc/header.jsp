@@ -1,16 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta  name="viewport" content="width=device-width,initial-scale=1" charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"
+	charset="UTF-8">
 <!-- <meta  charset="UTF-8"> -->
 <title>Insert title here</title>
 <!-- JQ link -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	
-<script type="text/javascript"	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <!-- favicon.ico 오류 지우기 & 웹 브라우저 아이콘 설정 -->
 <link rel="shortcut icon" href="#">
 <link rel="stylesheet"
@@ -18,10 +21,12 @@
 <link rel="stylesheet" href="/style/headerfooter.css">
 
 <!-- bxslider -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -50,14 +55,22 @@
 			}
 		});
 		
-		//알림버튼
-		$(".bell-btn").click(function(){
-			$("#bellDiv").toggle();
-		});
+// 		//알림버튼
+// 		$(".bell-btn").click(function(){
+// 			$("#bellDiv").toggle();
+// 		});
 		
 		//사용자버튼
+		$("#toggleDiv").hide();
 		$(".user-btn").click(function() {
 			$("#toggleDiv").toggle();
+// 			var goFocus = function() {
+// 				$('#id').focus();
+// 			}
+// 			var goInfinite = function() {
+// 				function(){ goFocus(); }/* 3 Sec interval */
+// 			}
+
 		});
 		
 		
@@ -92,93 +105,105 @@
 		}
 	}
 */
+
 </script>
 </head>
 <body>
-		<div id="topMenu">
-			<c:if test="${logStatus!='Y' }">
-				<a href="/user/login">로그인</a>
-				<a href="/user/signup">회원가입</a>
-				<a href="/qna">1:1문의</a>
-			</c:if>
-			<c:if test="${logStatus=='Y' }">
-				<a href="/user/logout">로그아웃</a>
-				<a href="/mypage/myInfo">mypage</a>
-				<a href="/qna">1:1문의</a>
-			</c:if>
-		</div>
-<div class="topUp">
-	<div id="top">
-		<button class="search-btn" type="submit"><i class="fas fa-search" id="searchBtn"></i></button>
-		<input type="text" id="searchBar"/>	
-		<a href="/" id="mainLink">
-			<img src="../img/logo.png" id="logo"/>
-			<span>CCU</span>
-		</a>
-		<button class="bell-btn" type="submit"><i class="fas fa-bell" id="bellBtn"></i></button>
-		<button class="user-btn" type="submit"><i class="fas fa-user-circle" id="userBtn"></i></button>
-		<div id="bellDiv">
-		</div>
+	<div id="topMenu">
+		<c:if test="${logStatus!='Y' }">
+			<a href="/user/login">로그인</a>
+			<span>&nbsp;</span>
+			<a href="/user/signup">회원가입</a>
+			<span>&nbsp;</span>
+			<a href="/qna">1:1문의</a>
+		</c:if>
+		<c:if test="${logStatus=='Y' }">
+			<a href="/user/logout">로그아웃</a>
+			<span>&nbsp;</span>
+			<a href="/mypage/myInfo">mypage</a>
+			<span>&nbsp;</span>
+			<a href="/qna">1:1문의</a>
+		</c:if>
+	</div>
+	<div class="topUp">
+		<div id="top">
+			<button class="search-btn" type="submit">
+				<i class="fas fa-search" id="searchBtn"></i>
+			</button>
+			<input type="text" id="searchBar" /> <a href="/" id="mainLink">
+				<img src="../img/logo.png" id="logo" /> <span>CCU</span>
+			</a>
+			<!-- 		<button class="bell-btn" type="submit"><i class="fas fa-bell" id="bellBtn"></i></button> -->
+			<button class="user-btn" type="submit">
+				<i class="fas fa-user-circle" id="userBtn"></i>
+			</button>
+			<!-- 		<div id="bellDiv"> -->
+			<!-- 		</div> -->
 
-		
 
-		<form method="post" action="/user/loginOk" id="log">
-			<div id="toggleDiv">
-		
-			<input type="text" placeholder="아이디를 입력해주세요" name="id" id="id">
-			<br /> 
-			<input type="password" placeholder="비밀번호를 입력해주세요" name="password" id="password"> <br /> <br /> 
-				<c:if test="${logStatus!='Y' }">
-				<input type="submit" value="로그인" class="loginBtn"> <br />
-			</c:if>
-			<c:if test="${logStatus=='Y' }">
-			<!-- 	<button onclick="logoutFunc();">로그아웃</button>  -->
-		<a href="/user/logout" class="logoutBtn">로그아웃</a> 
-			</c:if>
-		</form>
-		<!-- 
+
+			<form method="post" action="/user/loginOk" id="log">
+				<div id="toggleDiv">
+
+					<input type="text" placeholder="아이디를 입력해주세요" name="id" id="id">
+					<br /> <input type="password" placeholder="비밀번호를 입력해주세요"
+						name="password" id="password"> <br /> <br />
+					<c:if test="${logStatus!='Y' }">
+						<input type="submit" value="로그인" class="loginBtn">
+						<br />
+					</c:if>
+					<c:if test="${logStatus=='Y' }">
+						<!-- 	<button onclick="logoutFunc();">로그아웃</button>  -->
+						<a href="/user/logout" class="logoutBtn">로그아웃</a>
+					</c:if>
+			</form>
+			<!-- 
 			<input type="text" id="userid" placeholder="ID"/><br/>
 			<input type="password" id="userpwd" placeholder="PW"/><br/>
 			<input type="submit" value="Login" id="logBtn" width=160px;/>
 		 -->
-		 
-		 <!-- 
+
+			<!-- 
 		<Div>
 			<img src="../img/navericon.png" width=40px; height=40px; id="navericon">
 			<img src="../img/kakaoicon.png" width=40px; height=40px; id="kakaoicon">
 			<img src="../img/googleicon.png" width=40px; height=40px; id="googleicon">
 		</Div>
 		 -->
-		 
-			<br/>
-			<div><a href="/user/signup">회원가입</a></div>
-			<div><a href="/faq">고객센터</a></div>
 
-
+			<br />
+			<div>
+				<a href="/user/signup">회원가입</a>
 			</div>
-		</div>
-</div>
-
-		<div class="topDown">
-			<!-- 탭메뉴 -->
-			<div id="tapmenu">
-				<ul>
-					<li><a href="/show/showList?genre=전체">전체</a></li>
-				</ul>
-				<ul>
-					<li><a href="/show/showList?genre=연극">연극</a></li>
-				</ul>
-				<ul>
-					<li><a href="/show/showList?genre=뮤지컬">뮤지컬</a></li>
-				</ul>
-				<ul>
-					<li><a href="/show/showList?genre=클래식&오페라">클래식/오페라</a></li>
-				</ul>
-				<ul>
-					<li><a href="/show/showList?genre=아동">아동</a></li>
-				</ul>
-				<ul>
-					<li><a href="/meeting/mainMeeting">같이갈래요?</a></li>
-				</ul>
+			<div>
+				<a href="/faq">고객센터</a>
 			</div>
+
+
 		</div>
+	</div>
+	</div>
+
+	<div class="topDown">
+		<!-- 탭메뉴 -->
+		<div id="tapmenu">
+			<ul>
+				<li><a href="/show/showList?genre=전체">전체</a></li>
+			</ul>
+			<ul>
+				<li><a href="/show/showList?genre=연극">연극</a></li>
+			</ul>
+			<ul>
+				<li><a href="/show/showList?genre=뮤지컬">뮤지컬</a></li>
+			</ul>
+			<ul>
+				<li><a href="/show/showList?genre=클래식&오페라">클래식/오페라</a></li>
+			</ul>
+			<ul>
+				<li><a href="/show/showList?genre=아동">아동</a></li>
+			</ul>
+			<ul>
+				<li><a href="/meeting/mainMeeting">같이갈래요?</a></li>
+			</ul>
+		</div>
+	</div>
