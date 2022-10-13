@@ -11,7 +11,23 @@
 <link rel="stylesheet" href="/style/showDetail.css">
 <!-- indexPage script -->
 <script src="/script/showDetailScript.js" type="text/javascript"></script>
+<!-- <div id="asdf1111"> -->
+<div id="wrap">
+	<div id="container12">
+		<div id="quick_bg">
+			<div id="quick">
+				<div class="scrolltop">△</div>
+				<!-- 							<hr/> -->
+				<div class="scrolldown">▽</div>
+				<!-- 				<a href="#form"><img src="img/poster/1.jpg"></a> -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- </div> -->
+
 <div class="showDetail">
+
 	<script type="text/javascript">
 		getshow('${dvo.monday}', '${dvo.tuesday}', '${dvo.wednesday}',
 				'${dvo.thursday}', '${dvo.friday}', '${dvo.saturday}',
@@ -23,13 +39,15 @@
 		// 		getshow2('${dvo.saturday}');
 		// 		getshow2('${dvo.sunday}');
 		// 		getshow2('${dvo.holiday}');
-		getname('${show.id}','${myheart}');
+		getname('${show.id}','${myheart}','${logStatus}');
 	</script>
 	<br />
 	<div class="showDetailTitle">
-			<div class="fullheart">♥</div>
-		<div class="emptyheart">♡</div>
-		<div>${show.genre}:${show.name}&nbsp;</div>
+
+		<div>${show.genre}:${show.name}</div>
+
+		<div class="fullheart">찜목록에서 제거 ♥</div>
+		<div class="emptyheart">찜하기 ♡</div>
 
 	</div>
 
@@ -59,14 +77,13 @@
 					<div>S</div>
 				</div>
 				<div class="dates"></div>
-				<hr />
-				<span>선택일자&nbsp;&nbsp;<input type="text" id="period_1"></span>
-				<hr />
+				<br /> <span>선택일자&nbsp;&nbsp;<input type="text"
+					id="period_1"></span> <br />
 				<div class="calanderSelect">
 					회차선택
 					<div class="calanderSelectDiv"></div>
 				</div>
-				<hr />
+				<br />
 
 				<form class="form" action="/book/scheduleOk" method="post">
 					<input class="Sdate" name="Sdate" type="text"> <input
@@ -136,9 +153,54 @@
 			</table>
 		</div>
 	</div>
+	<br />
 	<div class="scroll">
-		<div>후기보기</div>
-		<div>분석표</div>
+		<div class="scroll2">
+			<div>공연통계 바로가기</div>
+		</div>
+		<div class="scroll1">
+			<div>후기보기 바로가기</div>
+		</div>
+
+		<!-- 		<div><a href=".detailChart" id="scroll_move">분석보기</a></div> -->
+	</div>
+	
+	<br />
+		<div class="setreview">
+		<br />
+		<form class="setreviewForm">
+			<br />
+			<div class="detailRatingTitle">후기 등록</div>
+			<div class="star-rating space-x-4 mx-auto">
+				<input type="radio" id="5-stars" name="rate" value="5"
+					v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
+				<input type="radio" id="4-stars" name="rate" value="4"
+					v-model="ratings" /> <label for="4-stars" class="star">★</label> <input
+					type="radio" id="3-stars" name="rate" value="3" v-model="ratings" />
+				<label for="3-stars" class="star">★</label> <input type="radio"
+					id="2-stars" name="rate" value="2" v-model="ratings" /> <label
+					for="2-stars" class="star">★</label> <input type="radio"
+					id="1-star" name="rate" value="1" v-model="ratings" /> <label
+					for="1-star" class="star">★</label>
+			</div>
+			<br /> <input type="hidden" name="viewdate" value="2022-10-11" /> <input
+				type="hidden" value="${show.id}" name="showdb_id" />
+			<div class="setReviewdiv1">
+				<div>
+					<textarea name="content" value="" rows="4" cols="100"></textarea>
+				</div>
+				<!-- 			<script type="text/javascript">											 -->
+				<!-- // 	         document.write(getstar($('#reviewRateForm').val())); -->
+				<!-- // 	         $('#reviewRateForm').keyup( function() { -->
+				<!-- // 	        	 getstar($('#reviewRateForm').val()); -->
+				<!-- // 	       	 });							 -->
+				<!--          	</script> -->
+				<div>
+					<button class="setReviewBtn">등록</button>
+				</div>
+			</div>
+		</form>
+		<br />
 	</div>
 	<br />
 	<div class="detailImg">
@@ -155,36 +217,6 @@
 	</div>
 	<div class="detailChart"></div>
 	<br />
-	<div class="setreview">
-		<br />
-		<form class="setreviewForm">
-			<div class="star-rating space-x-4 mx-auto">
-				<input type="radio" id="5-stars" name="rate" value="5"
-					v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
-				<input type="radio" id="4-stars" name="rate" value="4"
-					v-model="ratings" /> <label for="4-stars" class="star">★</label> <input
-					type="radio" id="3-stars" name="rate" value="3" v-model="ratings" />
-				<label for="3-stars" class="star">★</label> <input type="radio"
-					id="2-stars" name="rate" value="2" v-model="ratings" /> <label
-					for="2-stars" class="star">★</label> <input type="radio"
-					id="1-star" name="rate" value="1" v-model="ratings" /> <label
-					for="1-star" class="star">★</label>
-			</div>
-
-			<input type="text" name="viewdate" value="2022-10-11" /> <input
-				type="text" value="${show.id}" name="showdb_id" /> <input
-				type="text" name="content" value="공연이 재미있고 맛있서요" /> <br />
-			<!-- 			<script type="text/javascript">											 -->
-			<!-- // 	         document.write(getstar($('#reviewRateForm').val())); -->
-			<!-- // 	         $('#reviewRateForm').keyup( function() { -->
-			<!-- // 	        	 getstar($('#reviewRateForm').val()); -->
-			<!-- // 	       	 });							 -->
-			<!--          	</script> -->
-			<button class="setReviewBtn">후기 등록하기</button>
-
-		</form>
-		<br />
-	</div>
 	<br />
 	<div class="detailRating">
 		<br />
@@ -204,7 +236,7 @@
          document.write(getstar(${R.rate }));
     </script>
 					</div>
-					${R.id}
+					<%-- 					${R.id} --%>
 					<div>
 						<div>${R.user_id}</div>
 						<div>${R.content}</div>
