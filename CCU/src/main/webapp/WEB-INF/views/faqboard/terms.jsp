@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/style/termsStyle.css">
-
+<!-- 
 <img src="../img/chatbot_icon.png" id="chatboticon">
 <div id="cculogo">
 <img src="../img/logo01.PNG" width=100px; height=100px;">
 </div>
+-->
 
 
 	<div class="csmenu">

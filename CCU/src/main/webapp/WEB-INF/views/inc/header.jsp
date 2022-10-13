@@ -46,10 +46,13 @@
 		});
 
 		$("#searchBar").keyup(function(key) {
-			if (key.keyCode == 13) {
-				if ($("#searchBar").val() != '') {
-					alert("검색할까요?");
+			if (key.keyCode === 13) {
+				const search = document.getElementById('searchBar').value;
+				if (search !== '') {
+					const link = "/show/title?search=" + search;
+					location.href = link;
 				} else {
+					console.log("beep");
 					alert("검색어를 입력하세요");
 				}
 			}

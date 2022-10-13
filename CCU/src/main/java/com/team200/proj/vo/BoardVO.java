@@ -16,12 +16,6 @@ public class BoardVO {
 	private List<Integer> noList;
 	
 	
-	@Override
-	public String toString() {
-		return "BoardVO [id=" + id + ", user_id=" + user_id + ", showdb_id=" + showdb_id + ", title=" + title
-				+ ", content=" + content + ", writedate=" + writedate + ", hit=" + hit + ", genre=" + genre
-				+ ", noList=" + noList + "]";
-	}
 	public int getId() {
 		return id;
 	}

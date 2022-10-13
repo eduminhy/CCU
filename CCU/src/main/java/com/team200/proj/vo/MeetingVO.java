@@ -13,6 +13,7 @@ public class MeetingVO {
 	private int hit;
 	private String genre;
 	private String name;
+	private String status;
 
 
 
@@ -78,4 +79,13 @@ public class MeetingVO {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 }

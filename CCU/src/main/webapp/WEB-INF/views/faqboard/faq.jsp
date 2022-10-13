@@ -12,12 +12,12 @@
 </head>
 
 <body>
-
+<!-- 
 <img src="../img/chatbot_icon.png" id="chatboticon">
 <div id="cculogo">
 <img src="../img/logo01.PNG" width=100px; height=100px;">
 </div>
-
+-->
 
 	<div class="csmenu">
 		<div><a href="/faq">FAQ</a></div>

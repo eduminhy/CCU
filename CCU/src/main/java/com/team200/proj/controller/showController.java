@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,7 +42,17 @@ public class showController {
 
 	@Autowired
 	ShowService service;
+	
+	@GetMapping("title")
+	public ModelAndView search(@RequestParam String search) {
+		ModelAndView mav = new ModelAndView();
 
+		mav.addObject("showlist", service.search(search));
+
+		mav.setViewName("show/showList");
+		return mav;
+	}
+	
 	@GetMapping("showList")
 	public ModelAndView showList(String genre) {
 

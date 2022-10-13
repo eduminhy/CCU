@@ -10,7 +10,7 @@
     </select>
 
     <select id="showModal" resultType="showVO">
-        select id, name from showdb where name like CONCAT('%', #{name}, '%')
+        select id, name, from showdb where name like CONCAT('%', #{search}, '%')
     </select>
 
 	<select id="showSearch" resultType="showVO">
@@ -18,9 +18,14 @@
 	</select>
 
     <select id="mainMeeting" resultType="MeetingVO">
-       select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
-       from board a inner join showdb b on a.showdb_id = b.id
-       order by id desc    
+        select a.id, a.user_id, a.status, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre,
+        b.name
+
+        from board a inner join showdb b on a.showdb_id = b.id
+<!--         <if test = "meetingkeyword != null"> -->
+<!--         where (title like '%${meetingkeyword}%' or content like '%${meetingkeyword}%') -->
+<!--         </if> -->
+        order by id desc
     </select>
 
     <select id="searchByTitle" resultType="MeetingVO">
@@ -37,12 +42,7 @@
         select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
         from board a
                  inner join showdb b on a.showdb_id = b.id
-        <if test="genre=='아동'">
-        	inner join child as c on b.id=c.showdb_id
-        </if>
-        <if test="genre!='아동'">
-         where b.genre = #{genre}
-        </if>
+        where b.genre = #{genre}
         order by id desc;
 --         select *
 --         from board
@@ -68,8 +68,8 @@
 <!--    </select>-->
 
     <insert id="meetingWriteOk">
-        insert into board(user_id, showdb_id, title, content)
-        values (#{user_id}, #{showdb_id}, #{title}, #{content})
+        insert into board(user_id, showdb_id, title, content, status)
+        values (#{user_id}, #{showdb_id}, #{title}, #{content}, #{status})
     </insert>
 
     <select id="mainMeetingGet" resultType="MeetingVO">
