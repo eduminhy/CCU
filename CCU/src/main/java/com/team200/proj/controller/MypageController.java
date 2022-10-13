@@ -26,6 +26,7 @@ import com.team200.proj.service.MypageService;
 import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.ReplyVO;
 import com.team200.proj.vo.UserVO;
+import com.team200.proj.vo.showVO;
 
 
 @RestController
@@ -207,21 +208,33 @@ public class MypageController {
 	
 	//2. 나의 예매내역
 	@GetMapping("myReservation")
-	public ModelAndView myReservation(HttpSession session) {
+	public ModelAndView myReservation(HttpSession session, String searchWord, String startdate, String enddate) {
 		String id = (String)session.getAttribute("logId"); 
 		ModelAndView mav = new ModelAndView();
 		
-		mav.addObject("booklist", service.getBookInfo(id));
+		mav.addObject("booklist", service.getBookInfo(id, searchWord, startdate, enddate));
 		mav.setViewName("mypage/myReservation");
 		return mav;
 	}
 	
 	//3. 나의 찜 목록 페이지
 	@GetMapping("myHeartList")
-	public ModelAndView myHeartList() {
+	public ModelAndView myHeartList(HttpSession session) {
+		String id = (String)session.getAttribute("logId"); 
+		List<showVO> myfavlist = service.getMyFav(id);
+		int cnt = myfavlist.size();
 		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("cnt", cnt);
+		mav.addObject("myfavlist", myfavlist);
 		mav.setViewName("mypage/myHeartList");
 		return mav;
+	}
+	//찜목록 삭제
+	@GetMapping("myHeartListDel")
+	public int myHeartListDel(String showdb_id, HttpSession session) {
+		String id = (String)session.getAttribute("logId"); 
+		return service.delMyFav(id, showdb_id);
 	}
 	
 	//4. 나의 게시글 페이지

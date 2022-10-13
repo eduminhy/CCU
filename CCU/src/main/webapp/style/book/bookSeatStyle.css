@@ -18,7 +18,21 @@ h1{color:rgb(68,0,153); margin:0; padding:20px 0; border-bottom:4px solid rgb(68
 	overflow:scroll; -ms-overflow-style: none;
 }
 #seatBox::-webkit-scrollbar{display:none;}
+#seatBox>.seatid{
+	border:none; border-radius: 10px;
+	background-color:lavender; color:rgb(68,0,153);
+	width:50px; text-align:center; font-size:15px;
+	margin:5px 0;
+}
 
+#showDate, #showTime, #seatCnt, #priceText:focus{outline:none;}
+#showDate, #showTime, #seatCnt, #priceText{
+	border:none; height:1.25em; line-height:1.25em; font-size:17px; 
+}
+#showDate{width:150px;}
+#showTime{width:70px;}
+#seatCnt{width:20px; text-align:center;}
+#priceText{width:100px; text-align:right;}
 
 #completeSeat{
 	background-color:rgb(68,0,153); color:#fff;
@@ -84,3 +98,10 @@ input[type="checkbox"]:disabled + label{
 	background-color:#fff;
 	margin:5px;
 }
+.state{margin-left:320px; display:flex;}
+.ok, .stay, .nope{display:flex;}
+.ok>span, .stay>span, .nope>span{line-height:30px;}
+#ok, #stay, #nope{width:20px; height:20px; margin:5px;}
+#ok{background-color:lavender;}
+#stay{background-color:lime;}
+#nope{background-color:gray;}

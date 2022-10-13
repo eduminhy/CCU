@@ -10,6 +10,7 @@ import com.team200.proj.dao.BookDAO;
 import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.ScheduledateVO;
 import com.team200.proj.vo.SeatVO;
+import com.team200.proj.vo.StateVO;
 import com.team200.proj.vo.UserVO;
 import com.team200.proj.vo.showVO;
 
@@ -44,6 +45,21 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
+	public int putSeatState(String scheduleDate_id, String seatno) {
+		return dao.putSeatState(scheduleDate_id, seatno);
+	}
+	
+	@Override
+	public List<StateVO> getSeatState(String scheduleDate_id) {
+		return dao.getSeatState(scheduleDate_id);
+	}
+	
+	@Override
+	public int DelSeatState(String scheduleDate_id, String seatno) {
+		return dao.DelSeatState(scheduleDate_id, seatno);
+	}
+	
+	@Override
 	public List<SeatVO> getSeatInfo(String scheduleDate_id) {
 		return dao.getSeatInfo(scheduleDate_id);
 	}
@@ -63,6 +79,13 @@ public class BookServiceImpl implements BookService {
 	public OrderlistVO getOrder(String no) {
 		return dao.getOrder(no);
 	}
+
+	@Override
+	public int AutoDel() {
+		return dao.AutoDel();
+	}
+
+	
 	
 	
 }

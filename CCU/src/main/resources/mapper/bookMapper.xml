@@ -14,7 +14,6 @@
 		select id, showdb_id, showDate, showTime, showPrice from scheduleDate 
 		where id=#{param1}
 	</select>
-	
 	<select id="getShowInfo" resultType="ScheduleDateVO">
 		select a.id, a.showdb_id, a.showDate, a.showTime, a.showPrice, b.name, b.place_name
 		from scheduleDate as a inner join showdb as b on a.showdb_id=b.id where a.id=#{param1}
@@ -22,6 +21,20 @@
 	<select id="getUserInfo" resultType="UserVO">
 		select username, tel, zipcode, road_name, addr from user where id=#{param1}
 	</select>
+	<insert id="putSeatState">
+		insert into state(scheduleDate_id, seatno) values(#{param1}, #{param2})
+	</insert>
+	<select id="getSeatState" resultType="StateVO">
+		select a.scheduleDate_id, a.seatno from state as a
+		inner join scheduleDate as b on a.scheduleDate_id=b.id
+		where a.scheduleDate_id=#{param1}
+	</select>
+	<delete id="DelSeatState">
+		delete from state where scheduleDate_id=#{param1} and seatno=#{param2}
+	</delete>
+	<delete id="AutoDel">
+		delete from state where writedate <![CDATA[<]]> DATE_ADD(now(), INTERVAL -1 minute)
+	</delete>
 	<select id="getSeatInfo" resultType="SeatVO">
 		select a.seat_num, b.scheduleDate_id from seat as a
 		inner join order_list as b on a.order_list_no=b.no

@@ -9,6 +9,7 @@ import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.ReplyVO;
 import com.team200.proj.vo.UserVO;
+import com.team200.proj.vo.showVO;
 
 @Mapper
 @Repository
@@ -21,5 +22,8 @@ public interface MypageDAO {
 	public int myBoardDel(BoardVO vo);//게시글 여러개 삭제
 	public List<ReplyVO> myReplyList(String user_id);//나의 댓글 가져오기
 	public int myCommentDel(ReplyVO vo);//댓글 여러개 삭제
-	public List<OrderlistVO> getBookInfo(String id);//예약내역 가져오기
+	public List<OrderlistVO> getBookInfo(String id, String searchWord, String startdate, String enddate);//예약내역 가져오기
+	
+	public List<showVO> getMyFav(String user_id);//찜목록 가져오기
+	public int delMyFav(String user_id, String showdb_id);//찜목록 삭제하기
 }
