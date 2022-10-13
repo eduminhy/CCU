@@ -73,5 +73,10 @@ public class ShowServiceImpl implements ShowService {
 		return dao.getmyheart( user_id,  showdb_id);
 	}
 
+	@Override
+	public List<showVO> search(String search) {
+		return dao.search(search);
+	}
+
 
 }

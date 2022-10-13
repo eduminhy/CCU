@@ -13,7 +13,7 @@
 
 </head>
 <body>
-
+<!-- 
 	<img src="../img/chatbot_icon.png" id="chatboticon">
 	<div id="cculogo">
 		<img src="../img/logo01.PNG" width=100px; height=100px;">
@@ -34,6 +34,8 @@
 			<a href="/terms">이용약관</a>
 		</div>
 	</div>
+	
+ -->
 
 	<!-- 	<div id="container"> -->
 	<!-- 		<ul id="ulTable"> -->

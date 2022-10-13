@@ -13,6 +13,7 @@ public class BookVO {
 	private String seatCnt;
 	private String scheduleDate_id;
 	
+	
 	public String getImp_uid() {
 		return imp_uid;
 	}

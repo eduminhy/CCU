@@ -53,6 +53,9 @@
             <ul>
                 <li>
                     <input type="hidden" name="showdb_id" id="showdb_id" value="${board.showdb_id}" readonly="readonly">
+					
+<%--                    
+ <input type="image" name="showdb_mainposter" id="showdb_mainposter" value="${board.showdb_mainposter}" readonly="readonly"> --%>
                     <input type="text" id="name" value="${board.name}">
                     <button class="showId_btn">공연검색</button>
                 </li>
@@ -63,14 +66,14 @@
 
             <tr>
                 <th scope="row">
-                    <label for="playSubject">말머리</label></th>
+                    <label for="status">마감여부 선택</label></th>
                 <td>
-                    <select name="playSubject" class="playSubject">
-                        <option value="selectSubject">-선택-</option>
-                        <option value="searchSomeone">모집</option>
-                        <option value="lookSomeone">찾아요</option>
+                    <select name="status" id="status">
+                        <option value="selectstatus">-선택-</option>
+                        <option value="모집중">모집중</option>
+                        <option value="모집완료">모집완료</option>
                     </select>
-                <th scope="row">
+                
 
 
             </tr>

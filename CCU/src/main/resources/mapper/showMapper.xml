@@ -5,7 +5,13 @@
 
 <!-- dao뒤에 사용할DAO명을 입력해야함 ex)boardDAO -->
 <mapper namespace="com.team200.proj.dao.ShowDAO">
-
+	
+	<select id="search" resultType="showVO">
+        select *
+        from showdb
+        where name like CONCAT('%', #{search}, '%')
+    </select>
+    
 	<select id="getShowList" resultType="showVO">
 		select 
 		a.id, a.name, a.place_name, date_format(a.startdate, '%Y.%m.%d')startdate, 
@@ -60,7 +66,7 @@
 		select id, user_id, content, rate, viewdate, date_format(writedate, '%m-%d %h:%i') writedate from review where show_id=#{param1}  order by id asc;
 
 	</select>
-		<select id="WeeklyRankingList" resultType="showVO">
+	<select id="WeeklyRankingList" resultType="showVO">
 		<if test="param1=='아동'">
 		select a.id, a.name, c.showRank from showdb as a inner join child as c on a.id=c.showdb_id
 		where state='공연중'

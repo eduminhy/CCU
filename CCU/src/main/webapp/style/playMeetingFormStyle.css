@@ -45,8 +45,8 @@
 		background:#E0E0E0;
 		text-align:center;
 	}
-	.playSubject{
-		width:5%;
+	#status{
+		width:15%;
 		height:30px;
 	}
 	.writeSubject{
