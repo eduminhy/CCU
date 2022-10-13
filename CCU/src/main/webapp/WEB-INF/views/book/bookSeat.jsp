@@ -1,58 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="/style/bookSeatStyle.css">
+<link rel="stylesheet" href="/style/book/bookSeatStyle.css">
 
 <script>
 	$(function(){
-		var cnt = 0;
 		var showdb_id = $("#showdb_id").val();
 		var showDate = $("#showDate").val();
 		var showTime = $("#showTime").val();
 		var seatCnt = "";
+		var cnt=0;
 		
-		$("input[name='seatNum']").click(function(){
-			if($(this).is(":checked")==true){//체크되면
-				//console.log(this.id);
-				$("#seatBox").append("<input type='text' name='id' value='"+this.value+"'/> ");//좌석출력
-				cnt++;
-				$("#seatCnt").val(cnt);
-			}
-			if($(this).is(":checked")==false){
-				//console.log(this.id+"해제");
-				cnt--;
-				$("#seatCnt").val(cnt);
-				for(var i=0;i<cnt+1;i++){
-					//console.log("for문=>"+$("#seatBox>span").eq(i).text());
-					//console.log("this=>"+this.value);
-					if($("#seatBox>input").eq(i).val()==this.value){
-						$("#seatBox>input").eq(i).remove();
-					}
-				}
-			}
-		});
-		
-		
-		
-		$("#completeSeat").submit(function(){
-			//seatCnt = $("#seatCnt").val();
-			var url = "/book/bookCredit?scheduleDate="+$("#scheduleDate_id").val();
-			$.ajax({
-				url:url,
-				type:"get",
-				dateType:"json",
-				data:{
-					seatNum : $("input[name=seatNum]:checked").val(),
-					seatCnt : $("#seatCnt").val()
-				},
-				success:function(data){
-						
-				},error:function(error){
-					console.log(error);
+		var stcnt = $(".stsn").length;//개수
+		var starr = [];
+		console.log(stcnt);
+		console.log($(".stsn").val());
+		for(var i=0;i<stcnt;i++){
+			starr.push($(".stsn").eq(i).val());
+		}
+		for(var i=0;i<stcnt;i++){
+			$("input[name=seatNum]").each(function(){
+				//console.log(this.value);
+				if(this.value==starr[i]){
+					$(this).attr("disabled", true);
+					$(this).next().css("background-color","lime");
 				}
 			});
-			
-		});
-		
+		}
 		
 		//예약된 좌석 disable하기
 		//console.log($("input[name=seatNum]").val());
@@ -72,12 +45,59 @@
 				}
 			});
 		}
+		//console.log($("input[name='seatNum']:disabled").length);
+		
+		var discnt = $("input[name='seatNum']:disabled").length;
+		
+		$("input[name='seatNum']").click(function(){
+			console.log(cnt);
+			if($(this).is(":checked")==true){//체크되면
+				//console.log(this.id);
+				$("#seatBox").append("<input type='text' name='id' class='seatid' value='"+this.value+"'/> ");//좌석출력
+				//$("#seatCnt").val(cnt);
+				//console.log(cnt);
+				cnt++;
+				console.log("(+)=>"+cnt);
+			}
+			if($(this).is(":checked")==false){
+				//console.log(this.id+"해제");
+				cnt--;
+				//console.log("(-)=>"+cnt);
+				for(var i=0;i<cnt+1;i++){
+					//console.log("for문=>"+$("#seatBox>span").eq(i).text());
+					//console.log("this=>"+this.value);
+					if($("#seatBox>input").eq(i).val()==this.value){
+						$("#seatBox>input").eq(i).remove();
+					}
+				}
+			}
+			if(discnt==0){//처음 생성될 때
+				$("#seatCnt").val(cnt-(1+discnt));
+			}else{//이미 예약된 좌석이 있을 때
+				$("#seatCnt").val(cnt-(discnt));
+			}
+			$("#priceText").val($("#seatCnt").val()*${sdvo.showPrice });
+		});
 		
 		
-		
-		
-		
-		
+		$("#completeSeat").submit(function(){
+			//seatCnt = $("#seatCnt").val();
+			var url = "/book/bookCredit?scheduleDate="+$("#scheduleDate_id").val();
+			$.ajax({
+				url:url,
+				type:"get",
+				dateType:"json",
+				data:{
+					seatNum : $("input[name=seatNum]:checked").val(),
+					seatCnt : $("#seatCnt").val()
+				},
+				success:function(data){
+					
+				},error:function(error){
+					console.log(error);
+				}
+			});
+		});
 	});
 </script>
 
@@ -87,6 +107,11 @@
 	<div id="content">
 		<!-- 좌석 -->
 		<div id="selectSeat">
+		<div class="state">
+				<div class="ok"><div id="ok"></div><span>예매가능</span></div>
+				<div class="stay"><div id="stay"></div><span>예매중인 좌석</span></div>
+				<div class="nope"><div id="nope"></div><span>예약된 좌석</span></div>
+		</div>
 			<div id="stage">STAGE</div>
 			<div>
 				<div class="seatBox">
@@ -397,12 +422,12 @@
 		<ul>
 			<li><input type="hidden" name="scheduleDate_id" id="scheduleDate_id" value="${sdvo.id}"/></li>
 			<li><input type="hidden" name="showdb_id" id="showdb_id" value="${sdvo.showdb_id }"/></li>
-			<li>관람일 : <input type="text" name="showDate" id="showDate" value="${sdvo.showDate }"/></li> 
-			<li>관람시간 : <input type="text" name="showTime" id="showTime" value="${sdvo.showTime }"/></li>
-			<li>좌석수 : <input type="text" id="seatCnt" name="seatCnt" value=""/>매</li>
+			<li>관람일 : <input type="text" name="showDate" id="showDate" value="${sdvo.showDate }" readonly/></li> 
+			<li>관람시간 : <input type="text" name="showTime" id="showTime" value="${sdvo.showTime }" readonly/></li>
+			<li>좌석수 : <input type="text" id="seatCnt" name="seatCnt" value="0" readonly/>매</li>
 			<li>좌석번호</li>
 			<li id="seatBox"></li>
-			<li>가격 : <input type="text" name="priceText" id="priceText" value="${sdvo.showPrice }"/>원</li>
+			<li>가격 : <input type="text" name="priceText" id="priceText" value="전석 ${sdvo.showPrice }" readonly/>원</li>
 			<li><input type="hidden" name="price" id="price" value=""></li>
 		</ul>
 		<input type="submit" value="좌석선택완료" id="completeSeat"/>
@@ -411,5 +436,8 @@
 	</form>
 </div>
 <c:forEach var="seatNum" items="${sn }">
-	<input type="text" class="sn" value="${seatNum}"/>
+	<input type="hidden" class="sn" value="${seatNum}"/>
+</c:forEach>
+<c:forEach var="seatno" items="${stsn }">
+	<input type="hidden" class="stsn" value="${seatno }"/>
 </c:forEach>

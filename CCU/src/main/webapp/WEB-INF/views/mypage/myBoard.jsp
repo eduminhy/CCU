@@ -56,7 +56,7 @@
 									<li><input type="checkbox" name="noList" value="${bvo.id}"/></li>
 									<li>${bvo.id }</li>
 									<li>${bvo.genre}</li>
-									<li><a href="#">${bvo.title }</a></li>
+									<li><a href="/meeting/view/${bvo.id }">${bvo.title }</a></li>
 									<li>${bvo.writedate }</li>
 							</ul>
 						</li>

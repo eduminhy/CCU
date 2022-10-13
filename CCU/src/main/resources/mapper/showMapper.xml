@@ -102,7 +102,7 @@
 			date_format(a.enddate, '%Y.%m.%d')enddate, a.genre, a.mainposter
 			from showdb as a inner join child as c on a.id=c.showdb_id
 			where a.state='공연중' and
-			a.startdate between subdate(now(), interval 60 DAY) and date_format(now(), '%Y.%m.%d')   
+			a.startdate between subdate(now(), interval 90 DAY) and date_format(now(), '%Y.%m.%d')   
 			order by a.startdate desc limit 0,5
 		</if>
 		<if test="param1!='아동'">

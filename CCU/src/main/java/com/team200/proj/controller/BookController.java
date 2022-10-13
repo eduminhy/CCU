@@ -1,38 +1,26 @@
 package com.team200.proj.controller;
 
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mysql.cj.util.StringUtils;
 import com.team200.proj.service.BookService;
 import com.team200.proj.vo.BookVO;
 import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.ScheduledateVO;
 import com.team200.proj.vo.SeatVO;
+import com.team200.proj.vo.StateVO;
 import com.team200.proj.vo.UserVO;
 
 
@@ -110,30 +98,46 @@ public class BookController {
 	@GetMapping("bookSeat")
 	public ModelAndView bookSeat(HttpServletRequest request, String scheduleDate_id) {
 		ModelAndView mav = new ModelAndView();
-
+		service.AutoDel();
 		List<SeatVO> svo = service.getSeatInfo(scheduleDate_id);
 		if(svo!=null) {
 			int size = svo.size();
 			String arr="";
-			System.out.println("size=>"+size);
+			//System.out.println("size=>"+size);
 			StringBuffer sb = new StringBuffer();
 			
 			for(int j=0;j<size;j++) {
 				String seatNum = svo.get(j).getSeat_num();
-				System.out.println("svo=>"+seatNum);//[A-7, A-8, A-9]
-				System.out.println(seatNum.length());
+				//System.out.println("svo=>"+seatNum);//[A-7, A-8, A-9]
+				//System.out.println(seatNum.length());
 				int endidx = seatNum.length();
 				arr = seatNum.substring(1, endidx-1);
-				System.out.println("arr=>"+arr);
+				//System.out.println("arr=>"+arr);
 				sb.append(arr);
 				sb.append(", ");
 			}
 			System.out.println(sb.toString());
 			String sn[] = sb.toString().split(", ");
-			for(int i=0;i<sn.length;i++) {
-				System.out.println(sn[i]);
-			}
+			//for(int i=0;i<sn.length;i++) {
+				//System.out.println(sn[i]);
+			//}
 			mav.addObject("sn",sn);
+		}
+		
+		List<StateVO> st = service.getSeatState(scheduleDate_id);
+		if(st!=null) {
+			String starr = "";
+			StringBuffer stsb = new StringBuffer();
+			for(int j=0;j<st.size();j++) {
+				String seatno = st.get(j).getSeatno();
+				int eidx = seatno.length();
+				starr = seatno.substring(1, eidx-1);
+				stsb.append(starr);
+				stsb.append(", ");
+			}
+			System.out.println(stsb.toString());
+			String stsn[] = stsb.toString().split(", ");
+			mav.addObject("stsn", stsn);
 		}
 		
 		ScheduledateVO sdvo = service.getScheduleInfo(scheduleDate_id);
@@ -155,6 +159,9 @@ public class BookController {
 		System.out.println("seatNum=>"+seatNum);
 		System.out.println("seatCnt=>"+seatCnt);
 		int ticketPrice = Integer.parseInt(sdvo.getShowPrice())*Integer.parseInt(seatCnt);
+		List<String> sno = seatNum;
+		String seatno = sno.toString();
+		service.putSeatState(scheduleDate_id, seatno);
 		
 		ModelAndView mav = new ModelAndView(); 
 		mav.addObject("seatNum", seatNum);
@@ -182,7 +189,10 @@ public class BookController {
 		System.out.println(sn);
 		service.putSeatInfo(sn, vo.getOrderno(), vo.getSeatCnt());
 		System.out.println("seat data 넣기 성공");
-		
+		List<StateVO> st = service.getSeatState(vo.getScheduleDate_id());
+		if(st!=null) {
+			service.DelSeatState(vo.getScheduleDate_id(), sn);
+		}
 	}
 	
 	@GetMapping("bookCheck")

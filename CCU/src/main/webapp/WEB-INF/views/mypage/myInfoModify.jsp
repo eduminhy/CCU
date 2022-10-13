@@ -57,8 +57,10 @@
 	       }
 	    }).open();
 	}
+	
 	//본인인증
 	$(function(){
+		/*
 		$("#certification").click(function(){
 			
 			var IMP = window.IMP; // 생략가능
@@ -82,6 +84,7 @@
 		      }
 		  });
 		});
+		*/
 		
 		$("#myinfoFrm").submit(function(){
 			if($("#password").val()==""){
@@ -116,13 +119,6 @@
 			
 				<input type="file" name="fname" id="filename" accept="image/*" onchange="readURL(this);"/>
 			</td>
-		</tr>
-		<tr class="rows">
-			<th>본인인증</th>
-			<td>
-				<c:if test="${vo.self_certification eq 0}"><c:out value="N"/></c:if>
-				<c:if test="${vo.self_certification eq 1}"><c:out value="Y"/></c:if>
-				<input type="button" value="본인인증하기" id="certification"/></td>
 		</tr>
 		<tr class="rows">
 			<th>닉네임*</th>

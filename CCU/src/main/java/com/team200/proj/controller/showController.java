@@ -68,14 +68,15 @@ public class showController {
 	// http://localhost:8020/show/showDetail?show_id=1234
 
 	@GetMapping("showDetail")
-	public ModelAndView showDetail(String show_id, HttpSession session ) {
+	public ModelAndView showDetail(String show_id, String orderno, HttpSession session) {
 
 //	showVO abc = service.showDetail(show_id);
 //	System.out.println(abc.getStartdate().replaceAll("[^0-9]",""));
 //	System.out.println(abc.getEnddate().replaceAll("[^0-9]",""));
 //	String a = abc.getStartdate().replaceAll("[^0-9]","");
 //	String b = abc.getEnddate().replaceAll("[^0-9]","");
-
+		System.out.println("orderno=>"+orderno);
+		
 		showVO vo = service.showDetail(show_id);
 		String showtime = vo.getOpen_time();
 //		System.out.println(showtime);

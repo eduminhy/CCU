@@ -23,6 +23,7 @@ public class OrderlistVO {
 	String username;
 	String seat_num;
 	
+	
 	public String getNo() {
 		return no;
 	}
@@ -137,6 +138,7 @@ public class OrderlistVO {
 	public void setSeat_num(String seat_num) {
 		this.seat_num = seat_num;
 	}
+	
 	
 	
 	
