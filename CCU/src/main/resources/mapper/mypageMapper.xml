@@ -16,7 +16,7 @@
 		delete from user where id = #{param1} and password = #{param2}
 	</delete>
 	<select id="myBoardList" resultType="BoardVO">
-		select a.id, a.showdb_id, a.title, date_format(a.writedate, '%Y.%m.%e') writedate, b.genre
+		select a.id, a.showdb_id, a.title, date_format(a.writedate, '%Y.%m.%d') writedate, b.genre
 		from board 
 		a join showdb b on a.showdb_id=b.id 
 		where a.user_id = #{param1} order by a.id desc 
@@ -30,7 +30,7 @@
 		</where>
 	</delete>
 	<select id="myReplyList" resultType="ReplyVO">
-		select a.board_id, a.id, a.content, date_format(a.writedate, '%Y.%m.%e') writedate, c.genre
+		select a.board_id, a.id, a.content, date_format(a.writedate, '%Y.%m.%d') writedate, c.genre
         from reply a
         inner join board b on a.board_id=b.id
         inner join showdb c on b.showdb_id = c.id
@@ -43,5 +43,27 @@
 				${item}
 			</foreach>
 		</where>
+	</delete>
+	<select id="getBookInfo" resultType="OrderlistVO">
+		select a.id, a.genre, a.name, date_format(b.showDate, '%Y.%m.%d') showdate, b.showTime, 
+		date_format(d.writedate, '%Y.%m.%e') writedate, c.seatcnt, d.no from showdb as a
+		inner join scheduleDate as b on a.id=b.showdb_id
+		inner join order_list as d on d.scheduleDate_id = b.id
+		inner join seat as c on c.order_list_no=d.no 
+		where d.user_id=#{param1}
+		<if test="param2!=null">
+			and a.name like '%${param2}%'
+		</if>
+		<if test="param3!=null and param4!=null">
+			and (showdate between date(#{param3}) and date(#{param4}))
+		</if>
+		order by d.writedate desc
+	</select>
+	<select id="getMyFav" resultType="showVO">
+		select a.id, a.mainposter, a.name, date_format(a.startdate, '%Y.%m.%d') startdate, date_format(a.enddate, '%Y.%m.%d') enddate
+		from showdb as a inner join myFavorite as b on a.id= b.showdb_id where b.user_id=#{param1}
+	</select>
+	<delete id="delMyFav">
+		delete from myFavorite where user_id=#{param1} and showdb_id=#{param2}
 	</delete>
 </mapper> 

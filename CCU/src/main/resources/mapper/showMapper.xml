@@ -132,4 +132,63 @@
         insert into report(user_id, type, content, postNum)
         values (#{param3}, 'review', #{param2}, #{param1})
     </insert>
+
+	</select>
+	<select id="getBoardList" resultType="BoardVO">
+		<if test="param1=='아동'">
+			select b.id, b.title from showdb as a 
+			inner join board as b on a.id = b.showdb_id
+			inner join child as c on a.id = c.showdb_id 
+			order by b.id desc limit 0,5
+		</if>
+		<if test="param1!='아동'">
+			select b.id, b.title from showdb as a 
+			inner join board as b on a.id = b.showdb_id
+			left join child as c on a.id = c.showdb_id  
+				<if test="param1=='전체'"></if> 
+				<if test="param1=='연극'">where genre=#{param1} and c.showdb_id is null</if>
+				<if test="param1=='뮤지컬'">where genre=#{param1} and c.showdb_id is null</if>
+				<if test="param1=='클래식'">where (genre='클래식' or a.genre='오페라') and c.showdb_id is null</if>
+			order by b.id desc limit 0,5	
+		</if>
+	</select>
+	<select id="getNewList" resultType="showVO"> 
+		<if test="param1=='아동'">
+			select
+			a.id, a.name, a.place_name, date_format(a.startdate, '%Y.%m.%d')startdate, 
+			date_format(a.enddate, '%Y.%m.%d')enddate, a.genre, a.mainposter
+			from showdb as a inner join child as c on a.id=c.showdb_id
+			where a.state='공연중' and
+			a.startdate between subdate(now(), interval 90 DAY) and date_format(now(), '%Y.%m.%d')   
+			order by a.startdate desc limit 0,5
+		</if>
+		<if test="param1!='아동'">
+			select
+			id, name, place_name, date_format(startdate, '%Y.%m.%d')startdate, 
+			date_format(enddate, '%Y.%m.%d')enddate, genre, mainposter
+			from showdb
+			<if test="param1=='전체'">where </if> 
+			<if test="param1=='연극'">where genre=#{param1} and </if>
+			<if test="param1=='뮤지컬'">where genre=#{param1} and </if>
+			<if test="param1=='클래식'">where (genre='클래식' or genre='오페라') and </if> 
+			state='공연중' and startdate between subdate(now(), interval 7 DAY) and date_format(now(), '%Y.%m.%d') 
+	        order by startdate desc limit 0,5
+	    </if>   
+	</select>
+		<insert id="setReport">
+		insert into report( user_id, type, content, postNum) values ( #{param3}, 'review',#{param2},#{param1})
+	</insert>
+
+		<insert id="setMyFav">
+		insert into myFavorite( user_id, showdb_id) values ( #{param1},#{param2})
+	</insert>
+
+	  <delete id="delMyFav">
+    delete from myFavorite where showdb_id = #{param2} and user_id = #{param1}
+  </delete>
+  	<select id="getmyheart" resultType="int"> 
+  	select count(user_id) from myFavorite where showdb_id = #{param2} and user_id = #{param1};
+	</select>
+
+
 </mapper>

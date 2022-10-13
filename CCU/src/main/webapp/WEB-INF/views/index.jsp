@@ -27,23 +27,23 @@
 <div class="main-item">
 	<div class="single-item">
 		<div>
-			<a href=""><img src="img/mainposter/main1.jpg" /></a>
+			<a href="/show/showDetail?show_id=PF193042"><img src="img/mainposter/main1.jpg" /></a>
 		</div>
 		<div>
-			<a href=""><img src="img/mainposter/main2.png" /></a>
+			<a href="/show/showDetail?show_id=PF194642"><img src="img/mainposter/main2.png" /></a>
 		</div>
 		<div>
-			<a href=""><img src="img/mainposter/main3.jpg" /></a>
+			<a href="/show/showDetail?show_id=PF195029"><img src="img/mainposter/main3.jpg" /></a>
 		</div>
 		<div>
-			<a href=""><img src="img/mainposter/main4.jpg" /></a>
+			<a href="/show/showDetail?show_id=PF195242"><img src="img/mainposter/main4.jpg" /></a>
 		</div>
-		<div>
-			<a href=""><img src="img/mainposter/main5.jpg" /></a>
-		</div>
-		<div>
-			<a href=""><img src="img/mainposter/main6.jpg" /></a>
-		</div>
+<!-- 		<div> -->
+<%-- 			<a href="/show/showDetail?show_id=${R.id}"><img src="img/mainposter/main5.jpg" /></a> --%>
+<!-- 		</div> -->
+<!-- 		<div> -->
+<%-- 			<a href="/show/showDetail?show_id=${R.id}"><img src="img/mainposter/main6.jpg" /></a> --%>
+<!-- 		</div> -->
 	</div>
 </div>
 
@@ -145,9 +145,12 @@
 				<div>
 					<img src="${fest.mainposter }" /> <span class="festname">
 						${fest.name }<span><br /> <span>${fest.startdate }~${fest.enddate }<span>
+						
 				</div>
 			</c:forEach>
+
 		</div>
+		<br />
 
 	</div>
 	<br />

@@ -30,6 +30,9 @@ public interface ShowDAO {
 	public void setReport(int id,String content,String logid);
 
 	public List<BoardVO> getBoardList(String genre);
+	public void setMyFav(String user_id, String showdb_id);
+	public void delMyFav(String user_id, String showdb_id);
 
+	public int getmyheart(String user_id, String showdb_id);
 
 }

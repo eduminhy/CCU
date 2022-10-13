@@ -7,8 +7,10 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.team200.proj.dao.BookDAO;
+import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.ScheduledateVO;
 import com.team200.proj.vo.SeatVO;
+import com.team200.proj.vo.StateVO;
 import com.team200.proj.vo.UserVO;
 import com.team200.proj.vo.showVO;
 
@@ -18,18 +20,13 @@ public class BookServiceImpl implements BookService {
 	BookDAO dao;
 
 	@Override
-	public UserVO getUserInfo(String id) {
-		return dao.getUserInfo(id);
+	public int putSchedule(String showdb_id, String showDate, String showTime, int showPrice) {
+		return dao.putSchedule(showdb_id, showDate, showTime, showPrice);
 	}
 
 	@Override
-	public showVO getShowInfo(String scheduleDate_id) {
-		return dao.getShowInfo(scheduleDate_id);
-	}
-
-	@Override
-	public int bookSeatOk(SeatVO vo) {
-		return dao.bookSeatOk(vo);
+	public List<ScheduledateVO> getSchedule(String showdb_id, String showDate, String showTime) {
+		return dao.getSchedule(showdb_id, showDate, showTime);
 	}
 
 	@Override
@@ -38,19 +35,57 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<SeatVO> getSeatState(String scheduleDate_id) {
+	public ScheduledateVO getShowInfo(String scheduleDate_id) {
+		return dao.getShowInfo(scheduleDate_id);
+	}
+
+	@Override
+	public UserVO getUserInfo(String id) {
+		return dao.getUserInfo(id);
+	}
+
+	@Override
+	public int putSeatState(String scheduleDate_id, String seatno) {
+		return dao.putSeatState(scheduleDate_id, seatno);
+	}
+	
+	@Override
+	public List<StateVO> getSeatState(String scheduleDate_id) {
 		return dao.getSeatState(scheduleDate_id);
 	}
-
+	
 	@Override
-	public List<SeatVO> getSeatNum(String scheduleDate_id) {
-		return dao.getSeatNum(scheduleDate_id);
+	public int DelSeatState(String scheduleDate_id, String seatno) {
+		return dao.DelSeatState(scheduleDate_id, seatno);
+	}
+	
+	@Override
+	public List<SeatVO> getSeatInfo(String scheduleDate_id) {
+		return dao.getSeatInfo(scheduleDate_id);
 	}
 
 	@Override
-	public int bookSeatComplete(SeatVO vo) {
-		return dao.bookSeatComplete(vo);
+	public int putOrderlist(String orderno, String user_id, String scheduleDate_id, String imp_uid, String applynum,
+			String price, String addr, String email) {
+		return dao.putOrderlist(orderno, user_id, scheduleDate_id, imp_uid, applynum, price, addr, email);
 	}
+
+	@Override
+	public int putSeatInfo(String seat_num, String order_list_no, String seatcnt) {
+		return dao.putSeatInfo(seat_num, order_list_no, seatcnt);
+	}
+
+	@Override
+	public OrderlistVO getOrder(String no) {
+		return dao.getOrder(no);
+	}
+
+	@Override
+	public int AutoDel() {
+		return dao.AutoDel();
+	}
+
+	
 	
 	
 }
