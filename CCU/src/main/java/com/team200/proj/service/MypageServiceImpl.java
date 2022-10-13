@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.team200.proj.dao.MypageDAO;
 import com.team200.proj.vo.BoardVO;
+import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.ReplyVO;
 import com.team200.proj.vo.UserVO;
+import com.team200.proj.vo.showVO;
 
 @Service
 public class MypageServiceImpl implements MypageService {
@@ -56,11 +58,19 @@ public class MypageServiceImpl implements MypageService {
 		return dao.myCommentDel(vo);
 	}
 
-	
+	@Override
+	public List<OrderlistVO> getBookInfo(String id, String searchWord, String startdate, String enddate) {
+		return dao.getBookInfo(id, searchWord, startdate, enddate);
+	}
 
-	
+	@Override
+	public List<showVO> getMyFav(String user_id) {
+		return dao.getMyFav(user_id);
+	}
 
-	
-	
+	@Override
+	public int delMyFav(String user_id, String showdb_id) {
+		return dao.delMyFav(user_id, showdb_id);
+	}
 
 }

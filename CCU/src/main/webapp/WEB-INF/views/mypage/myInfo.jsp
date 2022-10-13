@@ -36,13 +36,6 @@
 					
 		</tr>
 		<tr class="rows">
-			<th>본인인증</th>
-			<td>
-				<c:if test="${vo.self_certification eq 0}"><c:out value="N"/></c:if>
-				<c:if test="${vo.self_certification eq 1}"><c:out value="Y"/></c:if>
-			</td>
-		</tr>
-		<tr class="rows">
 			<th>닉네임</th>
 			<td>${vo.nickname}</td>
 		</tr>

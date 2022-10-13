@@ -14,6 +14,9 @@ var H = "";
 var Sdate = "";
 var Sdate2 = "";
 var userD = "";
+var showname = "";
+var myheart = "";
+var logStatus = "";
 var buildcalendar = function() {
 	var htmlDates = '';
 	var prevLast = new Date(CDate.getFullYear(), CDate.getMonth(), 0); //지난 달의 마지막 날 
@@ -217,7 +220,19 @@ function getstar(rate) {
 //		
 //		console.log(abc)
 //	}
+function getname(aaa, bbb, ccc) {
+
+	//		console.log(12123)
+	//		console.log(aaa)
+	showname = aaa;
+	myheart = bbb;
+	logStatus = ccc;
+}
 $(document).ready(function() {
+	$(".setreview").hide();
+	if (logStatus == 'Y') {
+	$(".setreview").show();
+	}
 	buildcalendar();
 	$('.calanderButten').click(function() {
 		console.log(Sdate); //날자
@@ -252,34 +267,190 @@ $(document).ready(function() {
 	});
 	let myWindow;
 	$('.detailRatingContentInnerDiv>div:nth-child(3)').click(function() {
-		 var rcontent = prompt("신고하시는 이유를 적어주세요", "여기에!!");
-//		 console.log(userName  );
-//		myWindow = window.open('/show/report', '네이버팝업',
-//			'width=500, height=400, scrollbars=yes, resizable=no')
-//		$('.reportSM').click(function() {
-//			myWindow.close();
-//		});
+		var rcontent = prompt("신고하시는 이유를 적어주세요", "여기에!!");
+		//		 console.log(userName  );
+		//		myWindow = window.open('/show/report', '네이버팝업',
+		//			'width=500, height=400, scrollbars=yes, resizable=no')
+		//		$('.reportSM').click(function() {
+		//			myWindow.close();
+		//		});
 
-//				console.log($(this).attr('name'));
-//				console.log($(this).parent().children().eq(1).children().eq(0).text());
-//				console.log($(this).parent().children().eq(1).children().eq(1).text());
+		//				console.log($(this).attr('name'));
+		//				console.log($(this).parent().children().eq(1).children().eq(0).text());
+		//				console.log($(this).parent().children().eq(1).children().eq(1).text());
 		//		.html() .text()
-				var rname = $(this).parent().children().eq(1).children().eq(0).text();
-				var rid = $(this).attr('name');
-				var content = $(this).parent().children().eq(1).children().eq(1).text();
-											$.ajax({
-								url: '/show/report', //request 보낼 서버의 경로
-								type: 'post', // 메소드(get, post, put 등)
-								 async: false,
-								data: JSON.stringify({ 'name': rname,
-								'id': rid,
-								'content':content,
-								'rcontent':rcontent }), //보낼 데이터
-								'Content-Type': 'application/json',
-								success: function(data) {        //서버로부터 정상적으로 응답이 왔을 때 실행
-								}, error: function(err) {		//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
-								}
-							});
+		var rname = $(this).parent().children().eq(1).children().eq(0).text();
+		var rid = $(this).attr('name');
+		var content = $(this).parent().children().eq(1).children().eq(1).text();
+		$.ajax({
+			url: '/show/report', //request 보낼 서버의 경로
+			type: 'post', // 메소드(get, post, put 등)
+			async: false,
+			data: JSON.stringify({
+				'name': rname,
+				'id': rid,
+				'content': content,
+				'rcontent': rcontent
+			}), //보낼 데이터
+			'Content-Type': 'application/json',
+			success: function(data) {        //서버로부터 정상적으로 응답이 왔을 때 실행
+			}, error: function(err) {		//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+			}
+		});
+	});
+	$('.setReviewBtn').click(function() {
+		event.preventDefault()
+		var formValues = $(".setreviewForm").serialize();
+		console.log(1111);
+		$.ajax({
+			type: 'post',
+			url: '/show/setReview',
+			data: formValues,
+			dataType: 'json',
+			async: true,
+			error: function(err) {
+				//                alert(error);
+			},
+			success: function(json) {
+				//                alert(json)
+			}
+		});
+	});
+	$('.setReviewBtn').click(function() {
+		event.preventDefault()
+		var formValues = $(".setreviewForm").serialize();
+		console.log(1111);
+		if (logStatus == 'Y') {
+
+			$.ajax({
+				type: 'post',
+				url: '/show/setReview',
+				data: formValues,
+				dataType: 'json',
+				async: true,
+				error: function(err) {
+					//                alert(error);
+				},
+				success: function(json) {
+					//                alert(json)
+				}
+			});
+		} else {
+			alert('로그인 후 이용해주세요!')
+		}
+	});
+	if (myheart == 0) {
+		$(".fullheart").hide();
+		$(".emptyheart").show();
+	} else {
+		$(".fullheart").show();
+		$(".emptyheart").hide();
+	}
+	$('.emptyheart').click(function() {
+		////		event.preventDefault()
+		//		var formValues = $(".setreviewForm").serialize();
+		console.log(1234556);
+		console.log(logStatus);
+		if (logStatus == 'Y') {
+			$.ajax({
+				type: 'get',
+				url: '/show/setMyFav',
+				data: { a: showname },
+				dataType: 'json',
+				async: true,
+				error: function(err) {
+					//                alert(error);
+				},
+				success: function(json) {
+
+				}
+			});
+			$(".fullheart").show();
+			$(".emptyheart").hide();
+		} else {
+			alert('로그인 후 이용해주세요!')
+		}
+	});
+
+	$('.fullheart').click(function() {
+		////		event.preventDefault()
+		//		var formValues = $(".setreviewForm").serialize();
+		console.log(1234556);
+		console.log(logStatus);
+		if (logStatus == 'Y') {
+			$.ajax({
+				type: 'get',
+				url: '/show/delMyFav',
+				data: { a: showname },
+				dataType: 'json',
+				async: true,
+				error: function(err) {
+					//                alert(error);
+				},
+				success: function(json) {
+
+				}
+
+			});
+			$(".fullheart").hide();
+			$(".emptyheart").show();
+		} else {
+			alert('로그인 후 이용해주세요!')
+		}
+	});
+
+
+	//	$(".scroll_move>div").click(function(event) {
+	//
+	//		event.preventDefault();
+	//
+	//		$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 500);
+	//
+	//	});
+	$(".scroll1").click(function() {
+		event.preventDefault();
+		$('html,body').animate({
+			scrollTop: $(".detailRating").offset().top
+		},
+			'fast');
+	});
+	$(".scroll2").click(function() {
+		event.preventDefault();
+		$('html,body').animate({
+			scrollTop: $(".detailChart").offset().top
+		},
+			'fast');
+	});
+	$(function() {
+		var quick_menu = $('#quick');
+		var quick_top = 470;
+		$(function() {
+			//		console.log(11)
+			quick_menu.css('top', $(window).height());
+			$(document).ready(function() {
+				quick_menu.animate({ "top": $(document).scrollTop() + quick_top + "px" }, 200);
+				$(window).scroll(function() {
+					quick_menu.stop();
+					quick_menu.animate({ "top": $(document).scrollTop() + quick_top + "px" }, 500);
+				});
+			});
+		});
+
+	});
+	$(".scrolltop").click(function() {
+		event.preventDefault();
+		$('html,body').animate({
+			scrollTop: $("body").offset().top
+		},
+			'fast');
+	});
+	$(".scrolldown").click(function() {
+		event.preventDefault();
+		$('html,body').animate({
+			scrollTop: $("#coinfo").offset().top
+		},
+			'fast');
 	});
 
 });
+

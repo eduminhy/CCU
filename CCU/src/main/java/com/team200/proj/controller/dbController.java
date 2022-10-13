@@ -92,15 +92,15 @@ public class dbController {
 		rd.close();
 		conn.disconnect();
 		String sb2 = sb.toString();
-		System.out.println(sb.toString());
+//		System.out.println(sb.toString());
 		String resultString = XML.toJSONObject(sb2).toString();
 		JSONParser parse = new JSONParser();
 		JSONObject jsonObject = (JSONObject) parse.parse(resultString);
-		System.out.println(jsonObject);
+//		System.out.println(jsonObject);
 		JSONObject jsonObject2 = (JSONObject) jsonObject.get("dbs");
-		System.out.println(jsonObject2);
+//		System.out.println(jsonObject2);
 		JSONArray parse_items = (JSONArray) jsonObject2.get("db");
-		System.out.println(parse_items);
+//		System.out.println(parse_items);
 //		
 //		
 //		
@@ -205,7 +205,7 @@ public class dbController {
 					sVO.setIntroduction_image3(str[2]);
 					sVO.setIntroduction_image4(str[3]);
 				} catch (Exception e) {
-					e.printStackTrace();
+//					e.printStackTrace();
 				}
 //				System.out.println(1);
 				

@@ -1,7 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/style/mypage/myHeartListStyle.css">
-
+<script>
+	$(function(){
+		for(var i=0;i<${cnt};i++){
+			if($(".showname").eq(i).text().length>13){
+				var showN = $(".showname").eq(i).text().substr(0,13)+"...";
+				$(".showname").eq(i).text(showN);				
+			}
+		}
+		
+		$(".delBtn").click(function(){
+			if(confirm("삭제하시겠습니까?")){
+				$.ajax({
+					type:"get",
+					url:"/mypage/myHeartListDel",
+					data:{
+						showdb_id : $(".showdb_id").val()
+					},success:function(){
+						location.href="/mypage/myHeartList"
+					},error:function(){
+						console.log(e.responseText);
+					}
+				});
+			}
+		});
+	});
+</script>
 <div class="container">
 	<h1>- 마이페이지 -</h1>
 	<div id="myTapmenu">
@@ -16,31 +41,15 @@
 	</div>
 	
 	<div id="heartList">
+		<c:forEach var="vo" items="${myfavlist}">
 		<ul>
-			<li><a href="#"><img src="../img/show/01.gif"/></a></li>
-			<li>장수사회</li>
-			<li>2022.09.17 ~ 2022.09.18</li>
+			<li><input type="hidden" class="showdb_id" name="showdb_id" value="${vo.id }"/></li>
+			<li><a href="/show/showDetail?show_id=${vo.id}"><img src="${vo.mainposter}"/></a></li>
+			<li class="showname">${vo.name }</li>
+			<li>${vo.startdate } ~ ${vo.enddate }</li>
 			<li><input type="button" value="X 삭제" class="delBtn"/></li>
 		</ul>
-		<ul>	
-			<li><a href="#"><img src="../img/show/02.gif"/></a></li>
-			<li>러브레터</li>
-			<li>2022.09.23 ~ 2022.10.23</li>
-			<li><input type="button" value="X 삭제" class="delBtn"/></li>
-		</ul>
-		<ul>	
-			<li><a href="#"><img src="../img/show/03.gif"/></a></li>
-			<li>가장 보통의 연애</li>
-			<li>2022.08.13 ~ 오픈런</li>
-			<li><input type="button" value="X 삭제" class="delBtn"/></li>
-		</ul>
-		<ul>	
-			<li><a href="#"><img src="../img/show/04.gif"/></a></li>
-			<li>오만과편견</li>
-			<li>2022.08.30 ~ 2022.11.20</li>
-			<li><input type="button" value="X 삭제" class="delBtn"/></li>
-		</ul>
-		
+		</c:forEach>
 	</div>
 		
 </div>

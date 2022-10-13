@@ -14,7 +14,6 @@ public class PagingVO {
 	//같이갈래요 검색
 	private String meetingkeyword;
 	
-	
 
 
 	@Override
@@ -33,6 +32,10 @@ public class PagingVO {
 	public void setMeetingkeyword(String meetingkeyword) {
 		this.meetingkeyword = meetingkeyword;
 	}
+
+
+
+	
 	
 /*
 	public int getNowPage() {

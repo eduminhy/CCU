@@ -17,17 +17,20 @@ a:link, a:visited, a:hover {
 
 .topUp {
 	width: 100%;
-/* 	height: 140px; */
+	/* 	height: 140px; */
 	background-color: rgb(68, 0, 153);
 }
-#topMenu{
+
+#topMenu {
 	position: absolute;
 	right: 20px;
 	top: 10px;
 }
-#topMenu > a{
-	color:white;
+
+#topMenu>a {
+	color: white;
 }
+
 .usermenu {
 	text-align: right;
 }
@@ -42,6 +45,19 @@ a:link, a:visited, a:hover {
 	color: #fff;
 	vertical-align: middle;
 }
+
+/* @media ( MAX-width : 900px) { */
+/* 	#top { */
+/* 		width: 100%; */
+/* 	} */
+/* 	#top::-webkit-scrollbar { */
+/* 		display: none; */
+/* 		width: 0 !important; */
+/* 	} */
+/* 	#mainLink{ */
+/* 	display: none */
+/* 	} */
+/* } */
 
 .search-btn {
 	padding: 30px;
@@ -89,12 +105,14 @@ a:link, a:visited, a:hover {
 	background-color: rgb(68, 0, 153);
 	vertical-align: middle;
 }
-#userBtn{
-		position: absolute;
+
+#userBtn {
+	position: absolute;
 	right: 20px;
-	top:50px;
+	top: 50px;
 	z-index: 6;
 }
+
 #mainLink {
 	position: relative;
 	top: 10px;
@@ -135,13 +153,13 @@ a:link, a:visited, a:hover {
 	height: 300px;
 	line-height: 20px;
 	text-align: center;
-/* 	background-color: #ddd; */
+	/* 	background-color: #ddd; */
 	color: black;
 	position: absolute;
 	right: 20px;
-	top:120px;
+	top: 120px;
 	z-index: 3;
-		border-radius: 15px;
+	border-radius: 15px;
 	border: solid rgba(59, 0, 148);
 	background-color: rgba(248, 245, 251);
 }
@@ -149,7 +167,6 @@ a:link, a:visited, a:hover {
 #toggleDiv>input {
 	margin: 0 auto;
 	width: 160px;
-	
 }
 
 #toggleDiv>a {
@@ -163,27 +180,29 @@ a:link, a:visited, a:hover {
 	margin-top: 10px;
 	margin-left: 30px;
 }
+
 .loginBtn {
-		width:100px;
-		text-align:center;
-		padding:10px 20px;
-		float:right;
-		background:#440099;
-		color:white;
-		font-weight:bold;
-		font-size:17px;
-		border-style:none;
+	width: 100px;
+	text-align: center;
+	padding: 10px 20px;
+	float: right;
+	background: #440099;
+	color: white;
+	font-weight: bold;
+	font-size: 17px;
+	border-style: none;
 }
+
 .logoutBtn {
-		width:100px;
-		text-align:center;
-		padding:10px 20px;
-		float:right;
-		background:#440099;
-		color:white;
-		font-weight:bold;
-		font-size:17px;
-		border-style:none;
+	width: 100px;
+	text-align: center;
+	padding: 10px 20px;
+	float: right;
+	background: #440099;
+	color: white;
+	font-weight: bold;
+	font-size: 17px;
+	border-style: none;
 }
 
 #navericon, #kakaoicon, #googleicon {
@@ -276,4 +295,12 @@ a:link, a:visited, a:hover {
 	top: 40px;
 	font-size: 10pt;
 	color: rgb(173, 173, 173);
+}
+
+#toggleDiv, #toggleDiv>input{
+  -ms-user-select: none; 
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }

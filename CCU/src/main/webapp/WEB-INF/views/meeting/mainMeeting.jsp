@@ -134,6 +134,7 @@
 
     <div>
         <ul id="accList">
+
             <li style="background-color:#ddd; font-size:1.2em;">장르</li>
             <li style="background-color:#ddd; font-size:1.2em;">글번호</li>
             <li style="background-color:#ddd; font-size:1.2em;">마감여부</li>
@@ -144,6 +145,7 @@
    			
             
 
+           
             <c:forEach var="vo" items="${list }">
                 <li>${vo.genre }</li>
                 <li>${vo.id }</li>
@@ -151,6 +153,7 @@
                 <li title=${vo.content }><a href="/meeting/view/${vo.id}">${vo.title }</a></li>
                 <li>${vo.user_id }</li>
                 <li>${vo.writedate }</li>
+
                 <li style="cursor:pointer" title=
                 "
                 공연 : ${vo.name}
@@ -166,6 +169,9 @@
 <!--                 </details> -->
                 
            
+
+              
+
             </c:forEach>
         </ul>
     </div>
