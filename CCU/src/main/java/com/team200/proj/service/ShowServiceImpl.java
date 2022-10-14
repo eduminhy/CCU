@@ -78,5 +78,17 @@ public class ShowServiceImpl implements ShowService {
 		return dao.search(search);
 	}
 
+	@Override
+	public void setReview(ReviewVO vo) {
+		dao.setReview(vo);
+		
+	}
+
+	@Override
+	public int reviewTest(ReviewVO vo) {
+		// TODO Auto-generated method stub
+		return dao.reviewTest(vo);
+	}
+
 
 }
