@@ -24,7 +24,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.team200.proj.service.MypageService;
 import com.team200.proj.vo.BoardVO;
+import com.team200.proj.vo.OrderlistVO;
+import com.team200.proj.vo.PageVO;
 import com.team200.proj.vo.ReplyVO;
+import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.UserVO;
 import com.team200.proj.vo.showVO;
 
@@ -210,9 +213,12 @@ public class MypageController {
 	@GetMapping("myReservation")
 	public ModelAndView myReservation(HttpSession session, String searchWord, String startdate, String enddate) {
 		String id = (String)session.getAttribute("logId"); 
+		List<OrderlistVO> booklist = service.getBookInfo(id, searchWord, startdate, enddate);
+		List<ReviewVO> rlist = service.reviewOk(id);
 		ModelAndView mav = new ModelAndView();
 		
-		mav.addObject("booklist", service.getBookInfo(id, searchWord, startdate, enddate));
+		mav.addObject("rlist", rlist);
+		mav.addObject("booklist", booklist);
 		mav.setViewName("mypage/myReservation");
 		return mav;
 	}
@@ -239,10 +245,12 @@ public class MypageController {
 	
 	//4. 나의 게시글 페이지
 	@GetMapping("myBoard")
-	public ModelAndView myBoard(HttpSession session) {
-		String id = (String)session.getAttribute("logId"); 
+	public ModelAndView myBoard(HttpSession session, PageVO pvo) {
+		String id = (String)session.getAttribute("logId");
+		pvo.setTotalRecord(service.totalRecord(pvo));
+		System.out.println(pvo.toString());
 		ModelAndView mav = new ModelAndView();
-		
+		mav.addObject("pvo", pvo);
 		mav.addObject("bvo", service.myBoardList(id));
 		mav.setViewName("mypage/myBoard");
 		return mav;
@@ -276,11 +284,23 @@ public class MypageController {
 		return mav;
 	}
 	
-	//6. 나의 문의 페이지
-	@GetMapping("myQna")
-	public ModelAndView myQna() {
+	//6. 나의 후기 페이지
+	@GetMapping("myReview")
+	public ModelAndView myReview(HttpSession session) {
+		String id = (String)session.getAttribute("logId");
+		List<ReviewVO> relist = service.getReviewInfo(id);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("mypage/myQna");
+		
+		mav.addObject("relist", relist);
+		mav.setViewName("mypage/myReview");
+		return mav;
+	}
+	@PostMapping("myReviewDel")
+	public ModelAndView myReviewDel(ReviewVO vo) {
+		int cnt = service.myReviewDel(vo);
+		System.out.println("삭제된 레코드 수 : "+cnt);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:myReview");
 		return mav;
 	}
 }

@@ -27,7 +27,12 @@
 			console.log($(".showid").eq(i).val());
 			//console.log(${bvo.no}.eq(i).val());
 			if(statusArray[i]=='관람완료'){
-				$(".book>li:nth-of-type(7):eq("+i+")").append("<input type='button' value='후기작성하기' class='reviewBtn' onclick='location.href=\"/show/showDetail?show_id="+$(".showid").eq(i-1).val()+"\"'/>");
+				$(".book>li:nth-of-type(7):eq("+i+")").append("<input type='button' value='후기작성하기' class='reviewBtn' onclick='location.href=\"/show/showDetail?show_id="+$(".showid").eq(i-1).val()+"\"'/>");					
+					for(var j=0;j<$(".orderno").length;j++){
+						if($(".orderno").eq(j).val()==$(".no").eq(i-1).val()){
+							$(".book>li:nth-of-type(7):eq("+i+")").text("후기작성완료");
+						}
+					}
 			}else if(statusArray[i]=='예약완료'){
 				//console.log("orderno=>");
 				$(".book>li:nth-of-type(7):eq("+i+")").append("<input type='button' value='티켓확인하기' class='checkBtn' onclick='location.href=\"/book/bookCheck?no="+$(".no").eq(i-1).val()+"\"'/>");
@@ -73,7 +78,7 @@
 			<li><a href="myHeartList">나의 찜목록</a></li>
 			<li><a href="myBoard">나의 게시글</a></li>
 			<li><a href="myComment">나의 댓글</a></li>
-			<li><a href="myQna">나의 문의내역</a></li>
+			<li><a href="myReview">나의 후기</a></li>
 		</ul>
 	</div>
 	<div id="searchDiv">
@@ -101,10 +106,15 @@
 							<li></li>
 						</ul>
 					</li>
+					<c:forEach var="rvo" items="${rlist }">
+					<input type="hidden" name="orderno" class="orderno" value="${rvo.order_list_no}"/>
+					</c:forEach>
 					<c:forEach var="bvo" items="${booklist }">
 					<li>
 						<ul class="book">
-							<li>${bvo.genre }<input type="hidden" name="no" class="no" value="${bvo.no}"/></li>
+							<li>${bvo.genre }
+								<input type="hidden" name="no" class="no" value="${bvo.no}"/>
+							</li>
 							<li><a href="/show/showDetail?show_id=${bvo.id}">${bvo.name }</a><input type="hidden" class="showid" value="${bvo.id}"/></li>
 							<li>${bvo.showDate }</li>
 							<li>${bvo.writedate }</li>
@@ -116,10 +126,10 @@
 								<c:if test="${bvo.showDate > bvo.writedate}"><c:out value="예약완료"></c:out></c:if>
 							</li>
 							<li></li>
-							
 						</ul>
 					</li>
 					</c:forEach>
+					
 				</ul>
 			</li>
 		</ul>

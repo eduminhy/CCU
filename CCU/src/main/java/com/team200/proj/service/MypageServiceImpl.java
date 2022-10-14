@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import com.team200.proj.dao.MypageDAO;
 import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.OrderlistVO;
+import com.team200.proj.vo.PageVO;
 import com.team200.proj.vo.ReplyVO;
+import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.UserVO;
 import com.team200.proj.vo.showVO;
 
@@ -72,5 +74,29 @@ public class MypageServiceImpl implements MypageService {
 	public int delMyFav(String user_id, String showdb_id) {
 		return dao.delMyFav(user_id, showdb_id);
 	}
+
+	@Override
+	public List<ReviewVO> reviewOk(String user_id) {
+		return dao.reviewOk(user_id);
+	}
+	
+	@Override
+	public int totalRecord(PageVO pvo) {
+		return dao.totalRecord(pvo);
+	}
+
+	@Override
+	public List<ReviewVO> getReviewInfo(String user_id) {
+		return dao.getReviewInfo(user_id);
+	}
+
+	@Override
+	public int myReviewDel(ReviewVO vo) {
+		return dao.myReviewDel(vo);
+	}
+
+	
+
+	
 
 }

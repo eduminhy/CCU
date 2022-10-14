@@ -5,6 +5,7 @@
 <script>
 	
 	$(function(){
+		console.log($("#posterimg").attr("src"));
 		//인쇄기능
 		$('#print').on('click', function(){
 			 window.print();  // 클릭액션 : 버튼클릭시 인쇄창팝업
@@ -13,6 +14,7 @@
 		$("#imgdown").on("click", function(){
 			html2canvas(document.querySelector("#content")).then(canvas=>{
 			saveAs(canvas.toDataURL("img/jpg"), "ticket.jpg");//다운로드 이미지 파일
+			
 			});	
 		});
 		function saveAs(uri, filename){
@@ -23,11 +25,13 @@
 				document.body.appendChild(img);
 				img.click();
 				document.body.removeChild(img);
+				console.log(img.href);
 			}else{
 				window.open(uri);
 			}
-		}			
+		}		
 	});
+	
 
 	
 </script>
@@ -41,7 +45,7 @@
 		</tr>
 		<tr class="rows" id="poster">
 			<th>공연포스터</th>
-			<td><img src="${ovo.mainposter }"/></td>
+			<td><img src="${ovo.mainposter }" id="posterimg"/></td>
 		</tr>
 		<tr class="rows">
 			<th>공연장소</th>

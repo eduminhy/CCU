@@ -31,9 +31,9 @@
 			<li><a href="myInfo">나의 정보</a></li>
 			<li><a href="myReservation">나의 예매내역</a></li>
 			<li><a href="myHeartList">나의 찜목록</a></li>
-			<li><a href="myBoard">나의 게시글</a></li>
+			<li><a href="myBoard?nowPage=1">나의 게시글</a></li>
 			<li><a href="myComment">나의 댓글</a></li>
-			<li><a href="myQna">나의 문의내역</a></li>
+			<li><a href="myReview">나의 후기</a></li>
 		</ul>
 	</div>
 		
@@ -66,4 +66,19 @@
 		</ul>
 		<input type="button" value="삭제" id="DeleteBtn"/>	
 	</form>
+	<div id="pageDiv">
+		<ul id="page">
+			<li>◀</li>
+			<c:forEach var="p" begin="${pvo.startPage }" end="${pvo.startPage+pvo.onePageCount-1}">
+				<c:if test="${p<=pvo.totalPage }">
+					<li
+						<c:if test="${p==pvo.nowPage}">
+							style="background-color:lavender;font-weight:bold;"
+						</c:if>
+					><a href="/mypage/myBoard?nowPage=${p }">${p}</a></li>
+				</c:if>
+			</c:forEach>
+			<li>▶</li>
+		</ul>
+	</div>
 </div>
