@@ -42,7 +42,7 @@ public class showController {
 
 	@Autowired
 	ShowService service;
-	
+
 	@GetMapping("title")
 	public ModelAndView search(@RequestParam String search) {
 		ModelAndView mav = new ModelAndView();
@@ -52,7 +52,7 @@ public class showController {
 		mav.setViewName("show/showList");
 		return mav;
 	}
-	
+
 	@GetMapping("showList")
 	public ModelAndView showList(String genre) {
 
@@ -61,7 +61,7 @@ public class showController {
 		mav.addObject("genre", genre);
 		mav.addObject("showlist", service.getShowList(genre));
 		mav.addObject("weeklylist", service.WeeklyRankingList(genre));
-		mav.addObject("boardlist",service.getBoardList(genre));
+		mav.addObject("boardlist", service.getBoardList(genre));
 		mav.addObject("newlist", service.getNewList(genre));
 
 		mav.setViewName("show/showList");
@@ -79,15 +79,15 @@ public class showController {
 	// http://localhost:8020/show/showDetail?show_id=1234
 
 	@GetMapping("showDetail")
-	public ModelAndView showDetail(String show_id, String orderno, HttpSession session) {
+	public ModelAndView showDetail(String show_id, String no, HttpSession session) {
 
 //	showVO abc = service.showDetail(show_id);
 //	System.out.println(abc.getStartdate().replaceAll("[^0-9]",""));
 //	System.out.println(abc.getEnddate().replaceAll("[^0-9]",""));
 //	String a = abc.getStartdate().replaceAll("[^0-9]","");
 //	String b = abc.getEnddate().replaceAll("[^0-9]","");
-		System.out.println("orderno=>"+orderno);
-		
+		System.out.println("orderno=>" + no);
+
 		showVO vo = service.showDetail(show_id);
 		String showtime = vo.getOpen_time();
 //		System.out.println(showtime);
@@ -368,7 +368,7 @@ public class showController {
 
 		String user_id = (String) (session.getAttribute("logId"));
 //		System.out.println(user_id);
-		if(user_id != null) {
+		if (user_id != null) {
 //			System.out.println(vo.getId());
 //			System.out.println(service.getmyheart(user_id, vo.getId()));
 			mav.addObject("myheart", service.getmyheart(user_id, vo.getId()));
@@ -376,6 +376,9 @@ public class showController {
 
 		mav.addObject("sd", vo.getStartdate().replaceAll("[^0-9]", ""));
 		mav.addObject("ed", vo.getEnddate().replaceAll("[^0-9]", ""));
+		ReviewVO rvo = new ReviewVO();
+		rvo.setOrder_no(no);
+		mav.addObject("onoc", service.reviewTest(rvo));
 		mav.setViewName("show/showDetail");
 		return mav;
 	}
@@ -395,14 +398,14 @@ public class showController {
 //		System.out.println(readBody(request).replace("\"", "\\\""));
 //		System.out.println((readBody(request)).toString());
 //		System.out.println((readBody(request)).toString().replace("\"", "\\\""));
-        JSONParser parser = new JSONParser();
-    org.json.simple.JSONObject jsonObject = (org.json.simple.JSONObject) parser.parse(str);
+		JSONParser parser = new JSONParser();
+		org.json.simple.JSONObject jsonObject = (org.json.simple.JSONObject) parser.parse(str);
 
-    	String logid = (String) session.getAttribute("logId");
-    	int id = Integer.parseInt(String.valueOf(jsonObject.get("id")));
+		String logid = (String) session.getAttribute("logId");
+		int id = Integer.parseInt(String.valueOf(jsonObject.get("id")));
 //    	String content = (String) jsonObject.get("content");
-    	String rcontent = (String) jsonObject.get("rcontent");
-    	service.setReport(id, rcontent,logid);
+		String rcontent = (String) jsonObject.get("rcontent");
+		service.setReport(id, rcontent, logid);
 //		String str = readBody(request);
 //		JSONObject jsonObject = new JSONObject(str.toString());
 //        System.out.println("OBJECT : "+jsonObject.toString());
@@ -433,6 +436,7 @@ public class showController {
 		}
 		return builder.toString();
 	}
+
 //	@GetMapping("report")
 //	public ModelAndView report() {
 //
@@ -442,32 +446,41 @@ public class showController {
 //	}
 	@PostMapping("setReview")
 	@ResponseBody
-	public void setReview(HttpServletRequest request, ReviewVO vo){
+	public String setReview(HttpServletRequest request, ReviewVO vo) {
 		HttpSession session = request.getSession();
 		String user_id = (String) (request.getSession()).getAttribute("logId");
+		vo.setUser_id(user_id);
 		System.out.println(vo.toString());
+		String a = "a";
+		int b = service.reviewTest(vo);
+		if(b==0) {
+			service.setReview(vo);
+		}else {
+			a="b";
+		}
 
-
+//		System.out.println(service.reviewTest(vo));
+		return a;
 
 	}
+
 	@GetMapping("setMyFav")
-	public void setMyFav(HttpServletRequest request, String a){
+	public void setMyFav(HttpServletRequest request, String a) {
 		HttpSession session = request.getSession();
 		String user_id = (String) (request.getSession()).getAttribute("logId");
 		System.out.println(user_id);
 		System.out.println(a);
 		service.setMyFav(user_id, a);
 
-
 	}
+
 	@GetMapping("delMyFav")
-	public void delMyFav(HttpServletRequest request, String a){
+	public void delMyFav(HttpServletRequest request, String a) {
 		HttpSession session = request.getSession();
 		String user_id = (String) (request.getSession()).getAttribute("logId");
 		System.out.println(user_id);
 		System.out.println(a);
 		service.delMyFav(user_id, a);
-
 
 	}
 }

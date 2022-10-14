@@ -39,7 +39,7 @@
 		// 		getshow2('${dvo.saturday}');
 		// 		getshow2('${dvo.sunday}');
 		// 		getshow2('${dvo.holiday}');
-		getname('${show.id}','${myheart}','${logStatus}');
+		getname('${show.id}','${myheart}','${logStatus}','${param.no}', '${param.stD}','${param.no}','${onoc}');
 	</script>
 	<br />
 	<div class="showDetailTitle">
@@ -78,7 +78,8 @@
 				</div>
 				<div class="dates"></div>
 				<br /> <span>선택일자&nbsp;&nbsp;<input type="text"
-					id="period_1"></span> <br />
+					id="period_1"></span>
+				<hr class="hr1" />
 				<div class="calanderSelect">
 					회차선택
 					<div class="calanderSelectDiv"></div>
@@ -164,27 +165,32 @@
 
 		<!-- 		<div><a href=".detailChart" id="scroll_move">분석보기</a></div> -->
 	</div>
-	
+
 	<br />
-		<div class="setreview">
+	<div class="setreview">
 		<br />
 		<form class="setreviewForm">
 			<br />
-			<div class="detailRatingTitle">후기 등록</div>
-			<div class="star-rating space-x-4 mx-auto">
-				<input type="radio" id="5-stars" name="rate" value="5"
-					v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
-				<input type="radio" id="4-stars" name="rate" value="4"
-					v-model="ratings" /> <label for="4-stars" class="star">★</label> <input
-					type="radio" id="3-stars" name="rate" value="3" v-model="ratings" />
-				<label for="3-stars" class="star">★</label> <input type="radio"
-					id="2-stars" name="rate" value="2" v-model="ratings" /> <label
-					for="2-stars" class="star">★</label> <input type="radio"
-					id="1-star" name="rate" value="1" v-model="ratings" /> <label
-					for="1-star" class="star">★</label>
+			<div class="detailRatingTitle">나의 공연관람 후기 등록</div>
+			<div class="raterate">
+				<div class="star-rating space-x-4 mx-auto">
+					<input type="radio" id="5-stars" name="rate" value="5"
+						v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
+					<input type="radio" id="4-stars" name="rate" value="4"
+						v-model="ratings" /> <label for="4-stars" class="star">★</label>
+					<input type="radio" id="3-stars" name="rate" value="3"
+						v-model="ratings" /> <label for="3-stars" class="star">★</label>
+					<input type="radio" id="2-stars" name="rate" value="2"
+						v-model="ratings" /> <label for="2-stars" class="star">★</label>
+					<input type="radio" id="1-star" name="rate" value="1"
+						v-model="ratings" /> <label for="1-star" class="star">★</label>
+				</div>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="araterate">공연관람일자 : ${param.stD}</div>
 			</div>
-			<br /> <input type="hidden" name="viewdate" value="2022-10-11" /> <input
-				type="hidden" value="${show.id}" name="showdb_id" />
+			<br /> <input type="hidden" name="viewdate" value="${param.stD}" />
+			<input type="hidden" value="${show.id}" name="showdb_id" /> <input
+				type="hidden" value="${param.no}" name="order_no" />
 			<div class="setReviewdiv1">
 				<div>
 					<textarea name="content" value="" rows="4" cols="100"></textarea>
@@ -216,8 +222,7 @@
 		<!-- 		<div>#철학</div> -->
 	</div>
 	<div class="detailChart"></div>
-	<br />
-	<br />
+	<br /> <br />
 	<div class="detailRating">
 		<br />
 		<div class="detailRatingTitle">관람 평점</div>
@@ -245,8 +250,9 @@
 				</div>
 				<br />
 			</c:forEach>
-			<c:forEach var="R" items="${r6VO}">
-				<div class="hiddenDiv">
+
+			<div class="hiddenDiv">
+				<c:forEach var="R" items="${r6VO}">
 					<div class="detailRatingContentInnerDiv">
 						<div>${R.rate }<br />
 
@@ -263,12 +269,13 @@
 						<div name="${R.id}">신고</div>
 					</div>
 					<br />
-			</c:forEach>
+				</c:forEach>
+			</div>
+			<div class="detailRatingLink">후기 더보기</div>
+			<br />
 		</div>
-		<div class="detailRatingLink">후기 더보기</div>
-		<br />
+		<!-- 	<div class="detailRatingLink">후기 더보기</div> -->
 	</div>
 </div>
 <br />
 <br />
-</div>
