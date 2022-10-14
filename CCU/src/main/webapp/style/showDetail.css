@@ -54,7 +54,7 @@
 	display: flax;
 	margin-left: auto;
 	border: none;
-	height: 1200px;
+	height: 1100px;
 	/* 	background-color: red; */
 }
 
@@ -72,18 +72,20 @@
 .showDetailTable td {
 	width: 80%;
 	border-bottom: 1px solid #B3B3B3;
-	padding: 10px 0 10px 10px;
+	padding: 5px 0 5px 5px;
 	padding: 1%;
 	padding-left: 2%;
+		font-size:20px;
 }
 
 .showDetailTable th {
 	width: 20%;
 	padding-left: 5px;
 	border-bottom: 1px solid #B3B3B3;
-	padding: 10px 0 10px 10px;
+	padding: 5px 0 5px 5px;
 	background: #E0E0E0;
 	text-align: center;
+	font-size:20px;
 }
 
 .detailTag {
@@ -435,6 +437,11 @@ hr {
 	height: 3px;
 	background-color: rgba(59, 0, 148);
 }
+.hr1{
+	width: 250px;
+	height: 1px;
+	background-color: rgba(59, 0, 148);
+}
 /* Banner SCSS---------------------------------------- */
 .scroll {
 	width: 1200px;
@@ -464,4 +471,13 @@ hr {
 	
 
 
+}
+.raterate{
+	display:flex;
+	justify-content: space-around;
+}
+.araterate{
+	font-size:33px;
+		color:rgba(59, 0, 148);
+/* 		font-weight: bold; */
 }

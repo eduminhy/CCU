@@ -25,4 +25,6 @@ public interface ShowService {
 	public void setMyFav(String user_id, String showdb_id);
 	public void delMyFav(String user_id, String showdb_id);
 	public int getmyheart(String user_id, String showdb_id);
+	public void setReview(ReviewVO vo);
+	public int reviewTest(ReviewVO vo);
 }
