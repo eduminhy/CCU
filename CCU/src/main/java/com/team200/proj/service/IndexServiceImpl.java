@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.team200.proj.dao.IndexDAO;
+import com.team200.proj.vo.PagingVO;
+import com.team200.proj.vo.UserVO;
 import com.team200.proj.vo.festivalVO;
 import com.team200.proj.vo.showVO;
-
 
 @Service
 public class IndexServiceImpl implements IndexService {
@@ -19,8 +19,8 @@ public class IndexServiceImpl implements IndexService {
 	@Override
 	public List<festivalVO> outputFestivalData() {
 		// TODO Auto-generated method stub
-		return dao.outputFestivalData(); 
-		
+		return dao.outputFestivalData();
+
 	}
 
 	@Override
@@ -35,14 +35,23 @@ public class IndexServiceImpl implements IndexService {
 		return dao.outputpopularWData();
 	}
 
-
 	@Override
 	public List<showVO> outputpopularDWMData(int a, String b) {
 		// TODO Auto-generated method stub
-		return dao.outputpopularDWMData(a,b);
+		return dao.outputpopularDWMData(a, b);
 	}
 
+	@Override
+	public int getTotalUser(PagingVO pvo) {
+		// TODO Auto-generated method stub
+		return dao.getTotalUser(pvo);
 
+	}
 
-	
+	@Override
+	public List<UserVO> userList(PagingVO pVO) {
+		// TODO Auto-generated method stub
+		return dao.userList(pVO);
+	}
+
 }
