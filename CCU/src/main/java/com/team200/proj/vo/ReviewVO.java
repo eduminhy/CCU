@@ -1,5 +1,7 @@
 package com.team200.proj.vo;
 
+import java.util.List;
+
 public class ReviewVO {
 	private int id;
 	private String user_id;
@@ -9,16 +11,15 @@ public class ReviewVO {
 	private String writedate;
 	private String rate;
 	private String viewdate;
+	private String order_list_no;
+	private String mainposter;
+	private String name;
+	private String show_id;
+	
+	private List<Integer> noList;
 	private String order_no;
+
 	
-	
-	
-	@Override
-	public String toString() {
-		return "ReviewVO [id=" + id + ", user_id=" + user_id + ", showdb_id=" + showdb_id + ", content=" + content
-				+ ", writedate=" + writedate + ", rate=" + rate + ", viewdate=" + viewdate + ", order_no=" + order_no
-				+ "]";
-	}
 	public int getId() {
 		return id;
 	}
@@ -61,13 +62,42 @@ public class ReviewVO {
 	public void setViewdate(String viewdate) {
 		this.viewdate = viewdate;
 	}
+	public String getOrder_list_no() {
+		return order_list_no;
+	}
+	public void setOrder_list_no(String order_list_no) {
+		this.order_list_no = order_list_no;
+	}
+	public String getMainposter() {
+		return mainposter;
+	}
+	public void setMainposter(String mainposter) {
+		this.mainposter = mainposter;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getShow_id() {
+		return show_id;
+	}
+	public void setShow_id(String show_id) {
+		this.show_id = show_id;
+	}
+	public List<Integer> getNoList() {
+		return noList;
+	}
+	public void setNoList(List<Integer> noList) {
+		this.noList = noList;
+	}
 	public String getOrder_no() {
 		return order_no;
 	}
 	public void setOrder_no(String order_no) {
 		this.order_no = order_no;
 	}
-	
 	
 	
 }

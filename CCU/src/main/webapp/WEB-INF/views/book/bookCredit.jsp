@@ -186,12 +186,12 @@
 			<hr/>
 			<li><span class="showinfo">공연명</span>&nbsp;<input type="text" id="showname" name="" value="${sdvo.name }" readonly></li>
 			<li><span class="showinfo">공연장소</span>&nbsp;<input type="text" id="showplace" value="${sdvo.place_name }" readonly></li>
-			<li><span class="showinfo">공연날짜</span>&nbsp;<input type="text" name="showWatchDate" value="${sdvo.showDate}" readonly/></li>
-			<li><span class="showinfo">공연시간</span>&nbsp;<input type="text" name="showWatchTime" value="${sdvo.showTime }" readonly/></li>
+			<li><span class="showinfo">공연날짜</span>&nbsp;<input type="text" id="showWatchDate" name="showWatchDate" value="${sdvo.showDate}" readonly/></li>
+			<li><span class="showinfo">공연시간</span>&nbsp;<input type="text" id="showWatchTime" name="showWatchTime" value="${sdvo.showTime }" readonly/></li>
 			<li><span class="showinfo">좌석선택</span></li>
 			<li><input type="hidden" name="seatCnt" id="seatCnt" value="${seatCnt }"/></li>
-			<li id="seatBox"></li>
-			<li>
+			<li></li>
+			<li id="seatBox">
 			<c:forEach var="no" items="${seatNum}">
 			<input type="text" name="seatNum" class="seatNum" value="${no }" readonly/>
 			</c:forEach>
@@ -201,12 +201,12 @@
 			<span class="title">결제내역</span>
 			<hr/>
 			<li>티켓금액</li>
-			<li><input type="text" name="ticket" id="ticket" value="${ticketPrice}" size="6"/></li>
+			<li><input type="text" name="ticket" id="ticket" value="${ticketPrice}" size="6" readonly/></li>
 			<li>배송비</li>
-			<li><input type="text" name="deliver" id="deliver" value="0" size="6"/></li>
+			<li><input type="text" name="deliver" id="deliver" value="0" size="6" readonly/></li>
 			<hr/>
 			<li class="total">최종결제금액</li>
-			<li class="total"><input type="text" name="total" id="total" value="" size="6"/></li>
+			<li class="total"><input type="text" name="total" id="total" value="" size="6" readonly/></li>
 		</ul>
 		<input type="button" id="pay" value="결제하기"/>
 	</div>

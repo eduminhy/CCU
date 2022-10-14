@@ -15,7 +15,7 @@
 			<li><a href="myHeartList">나의 찜목록</a></li>
 			<li><a href="myBoard">나의 게시글</a></li>
 			<li><a href="myComment">나의 댓글</a></li>
-			<li><a href="myQna">나의 문의내역</a></li>
+			<li><a href="myReview">나의 후기</a></li>
 		</ul>
 	</div>
 	<table id="content">

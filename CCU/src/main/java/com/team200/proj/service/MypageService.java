@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.OrderlistVO;
+import com.team200.proj.vo.PageVO;
 import com.team200.proj.vo.ReplyVO;
+import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.UserVO;
 import com.team200.proj.vo.showVO;
 
@@ -20,4 +22,8 @@ public interface MypageService {
 	public List<OrderlistVO> getBookInfo(String id, String searchWord, String startdate, String enddate);
 	public List<showVO> getMyFav(String user_id);
 	public int delMyFav(String user_id, String showdb_id);
+	public List<ReviewVO> reviewOk(String user_id);
+	public List<ReviewVO> getReviewInfo(String user_id);
+	public int myReviewDel(ReviewVO vo);
+	public int totalRecord(PageVO pvo);
 }
