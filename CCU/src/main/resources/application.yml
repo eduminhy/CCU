@@ -22,13 +22,10 @@ spring:
   dataSource: 
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1/Team200?characterEncoding=utf-8
+#    url: jdbc:mysql://localhost:3307/team200
     username: root
-
-
-
-
+#    password: 1234
     password: root1234
-
 
   ##파일업로드 제한용량 설정
   servlet:

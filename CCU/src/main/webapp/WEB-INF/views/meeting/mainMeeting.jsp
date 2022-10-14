@@ -86,8 +86,10 @@
 							
 								<br/>
 							
-								범죄 및 사기 행위에 관한 연락은 좌측 패널의 
-								<a href="" style="color:red;"><b>'신고하기'</b></a>를 이용 부탁드립니다.<br/>
+
+								범죄 및 사기 행위에 관한 연락은 해당 게시글의 
+								<b style="color:red;">'신고하기'</b>를 이용 부탁드립니다.<br/>
+
 								
 								감사합니다.
 	</p>
@@ -120,7 +122,7 @@
         <a href="/meeting/mainMeeting/뮤지컬">▶ 뮤지컬 게시판</a>
         <a href="/meeting/mainMeeting2/클래식&오페라">▶ 클래식/오페라 게시판</a>
         <a href="/meeting/mainMeeting/아동">▶ 아동 게시판</a>
-        <a href="" style="color:red; font-size:1.2em; text-align:center;">※&nbsp;신고하기&nbsp;※</a>
+
     </div>
 
 

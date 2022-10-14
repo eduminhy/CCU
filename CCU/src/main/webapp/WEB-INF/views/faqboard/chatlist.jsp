@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/style/chatStyle.css">
 <script>
 	$(function() {
 		$("#topMenu").hide();
@@ -130,8 +130,8 @@
 	</table>
 	
 	
-	<input type="text" id="newChatId">
-	<button onclick="addChat();">입력</button>
+	<input type="text" id="newchat">
+	<button onclick="addChat();" class="newchatbtn">전송</button>
 
 </body>
 </html>

@@ -34,123 +34,125 @@ public class ChatbotController {
 	@PostMapping("/faqboard/chatbotOk")
 	@ResponseBody
 	public String chatbotOk(@RequestParam("queryin") String queryin) {
-		//////////////////////////////////////
-		String chatbotMessage = "";
-		//////////////////////////////////////
-		  try {
-	            //String apiURL = "https://ex9av8bv0e.apigw.ntruss.com/custom_chatbot/prod/";
 
-	            URL url = new URL(apiURL);
+        String chatbotMessage = "";
 
-	            String message = getReqMessage(queryin);
-	            System.out.println("##" + message);
+        try {
+            //String apiURL = "https://ex9av8bv0e.apigw.ntruss.com/custom_chatbot/prod/";
 
-	            String encodeBase64String = makeSignature(message, secretKey);
+            URL url = new URL(apiURL);
 
-	            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-	            con.setRequestMethod("POST");
-	            con.setRequestProperty("Content-Type", "application/json;UTF-8");
-	            con.setRequestProperty("X-NCP-CHATBOT_SIGNATURE", encodeBase64String);
+            String message = getReqMessage(queryin);
+            System.out.println("##" + message);
 
-	            // post request
-	            con.setDoOutput(true);
-	            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-	            wr.write(message.getBytes("UTF-8"));
-	            wr.flush();
-	            wr.close();
-	            int responseCode = con.getResponseCode();
-	            System.out.println("responseCode=>"+responseCode);
-	            
-	            BufferedReader br;
+            String encodeBase64String = makeSignature(message, secretKey);
 
-	            if(responseCode==200) { // Normal call
-	                System.out.println(con.getResponseMessage());
+            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json;UTF-8");
+            con.setRequestProperty("X-NCP-CHATBOT_SIGNATURE", encodeBase64String);
 
-	                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-	                String decodedString;
-	                while ((decodedString = in.readLine()) != null) {
-	                    chatbotMessage = decodedString;
-	                }
-	                //chatbotMessage = decodedString;
-	                in.close();
+            // post request
+            con.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+            wr.write(message.getBytes("UTF-8"));
+            wr.flush();
+            wr.close();
+            //결과
+            int responseCode = con.getResponseCode();
+            //에러코드확인
+            System.out.println("responseCode >> " + responseCode);
+            BufferedReader br;
 
-	            } else {  // Error occurred
-	                chatbotMessage = con.getResponseMessage();
-	            }
-	        } catch (Exception e) {
+            if(responseCode==200) { // Normal call
+                System.out.println(con.getResponseMessage());
+
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(
+                                con.getInputStream()));
+                String decodedString;
+                while ((decodedString = in.readLine()) != null) {
+                    chatbotMessage = decodedString;
+                }
+                //chatbotMessage = decodedString;
+                in.close();
+
+            } else {  // Error occurred
+                chatbotMessage = con.getResponseMessage();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("chatbot"+chatbotMessage);
+        return chatbotMessage;
+
+	}
+	 public static String makeSignature(String message, String secretKey) {
+
+	        String encodeBase64String = "";
+
+	        try {
+	            byte[] secrete_key_bytes = secretKey.getBytes("UTF-8");
+
+	            SecretKeySpec signingKey = new SecretKeySpec(secrete_key_bytes, "HmacSHA256");
+	            Mac mac = Mac.getInstance("HmacSHA256");
+	            mac.init(signingKey);
+
+	            byte[] rawHmac = mac.doFinal(message.getBytes("UTF-8"));
+	            encodeBase64String = Base64.encodeToString(rawHmac, Base64.NO_WRAP);
+
+	            return encodeBase64String;
+
+	        } catch (Exception e){
 	            System.out.println(e);
 	        }
-			//=========================================================
-	        System.out.println("chatbot-->"+chatbotMessage);
-			return chatbotMessage;
-		}
-		
-		//=================================================================
-		 public static String makeSignature(String message, String secretKey) {
 
-		        String encodeBase64String = "";
+	        return encodeBase64String;
 
-		        try {
-		            byte[] secrete_key_bytes = secretKey.getBytes("UTF-8");
+	    }
 
-		            SecretKeySpec signingKey = new SecretKeySpec(secrete_key_bytes, "HmacSHA256");
-		            Mac mac = Mac.getInstance("HmacSHA256");
-		            mac.init(signingKey);
+	    public static String getReqMessage(String voiceMessage) {
 
-		            byte[] rawHmac = mac.doFinal(message.getBytes("UTF-8"));
-		            encodeBase64String = Base64.encodeToString(rawHmac, Base64.NO_WRAP);
+	        String requestBody = "";
 
-		            return encodeBase64String;
+	        try {
 
-		        } catch (Exception e){
-		            System.out.println(e);
-		        }
+	            JSONObject obj = new JSONObject();
 
-		        return encodeBase64String;
-		    }
-		 //==============================================================
-		 public static String getReqMessage(String voiceMessage) {
+	            long timestamp = new Date().getTime();
 
-		        String requestBody = "";
+	            System.out.println("##"+timestamp);
 
-		        try {
+	            obj.put("version", "v2");
+	            //obj.put("userId", "U47b00b58c90f8e47428af8b7bddc1231heo2");
+	//=> userId is a unique code for each chat user, not a fixed value, recommend use UUID. use different id for each user could help you to split chat history for users.
+	            obj.put("userId", "a9b965bb52b04366a6d714b87d13b556");
+	            obj.put("timestamp", timestamp);
 
-		            JSONObject obj = new JSONObject();
+	            JSONObject bubbles_obj = new JSONObject();
 
-		            long timestamp = new Date().getTime();
+	            bubbles_obj.put("type", "text");
 
-		            System.out.println("##"+timestamp);
+	            JSONObject data_obj = new JSONObject();
+	            data_obj.put("description", voiceMessage);
 
-		            obj.put("version", "v2");
-		            obj.put("userId", "U47b00b58c90f8e47428af8b7bddc1231heo2");
-		            //obj.put("userId", "7207f2fb23c742529e233d0f04ee6c20");
-		            //=> userId is a unique code for each chat user, not a fixed value, recommend use UUID. use different id for each user could help you to split chat history for users.
+	            bubbles_obj.put("type", "text");
+	            bubbles_obj.put("data", data_obj);
 
-		            obj.put("timestamp", timestamp);
+	            JSONArray bubbles_array = new JSONArray();
+	            bubbles_array.put(bubbles_obj);
 
-		            JSONObject bubbles_obj = new JSONObject();
+	            obj.put("bubbles", bubbles_array);
+	            obj.put("event", "send");
 
-		            bubbles_obj.put("type", "text");
+	            requestBody = obj.toString();
 
-		            JSONObject data_obj = new JSONObject();
-		            data_obj.put("description", voiceMessage);
+	        } catch (Exception e){
+	            System.out.println("## Exception : " + e);
+	        }
 
-		            bubbles_obj.put("type", "text");
-		            bubbles_obj.put("data", data_obj);
+	        return requestBody;
 
-		            JSONArray bubbles_array = new JSONArray();
-		            bubbles_array.put(bubbles_obj);
+	    }
+}
 
-		            obj.put("bubbles", bubbles_array);
-		            obj.put("event", "send");
-
-		            requestBody = obj.toString();
-
-		        } catch (Exception e){
-		            System.out.println("## Exception : " + e);
-		        }
-
-		        return requestBody;
-		    }
-		 //==================================================================
-	}

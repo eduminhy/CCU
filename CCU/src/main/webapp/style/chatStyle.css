@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+.newchatbtn{
+		text-align:right;
+		padding:10px 20px;
+		float:right;
+		background:#440099;
+		color:white;
+		font-weight:bold;
+		font-size:17px;
+		border-style:none;
+	
+}
+
 .chatqnabox {
 	border: solid 3px #440099;
 	text-align: center;

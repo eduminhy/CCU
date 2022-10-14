@@ -17,6 +17,10 @@ var userD = "";
 var showname = "";
 var myheart = "";
 var logStatus = "";
+var no = "";
+var WTD = "";
+var order_no = "";
+var onoc = "";
 var buildcalendar = function() {
 	var htmlDates = '';
 	var prevLast = new Date(CDate.getFullYear(), CDate.getMonth(), 0); //지난 달의 마지막 날 
@@ -220,18 +224,31 @@ function getstar(rate) {
 //		
 //		console.log(abc)
 //	}
-function getname(aaa, bbb, ccc) {
+function getname(aaa, bbb, ccc, ddd, eee, fff, ggg) {
 
 	//		console.log(12123)
 	//		console.log(aaa)
 	showname = aaa;
 	myheart = bbb;
 	logStatus = ccc;
+	no = ddd;
+	WTD = eee;
+	order_no = fff;
+	onoc = ggg;
 }
 $(document).ready(function() {
 	$(".setreview").hide();
-	if (logStatus == 'Y') {
-	$(".setreview").show();
+	console.log(onoc)
+	if (logStatus == 'Y' && order_no != "") {
+		if (onoc == 0) {
+			$(".setreview").show();
+			$('html,body').animate({
+				scrollTop: $(".setreview").offset().top
+			},
+				'fast');
+		}
+
+
 	}
 	buildcalendar();
 	$('.calanderButten').click(function() {
@@ -298,24 +315,24 @@ $(document).ready(function() {
 			}
 		});
 	});
-	$('.setReviewBtn').click(function() {
-		event.preventDefault()
-		var formValues = $(".setreviewForm").serialize();
-		console.log(1111);
-		$.ajax({
-			type: 'post',
-			url: '/show/setReview',
-			data: formValues,
-			dataType: 'json',
-			async: true,
-			error: function(err) {
-				//                alert(error);
-			},
-			success: function(json) {
-				//                alert(json)
-			}
-		});
-	});
+	//	$('.setReviewBtn').click(function() {
+	//		event.preventDefault()
+	//		var formValues = $(".setreviewForm").serialize();
+	//		console.log(1111);
+	//		$.ajax({
+	//			type: 'post',
+	//			url: '/show/setReview',
+	//			data: formValues,
+	//			dataType: 'json',
+	//			async: true,
+	//			error: function(err) {
+	//				//                alert(error);
+	//			},
+	//			success: function(json) {
+	//				//                alert(json)
+	//			}
+	//		});
+	//	});
 	$('.setReviewBtn').click(function() {
 		event.preventDefault()
 		var formValues = $(".setreviewForm").serialize();
@@ -326,15 +343,28 @@ $(document).ready(function() {
 				type: 'post',
 				url: '/show/setReview',
 				data: formValues,
-				dataType: 'json',
+				//				dataType: 'String',
 				async: true,
 				error: function(err) {
-					//                alert(error);
+					console.log(err);
 				},
-				success: function(json) {
-					//                alert(json)
+				success: function(a) {
+					console.log(12345);
+					if (a == "a") {
+						alert("후기등록이 완료되었습니다, 감사합니다.")
+					} else if (a == "b") {
+						alert("이미 등록된 후기입니다.");
+					}
+					window.location.reload()
+//					$(".setreview").show();
+
 				}
+				
 			});
+								$('html,body').animate({
+						scrollTop: $(".detailRating").offset().top
+					},
+						'fast');
 		} else {
 			alert('로그인 후 이용해주세요!')
 		}

@@ -25,10 +25,11 @@
 		for(var i=0;i<statelength/4;i++){
 			statusArray[i]=stateStr.substring(4*i,4*(i+1));
 			console.log($(".showid").eq(i).val());
+			console.log($(".no").eq(i-1).val())
 			//console.log(${bvo.no}.eq(i).val());
-			if(statusArray[i]=='관람완료'){
-				$(".book>li:nth-of-type(7):eq("+i+")").append("<input type='button' value='후기작성하기' class='reviewBtn' onclick='location.href=\"/show/showDetail?show_id="+$(".showid").eq(i-1).val()+"\"'/>");					
-					for(var j=0;j<$(".orderno").length;j++){
+			if(statusArray[i]=='관람완료'){		
+					$(".book>li:nth-of-type(7):eq("+i+")").append("<input type='button' value='후기작성하기' class='reviewBtn' onclick='location.href=\"/show/showDetail?show_id="+$(".showid").eq(i-1).val()+"&no="+$(".no").eq(i-1).val()+"&stD="+$(".stD").eq(i-1).val()+"\"'/>");
+          for(var j=0;j<$(".orderno").length;j++){
 						if($(".orderno").eq(j).val()==$(".no").eq(i-1).val()){
 							$(".book>li:nth-of-type(7):eq("+i+")").text("후기작성완료");
 						}
@@ -116,7 +117,7 @@
 								<input type="hidden" name="no" class="no" value="${bvo.no}"/>
 							</li>
 							<li><a href="/show/showDetail?show_id=${bvo.id}">${bvo.name }</a><input type="hidden" class="showid" value="${bvo.id}"/></li>
-							<li>${bvo.showDate }</li>
+							<li>${bvo.showDate }<input type="hidden" name="stD" class="stD" value="${bvo.showDate }"/></li>
 							<li>${bvo.writedate }</li>
 							<li>${bvo.seatcnt}매</li>
 							<li>

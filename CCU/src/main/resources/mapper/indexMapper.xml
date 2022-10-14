@@ -5,44 +5,99 @@
 <!-- dao뒤에 사용할DAO명을 입력해야함 ex)boardDAO -->
 <mapper namespace="com.team200.proj.dao.IndexDAO">
 	<select id="outputFestivalData" resultType="festivalVO">
-		select id, name, startdate, enddate, place place_name, poster mainposter,
-		genre, state from festival where
+		select id, name,
+		startdate, enddate, place place_name, poster mainposter,
+		genre, state
+		from festival where
 		state = '공연중' or state = '공연예정' ORDER
-		BY enddate ASC limit 0, 5;
+		BY enddate ASC
+		limit 0, 5;
 	</select>
 	<select id="outputpopularData" resultType="showVO">
 		SELECT
-		a.name, a.id, a.mainposter,a.startdate, a.enddate,a.genre, b.showRank
-		FROM showdb as a INNER JOIN popular as b ON a.id = b.showdb_id ORDER BY
-		b.showRank ASC limit 0, 21;
+		a.name, a.id,
+		a.mainposter,a.startdate, a.enddate,a.genre, b.showRank
+		FROM showdb as
+		a INNER JOIN popular as b ON a.id = b.showdb_id ORDER BY
+		b.showRank ASC
+		limit 0, 21;
 	</select>
 	<select id="outputpopularWData" resultType="showVO">
 		SELECT
-		a.name, a.id, a.mainposter,a.startdate, a.enddate,a.genre, b.showRank
-		FROM showdb as a INNER JOIN popularW as b ON a.id = b.showdb_id ORDER BY
-		b.showRank ASC limit 0, 21;
+		a.name, a.id,
+		a.mainposter,a.startdate, a.enddate,a.genre, b.showRank
+		FROM showdb as
+		a INNER JOIN popularW as b ON a.id = b.showdb_id ORDER BY
+		b.showRank
+		ASC limit 0, 21;
 	</select>
 	<select id="outputpopularDWMData" resultType="showVO">
 		SELECT
 		a.name, a.id, a.mainposter,a.startdate, a.enddate,a.genre,
 		<if test='param2 == "아동"'> c.showRank
-		FROM showdb as a INNER JOIN child as c on a.id = c.showdb_id ORDER BY c.showRank ASC
-			limit 0, 5;</if>
-			
+			FROM showdb as a INNER JOIN child as c on a.id = c.showdb_id ORDER BY
+			c.showRank ASC
+			limit 0, 5;
+		</if>
+
 		<if test='param2 != "아동"'>
-		b.showRank
-		FROM showdb as a INNER JOIN
+			b.showRank
+			FROM showdb as a INNER JOIN
 			<if test='param1 == 1'>popular</if>
 			<if test='param1 == 7'>popularW</if>
 			<if test='param1 == 30'>popularM</if>
 			as b ON a.id = b.showdb_id
-			
+
 			<if test='param2 == "연극"'>where genre = #{param2}</if>
 			<if test='param2 == "뮤지컬"'>where genre = #{param2}</if>
 			<if test='param2 == "클래식"'>where genre = '클래식' or genre = '오페라'</if>
 			ORDER BY b.showRank ASC limit 0, 5;
 		</if>
 
+
+	</select>
+	<select id="getTotalUser" resultType="int">
+		select count(id) cnt from user
+		<if test='searchWord!=null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+		<select id="userList" resultType="UserVO">
+		<!-- select no no1, subject, userid, hit, date_format(writedate, '%m-%d %h:%i')
+		writedate, (select count(no) from reply_board where no = no1) reply_count
+		from board
+		<if test="searchWord!=null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		order by no desc
+		limit ${onePageRecord} offset ${offsetPoint} -->
+<!-- 		select -->
+<!-- 		b1.no, b1.subject, b1.userid, b1.hit, b1.writedate, b2.reply_count -->
+<!-- 		from -->
+<!-- 		(select no, subject, userid, hit, -->
+<!-- 		date_format(writedate, '%m-%d %h:%i') writedate from board -->
+		
+<!-- 		<if test="searchWord!=null"> -->
+<!-- 			where ${searchKey} like '%${searchWord}%' -->
+<!-- 		</if> -->
+<!-- 		order by no desc -->
+		
+<!-- 		limit ${onePageRecord} offset ${offsetPoint} -->
+<!-- 		) b1 -->
+		
+<!-- 		left outer join (select no, count(no) reply_count from reply_board group by no) b2 -->
+		
+<!-- 		on b1.no=b2.no; -->
+		select
+		id, username, role, nickname, img, register_date, tel, gender, birth,
+		zipcode, road_name, addr, agree_to_receive_email, agree_to_receive_msg, 
+		route, self_certification, self_certification_num
+		from
+		user  	<if test="searchWord!=null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		
+		limit ${onePageRecord} offset ${offsetPoint}
 
 	</select>
 </mapper>
