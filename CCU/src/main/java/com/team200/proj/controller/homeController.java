@@ -2,24 +2,31 @@ package com.team200.proj.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.team200.proj.service.IndexService;
+import com.team200.proj.service.MypageService;
+import com.team200.proj.vo.PagingVO;
+
+import okhttp3.Response;
 
 @RestController
 @RequestMapping("/")
 public class homeController {
 	@Autowired
 	IndexService service;
+//	MypageService service2;
 
 	ModelAndView mav = null;
 
@@ -51,9 +58,16 @@ public class homeController {
 	}
 
 	@GetMapping("/admin")
-	public ModelAndView admin() {
+	@ResponseBody
+	public ModelAndView admin(PagingVO pVO,HttpSession session) {
+		
 		System.out.println("admin");
+		String id = (String)session.getAttribute("logId"); 
 		mav = new ModelAndView();
+		System.out.println(service.getTotalUser(pVO));
+		pVO.setTotalRecord(service.getTotalUser(pVO));
+		mav.addObject("pVO", pVO);
+		mav.addObject("list",service.userList(pVO));
 		mav.setViewName("adminPage/admin");
 		return mav;
 	}
