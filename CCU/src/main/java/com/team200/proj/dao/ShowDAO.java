@@ -20,7 +20,7 @@ import com.team200.proj.vo.showVO;
 public interface ShowDAO {
 
 	public List<showVO> search(String search);
-
+	
 	public showVO showDetail(String show_id);
 	public List<ReviewVO> getReview(String show_id);
 	public List<showVO> getShowList(String genre);

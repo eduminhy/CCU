@@ -17,19 +17,12 @@ public class MeetingVO {
 
 
 
-
 	@Override
 	public String toString() {
 		return "MeetingVO [id=" + id + ", user_id=" + user_id + ", showdb_id=" + showdb_id + ", title=" + title
-				+ ", content=" + content + ", writedate=" + writedate + ", hit=" + hit + ", genre=" + genre + ", name="
-				+ name + ", status=" + status + "]";
+				+ ", content=" + content + ", writedate=" + writedate + ", hit=" + hit + ", genre=" + genre + "]";
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+
 	public String getGenre() {
 		return genre;
 	}
@@ -86,4 +79,13 @@ public class MeetingVO {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 }

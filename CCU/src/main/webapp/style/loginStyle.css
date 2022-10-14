@@ -10,7 +10,7 @@
 	.snslogincontainer {
 		width:1200px;
 		margin:0 auto 50px;
-		background-color: blue;
+		background-color: red;
 	}
 
 	.snslogincontainer li {
@@ -65,8 +65,8 @@
 	#googleicon {
 		border: 2.5px solid; color:#4285F4;
 		border-radius: 50%;
-		width: 90px;
-		height: 90px;
+		width: 80px;
+		height: 80px;
 	}
 	#navericon {
 		margin-right:25px;

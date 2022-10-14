@@ -1,4 +1,16 @@
 @charset "UTF-8";
+	.report{
+		margin-left : 71%;
+	}
+	.report>a {
+		color:red;
+		
+	}
+	#reporticon {
+		width:50px;
+		height:50px;
+	
+	}
 	.MeetingTopContainer{
 	
 		border:5px solid #440099;

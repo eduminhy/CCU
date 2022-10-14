@@ -49,7 +49,6 @@
 			if (key.keyCode === 13) {
 				const search = document.getElementById('searchBar').value;
 				if (search !== '') {
-					alert("검색하시겠습니까?");
 					const link = "/show/title?search=" + search;
 					location.href = link;
 				} else {
@@ -58,14 +57,12 @@
 				}
 			}
 		});
-
 		
 // 		//알림버튼
 // 		$(".bell-btn").click(function(){
 // 			$("#bellDiv").toggle();
 // 		});
 		
-
 		//사용자버튼
 		$("#toggleDiv").hide();
 		$(".user-btn").click(function() {
@@ -78,9 +75,10 @@
 // 			}
 
 		});
-
+		
+		
 	});
-
+	
 	$(function() {
 		$("#log").submit(function() {
 			if ($("#id").val() == "") {
@@ -94,22 +92,22 @@
 			return true;
 		});
 	});
-
-	function logoutFunc() {
-		$.ajax({
-			url : "/user/logout",
-			type : 'get',
-			async : false,
-		}).done(function() {
-			document.location.href = '/user/logout';
-		}).fail(function(error) {
-			alert(JSON.stringify(error))
-		});
+	/*
+	function logoutFunc(logoutId) {
+		console.log("logoutId",logoutId);
+		if( confirm("로그아웃 하시겠습니까?") ) {
+			$.ajax({
+	             url: "/user/logout"+logoutId,
+	             type: 'post',
+	             async: false,
+	         }).done(function () {
+	        	 document.location.href = '/user/logout';
+	         }).fail(function (error) {
+	             alert(JSON.stringify(error))
+	         })
+		}
 	}
-
-
 */
-
 
 </script>
 </head>
@@ -117,11 +115,10 @@
 	<div id="topMenu">
 		<c:if test="${logStatus!='Y' }">
 			<a href="/user/login">로그인</a>
-
 			<span>&nbsp;</span>
 			<a href="/user/signup">회원가입</a>
 			<span>&nbsp;</span>
-			<a href="/qna">1:1문의</a>
+			<a href="/faq">고객센터</a>
 		</c:if>
 		<c:if test="${logStatus=='Y' }">
 			<a href="/user/logout">로그아웃</a>
@@ -129,7 +126,6 @@
 			<a href="/mypage/myInfo">mypage</a>
 			<span>&nbsp;</span>
 			<a href="/qna">1:1문의</a>
-
 		</c:if>
 	</div>
 	<div class="topUp">
@@ -140,11 +136,6 @@
 			<input type="text" id="searchBar" /> <a href="/" id="mainLink">
 				<img src="../img/logo.png" id="logo" /> <span>CCU</span>
 			</a>
-
-
-
-			
-
 			<!-- 		<button class="bell-btn" type="submit"><i class="fas fa-bell" id="bellBtn"></i></button> -->
 			<button class="user-btn" type="submit">
 				<i class="fas fa-user-circle" id="userBtn"></i>
@@ -158,7 +149,6 @@
 			<form method="post" action="/user/loginOk" id="log">
 				<div id="toggleDiv">
 
-
 					<input type="text" placeholder="아이디를 입력해주세요" name="id" id="id">
 					<br /> <input type="password" placeholder="비밀번호를 입력해주세요"
 						name="password" id="password"> <br /> <br />
@@ -167,13 +157,9 @@
 						<br />
 					</c:if>
 					<c:if test="${logStatus=='Y' }">
-
-						<button onclick="logoutFunc();">로그아웃</button>
-						<!-- <a href="/user/logout" class="logoutBtn">로그아웃</a> -->
+						<!-- 	<button onclick="logoutFunc();">로그아웃</button>  -->
+						<a href="/user/logout" class="logoutBtn">로그아웃</a>
 					</c:if>
-				</div>
-
-		
 			</form>
 			<!-- 
 			<input type="text" id="userid" placeholder="ID"/><br/>
@@ -187,11 +173,7 @@
 			<img src="../img/kakaoicon.png" width=40px; height=40px; id="kakaoicon">
 			<img src="../img/googleicon.png" width=40px; height=40px; id="googleicon">
 		</Div>
-
-		
-
 		 -->
-
 
 			<br />
 			<div>
@@ -200,10 +182,6 @@
 			<div>
 				<a href="/faq">고객센터</a>
 			</div>
-
- -->
-
-
 
 
 		</div>

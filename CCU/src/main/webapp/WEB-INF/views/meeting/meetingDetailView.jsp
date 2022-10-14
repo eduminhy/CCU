@@ -108,6 +108,10 @@
 
 <p class="MeetingWarning">※ 개인정보 유출 및 피해에 유의하시고 금전 및 물품 피해에 대해
 	유의하십시오.</p>
+<div class="report">
+<img src="https://png.pngtree.com/png-vector/20191010/ourlarge/pngtree-siren-graphic-design-template-vector-isolated-illustration-png-image_1806277.jpg"  id="reporticon">
+<a href="" >신고하기</a>
+</div>
 
 <div class="MeetingFormContainer">
 	<form method="post" action="" class="MeetingNoticeFrm">

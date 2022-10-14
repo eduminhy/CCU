@@ -126,7 +126,7 @@ public class UserController {
 		return mav;
 	}
 	//로그아웃
-	@GetMapping("logout") // 겟매핑이자나 시발룸아ggg;
+	@GetMapping("logout") // 
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate(); 
 		ModelAndView mav = new ModelAndView();

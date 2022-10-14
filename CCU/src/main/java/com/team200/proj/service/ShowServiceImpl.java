@@ -17,11 +17,6 @@ public class ShowServiceImpl implements ShowService {
 	ShowDAO dao;
 
 	@Override
-	public List<showVO> search(String search) {
-		return dao.search(search);
-	}
-
-	@Override
 	public List<showVO> getShowList(String genre) {
 		return dao.getShowList(genre);
 	}
@@ -76,6 +71,11 @@ public class ShowServiceImpl implements ShowService {
 	public int getmyheart(String user_id, String showdb_id) {
 		// TODO Auto-generated method stub
 		return dao.getmyheart( user_id,  showdb_id);
+	}
+
+	@Override
+	public List<showVO> search(String search) {
+		return dao.search(search);
 	}
 
 

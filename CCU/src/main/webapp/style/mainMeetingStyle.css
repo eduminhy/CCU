@@ -174,15 +174,13 @@
         line-height:50px;
         border-top:2px solid #7F7F7F;
         border-bottom:2px solid #7F7F7F;
-        width:13%;
+        width:12.9%;
         font-weight:bold;
         overflow:hidden;
         text-overflow: ellipsis;
     }
-
     #accList>li:nth-child(7n+4){
 		width:30%;
-
 		
       }
      #accList>li:nth-child(7n+1){
