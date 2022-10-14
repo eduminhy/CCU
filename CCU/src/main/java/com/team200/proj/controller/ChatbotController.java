@@ -34,6 +34,7 @@ public class ChatbotController {
 	@PostMapping("/faqboard/chatbotOk")
 	@ResponseBody
 	public String chatbotOk(@RequestParam("queryin") String queryin) {
+
         String chatbotMessage = "";
 
         try {
@@ -154,3 +155,4 @@ public class ChatbotController {
 
 	    }
 }
+

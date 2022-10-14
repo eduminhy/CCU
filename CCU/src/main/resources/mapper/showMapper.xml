@@ -6,11 +6,13 @@
 <!-- dao뒤에 사용할DAO명을 입력해야함 ex)boardDAO -->
 <mapper namespace="com.team200.proj.dao.ShowDAO">
 
+	
 	<select id="search" resultType="showVO">
-		select *
-		from showdb
-		where name like CONCAT('%', #{search}, '%')
-	</select>
+        select *
+        from showdb
+        where name like CONCAT('%', #{search}, '%')
+    </select>
+    
 
 	<select id="getShowList" resultType="showVO">
 		select

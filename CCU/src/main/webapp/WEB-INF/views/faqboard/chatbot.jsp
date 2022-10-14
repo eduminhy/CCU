@@ -12,6 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title>고객센터</title>
+
 <style>
 #content{
 overflow:scroll;}
@@ -32,6 +33,7 @@ width:200px; height:200px;}
 $(function(){
 	$(document).on('click','#queryin',function(){
 		
+
 
 	$("#query").click(function(){
 		if($("#queryin").val()!=""){
@@ -101,6 +103,7 @@ $(function(){
 </script>
 </head>
 <body>
+
 <h2>Chatbot</h2>
 <div id="content" style="width:100%; height:400px; border:1px solid #ddd;"></div>
 <input type="text" name="queryin" id="queryin"/>
@@ -126,6 +129,7 @@ $(function(){
 <!-- 		<hr /> -->
 <!-- 		<textarea id="jsonCode" style="width: 1200px; height: 300px;"></textarea> -->
 <!-- 	</div> -->
+
 	
 
 	

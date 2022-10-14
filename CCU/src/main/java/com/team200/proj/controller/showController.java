@@ -43,15 +43,18 @@ public class showController {
 	@Autowired
 	ShowService service;
 
+	   
 	@GetMapping("title")
-	public ModelAndView search(@RequestParam String search) {
-		ModelAndView mav = new ModelAndView();
+	   public ModelAndView search(@RequestParam(required = false) String search) {
+	      ModelAndView mav = new ModelAndView();
 
-		mav.addObject("showlist", service.search(search));
+	      mav.addObject("searchText", search);
+	      mav.addObject("showlist", service.search(search));
 
-		mav.setViewName("show/showList");
-		return mav;
-	}
+	      mav.setViewName("searchPage/searchResult");
+	      return mav;
+	   }
+	
 
 	@GetMapping("showList")
 	public ModelAndView showList(String genre) {

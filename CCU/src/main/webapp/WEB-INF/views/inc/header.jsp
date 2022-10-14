@@ -118,7 +118,7 @@
 			<span>&nbsp;</span>
 			<a href="/user/signup">회원가입</a>
 			<span>&nbsp;</span>
-			<a href="/qna">1:1문의</a>
+			<a href="/faq">고객센터</a>
 		</c:if>
 		<c:if test="${logStatus=='Y' }">
 			<a href="/user/logout">로그아웃</a>
