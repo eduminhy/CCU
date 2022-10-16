@@ -10,7 +10,7 @@
     </select>
 
     <select id="showModal" resultType="showVO">
-        select id, name, from showdb where name like CONCAT('%', #{search}, '%')
+        select id, name from showdb where name like CONCAT('%', #{search}, '%')
     </select>
 
 	<select id="showSearch" resultType="showVO">
