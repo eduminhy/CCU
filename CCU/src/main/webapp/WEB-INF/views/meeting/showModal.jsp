@@ -2,15 +2,20 @@
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!doctype html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>공연 검색</title>
-</head>
-<body>
+<style>
+	.topUp, .topDown, #topMenu, .bottom, .footer {display:none;}
+	.show_table{}
+	.selectshow{color:#440099; font-weight:bold; font-size:30px;}
+	.subject_name_warp, .content_wrap{background-color:lavender;}
+	.subject_name_warp{text-align:center;}
+	.mainposter{width:100px; padding:5px;}
+	.th_column_1, .th_column_2, .th_column_3{text-align:center; font-weight:bold; background-color:#440099; color:#fff;}
+	.show_table td{border-top:1px solid #440099;}
+	.move:link, .move:visited {color:black; font-size:16px;}
+</style>
 <div class="subject_name_warp">
-    <span>공연 선택</span>
+    <span class="selectshow"><공연 선택></span>
+    <br/><span class="selectshow">=====================================</span>
 </div>
 <div class="content_wrap">
     <!-- 게시물 표 영역 -->
@@ -22,12 +27,14 @@
                     <thead>
                     <tr>
                         <td class="th_column_1" >공연 ID</td>
-                        <td class="th_column_2">공연 이름</td>
+                        <td class="th_column_2">공연포스터</td>
+                        <td class="th_column_3">공연 이름</td>
                     </tr>
                     </thead>
                     <c:forEach items="${showList}" var="showList">
                         <tr>
                             <td><c:out value="${showList.id}"></c:out></td>
+                            <td><img src="${showList.mainposter }" class="mainposter"/></td>
                             <td>
                                 <a class="move" href='<c:out value="${showList.id}"/>'
                                    data-name=' <c:out value="${showList.name}"/>'>
@@ -49,7 +56,6 @@
 
     </div>
 </div>
-</body>
 
 <script>
     $(".move").on("click", function (e) {
@@ -65,5 +71,3 @@
 
     })
 </script>
-
-</html>

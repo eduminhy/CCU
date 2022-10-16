@@ -13,8 +13,9 @@
 	
 	.playMeetingWarning{
 		color: #FF5161;
-		margin-top:4%;
-		margin-left:19%;
+		margin-top:25px;
+		margin-bottom:25px;
+		text-align:center;
 	}
 
 
@@ -33,21 +34,18 @@
 	}
 	.playMeetingFormContainer td{
 		border-bottom:1px solid #B3B3B3;
-		/*padding:10px 0 10px 10px;*/
-		padding:1%;
-		padding-left:2%;
+		padding:2px;
 	}
 	.playMeetingFormContainer th{
 		width:10%;
-		padding-left:5px;
 		border-bottom:1px solid #B3B3B3;
-		padding:10px 0 10px 10px;
 		background:#E0E0E0;
 		text-align:center;
 	}
 	#status{
 		width:15%;
 		height:30px;
+		margin-left:10px;
 	}
 	.writeSubject{
 		width:50%;
@@ -65,4 +63,31 @@
 		font-weight:bold;
 		font-size:17px;
 		border-style:none;
+		margin-top:10px;
 	}
+	
+	#name{
+		width:300px;
+		height:20px;
+		font-size:16px;
+		border-top:none;
+		border-left:none;
+		border-right:none;
+		border-bottom:1px solid #ddd;
+		outline:none;
+		text-align:center;
+	}
+	.showId_btn{
+		border: none; margin-left:10px;
+        width: 100px; height: 30px;
+        font-weight:bold; font-size:15px; background-color:#440099; color:#fff; border-radius:20px;
+        cursor: pointer;
+	}
+	#showSearch{text-align:center; margin-bottom:10px;}
+	#cke_content{width:100%; padding:0; margin:0;}
+	.cke_chrome{border:none;}
+	.rowtd{
+		padding:1%;
+		padding-left:2%;
+	}
+	.playMeetingWritingFrm{margin-bottom:80px;}

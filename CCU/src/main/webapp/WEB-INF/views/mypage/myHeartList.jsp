@@ -15,6 +15,7 @@
 		
 		$(".delBtn").click(function(){
 			//console.log($(this).parents().find("li[class='show']").children().eq(i-1).val());
+			
 			if(confirm("삭제하시겠습니까?")){
 				$.ajax({
 					type:"get",
