@@ -237,7 +237,7 @@
 								end="${pVO.startPage2+pVO.onePageCount2-1 }">
 								<!-- 출력할 페이지번호 총페이지 수보다 작거나 같을때만 출력함 -->
 								<c:if test="${p<=pVO.totalPage2 }">
-									<div class="divdivdiv2" name="${p}">${p}</div>
+									<div class="divdivdiv3" name="${p}">${p}</div>
 								</c:if>
 							</c:forEach>
 
@@ -365,24 +365,24 @@
 
 				<div class="container">
 					<h1>후기 신고 리스트</h1>
-					<h4 class="h4" name="${pVO.searchKey3}">검색분류:${pVO.searchKey3}
-						/ 검색어: ${pVO.searchWord3}</h4>
-					<div>${pVO.totalPage3 }/${pVO.nowPage3},총레코드수:${pVO.totalRecord3 }</div>
-					<fmt:formatNumber value="${pVO.totalRecord3 div 10}" />
+					<h4 class="h4" name="${pVO.searchKey4}">검색분류:${pVO.searchKey4}
+						/ 검색어: ${pVO.searchWord4}</h4>
+					<div>${pVO.totalPage4 }/${pVO.nowPage4},총레코드수:${pVO.totalRecord4 }</div>
+					<fmt:formatNumber value="${pVO.totalRecord4 div 10}" />
 					<div>
-						<input type="button" value="선택삭제" class="multiDel" />
+						<input type="button" value="선택삭제" class="multiDel3" />
 					</div>
 					<!-- 	<form method="post" action="/board/multiDel" id="listFrm"> -->
 					<!-- 		<ul id="board"> -->
-					<c:set var="username7">${pVO.totalRecord3  div 10}</c:set>
+					<c:set var="username7">${pVO.totalRecord4  div 10}</c:set>
 					<c:set var="username8" value="0" />
 
 					<c:set var="username9">10</c:set>
 
-					<form method="post" action="/multiDel2" id="listFrm">
-						<div class="UserDiv6">
+					<form method="post" action="/multiDel3" id="listFrm3">
+						<div class="UserDiv10">
 							<div>
-								<input type="checkbox" class="allChk" />
+								<input type="checkbox" class="allChk3" />
 							</div>
 							<div>User ID</div>
 							<div>UserName</div>
@@ -391,19 +391,19 @@
 							<div>user_id</div>
 							<div>rcontent</div>
 							<div>show_id</div>
-							<div>user_id</div>
+				
 							<div>order_list_no</div>
 							<div>postnum</div>
 						</div>
 						<c:forEach var="no" begin="1"
 							end="${username7+(1-(username7%1))%1}">
-							<div class="UserDiv8" name="${username9/10}">
+							<div class="UserDiv12" name="${username9/10}">
 								<c:forEach var="vo" items="${rlist }" begin="${username8}"
 									end="${username9-1}" step="1" varStatus="status">
-									<div class="UserDiv7"">
+									<div class="UserDiv11"">
 
 										<div>
-											<input type="checkbox" name="noList" value="${vo.id}" />
+											<input type="checkbox" name="noList" value="${vo.postnum}" />
 										</div>
 
 										<div>${vo.id}</div>
@@ -432,11 +432,11 @@
 							<!-- 페이지번호 -->
 
 							<div>prev</div>
-							<c:forEach var="p" begin="${pVO.startPage }"
-								end="${pVO.startPage+pVO.onePageCount-1 }">
+							<c:forEach var="p" begin="${pVO.startPage4 }"
+								end="${pVO.startPage4+pVO.onePageCount4-1 }">
 								<!-- 출력할 페이지번호 총페이지 수보다 작거나 같을때만 출력함 -->
-								<c:if test="${p<=pVO.totalPage }">
-									<div class="divdivdiv" name="${p}">${p}</div>
+								<c:if test="${p<=pVO.totalPage4 }">
+									<div class="divdivdiv4" name="${p}">${p}</div>
 								</c:if>
 							</c:forEach>
 
@@ -460,56 +460,55 @@
 					<div>
 
 				<div class="container">
-					<h1>후기 신고 리스트</h1>
-					<h4 class="h4" name="${pVO.searchKey3}">검색분류:${pVO.searchKey3}
-						/ 검색어: ${pVO.searchWord3}</h4>
-					<div>${pVO.totalPage3 }/${pVO.nowPage3},총레코드수:${pVO.totalRecord3 }</div>
-					<fmt:formatNumber value="${pVO.totalRecord3 div 10}" />
+					<h1>Meet 신고 리스트</h1>
+					<h4 class="h4" name="${pVO.searchKey5}">검색분류:${pVO.searchKey5}
+						/ 검색어: ${pVO.searchWord5}</h4>
+					<div>${pVO.totalPage5 }/${pVO.nowPage5},총레코드수:${pVO.totalRecord5 }</div>
+					<fmt:formatNumber value="${pVO.totalRecord5 div 10}" />
 					<div>
-						<input type="button" value="선택삭제" class="multiDel" />
+						<input type="button" value="선택삭제" class="multiDel4" />
 					</div>
 					<!-- 	<form method="post" action="/board/multiDel" id="listFrm"> -->
 					<!-- 		<ul id="board"> -->
-					<c:set var="username7">${pVO.totalRecord3  div 10}</c:set>
+					<c:set var="username7">${pVO.totalRecord5  div 10}</c:set>
 					<c:set var="username8" value="0" />
 
 					<c:set var="username9">10</c:set>
 
-					<form method="post" action="/multiDel2" id="listFrm">
-						<div class="UserDiv6">
+					<form method="post" action="/multiDel4" id="listFrm4">
+						<div class="UserDiv13">
 							<div>
-								<input type="checkbox" class="allChk" />
+								<input type="checkbox" class="allChk4" />
 							</div>
 							<div>User ID</div>
 							<div>UserName</div>
 							<div>Type</div>
 							<div>content</div>
-							<div>user_id</div>
+							<div>ruser_id</div>
 							<div>rcontent</div>
 							<div>show_id</div>
-							<div>user_id</div>
-							<div>order_list_no</div>
+			
 							<div>postnum</div>
 						</div>
 						<c:forEach var="no" begin="1"
 							end="${username7+(1-(username7%1))%1}">
-							<div class="UserDiv8" name="${username9/10}">
+							<div class="UserDiv15" name="${username9/10}">
 								<c:forEach var="vo" items="${mlist }" begin="${username8}"
 									end="${username9-1}" step="1" varStatus="status">
-									<div class="UserDiv7"">
+									<div class="UserDiv14"">
 
 										<div>
-											<input type="checkbox" name="noList" value="${vo.id}" />
+											<input type="checkbox" name="noList" value="${vo.postnum}" />
 										</div>
 
 										<div>${vo.id}</div>
 										<div>${vo.user_id}</div>
 										<div>${vo.type}</div>
 										<div>${vo.content}</div>
-										<div>${vo.user_id}</div>
+										<div>${vo.user_id2}</div>
 										<div>${vo.rcontent}</div>
 										<div>${vo.show_id}</div>
-										<div>${vo.order_list_no}</div>
+								
 										<div>${vo.postnum}</div>
 									</div>
 
@@ -528,11 +527,11 @@
 							<!-- 페이지번호 -->
 
 							<div>prev</div>
-							<c:forEach var="p" begin="${pVO.startPage }"
-								end="${pVO.startPage+pVO.onePageCount-1 }">
+							<c:forEach var="p" begin="${pVO.startPage5 }"
+								end="${pVO.startPage5+pVO.onePageCount5-1 }">
 								<!-- 출력할 페이지번호 총페이지 수보다 작거나 같을때만 출력함 -->
-								<c:if test="${p<=pVO.totalPage }">
-									<div class="divdivdiv" name="${p}">${p}</div>
+								<c:if test="${p<=pVO.totalPage5 }">
+									<div class="divdivdiv5" name="${p}">${p}</div>
 								</c:if>
 							</c:forEach>
 

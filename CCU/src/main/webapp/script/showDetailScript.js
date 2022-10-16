@@ -299,7 +299,7 @@ $(document).ready(function() {
 		//		.html() .text()
 		var rname = $(this).parent().children().eq(1).children().eq(0).text();
 		var rid = $(this).attr('name');
-		var content = $(this).parent().children().eq(1).children().eq(1).text();
+		var content = "review";
 		$.ajax({
 			url: '/show/report', //request 보낼 서버의 경로
 			type: 'post', // 메소드(get, post, put 등)

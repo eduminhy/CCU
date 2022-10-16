@@ -49,6 +49,102 @@ public class PagingVO {
 	private int startPage4 = 1;
 	private int onePageCount4 = 5;
 
+	private String searchKey5;
+	private String searchWord5;
+
+	private int nowPage5 = 1;// 현재페이지 정보
+	private int onePageRecord5 = 10;// 한페이지에 출력할 레코드 수
+	private int totalRecord5;// 총 레코드 수
+	private int totalPage5;// 총 페이지 수
+	private int offsetPoint5;// 페이지레코드 선택할 위치
+	// 페이지번호
+	private int startPage5 = 1;
+	private int onePageCount5 = 5;
+
+	public String getSearchKey5() {
+		return searchKey5;
+	}
+
+	public void setSearchKey5(String searchKey5) {
+		this.searchKey5 = searchKey5;
+	}
+
+	public String getSearchWord5() {
+		return searchWord5;
+	}
+
+	public void setSearchWord5(String searchWord5) {
+		this.searchWord5 = searchWord5;
+	}
+
+	public int getNowPage5() {
+		return nowPage5;
+	}
+
+	public void setNowPage5(int nowPage5) {
+		this.nowPage5 = nowPage5;
+		// 선택레코드 시작위치
+		offsetPoint5 = (nowPage5 - 1) * onePageRecord5;
+		// 표시할 페이지의 시작번호
+		startPage5 = (nowPage5 - 1) / onePageCount5 * onePageCount5 + 1;
+
+	}
+
+	public int getOnePageRecord5() {
+		return onePageRecord5;
+	}
+
+	public void setOnePageRecord5(int onePageRecord5) {
+		this.onePageRecord5 = onePageRecord5;
+	}
+
+	public int getTotalRecord5() {
+		return totalRecord5;
+	}
+
+	public void setTotalRecord5(int totalRecord5) {
+
+		this.totalRecord5 = totalRecord5;
+		// 총페이지수 구하기
+
+		totalPage5 = totalRecord5 / onePageRecord5;
+		if (totalRecord5 % onePageRecord5 != 0) {
+			totalPage5++;
+		}
+	}
+
+	public int getTotalPage5() {
+		return totalPage5;
+	}
+
+	public void setTotalPage5(int totalPage5) {
+		this.totalPage5 = totalPage5;
+	}
+
+	public int getOffsetPoint5() {
+		return offsetPoint5;
+	}
+
+	public void setOffsetPoint5(int offsetPoint5) {
+		this.offsetPoint5 = offsetPoint5;
+	}
+
+	public int getStartPage5() {
+		return startPage5;
+	}
+
+	public void setStartPage5(int startPage5) {
+		this.startPage5 = startPage5;
+	}
+
+	public int getOnePageCount5() {
+		return onePageCount5;
+	}
+
+	public void setOnePageCount5(int onePageCount5) {
+		this.onePageCount5 = onePageCount5;
+	}
+
 	public String getSearchKey4() {
 		return searchKey4;
 	}

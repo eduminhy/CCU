@@ -408,7 +408,8 @@ public class showController {
 		int id = Integer.parseInt(String.valueOf(jsonObject.get("id")));
 //    	String content = (String) jsonObject.get("content");
 		String rcontent = (String) jsonObject.get("rcontent");
-		service.setReport(id, rcontent, logid);
+		String content = (String) jsonObject.get("content");
+		service.setReport(id, rcontent, logid, content);
 //		String str = readBody(request);
 //		JSONObject jsonObject = new JSONObject(str.toString());
 //        System.out.println("OBJECT : "+jsonObject.toString());

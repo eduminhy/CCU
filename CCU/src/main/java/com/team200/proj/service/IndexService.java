@@ -2,7 +2,7 @@ package com.team200.proj.service;
 
 import java.util.List;
 
-
+import com.team200.proj.vo.ReportVO;
 import com.team200.proj.vo.AdminBookPageVO;
 import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.BoardVO;
@@ -28,6 +28,8 @@ public interface IndexService {
 	public List<BoardVO> boardList(PagingVO pVO);
 	public int boardMultiDel(BoardVO vo);
 	public int boardMultiDel2(UserVO vo);
+	public int boardMultiDel3(ReportVO vo);
+	public int boardMultiDel4(ReportVO vo);
 	public List<BoardVO> reportList(PagingVO pVO);
 	public List<BoardVO> mreportList(PagingVO pVO);
 }
