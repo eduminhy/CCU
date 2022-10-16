@@ -94,5 +94,8 @@
         select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%y-%m-%d %h:%i') writedate, a.showdb_id, b.genre, b.name
         from board a inner join showdb b on a.showdb_id = b.id where a.id = #{id}
     </select>
-
+	<insert id="setReport">
+		insert into report( user_id, type, content, postNum)
+		values ( #{param3}, 'meet',#{param2},#{param1})
+	</insert>
 </mapper>

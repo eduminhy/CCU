@@ -290,7 +290,7 @@
 							<div>Writedate</div>
 							<div>Hit</div>
 						</div>
-
+				
 
 						<c:forEach var="no" begin="1"
 							end="${username4+(1-(username4%1))%1}">
@@ -317,6 +317,7 @@
 							</div>
 							<c:set var="username5" value="${username6}" />
 							<c:set var="username6">${username6+10}</c:set>
+				
 
 						</c:forEach>
 

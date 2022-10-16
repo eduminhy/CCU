@@ -75,6 +75,7 @@
 	
 	function addChat() {
 		var chatInfo = $("#newChatId").val();
+		console.log(111);
 		if( chatInfo != "" ) {
 			var result = null;
 			$.ajax({
