@@ -50,9 +50,9 @@ public class ShowServiceImpl implements ShowService {
 
 
 	@Override
-	public void setReport(int id, String content, String logid) {
+	public void setReport(int id, String rcontent, String logid, String  content) {
 		// TODO Auto-generated method stub
-		dao.setReport(id,content,logid);
+		dao.setReport(id,rcontent,logid,content);
 	}
 
 	@Override

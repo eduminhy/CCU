@@ -151,6 +151,62 @@ $(function() {
 			}
 			$("#listFrm2").submit();
 		});
+	$(".multiDel3").click(
+
+		function() {
+			console.log(112);
+			//체크갯수 확인
+			var countChk = 0;
+			$(".UserDiv11 input[name=noList]").each(
+				function(idx, obj) {
+					if (obj.checked) { //input테그가 체크상태일 경우 true 아니면 false
+						countChk++;
+					}
+				});
+			console.log(countChk);
+			if (countChk <= 0) {
+				alert("삭제할 레코드를 선택후 삭제해주세요");
+				return false;
+			}
+			;
+			var con_test = confirm("정말로 게시글을 삭제하시겠습니까?.");
+			if (con_test == true) {
+				alert("삭제합니다.");
+				$("#listFrm3").submit();
+			}
+			else if (con_test == false) {
+				alert.write("취소합니다.");
+			}
+			$("#listFrm3").submit();
+		});
+	$(".multiDel4").click(
+
+		function() {
+			console.log(112);
+			//체크갯수 확인
+			var countChk = 0;
+			$(".UserDiv12 input[name=noList]").each(
+				function(idx, obj) {
+					if (obj.checked) { //input테그가 체크상태일 경우 true 아니면 false
+						countChk++;
+					}
+				});
+			console.log(countChk);
+			if (countChk <= 0) {
+				alert("삭제할 레코드를 선택후 삭제해주세요");
+				return false;
+			}
+			;
+			var con_test = confirm("정말로 게시글을 삭제하시겠습니까?.");
+			if (con_test == true) {
+				alert("삭제합니다.");
+				$("#listFrm4").submit();
+			}
+			else if (con_test == false) {
+				alert.write("취소합니다.");
+			}
+			$("#listFrm4").submit();
+		});
 	$(".multiDel").click(
 
 		function() {
@@ -215,7 +271,7 @@ $(document).ready(function() {
 		//		console.log($(".adminSubmenu").eq(2))
 
 	}
-		if ($(".h3").attr('name') != "") {
+	if ($(".h3").attr('name') != "") {
 		var firstDiv2 = 2;
 		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
 
@@ -233,10 +289,10 @@ $(document).ready(function() {
 
 	}
 
-//	$(".UserDiv6").hide();
-//		$(".UserDiv3[name='"+aaa+"']").hide();
+	//	$(".UserDiv6").hide();
+	//		$(".UserDiv3[name='"+aaa+"']").hide();
 	var aaa = "1.0"
-//		console.log($(".UserDiv2 [name='1']").show());
+	//		console.log($(".UserDiv2 [name='1']").show());
 	$(".UserDiv6[name='" + aaa + "']").show();
 	$(".divdivdiv2").click(function() {
 		$(".UserDiv6").hide();
@@ -245,6 +301,41 @@ $(document).ready(function() {
 		aaa += ".0"
 		console.log(aaa)
 		$(".UserDiv6[name='" + aaa + "']").show();
+	});
+
+	var bbb = "1.0"
+	//		console.log($(".UserDiv2 [name='1']").show());
+	$(".UserDiv8[name='" + bbb + "']").show();
+	$(".divdivdiv3").click(function() {
+		$(".UserDiv8").hide();
+		var bbb = $(this).attr('name');
+		console.log(bbb)
+		bbb += ".0"
+		console.log(bbb)
+		$(".UserDiv8[name='" + bbb + "']").show();
+	});
+
+	var ccc = "1.0"
+	//		console.log($(".UserDiv2 [name='1']").show());
+	$(".UserDiv12[name='" + ccc + "']").show();
+	$(".divdivdiv4").click(function() {
+		$(".UserDiv12").hide();
+		var ccc = $(this).attr('name');
+
+		ccc += ".0"
+
+		$(".UserDiv12[name='" + ccc + "']").show();
+	});
+	var ddd = "1.0"
+	//		console.log($(".UserDiv2 [name='1']").show());
+	$(".UserDiv15[name='" + ddd + "']").show();
+	$(".divdivdiv5").click(function() {
+		$(".UserDiv15").hide();
+		var ddd = $(this).attr('name');
+
+		ddd += ".0"
+
+		$(".UserDiv15[name='" + ddd + "']").show();
 	});
 	//	if ($(".h3").attr('name') == ""&& &&) {
 	//		firstDiv = ($(this).index());

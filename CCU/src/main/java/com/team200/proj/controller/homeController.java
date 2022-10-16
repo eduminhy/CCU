@@ -78,8 +78,8 @@ public class homeController {
 		System.out.println(service.getTotalUser(pVO));
 		pVO.setTotalRecord(service.getTotalUser(pVO));
 		pVO.setTotalRecord2(service.getTotalUser2(pVO));
-		pVO.setTotalRecord3(service.getTotalUser3(pVO));
-		pVO.setTotalRecord3(service.getTotalUser4(pVO));
+		pVO.setTotalRecord4(service.getTotalUser3(pVO));
+		pVO.setTotalRecord5(service.getTotalUser4(pVO));
 		mav.addObject("pVO", pVO);
 
 		mav.addObject("list",service.userList(pVO));
@@ -119,7 +119,7 @@ public class homeController {
 
 	@PostMapping("/multiDel")
 	public ModelAndView multiDel(BoardVO vo) {
-//		int cnt = service.boardMultiDel(vo);
+		int cnt = service.boardMultiDel(vo);
 //		System.out.println(cnt);
 		mav = new ModelAndView();
 		mav.setViewName("redirect:/admin");
@@ -137,6 +137,28 @@ public class homeController {
 		mav.setViewName("redirect:/admin");
 		mav.addObject("data", "유저 삭제가 완료되었습니다.");
 		mav.addObject("data2", "user");
+		mav.setViewName("Message");
+		return mav;
+	}
+	@PostMapping("/multiDel3")
+	public ModelAndView multiDel3(ReportVO vo) {
+		int cnt = service.boardMultiDel3(vo);
+//		System.out.println(cnt);
+		mav = new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		mav.addObject("data", "신고접수된 공연후기가 삭제 완료되었습니다.");
+		mav.addObject("data2", "reportReview");
+		mav.setViewName("Message");
+		return mav;
+	}
+	@PostMapping("/multiDel4")
+	public ModelAndView multiDel4(ReportVO vo) {
+		int cnt = service.boardMultiDel4(vo);
+//		System.out.println(cnt);
+		mav = new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		mav.addObject("data", "신고접수된 미팅게시판 글이 삭제되었습니다.");
+		mav.addObject("data2", "reportMeet");
 		mav.setViewName("Message");
 		return mav;
 	}

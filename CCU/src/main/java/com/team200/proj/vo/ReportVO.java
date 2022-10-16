@@ -15,13 +15,19 @@ public class ReportVO {
 	private String show_id;
 	
 	private int postnum;
-	
+	private String user_id2;
 	private String genre;
 	//여러개의 레코드 번호를 저장할 컬렉션
 	private List<Integer> noList;
 	private String order_list_no;
 	
 	
+	public String getUser_id2() {
+		return user_id2;
+	}
+	public void setUser_id2(String user_id2) {
+		this.user_id2 = user_id2;
+	}
 	public int getPostnum() {
 		return postnum;
 	}
