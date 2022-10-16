@@ -79,4 +79,26 @@ public class IndexServiceImpl implements IndexService {
 		return dao.boardMultiDel2(vo);
 	}
 
+	@Override
+	public int getTotalUser3(PagingVO pvo) {
+		// TODO Auto-generated method stub
+		return dao.getTotalUser3(pvo);
+	}
+
+	@Override
+	public List<BoardVO> reportList(PagingVO pVO) {
+		// TODO Auto-generated method stub
+		return dao.reportList(pVO);
+	}
+	@Override
+	public List<BoardVO> mreportList(PagingVO pVO) {
+		// TODO Auto-generated method stub
+		return dao.mreportList(pVO);
+	}
+
+	@Override
+	public int getTotalUser4(PagingVO pvo) {
+		// TODO Auto-generated method stub
+		return dao.getTotalUser4(pvo);
+	}
 }

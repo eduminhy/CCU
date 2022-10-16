@@ -216,9 +216,7 @@ function getstar(rate) {
 	} else {
 		starString = "★★★★★";
 	}
-	if (starString == ""){
-		starString = "아직 등록된 후기가 없습니다!"
-	}
+
 	return starString;
 	//console.log(12123)
 	//console.log(S2)
