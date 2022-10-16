@@ -1,15 +1,7 @@
 @charset "UTF-8";
-	.report{
-		margin-left : 71%;
-	}
-	.report>a {
-		color:red;
-		
-	}
 	#reporticon {
 		width:50px;
 		height:50px;
-	
 	}
 	.MeetingTopContainer{
 	
@@ -24,8 +16,9 @@
 	}
 	.MeetingWarning{
 		color: #FF5161;
-		margin-top:4%;
-		margin-left:19%;
+		margin-top:25px;
+		margin-bottom:25px;
+		text-align:center;
 	}
 
 	.MeetingFormContainer{
@@ -33,8 +26,7 @@
 		margin:0 auto;
 	}
 	fieldset{
-		border:none;
-		
+		border:none;		
 	}
 	.MeetingFormContainer table{
 		width:100%;
@@ -57,15 +49,55 @@
 		text-align:center;
 	}
 	.meetingBackBtn{
-		text-align:right;
+		margin-left:15px;
 		padding:10px 20px;
-		float:right;
 		background:#440099;
 		color:white;
 		font-weight:bold;
 		font-size:17px;
 		border-style:none;
 	}
+	.report2{
+		float:right; margin-right:20px;
+		border:none; background-color:#fff; color:red;
+		font-size:17px; padding:10px 0;
+		cursor:pointer;
+	}
     .contentPart>td:last-child{
     	vertical-align: top;
     }
+    #modify, #delete{
+		border:none; background-color:lavender; color:#440099;
+		font-weight:bold; font-size:17px; 
+		padding:10px 20px; margin:0 5px;
+		float:right;
+	}
+	#content{
+		margin-left:10px; width:1000px; height:50px;
+		border:2px solid #440099; outline:none;
+		font-size:16px; font-family:'나눔고딕';
+	}
+	#replyok{
+		padding:10px 20px;
+		background:#440099;
+		color:white;
+		font-weight:bold;
+		font-size:17px;
+		border-style:none;
+		margin-left:10px; margin-top:5px;
+		position:absolute;
+	}
+	#replyFrm{
+		margin:20px;
+		padding:30px 10px;
+		border-top: 2px solid #440099;
+	}
+	#remodify, #redelete{
+		border:none; background-color:lavender; color:#440099;
+		font-weight:bold; font-size:17px; 
+		padding:10px 20px; margin:0 5px;
+		float:right;
+	}
+	.replyUpdate{
+		margin:0 30px;
+	}

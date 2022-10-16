@@ -1,44 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-    <link rel="stylesheet" href="/style/playMeetingFormStyle.css">
-    <script src="//cdn.ckeditor.com/4.19.1/full/ckeditor.js"></script>
-    <script>
-        $(function () {
-            CKEDITOR.replace("writeContent"); // CKEDITOR 크기 조절
-
-            $("#playMeetingWritingFrm").submit(function () {
-                if ($("#title").val() == "") {
-                    alert("제목을 입력하세요!");
-                    return false;
-                }
-                if ($("#showdb_id").val() == "") {
-                    alert("공연을 검색해주세요!");
-                    return false;
-                }
-                if (CKEDITOR.instances.content.getData() == "") {
-                    alert("글내용을 입력하세요!");
-                    return false;
-                }
-                return true;
-            });
-        });
-        
-
-        $(function () {
-
-            $("#showSearchBtn").click(function () {
-                console.log(1);
-                window.open("/meeting/showSearchOk", "name", "width=500, height=400");
-            })
-        });
-//         $("#id").hide();
-    </script>
-</head>
+<link rel="stylesheet" href="/style/playMeetingFormStyle.css">
+<script src="//cdn.ckeditor.com/4.19.1/full/ckeditor.js"></script>
+<script>
+	$(function () {
+	    CKEDITOR.replace("content"); // CKEDITOR 크기 조절
+	
+	    $("#playMeetingWritingFrm").submit(function () {
+	        if ($("#title").val() == "") {
+	            alert("제목을 입력하세요!");
+	            return false;
+	        }
+	        if ($("#showdb_id").val() == "") {
+	            alert("공연을 검색해주세요!");
+	            return false;
+	        }
+	        if (CKEDITOR.instances.content.getData() == "") {
+	            alert("글내용을 입력하세요!");
+	            return false;
+	        }
+	        return true;
+	    });
+	});
+	
+	
+	$(function () {
+	    $("#showSearchBtn").click(function () {
+	        console.log(1);
+	        window.open("/meeting/showSearchOk", "name", "width=500, height=400");
+	    })
+	});
+</script>
 
 <div class="playMeetingTopContainer">
     <h1 class="playMeetingTopText">같이 갈래요?</h1>
-</div>
+</div>	
 
 
 <p class="playMeetingWarning">※ 개인정보 유출 및 피해에 유의하시고 금전 및 물품 피해에 대해 유의하십시오.</p>
@@ -47,58 +43,37 @@
 <div class="playMeetingFormContainer">
     <form method="post" action="/meeting/meetingWrite" id="playMeetingWritingFrm" class="playMeetingWritingFrm">
         <table summary="연극미팅글쓰기폼">
-
-<%--             <input type="hidden" name="id" id="id" value="${board.id}"> --%>
-
-            <ul>
+            <ul id="showSearch">
                 <li>
                     <input type="hidden" name="showdb_id" id="showdb_id" value="${board.showdb_id}" readonly="readonly">
-					
-<%--                    
- <input type="image" name="showdb_mainposter" id="showdb_mainposter" value="${board.showdb_mainposter}" readonly="readonly"> --%>
-                    <input type="text" id="name" value="${board.name}">
+                    <input type="text" id="name" value="${board.name}" placeholder="공연명을 입력해주세요">
                     <button class="showId_btn">공연검색</button>
                 </li>
-                <%--                <li><input type="button" value="공연검색" id="showSearchBtn"/></li>--%>
             </ul>
-
-            <tbody>
-
-            <tr>
-                <th scope="row">
-                    <label for="status">마감여부 선택</label></th>
-                <td>
+            <tr style="height:50px;">
+                <th scope="row">마감여부 선택</th>
+                <td class="rowtd">
                     <select name="status" id="status">
                         <option value="selectstatus">-선택-</option>
                         <option value="모집중">모집중</option>
                         <option value="모집완료">모집완료</option>
                     </select>
-                
-
-
             </tr>
-
-            <tr>
-                <th scope="row">
-                    <label for="writeSubject">제목</label></th>
-                <td><input type="text" name="title" id="title" class="writeSubject" value="${board.title}"/></td>
+            <tr style="height:50px;">
+                <th scope="row">제목</th>
+                <td class="rowtd" style="padding-left:10px;"><input type="text" name="title" id="title" class="writeSubject" value="${board.title}"/></td>
             </tr>
-            <tr style="height:500px;">
-                <th scope="row">
-                    <label for="writeContent">내용</label></th>
+            <tr style="height:300px;">
+                <th scope="row">내용</th>
                 <td>
-                    <textarea name="content" class="writeContent" id="content" rows="5" cols="40" >${board.content}</textarea>
+                    <textarea name="content" class="writeContent" id="content">${board.content}</textarea>
                 </td>
             </tr>
-            </tbody>
-        </table>
 
-        <p class="inputBtn">
-            <button class="playMeetingFrmBtn">등록</button>
-        </p>
+        </table>
+        <button class="playMeetingFrmBtn">등록</button>
     </form>
 </div>
-</body>
 
 <script>
     $('.showId_btn').on("click", function (e) {
@@ -119,5 +94,3 @@
         window.open(modalUrl, "공연 찾기", modalOption);
     });
 </script>
-
-</html>
