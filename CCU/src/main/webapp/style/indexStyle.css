@@ -396,8 +396,11 @@ body {
 	position: absolute;
 	z-index: 2;
 	top: 15px;
-	width: 153px;
-	left: -400px;
+	width: 270x;
+	left: -500px;
+	display:flex;
+	flex-direction: column;
+	
 }
 
 #container {
@@ -405,5 +408,5 @@ body {
 }
 
 #quick img {
-	width: 170px;
+	width: 270px;
 }

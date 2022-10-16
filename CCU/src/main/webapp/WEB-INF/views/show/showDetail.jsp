@@ -229,8 +229,12 @@
 		<div class="detailRatingStar">
 			<script type="text/javascript">
          document.write(getstar(${starResult}));
+         	
     </script>
-			&nbsp;&nbsp;${starResult}
+			&nbsp;&nbsp;
+			
+			<c:if test="${starResult != 'NaN'}">    <c:out value="${starResult}" /></c:if>
+			<c:if test="${starResult == 'NaN'}">    <c:out value="아직 등록된 후기가 없습니다!" /></c:if>
 		</div>
 		<br />
 		<div class="detailRatingContent">
@@ -246,7 +250,7 @@
 						<div>${R.user_id}</div>
 						<div>${R.content}</div>
 					</div>
-					<div name="${R.id}">신고</div>
+					<div name="${R.id}">🚨신고하기</div>
 				</div>
 				<br />
 			</c:forEach>
@@ -266,7 +270,7 @@
 							<div>${R.user_id}</div>
 							<div>${R.content}</div>
 						</div>
-						<div name="${R.id}">신고</div>
+						<div name="${R.id}">🚨신고하기</div>
 					</div>
 					<br />
 				</c:forEach>

@@ -16,11 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.team200.proj.Message;
 import com.team200.proj.service.IndexService;
 import com.team200.proj.service.MypageService;
 import com.team200.proj.vo.AdminBookPageVO;
 import com.team200.proj.vo.OrderlistVO;
+import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.PagingVO;
+import com.team200.proj.vo.ReportVO;
+import com.team200.proj.vo.ReviewVO;
+import com.team200.proj.vo.UserVO;
 
 import okhttp3.Response;
 
@@ -62,22 +67,44 @@ public class homeController {
 
 	@GetMapping("/admin")
 	@ResponseBody
+
 	public ModelAndView admin(PagingVO pVO,HttpSession session, AdminBookPageVO apvo) {
 		
 		System.out.println("admin");
 		String id = (String)session.getAttribute("logId"); 
 		List<OrderlistVO> booklist = service.getReservation(apvo);
-		
 		mav = new ModelAndView();
+//		ReviewVO rvO = new ReviewVO();
 		System.out.println(service.getTotalUser(pVO));
 		pVO.setTotalRecord(service.getTotalUser(pVO));
+		pVO.setTotalRecord2(service.getTotalUser2(pVO));
+		pVO.setTotalRecord3(service.getTotalUser3(pVO));
+		pVO.setTotalRecord3(service.getTotalUser4(pVO));
 		mav.addObject("pVO", pVO);
+
 		mav.addObject("list",service.userList(pVO));
 		apvo.setBooktotalRecord(service.totalReservation(apvo));
 		System.out.println(service.totalReservation(apvo));
 		mav.addObject("apvo", apvo);
 		mav.addObject("booklist", booklist);
+
+		mav.addObject("list", service.userList(pVO));
+		
+		mav.addObject("blist", service.boardList(pVO));
+		mav.addObject("rlist", service.reportList(pVO));
+		mav.addObject("mlist", service.mreportList(pVO));
+		System.out.println(pVO.toString());
+//		if (pVO.getSearchKey() == "") {
+//			mav.setViewName("adminPage/admin?view=user");
+//		} else if (pVO.getSearchKey2() == "") {
+//			mav.setViewName("adminPage/admin?view=board");
+//		} else {
+		
+
+		
 		mav.setViewName("adminPage/admin");
+//		}
+
 		return mav;
 	}
 
@@ -89,6 +116,31 @@ public class homeController {
 		mav.setViewName("testFolder/test");
 		return mav;
 	}
+
+	@PostMapping("/multiDel")
+	public ModelAndView multiDel(BoardVO vo) {
+//		int cnt = service.boardMultiDel(vo);
+//		System.out.println(cnt);
+		mav = new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		mav.addObject("data", "게시글 삭제가 완료되었습니다.");
+		mav.addObject("data2", "board");
+		mav.setViewName("Message");
+		return mav;
+	}
+
+	@PostMapping("/multiDel2")
+	public ModelAndView multiDel2(UserVO vo) {
+		int cnt = service.boardMultiDel2(vo);
+//		System.out.println(cnt);
+		mav = new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		mav.addObject("data", "유저 삭제가 완료되었습니다.");
+		mav.addObject("data2", "user");
+		mav.setViewName("Message");
+		return mav;
+	}
+
 //	@GetMapping("sms")
 //	@ResponseBody
 //	public ModelAndView sms() throws IOException {

@@ -220,28 +220,69 @@
 	
 	
 
-	.playMeetingListSearchKey{
-		margin:1%;
-		margin-top:1%;
-		border:1px solid #ddd;
-		padding:7px 7px;
-		padding-left:1%;
-	}
-	.playMeetingListSearchTxt{
-		width:250px;
-		height:25px;
-		border-top:none;
-		border-left:none;
-		border-right:none;
-		border-bottom:1px solid #ddd;
-		outline:none;
-	}
-	.playMeetingListSearchBtn{
-		background:url("../img/icon/search.png");
-		border-style:none;
-		background-repeat: no-repeat;
-		margin:-0.5%;
-		width:25px;
-		height:25px;
-		cursor:pointer;
-	}
+	
+/*목록*/
+/* #board { */
+/* 	overflow: auto; */
+/* } */
+
+/* #board li { */
+/* 	float: left; */
+/* 	line-height: 40px; */
+/* 	border-bottom: 1px solid #ddd; */
+/* 	width: 10%; */
+/* } */
+
+/* #board li:nth-child(6n+1) { */
+/* 	width: 5%; */
+/* } */
+
+/* #board li:nth-child(6n+3) { */
+/* 	width: 55%; */
+/* } */
+
+/* #board li:nth-child(6n+3)>div { */
+/* 	float: left; */
+/* } */
+
+/* #board li:nth-child(6n+3)>div:first-child{ */
+/* 	width: 55%; */
+/* 	white-space: nowrap; */
+/* 	overflow: hidden; */
+/* 	text-overflow: ellipsis; */
+/* } */
+/*페이지*/
+/* #page li { */
+/* 	float: left; */
+/* 	padding: 10px; */
+/* } */
+
+
+.UserDiv1, .UserDiv2{
+	display:flex;
+	justify-content: space-between;
+}
+.UserDiv1>div, .UserDiv2>div{
+	width:12%;
+}
+#page{
+	display:flex;
+}
+#page div{
+	width:10%;
+	
+}
+.UserDiv4, .UserDiv5{
+	display:flex;
+	justify-content: space-between;
+}
+.UserDiv4>div, .UserDiv5>div{
+	width:12%;
+}
+.UserDiv6, .UserDiv7{
+	display:flex;
+	justify-content: space-between;
+}
+.UserDiv6>div, .UserDiv7>div{
+	width:12%;
+}

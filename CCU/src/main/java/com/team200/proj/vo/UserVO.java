@@ -32,6 +32,14 @@ public class UserVO {
 	
 	private List<String> delImg;
 	
+	private List<String> noList;
+	
+	public List<String> getNoList() {
+		return noList;
+	}
+	public void setNoList(List<String> noList) {
+		this.noList = noList;
+	}
 	public String getId() {
 		return id;
 	}

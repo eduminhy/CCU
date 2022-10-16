@@ -216,6 +216,7 @@ function getstar(rate) {
 	} else {
 		starString = "★★★★★";
 	}
+
 	return starString;
 	//console.log(12123)
 	//console.log(S2)

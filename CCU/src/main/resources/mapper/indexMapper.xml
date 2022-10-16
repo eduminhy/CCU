@@ -35,7 +35,8 @@
 		SELECT
 		a.name, a.id, a.mainposter,a.startdate, a.enddate,a.genre,
 		<if test='param2 == "아동"'> c.showRank
-			FROM showdb as a INNER JOIN child as c on a.id = c.showdb_id ORDER BY
+			FROM showdb as a INNER JOIN child as c on a.id
+			= c.showdb_id ORDER BY
 			c.showRank ASC
 			limit 0, 5;
 		</if>
@@ -62,42 +63,138 @@
 			where ${searchKey} like '%${searchWord}%'
 		</if>
 	</select>
-		<select id="userList" resultType="UserVO">
-		<!-- select no no1, subject, userid, hit, date_format(writedate, '%m-%d %h:%i')
-		writedate, (select count(no) from reply_board where no = no1) reply_count
-		from board
+	<select id="userList" resultType="UserVO">
+		<!-- select no no1, subject, userid, hit, date_format(writedate, '%m-%d 
+			%h:%i') writedate, (select count(no) from reply_board where no = no1) reply_count 
+			from board <if test="searchWord!=null"> where ${searchKey} like '%${searchWord}%' 
+			</if> order by no desc limit ${onePageRecord} offset ${offsetPoint} -->
+		<!-- select -->
+		<!-- b1.no, b1.subject, b1.userid, b1.hit, b1.writedate, b2.reply_count -->
+		<!-- from -->
+		<!-- (select no, subject, userid, hit, -->
+		<!-- date_format(writedate, '%m-%d %h:%i') writedate from board -->
+
+		<!-- <if test="searchWord!=null"> -->
+		<!-- where ${searchKey} like '%${searchWord}%' -->
+		<!-- </if> -->
+		<!-- order by no desc -->
+
+		<!-- limit ${onePageRecord} offset ${offsetPoint} -->
+		<!-- ) b1 -->
+
+		<!-- left outer join (select no, count(no) reply_count from reply_board 
+			group by no) b2 -->
+
+		<!-- on b1.no=b2.no; -->
+		select
+		id, username, role, nickname, img, register_date, tel, gender,
+		birth,
+		zipcode, road_name, addr, agree_to_receive_email,
+		agree_to_receive_msg,
+		route, self_certification, self_certification_num
+		from
+		user
 		<if test="searchWord!=null">
 			where ${searchKey} like '%${searchWord}%'
 		</if>
-		order by no desc
-		limit ${onePageRecord} offset ${offsetPoint} -->
-<!-- 		select -->
-<!-- 		b1.no, b1.subject, b1.userid, b1.hit, b1.writedate, b2.reply_count -->
-<!-- 		from -->
-<!-- 		(select no, subject, userid, hit, -->
-<!-- 		date_format(writedate, '%m-%d %h:%i') writedate from board -->
-		
-<!-- 		<if test="searchWord!=null"> -->
-<!-- 			where ${searchKey} like '%${searchWord}%' -->
-<!-- 		</if> -->
-<!-- 		order by no desc -->
-		
-<!-- 		limit ${onePageRecord} offset ${offsetPoint} -->
-<!-- 		) b1 -->
-		
-<!-- 		left outer join (select no, count(no) reply_count from reply_board group by no) b2 -->
-		
-<!-- 		on b1.no=b2.no; -->
-		select
-		id, username, role, nickname, img, register_date, tel, gender, birth,
-		zipcode, road_name, addr, agree_to_receive_email, agree_to_receive_msg, 
-		route, self_certification, self_certification_num
-		from
-		user  	<if test="searchWord!=null">
-			where ${searchKey} like '%${searchWord}%'
+
+		<!-- limit ${onePageRecord} offset ${offsetPoint} -->
+
+	</select>
+
+	<select id="boardList" resultType="BoardVO">
+
+		select a.id, a.user_id, a.title, a.content, date_format(a.writedate,
+		'%m-%d %h:%i') writedate, b.name showdb_id
+		from board a
+		inner join
+		showdb b on a.showdb_id = b.id
+
+		<if test='searchKey2== "name"'>
+			where b.${searchKey2} like '%${searchWord2}%'
 		</if>
+		<if test='searchKey2!= "name"'>
+			<if test='searchWord2!=null'>
+				where a.${searchKey2} like '%${searchWord2}%'
+			</if>
+		</if>
+
+		<!-- limit ${onePageRecord} offset ${offsetPoint} -->
+
+	</select>
+	<select id="getTotalUser2" resultType="int">
+		select count(a.id) cnt from board a
+		inner join showdb b on a.showdb_id
+		= b.id
+		<if test='searchKey2=="name"'>
+			where b.name like '%${searchWord2}%'
+		</if>
+		<if test='searchKey2!="name"'>
+
+			<if test='searchKey2!=null'>
+				where a.${searchKey2} like '%${searchWord2}%'
+			</if>
+		</if>
+	</select>
+
+
+	<delete id="boardMultiDel">
+		delete from board
+		<where>
+			<foreach item="item" index="index" collection="noList"
+				open="id in(" separator="," close=")">
+				${item}
+			</foreach>
+		</where>
+	</delete>
+
+	<delete id="boardMultiDel2">
+		delete from user
+		<where>
+			<foreach item="item" index="index" collection="noList"
+				open="id in(" separator="," close=")">
+				'${item}'
+			</foreach>
+		</where>
+	</delete>
+
+	<select id="getTotalUser3" resultType="int">
+		select count(id ) cnt from
+		report where type = 'review';
+
+	</select>
+	<select id="reportList" resultType="ReportVO">
+		select a.id, a.user_id, a.type, a.content, b.user_id ,b.content, b.show_id showdb_id, b.order_list_no, a.postnum from report a
+		inner join review b on a.postNum = b.id where a.type = 'review';
 		
-		limit ${onePageRecord} offset ${offsetPoint}
+<!-- 		 date_format(a.writedate, -->
+<!-- 		'%m-%d %h:%i') writedate, b.name showdb_id -->
+<!-- 		from board a -->
+<!-- 		inner join -->
+<!-- 		showdb b on a.showdb_id = b.id -->
+
+<!-- 		<if test='searchKey2== "name"'> -->
+<!-- 			where b.${searchKey2} like '%${searchWord2}%' -->
+<!-- 		</if> -->
+<!-- 		<if test='searchKey2!= "name"'> -->
+<!-- 			<if test='searchWord2!=null'> -->
+<!-- 				where a.${searchKey2} like '%${searchWord2}%' -->
+<!-- 			</if> -->
+<!-- 		</if> -->
+
+		<!-- limit ${onePageRecord} offset ${offsetPoint} -->
+
+	</select>
+		<select id="mreportList" resultType="ReportVO">
+		select a.id, a.user_id, a.type, a.content, b.user_id ,b.content, b.showdb_id, a.postnum from report a
+		inner join board b on a.postNum = b.id where a.type = 'meet';
+		
+
+
+	</select>
+		<select id="getTotalUser4" resultType="int">
+		select count(id ) cnt from
+		report where type = 'meet';
 
 	</select>
 	
