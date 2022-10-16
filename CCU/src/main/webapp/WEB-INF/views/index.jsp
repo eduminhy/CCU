@@ -19,7 +19,10 @@
 	<div id="container">
 		<div id="quick_bg">
 			<div id="quick">
-				<a href="#form"><img src="img/poster/1.jpg"></a>
+				<a href="/show/showDetail?show_id=PF121682"><img src="img/mainposter/1.jpg"></a>
+				<a href="/show/showDetail?show_id=PF185284"><img src="img/mainposter/2.jpg"></a>
+				<a href="/show/showDetail?show_id=PF130891"><img src="img/mainposter/3.jpg"></a>
+				<a href="/show/showDetail?show_id=PF179222"><img src="img/mainposter/4.jpg"></a>
 			</div>
 		</div>
 	</div>

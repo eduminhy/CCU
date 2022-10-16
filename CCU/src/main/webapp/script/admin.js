@@ -234,18 +234,18 @@ $(document).ready(function() {
 	}
 
 //	$(".UserDiv6").hide();
-	//	$(".UserDiv3[name='"+aaa+"']").hide();
-//	var aaa = "1.0"
-	//	console.log($(".UserDiv2 [name='1']").show());
-//	$(".UserDiv6[name='" + aaa + "']").show();
-//	$(".divdivdiv2").click(function() {
-//		$(".UserDiv6").hide();
-//		var aaa = $(this).attr('name');
-//		console.log(aaa)
-//		aaa += ".0"
-//		console.log(aaa)
-//		$(".UserDiv6[name='" + aaa + "']").show();
-//	});
+//		$(".UserDiv3[name='"+aaa+"']").hide();
+	var aaa = "1.0"
+//		console.log($(".UserDiv2 [name='1']").show());
+	$(".UserDiv6[name='" + aaa + "']").show();
+	$(".divdivdiv2").click(function() {
+		$(".UserDiv6").hide();
+		var aaa = $(this).attr('name');
+		console.log(aaa)
+		aaa += ".0"
+		console.log(aaa)
+		$(".UserDiv6[name='" + aaa + "']").show();
+	});
 	//	if ($(".h3").attr('name') == ""&& &&) {
 	//		firstDiv = ($(this).index());
 	//		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");

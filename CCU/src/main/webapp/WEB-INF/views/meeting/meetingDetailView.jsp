@@ -101,6 +101,41 @@
     };
 
     main.init();
+    $(document).ready(function() {
+	$('.report2').click(function() {
+		console.log(${meetingView.id})
+		var rcontent = prompt("신고하시는 이유를 적어주세요", "여기에!!");
+		//		 console.log(userName  );
+		//		myWindow = window.open('/show/report', '네이버팝업',
+		//			'width=500, height=400, scrollbars=yes, resizable=no')
+		//		$('.reportSM').click(function() {
+		//			myWindow.close();
+		//		});
+
+		//				console.log($(this).attr('name'));
+		//				console.log($(this).parent().children().eq(1).children().eq(0).text());
+		//				console.log($(this).parent().children().eq(1).children().eq(1).text());
+		//		.html() .text()
+		var rname = $(this).parent().children().eq(1).children().eq(0).text();
+// 		var rid = $(this).attr('name');
+// 		var content = $(this).parent().children().eq(1).children().eq(1).text();
+		$.ajax({
+			url: '/show/report', //request 보낼 서버의 경로
+			type: 'post', // 메소드(get, post, put 등)
+			async: false,
+			data: JSON.stringify({
+				'name': rname,
+				'id': ${meetingView.id},
+				'content': content,
+				'rcontent': rcontent
+			}), //보낼 데이터
+			'Content-Type': 'application/json',
+			success: function(data) {        //서버로부터 정상적으로 응답이 왔을 때 실행
+			}, error: function(err) {		//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+			}
+		});
+	});
+    });
 </script>
 <div class="MeetingTopContainer">
 	<h1 class="MeetingTopText">같이 갈래요?</h1>
@@ -109,8 +144,7 @@
 <p class="MeetingWarning">※ 개인정보 유출 및 피해에 유의하시고 금전 및 물품 피해에 대해
 	유의하십시오.</p>
 <div class="report">
-<img src="https://png.pngtree.com/png-vector/20191010/ourlarge/pngtree-siren-graphic-design-template-vector-isolated-illustration-png-image_1806277.jpg"  id="reporticon">
-<a href="" >신고하기</a>
+	<button class="report2">🚨신고하기</button>
 </div>
 
 <div class="MeetingFormContainer">
