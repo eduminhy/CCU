@@ -19,6 +19,8 @@ import com.google.gson.Gson;
 import com.team200.proj.Message;
 import com.team200.proj.service.IndexService;
 import com.team200.proj.service.MypageService;
+import com.team200.proj.vo.AdminBookPageVO;
+import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.PagingVO;
 import com.team200.proj.vo.ReportVO;
@@ -65,10 +67,12 @@ public class homeController {
 
 	@GetMapping("/admin")
 	@ResponseBody
-	public ModelAndView admin(PagingVO pVO, HttpSession session) {
 
+	public ModelAndView admin(PagingVO pVO,HttpSession session, AdminBookPageVO apvo) {
+		
 		System.out.println("admin");
-		String id = (String) session.getAttribute("logId");
+		String id = (String)session.getAttribute("logId"); 
+		List<OrderlistVO> booklist = service.getReservation(apvo);
 		mav = new ModelAndView();
 //		ReviewVO rvO = new ReviewVO();
 		System.out.println(service.getTotalUser(pVO));
@@ -77,6 +81,12 @@ public class homeController {
 		pVO.setTotalRecord3(service.getTotalUser3(pVO));
 		pVO.setTotalRecord3(service.getTotalUser4(pVO));
 		mav.addObject("pVO", pVO);
+
+		mav.addObject("list",service.userList(pVO));
+		apvo.setBooktotalRecord(service.totalReservation(apvo));
+		System.out.println(service.totalReservation(apvo));
+		mav.addObject("apvo", apvo);
+		mav.addObject("booklist", booklist);
 
 		mav.addObject("list", service.userList(pVO));
 		
@@ -98,6 +108,7 @@ public class homeController {
 		return mav;
 	}
 
+	
 	@GetMapping("/test")
 	public ModelAndView test() {
 		System.out.println("test");

@@ -38,4 +38,6 @@ h1{color:rgb(68,0,153); margin:50px;}
 #page li{
 	overflow:auto; float:left; padding:10px;
 	font-size:18px;
+	margin-top:10px;
 }
+#page li:first-child{margin-left:525px;}

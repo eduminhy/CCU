@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +49,6 @@
 		</div>
 		<div>
 			<div>예매내역</div>
-			<div>취소내역</div>
 		</div>
 		<div>
 			<div>게시판관리</div>
@@ -90,7 +90,7 @@
 				<!-- 				<p class="playMeetingWarning">※ 개인정보 유출 및 피해에 유의하시고 금전 및 물품 피해에 -->
 				<!-- 					대해 유의하십시오.</p> -->
 
-
+<!-- 예약내역가져오는 곳~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 				<form method="post" action="" class="playMeetingTable">
 					<ul>
 						<li>
@@ -101,164 +101,65 @@
 											value="checkbox" onclick="checkAll(this)"></li>
 										<li>아이디</li>
 										<li>예매번호</li>
+										<li style="text-align:center;">공연명</li>
 										<li>공연일자</li>
 										<li>좌석번호</li>
 									</ul>
 								</li>
 								<!-- 게시물이 출력될 영역 -->
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox"></li>
-										<li>qwer1234</li>
-										<li>b15486468546</li>
-										<li>1555-55-55</li>
-										<li>a51</li>
-									</ul>
-								</li>
-
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox"></li>
-										<li>qwer1234</li>
-										<li>b15486468546</li>
-										<li>1555-55-55</li>
-										<li>a51</li>
-									</ul>
-								</li>
-
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox"></li>
-										<li>qwer1234</li>
-										<li>b15486468546</li>
-										<li>1555-55-55</li>
-										<li>a51</li>
-									</ul>
-								</li>
-
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox"></li>
-										<li>qwer1234</li>
-										<li>b15486468546</li>
-										<li>1555-55-55</li>
-										<li>a51</li>
-									</ul>
-								<li>
+								<c:forEach var="bvo" items="${booklist}">
+									<li>
+										<ul>
+											<li><input type="checkbox" name="checkbox" value="checkbox"></li>
+											<li>${bvo.user_id}</li>
+											<li>${bvo.no }</li>
+											<li>${bvo.name }</li>
+											<li>${bvo.showDate }&nbsp;${bvo.showTime }</li>
+											<li>${bvo.seat_num }</li>
+										</ul>
+									</li>
+								</c:forEach>
 							</ul>
 						</li>
 					</ul>
-
-					<div>
-						<button class="playMeetingListBtn">예매취소</button>
-					</div>
-
-					<div class="playMeetingListSearch">
-						<form method="get" action="" class="playMeetingListSearchFrm">
-							<select name="searchKey" class="playMeetingListSearchKey">
-								<option value="subject">제목</option>
-								<option value="nickname">내용</option>
-								<option value="content">작성자</option>
-							</select> <input type="text" name="searchWord"
-								class="playMeetingListSearchTxt" placeholder="" /> <input
-								type="submit" value="" class="playMeetingListSearchBtn" />
-						</form>
-					</div>
-
 				</form>
+			<div id="pageDiv">
+				<ul id="page">
+					<c:if test="${apvo.booknowPage<=1 }">
+						<li>◀</li>
+					</c:if>
+					<c:if test="${apvo.booknowPage>1 }">
+						<li><a href="/admin?booknowPage=${apvo.booknowPage-1 }<c:if test='${apvo.booksearchWord!=null}'>&booksearchKey=${apvo.booksearchKey}&booksearchWord=${apvo.booksearchWord}</c:if>">◀</a></li>
+					</c:if>
+					<c:forEach var="p" begin="${apvo.bookstartPage }" end="${apvo.bookstartPage+apvo.bookonePageCount-1}">
+						<c:if test="${p<=apvo.booktotalPage }">
+							<li
+								<c:if test="${p==apvo.booknowPage}">
+									style="background-color:lavender;font-weight:bold;"
+								</c:if>
+							><a href="/admin?booknowPage=${p}<c:if test='${apvo.booksearchWord!=null}'>&booksearchKey=${apvo.booksearchKey}&booksearchWord=${apvo.booksearchWord}</c:if>">${p}</a></li>
+						</c:if>
+					</c:forEach>
+					<c:if test="${apvo.booknowPage==apvo.booktotalPage }">
+						<li>▶</li>
+					</c:if>
+					<c:if test="${apvo.booknowPage<apvo.booktotalPage }">
+						<li><a href="/admin?booknowPage=${apvo.booknowPage+1 }<c:if test='${apvo.booksearchWord!=null}'>&booksearchKey=${apvo.booksearchKey}&booksearchWord=${apvo.booksearchWord}</c:if>">▶</a></li>
+					</c:if>
+				</ul>
 			</div>
-			<div>
-				<!-- 				<div class="playMeetingTopContainer"> -->
-				<!-- 					<h1 class="playMeetingTopText">연극게시판</h1> -->
-				<!-- 				</div> -->
-
-				<!-- 				<p class="playMeetingWarning">※ 개인정보 유출 및 피해에 유의하시고 금전 및 물품 피해에 -->
-				<!-- 					대해 유의하십시오.</p> -->
-
-
-				<form method="post" action="" class="playMeetingTable">
-					<ul>
-						<li>
-							<ul class="playMeetingList">
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox" onclick="checkAll(this)"></li>
-										<li>아이디</li>
-										<li>예매번호</li>
-										<li>취소일자</li>
-										<li>환불여부</li>
-									</ul>
-								</li>
-								<!-- 게시물이 출력될 영역 -->
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox"></li>
-										<li>1234qwer</li>
-										<li>a1919191919</li>
-										<li>2022-07-29</li>
-										<li>취소완료</li>
-									</ul>
-								</li>
-
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox"></li>
-										<li>1234qwer</li>
-										<li>a1919191919</li>
-										<li>2022-07-29</li>
-										<li>취소완료</li>
-									</ul>
-								</li>
-
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox"></li>
-										<li>1234qwer</li>
-										<li>a1919191919</li>
-										<li>2022-07-29</li>
-										<li>취소완료</li>
-									</ul>
-								</li>
-
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox"></li>
-										<li>1234qwer</li>
-										<li>a1919191919</li>
-										<li>2022-07-29</li>
-										<li>취소진행중</li>
-									</ul>
-								<li>
-							</ul>
-						</li>
-					</ul>
-
-					<div>
-						<button class="playMeetingListBtn">삭제</button>
-					</div>
-
-					<div class="playMeetingListSearch">
-						<form method="get" action="" class="playMeetingListSearchFrm">
-							<select name="searchKey" class="playMeetingListSearchKey">
-								<option value="subject">제목</option>
-								<option value="nickname">내용</option>
-								<option value="content">작성자</option>
-							</select> <input type="text" name="searchWord"
-								class="playMeetingListSearchTxt" placeholder="" /> <input
-								type="submit" value="" class="playMeetingListSearchBtn" />
-						</form>
-					</div>
-
-				</form>
+				<div class="playMeetingListSearch">
+					<form method="get" action="/admin" class="playMeetingListSearchFrm">
+						<select name="booksearchKey" class="playMeetingListSearchKey">
+							<option value="user_id">아이디</option>
+							<option value="no">예매번호</option>
+							<option value="name">공원명</option>
+						</select> 
+						<input type="text" name="booksearchWord" class="playMeetingListSearchTxt" placeholder="" /> 
+						<input type="submit" value="" class="playMeetingListSearchBtn"/>
+					</form>
+				</div>
+<!-- 예약내역가져온 곳~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 			</div>
 		</div>
 		<div>

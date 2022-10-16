@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import com.team200.proj.vo.AdminBookPageVO;
+import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.PagingVO;
 import com.team200.proj.vo.UserVO;
@@ -25,11 +27,14 @@ public interface IndexDAO {
 	public int getTotalUser4(PagingVO pvo);
 
 	public List<UserVO> userList(PagingVO pVO);
+	public List<OrderlistVO> getReservation(AdminBookPageVO apvo);
+	public int totalReservation(AdminBookPageVO apvo);
+
 	public List<BoardVO> boardList(PagingVO pVO);
 
 	public int boardMultiDel(BoardVO vo);
 	public int boardMultiDel2(UserVO vo);
 	public List<BoardVO> reportList(PagingVO pVO);
 	public List<BoardVO> mreportList(PagingVO pVO);
-	
+
 }

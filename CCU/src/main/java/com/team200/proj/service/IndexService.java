@@ -2,6 +2,9 @@ package com.team200.proj.service;
 
 import java.util.List;
 
+
+import com.team200.proj.vo.AdminBookPageVO;
+import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.PagingVO;
 import com.team200.proj.vo.UserVO;
@@ -20,6 +23,8 @@ public interface IndexService {
 	public int getTotalUser4(PagingVO pvo);
 
 	public List<UserVO> userList(PagingVO pVO);
+	public List<OrderlistVO> getReservation(AdminBookPageVO apvo);
+	public int totalReservation(AdminBookPageVO apvo);
 	public List<BoardVO> boardList(PagingVO pVO);
 	public int boardMultiDel(BoardVO vo);
 	public int boardMultiDel2(UserVO vo);

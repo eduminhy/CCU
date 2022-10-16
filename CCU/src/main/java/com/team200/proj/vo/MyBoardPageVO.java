@@ -1,6 +1,6 @@
 package com.team200.proj.vo;
 
-public class PageVO {
+public class MyBoardPageVO {
 
 	private int nowPage=1;
 	private int onePageRecord=5;
@@ -25,7 +25,7 @@ public class PageVO {
 	public void setNowPage(int nowPage) {
 		this.nowPage = nowPage;
 		offsetPoint = (nowPage-1)*onePageRecord;
-		startPage = (nowPage-1)*onePageCount*onePageCount+1;
+		startPage = (nowPage-1)/onePageCount*onePageCount+1;
 	}
 	public int getOnePageRecord() {
 		return onePageRecord;

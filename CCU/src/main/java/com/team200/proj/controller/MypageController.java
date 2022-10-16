@@ -21,8 +21,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -31,7 +31,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.team200.proj.service.MypageService;
 import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.OrderlistVO;
-import com.team200.proj.vo.PageVO;
+import com.team200.proj.vo.MyBoardPageVO;
+import com.team200.proj.vo.MyBookPageVO;
+import com.team200.proj.vo.MyCommentPageVO;
+import com.team200.proj.vo.MyReviewPageVO;
 import com.team200.proj.vo.ReplyVO;
 import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.UserVO;
@@ -68,6 +71,13 @@ public class MypageController {
 		mav.addObject("vo", vo);
 		mav.setViewName("mypage/myInfoModify");
 		return mav;
+	}
+	//본인인증
+	@PostMapping("certificationOk")
+	public void certificationOk(@RequestParam("imp_uid") String imp_uid, HttpSession session) {
+		String id = (String)session.getAttribute("logId");
+		System.out.println(imp_uid);
+		service.certificationOk(imp_uid, id);
 	}
 	
 	//프로필 이미지파일 업로드
@@ -217,14 +227,18 @@ public class MypageController {
 	
 	//2. 나의 예매내역
 	@GetMapping("myReservation")
-	public ModelAndView myReservation(HttpSession session, String searchWord, String startdate, String enddate) {
+	public ModelAndView myReservation(HttpSession session, String searchWord, String startdate, String enddate, MyBookPageVO pvo) {
 		String id = (String)session.getAttribute("logId"); 
-		List<OrderlistVO> booklist = service.getBookInfo(id, searchWord, startdate, enddate);
+		List<OrderlistVO> booklist = service.getBookInfo(id, searchWord, startdate, enddate, pvo.getOnePageRecord(), pvo.getOffsetPoint());
 		List<ReviewVO> rlist = service.reviewOk(id);
+		pvo.setTotalRecord(service.totalBookRecord(id));
+		System.out.println(pvo.toString());
+		
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("rlist", rlist);
 		mav.addObject("booklist", booklist);
+		mav.addObject("pvo", pvo);
 		mav.setViewName("mypage/myReservation");
 		return mav;
 	}
@@ -251,13 +265,13 @@ public class MypageController {
 	
 	//4. 나의 게시글 페이지
 	@GetMapping("myBoard")
-	public ModelAndView myBoard(HttpSession session, PageVO pvo) {
+	public ModelAndView myBoard(HttpSession session, MyBoardPageVO pvo) {
 		String id = (String)session.getAttribute("logId");
-		pvo.setTotalRecord(service.totalRecord(pvo));
+		pvo.setTotalRecord(service.totalRecord(id));
 		System.out.println(pvo.toString());
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("bvo", service.myBoardList(id, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
 		mav.addObject("pvo", pvo);
-		mav.addObject("bvo", service.myBoardList(id));
 		mav.setViewName("mypage/myBoard");
 		return mav;
 	}
@@ -273,11 +287,13 @@ public class MypageController {
 	
 	//5. 나의 댓글 페이지
 	@GetMapping("myComment")
-	public ModelAndView myComment(HttpSession session) {
-		String id = (String)session.getAttribute("logId"); 
+	public ModelAndView myComment(HttpSession session, MyCommentPageVO pvo) {
+		String id = (String)session.getAttribute("logId");
+		pvo.setTotalRecord(service.totalCRecord(id));
 		ModelAndView mav = new ModelAndView();
 		
-		mav.addObject("rvo", service.myReplyList(id));
+		mav.addObject("rvo", service.myReplyList(id, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
+		mav.addObject("pvo", pvo);
 		mav.setViewName("mypage/myComment");
 		return mav;
 	}
@@ -292,12 +308,14 @@ public class MypageController {
 	
 	//6. 나의 후기 페이지
 	@GetMapping("myReview")
-	public ModelAndView myReview(HttpSession session) {
+	public ModelAndView myReview(HttpSession session, MyReviewPageVO pvo) {
 		String id = (String)session.getAttribute("logId");
-		List<ReviewVO> relist = service.getReviewInfo(id);
+		pvo.setTotalRecord(service.totalReviewRecord(id));
+		List<ReviewVO> relist = service.getReviewInfo(id, pvo.getOnePageRecord(), pvo.getOffsetPoint());
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("relist", relist);
+		mav.addObject("pvo", pvo);
 		mav.setViewName("mypage/myReview");
 		return mav;
 	}

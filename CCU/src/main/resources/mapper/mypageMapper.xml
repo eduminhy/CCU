@@ -6,6 +6,9 @@
 	<select id="getMyinfo" resultType="UserVO">
 		select id, img, nickname, username, tel, zipcode, road_name, addr, self_certification from user where id = #{param1} 
 	</select>
+	<update id="certificationOk">
+		update user set self_certification=1, self_certification_num=#{param1} where id=#{param2}
+	</update>
 	<select id="getImgname" resultType="string">
 		select img from user where id = #{param1}
 	</select>
@@ -20,6 +23,7 @@
 		from board 
 		a join showdb b on a.showdb_id=b.id 
 		where a.user_id = #{param1} order by a.id desc
+		limit ${param2} offset ${param3}
 	</select>
 	<delete id="myBoardDel">
 		delete from board
@@ -35,6 +39,7 @@
         inner join board b on a.board_id=b.id
         inner join showdb c on b.showdb_id = c.id
 		where a.user_id = #{param1} order by b.id desc, writedate desc 
+		limit ${param2} offset ${param3}
 	</select>
 	<delete id="myCommentDel">
 		delete from reply
@@ -58,6 +63,7 @@
 			and (showdate between date(#{param3}) and date(#{param4}))
 		</if>
 		order by d.writedate desc
+		limit ${param5} offset ${param6}
 	</select>
 	<select id="getMyFav" resultType="showVO">
 		select a.id, a.mainposter, a.name, date_format(a.startdate, '%Y.%m.%d') startdate, date_format(a.enddate, '%Y.%m.%d') enddate
@@ -73,6 +79,8 @@
 		select a.id, b.name, b.mainposter, a.show_id, a.content, a.rate, date_format(a.writedate, '%Y.%m.%d') writedate from review as a
 		inner join showdb as b on a.show_id=b.id
 		where a.user_id=#{param1}
+		order by writedate desc
+		limit ${param2} offset ${param3}
 	</select>
 	<delete id="myReviewDel">
 		delete from review
@@ -83,6 +91,15 @@
 		</where>
 	</delete>
 	<select id="totalRecord" resultType="int">
-		select count(id) cnt from board
+		select count(id) cnt from board where user_id=#{param1}
+	</select>
+	<select id="totalCRecord" resultType="int">
+		select count(id) cnt from reply where user_id=#{param1}
+	</select>
+	<select id="totalBookRecord" resultType="int">
+		select count(no) cnt from order_list where user_id=#{param1}
+	</select>
+	<select id="totalReviewRecord" resultType="int">
+		select count(id) cnt from review where user_id=#{param1}
 	</select>
 </mapper> 
