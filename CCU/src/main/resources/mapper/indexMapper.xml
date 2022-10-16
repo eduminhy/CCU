@@ -159,21 +159,19 @@
 	</delete>
 
 	<select id="getTotalUser3" resultType="int">
-		select count(id) cnt from
-		report
+		select count(id ) cnt from
+		report where type = 'review';
 
 	</select>
-	<select id="reportList" resultType="BoardVO">
-
-		select a.id, a.user_id, a.type, a.content, b.user_id ,b.content, b.show_id, b.order_list_no from report
-		inner join
-		review b on a.postNum = b.id where a.type = 'review'
+	<select id="reportList" resultType="ReportVO">
+		select a.id, a.user_id, a.type, a.content, b.user_id ,b.content, b.show_id showdb_id, b.order_list_no, a.postnum from report a
+		inner join review b on a.postNum = b.id where a.type = 'review';
 		
-		 date_format(a.writedate,
-		'%m-%d %h:%i') writedate, b.name showdb_id
-		from board a
-		inner join
-		showdb b on a.showdb_id = b.id
+<!-- 		 date_format(a.writedate, -->
+<!-- 		'%m-%d %h:%i') writedate, b.name showdb_id -->
+<!-- 		from board a -->
+<!-- 		inner join -->
+<!-- 		showdb b on a.showdb_id = b.id -->
 
 <!-- 		<if test='searchKey2== "name"'> -->
 <!-- 			where b.${searchKey2} like '%${searchWord2}%' -->
@@ -187,4 +185,17 @@
 		<!-- limit ${onePageRecord} offset ${offsetPoint} -->
 
 	</select>
+		<select id="mreportList" resultType="ReportVO">
+		select a.id, a.user_id, a.type, a.content, b.user_id ,b.content, b.showdb_id, a.postnum from report a
+		inner join board b on a.postNum = b.id where a.type = 'meet';
+		
+
+
+	</select>
+		<select id="getTotalUser4" resultType="int">
+		select count(id ) cnt from
+		report where type = 'meet';
+
+	</select>
+	
 </mapper>

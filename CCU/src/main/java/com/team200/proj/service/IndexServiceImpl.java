@@ -90,5 +90,15 @@ public class IndexServiceImpl implements IndexService {
 		// TODO Auto-generated method stub
 		return dao.reportList(pVO);
 	}
+	@Override
+	public List<BoardVO> mreportList(PagingVO pVO) {
+		// TODO Auto-generated method stub
+		return dao.mreportList(pVO);
+	}
 
+	@Override
+	public int getTotalUser4(PagingVO pvo) {
+		// TODO Auto-generated method stub
+		return dao.getTotalUser4(pvo);
+	}
 }

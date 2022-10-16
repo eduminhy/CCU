@@ -12,10 +12,34 @@ public class ReportVO {
 	private String rcontent;
 	private String type;
 	private int hit;
+	private String show_id;
+	
+	private int postnum;
 	
 	private String genre;
 	//여러개의 레코드 번호를 저장할 컬렉션
 	private List<Integer> noList;
+	private String order_list_no;
+	
+	
+	public int getPostnum() {
+		return postnum;
+	}
+	public void setPostnum(int postnum) {
+		this.postnum = postnum;
+	}
+	public String getOrder_list_no() {
+		return order_list_no;
+	}
+	public void setOrder_list_no(String order_list_no) {
+		this.order_list_no = order_list_no;
+	}
+	public String getShow_id() {
+		return show_id;
+	}
+	public void setShow_id(String show_id) {
+		this.show_id = show_id;
+	}
 	public int getId() {
 		return id;
 	}

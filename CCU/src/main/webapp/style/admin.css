@@ -152,3 +152,10 @@
 .UserDiv4>div, .UserDiv5>div{
 	width:12%;
 }
+.UserDiv6, .UserDiv7{
+	display:flex;
+	justify-content: space-between;
+}
+.UserDiv6>div, .UserDiv7>div{
+	width:12%;
+}
