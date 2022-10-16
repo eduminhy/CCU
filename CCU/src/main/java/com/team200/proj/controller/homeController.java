@@ -8,16 +8,19 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.team200.proj.Message;
 import com.team200.proj.service.IndexService;
 import com.team200.proj.service.MypageService;
+import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.PagingVO;
+import com.team200.proj.vo.UserVO;
 
 import okhttp3.Response;
 
@@ -59,16 +62,28 @@ public class homeController {
 
 	@GetMapping("/admin")
 	@ResponseBody
-	public ModelAndView admin(PagingVO pVO,HttpSession session) {
-		
+	public ModelAndView admin(PagingVO pVO, HttpSession session) {
+
 		System.out.println("admin");
-		String id = (String)session.getAttribute("logId"); 
+		String id = (String) session.getAttribute("logId");
 		mav = new ModelAndView();
 		System.out.println(service.getTotalUser(pVO));
 		pVO.setTotalRecord(service.getTotalUser(pVO));
+		pVO.setTotalRecord2(service.getTotalUser2(pVO));
 		mav.addObject("pVO", pVO);
-		mav.addObject("list",service.userList(pVO));
-		mav.setViewName("adminPage/admin");
+//		PagingVO pVO2 = new PagingVO();
+		mav.addObject("list", service.userList(pVO));
+
+		mav.addObject("blist", service.boardList(pVO));
+		System.out.println(pVO.toString());
+//		if (pVO.getSearchKey() == "") {
+//			mav.setViewName("adminPage/admin?view=user");
+//		} else if (pVO.getSearchKey2() == "") {
+//			mav.setViewName("adminPage/admin?view=board");
+//		} else {
+			mav.setViewName("adminPage/admin");
+//		}
+
 		return mav;
 	}
 
@@ -79,6 +94,31 @@ public class homeController {
 		mav.setViewName("testFolder/test");
 		return mav;
 	}
+
+	@PostMapping("/multiDel")
+	public ModelAndView multiDel(BoardVO vo) {
+//		int cnt = service.boardMultiDel(vo);
+//		System.out.println(cnt);
+		mav = new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		mav.addObject("data", "게시글 삭제가 완료되었습니다.");
+		mav.addObject("data2", "board");
+		mav.setViewName("Message");
+		return mav;
+	}
+
+	@PostMapping("/multiDel2")
+	public ModelAndView multiDel2(UserVO vo) {
+		int cnt = service.boardMultiDel2(vo);
+//		System.out.println(cnt);
+		mav = new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		mav.addObject("data", "유저 삭제가 완료되었습니다.");
+		mav.addObject("data2", "user");
+		mav.setViewName("Message");
+		return mav;
+	}
+
 //	@GetMapping("sms")
 //	@ResponseBody
 //	public ModelAndView sms() throws IOException {

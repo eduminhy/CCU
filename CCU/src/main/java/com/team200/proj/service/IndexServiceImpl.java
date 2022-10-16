@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team200.proj.dao.IndexDAO;
+import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.PagingVO;
 import com.team200.proj.vo.UserVO;
 import com.team200.proj.vo.festivalVO;
@@ -52,6 +53,30 @@ public class IndexServiceImpl implements IndexService {
 	public List<UserVO> userList(PagingVO pVO) {
 		// TODO Auto-generated method stub
 		return dao.userList(pVO);
+	}
+
+	@Override
+	public List<BoardVO> boardList(PagingVO pVO) {
+		// TODO Auto-generated method stub
+		return dao.boardList(pVO);
+	}
+
+	@Override
+	public int getTotalUser2(PagingVO pvo) {
+		// TODO Auto-generated method stub
+		return dao.getTotalUser2(pvo);
+	}
+
+	@Override
+	public int boardMultiDel(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return dao.boardMultiDel(vo);
+	}
+
+	@Override
+	public int boardMultiDel2(UserVO vo) {
+		// TODO Auto-generated method stub
+		return dao.boardMultiDel2(vo);
 	}
 
 }

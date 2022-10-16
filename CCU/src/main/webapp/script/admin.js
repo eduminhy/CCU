@@ -86,63 +86,215 @@ function checkAll(checkAll) {
 }
 //---------------------------------------------------------------------------------------------
 
+
+
+//  게시글 관련---------------------------------------------------------------------------------------------
 $(function() {
-	//후기작성 or 예약취소 버튼 생성
-	var statusArray = [];
-	var arrlength = $(".book>li:nth-of-type(6)").text().length;
-	var showStatus = $(".book>li:nth-of-type(6)").text();
-	var state = $(".book>li:nth-of-type(6)").text().replace(/^\s+|\s+$/gm, '');//공백제거한 상태
-	var stateStr = state.replaceAll("\n", "");//엔터 제거한 상태
-	var statelength = stateStr.length;
-	//console.log(stateStr.length);
-	//console.log(stateStr);
-	//console.log($.trim(showStatus));
-	//console.log("showstatus=>"+showStatus);
-	//console.log("arrlength=>"+arrlength);
-	//console.log(statelength);
-	for (var i = 0; i < statelength / 4; i++) {
-		statusArray[i] = stateStr.substring(4 * i, 4 * (i + 1));
-		console.log($(".showid").eq(i).val());
-		console.log($(".no").eq(i - 1).val())
-		//console.log(${bvo.no}.eq(i).val());
-		if (statusArray[i] == '관람완료') {
-			$(".book>li:nth-of-type(7):eq(" + i + ")").append("<input type='button' value='후기작성하기' class='reviewBtn' onclick='location.href=\"/show/showDetail?show_id=" + $(".showid").eq(i - 1).val() + "&no=" + $(".no").eq(i - 1).val() + "&stD=" + $(".stD").eq(i - 1).val() + "\"'/>");
-		} else if (statusArray[i] == '예약완료') {
-			//console.log("orderno=>");
-			$(".book>li:nth-of-type(7):eq(" + i + ")").append("<input type='button' value='티켓확인하기' class='checkBtn' onclick='location.href=\"/book/bookCheck?no=" + $(".no").eq(i - 1).val() + "\"'/>");
+	$(".searchFrm").submit(function() {
+		if ($(".searchWord").val() == "") {
+			alert("검색어를 입력하세요.");
+			return false;
 		}
+		;
+
+		return true;
+	});
+	$(".searchFrm2").submit(function() {
+		if ($(".searchWord2").val() == "") {
+			alert("검색어를 입력하세요.");
+			return false;
+		}
+		;
+
+		return true;
+	});
+	//리스트 전체 선택
+	$(".allChk").click(
+		function() {
+			$(".UserDiv2 input[type=checkbox]").prop(
+				"checked",
+				$(".allChk").prop("checked"));
+		});
+	$(".allChk2").click(
+		function() {
+			$(".UserDiv5 input[type=checkbox]").prop(
+				"checked",
+				$(".allChk2").prop("checked"));
+		});
+
+	//선택된 갯수를 구하여 여러개를 삭제하도록 한다.
+	$(".multiDel2").click(
+
+		function() {
+			console.log(112);
+			//체크갯수 확인
+			var countChk = 0;
+			$(".UserDiv5 input[name=noList]").each(
+				function(idx, obj) {
+					if (obj.checked) { //input테그가 체크상태일 경우 true 아니면 false
+						countChk++;
+					}
+				});
+			console.log(countChk);
+			if (countChk <= 0) {
+				alert("삭제할 레코드를 선택후 삭제해주세요");
+				return false;
+			}
+			;
+			var con_test = confirm("정말로 게시글을 삭제하시겠습니까?.");
+			if (con_test == true) {
+				alert("삭제합니다.");
+				$("#listFrm2").submit();
+			}
+			else if (con_test == false) {
+				alert.write("취소합니다.");
+			}
+			$("#listFrm2").submit();
+		});
+	$(".multiDel").click(
+
+		function() {
+			console.log(112);
+			//체크갯수 확인
+			var countChk = 0;
+			$(".UserDiv2 input[name=noList]").each(
+				function(idx, obj) {
+					if (obj.checked) { //input테그가 체크상태일 경우 true 아니면 false
+						countChk++;
+					}
+				});
+			console.log(countChk);
+			if (countChk <= 0) {
+				alert("삭제할 레코드를 선택후 삭제해주세요");
+				return false;
+			}
+			;
+			var con_test = confirm("정말로 해당유저 기록을 삭제하시겠습니까?.");
+			if (con_test == true) {
+				alert("삭제합니다.");
+				$("#listFrm").submit();
+			}
+			else if (con_test == false) {
+				alert.write("취소합니다.");
+			}
+			$("#listFrm").submit();
+		});
+});
+//---------------------------------------------------------------------------------------------
+$(document).ready(function() {
+	//var testName = $('#rating_1_star5').attr("name");
+	//var rating = $("input[name='"+testName+"']:checked").val();
+	//var aaa = "1.0";
+	$(".UserDiv3").hide();
+	//	$(".UserDiv3[name='"+aaa+"']").hide();
+	var aaa = "1.0"
+	//	console.log($(".UserDiv2 [name='1']").show());
+	$(".UserDiv3[name='" + aaa + "']").show();
+	$(".divdivdiv").click(function() {
+		$(".UserDiv3").hide();
+		var aaa = $(this).attr('name');
+		console.log(aaa)
+		aaa += ".0"
+		console.log(aaa)
+		$(".UserDiv3[name='" + aaa + "']").show();
+	});
+	if ($(".h4").attr('name') != "") {
+		var firstDiv2 = 4;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
+
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv2).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv2)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv2).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv2).children().first().css("background", "#666666").css("color", "#ffffff");
+		//		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv2).css("background", "#666666").css("color", "#ffffff");
+		//		console.log($(".adminSubmenu").eq(2))
+
+	}
+		if ($(".h3").attr('name') != "") {
+		var firstDiv2 = 2;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
+
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv2).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv2)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv2).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv2).children().first().css("background", "#666666").css("color", "#ffffff");
+		//		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv2).css("background", "#666666").css("color", "#ffffff");
+		//		console.log($(".adminSubmenu").eq(2))
+
 	}
 
-	//날짜 기간 검색
-	$('#date').daterangepicker({
-		linkedCalendars: false,
-		//autoUpdateInput: false,
-		"locale": {
-			"format": "YYYY.MM.DD",
-			"separator": " ~ ",
-			"applyLabel": "적용",
-			"cancelLabel": "취소",
-			"fromLabel": "From",
-			"toLabel": "To",
-			"customRangeLabel": "Custom",
-			"daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
-			"monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
-		},
-	}, function(start, end, label) {
-		console.log('선택된 날짜: ' + start.format('YYYY.MM.DD') + ' to ' + end.format('YYYY.MM.DD'));
-		$("#date").val(start.format('YYYY.MM.DD') + " ~ " + end.format('YYYY.MM.DD'));
-		$("#startdate").val(start.format('YYYY.MM.DD'));
-		$("#enddate").val(end.format('YYYY.MM.DD'));
-	});
+//	$(".UserDiv6").hide();
+	//	$(".UserDiv3[name='"+aaa+"']").hide();
+//	var aaa = "1.0"
+	//	console.log($(".UserDiv2 [name='1']").show());
+//	$(".UserDiv6[name='" + aaa + "']").show();
+//	$(".divdivdiv2").click(function() {
+//		$(".UserDiv6").hide();
+//		var aaa = $(this).attr('name');
+//		console.log(aaa)
+//		aaa += ".0"
+//		console.log(aaa)
+//		$(".UserDiv6[name='" + aaa + "']").show();
+//	});
+	//	if ($(".h3").attr('name') == ""&& &&) {
+	//		firstDiv = ($(this).index());
+	//		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
+	//	
+	//		$(".adminSubmenuContent>div").hide();
+	//		$(".adminSubmenuContent>div").eq($(this).index()).show().css("background", "#ffffff");
+	//		$(".adminContent>div").show();
+	//		$(".adminContent>div>div").show();
+	//		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv)).hide();
+	//		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv).children().first()).hide();
+	//		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+	//		$(".adminSubmenuContent>div").eq(firstDiv).children().first().css("background", "#666666").css("color", "#ffffff");
+	//		//		$(".adminContent>div>div").eq(0).children().first().show();
+	//		$(".adminSubmenu>div").eq(2).css("background", "#666666").css("color", "#ffffff");
+	//		console.log($(".adminSubmenu").eq(2))
+	//
+	//	}
+	//	$(this).attr('name');
+	//	$(".divdivdiv11").click(function() { console.log(11) });
+	if ($(".adminBody").attr('name') == "board") {
+		var firstDiv2 = 2;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
 
-	$(".searchBtn").click(function() {
-		$("#searchFrm").submit();
-	});
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv2).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv2)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv2).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv2).children().first().css("background", "#666666").css("color", "#ffffff");
+		//		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv2).css("background", "#666666").css("color", "#ffffff");
+		//		console.log($(".adminSubmenu").eq(2))
+	}
+	if ($(".adminBody").attr('name') == "user") {
+		var firstDiv2 = 4;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
 
-
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv2).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv2)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv2).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv2).children().first().css("background", "#666666").css("color", "#ffffff");
+		//		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv2).css("background", "#666666").css("color", "#ffffff");
+		//		console.log($(".adminSubmenu").eq(2))
+	}
 });
-
-
-//---------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------
-

@@ -17,12 +17,14 @@
 	src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
-<div class="adminBody">
+<div class="adminBody" name="${param.view }">
 	<div style="line-height: 100%;">
 		<br>
 
 	</div>
-	<div class="adminTitle">- 관리자페이지 -</div>
+	<div class="adminTitle">
+		<a href="/admin">- 관리자페이지 -</a>
+	</div>
 	<br />
 	<div class="adminSubmenu">
 		<div>통계</div>
@@ -258,86 +260,100 @@
 		</div>
 		<div>
 			<div>
-				<form method="post" action="" class="playMeetingTable">
-					<ul>
-						<li>
-							<ul class="playMeetingList2">
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox" onclick="checkAll(this)"></li>
-										<li>게시글번호</li>
-										<li>아이디</li>
-										<li>제목</li>
-										<li>작성일시</li>
-									</ul>
-								</li>
-								<!-- 게시물이 출력될 영역 -->
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox"></li>
-										<li>1234</li>
-										<li>qwer1234</li>
-										<li style="text-align: left;">제목제목제목제목제목제목제목111111111111111111111</li>
-										<li>2022-07-29</li>
-									</ul>
-								</li>
 
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox"></li>
-										<li>1234</li>
-										<li>qwer1234</li>
-										<li style="text-align: left;">제목제목제목제목제목제목제</li>
-										<li>2022-07-29</li>
-									</ul>
-								</li>
+				<div class="container">
+					<h1>게시글 리스트</h1>
+					<h4 class="h3" name="${pVO.searchKey2}">검색분류:${pVO.searchKey2}
+						/ 검색어: ${pVO.searchWord2}</h4>
+					<div>${pVO.totalPage2 }/${pVO.nowPage2},총레코드수:${pVO.totalRecord2 }</div>
+					<fmt:formatNumber value="${pVO.totalRecord2 div 10}" />
+					<div>
+						<input type="button" value="선택삭제" class="multiDel2" />
+					</div>
+					<!-- 	<form method="post" action="/board/multiDel" id="listFrm"> -->
+					<!-- 		<ul id="board"> -->
+					<c:set var="username4">${pVO.totalRecord2  div 10}</c:set>
+					<c:set var="username5" value="0" />
 
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox"></li>
-										<li>1234</li>
-										<li>qwer1234</li>
-										<li style="text-align: left;">제목제목제목제목제목제목제</li>
-										<li>2022-07-29</li>
-									</ul>
-								</li>
+					<c:set var="username6">10</c:set>
 
-								<li>
-									<ul>
-										<li><input type="checkbox" name="checkbox"
-											value="checkbox"></li>
-										<li>1234</li>
-										<li>qwer1234</li>
-										<li style="text-align: left;">제목제목제목제목제목제목제</li>
-										<li>2022-07-29</li>
-									</ul>
-								<li>
-							</ul>
-						</li>
-					</ul>
+					<form method="post" action="/multiDel" id="listFrm2">
+						<div class="UserDiv4">
+							<div>
+								<input type="checkbox" class="allChk2" />
+							</div>
+							<div>BoardNO</div>
+							<div>UserName</div>
+							<div>ShowName</div>
+							<div>Title</div>
+							<div>Content</div>
+							<div>Writedate</div>
+							<div>Hit</div>
+						</div>
+
+
+						<c:forEach var="no" begin="1"
+							end="${username4+(1-(username4%1))%1}">
+							<div class="UserDiv6" name="${username6/10}">
+								<c:forEach var="vo" items="${blist }" begin="${username5}"
+									end="${username6-1}" step="1" varStatus="status">
+									<div class="UserDiv5"">
+
+										<div>
+											<input type="checkbox" name="noList" value="${vo.id}" />
+										</div>
+
+										<div>${vo.id}</div>
+										<div>${vo.user_id}</div>
+										<div>${vo.showdb_id}</div>
+										<div>${vo.title}</div>
+										<div>${vo.content}</div>
+										<div>${vo.writedate}</div>
+										<div>${vo.hit}</div>
+									</div>
+
+
+								</c:forEach>
+							</div>
+							<c:set var="username5" value="${username6}" />
+							<c:set var="username6">${username6+10}</c:set>
+
+						</c:forEach>
+
+					</form>
+					<!-- 		</ul> -->
+					<!-- 	</form> -->
+					<div>
+						<div id="page">
+							<!-- 페이지번호 -->
+
+							<div>prev</div>
+							<c:forEach var="p" begin="${pVO.startPage2 }"
+								end="${pVO.startPage2+pVO.onePageCount2-1 }">
+								<!-- 출력할 페이지번호 총페이지 수보다 작거나 같을때만 출력함 -->
+								<c:if test="${p<=pVO.totalPage2 }">
+									<div class="divdivdiv2" name="${p}">${p}</div>
+								</c:if>
+							</c:forEach>
+
+							<div>next</div>
+						</div>
+					</div>
 
 					<div>
-						<button class="playMeetingListBtn">삭제</button>
-
-					</div>
-
-					<div class="playMeetingListSearch">
-						<form method="get" action="" class="playMeetingListSearchFrm">
-							<select name="searchKey" class="playMeetingListSearchKey">
-								<option value="subject">제목</option>
-								<option value="nickname">내용</option>
-								<option value="content">작성자</option>
-							</select> <input type="text" name="searchWord"
-								class="playMeetingListSearchTxt" placeholder="" /> <input
-								type="submit" value="" class="playMeetingListSearchBtn" />
+						<form method="get" action="/admin" class="searchFrm2">
+							<select name="searchKey2">
+								<option value="user_id">회원ID</option>
+								<option value="name">공연명</option>
+								<option value="title">글제목</option>
+								<option value="content">글내용</option>
+							</select> <input type="text" name="searchWord2" class="searchWord2" /> <input
+								type="submit" value="Search" />
 						</form>
-					</div>
+						
 
-				</form>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div>
@@ -347,157 +363,97 @@
 		<!-- 			<div>99</div> -->
 		<!-- 		</div> -->
 		<div>
-			<div><style>
-/*목록*/
-#board {
-	overflow: auto;
-}
+			<div>
 
-#board li {
-	float: left;
-	line-height: 40px;
-	border-bottom: 1px solid #ddd;
-	width: 10%;
-}
+				<div class="container">
+					<h1>회원 리스트</h1>
+					<h4 class="h4" name="${pVO.searchKey}">검색분류:${pVO.searchKey} /
+						검색어: ${pVO.searchWord}</h4>
+					<div>${pVO.totalPage }/${pVO.nowPage},총레코드수:${pVO.totalRecord }</div>
+					<fmt:formatNumber value="${pVO.totalRecord div 10}" />
+					<div>
+						<input type="button" value="선택삭제" class="multiDel" />
+					</div>
+					<!-- 	<form method="post" action="/board/multiDel" id="listFrm"> -->
+					<!-- 		<ul id="board"> -->
+					<c:set var="username1">${pVO.totalRecord  div 10}</c:set>
+					<c:set var="username2" value="0" />
 
-#board li:nth-child(6n+1) {
-	width: 5%;
-}
+					<c:set var="username3">10</c:set>
 
-/* #board li:nth-child(6n+3) { */
-/* 	width: 55%; */
-/* } */
+					<form method="post" action="/multiDel2" id="listFrm">
+						<div class="UserDiv1">
+							<div>
+								<input type="checkbox" class="allChk" />
+							</div>
+							<div>User ID</div>
+							<div>UserName</div>
+							<div>Role</div>
+							<div>register_date</div>
+							<div>Tel</div>
+							<div>Gender</div>
+							<div>Birth</div>
+						</div>
+						<c:forEach var="no" begin="1"
+							end="${username1+(1-(username1%1))%1}">
+							<div class="UserDiv3" name="${username3/10}">
+								<c:forEach var="vo" items="${list }" begin="${username2}"
+									end="${username3-1}" step="1" varStatus="status">
+									<div class="UserDiv2"">
 
-/* #board li:nth-child(6n+3)>div { */
-/* 	float: left; */
-/* } */
+										<div>
+											<input type="checkbox" name="noList" value="${vo.id}" />
+										</div>
 
-/* #board li:nth-child(6n+3)>div:first-child{ */
-/* 	width: 55%; */
-/* 	white-space: nowrap; */
-/* 	overflow: hidden; */
-/* 	text-overflow: ellipsis; */
-/* } */
-/*페이지*/
-#page li {
-	float: left;
-	padding: 10px;
-}
-</style>
-<script>
-	$(function() {
-		$("#searchFrm").submit(function() {
-			if ($("#searchWord").val() == "") {
-				alert("검색어를 입력하세요.");
-				return false;
-			}
-			;
+										<div>${vo.id}</div>
+										<div>${vo.username}</div>
+										<div>${vo.role}</div>
+										<div>${vo.register_date}</div>
+										<div>${vo.tel}</div>
+										<div>${vo.gender}</div>
+										<div>${vo.birth}</div>
+									</div>
 
-			return true;
-		});
-		//리스트 전체 선택
-		$("#allChk").click(
-				function() {
-					$("#board input[type=checkbox]").prop("checked",
-							$("#allChk").prop("checked"));
-				});
 
-		//선택된 갯수를 구하여 여러개를 삭제하도록 한다.
-		$("#multiDel").click(function() {
-			//체크갯수 확인
-			var countChk = 0;
-			$("#board input[name=noList]").each(function(idx, obj) {
-				if (obj.checked) { //input테그가 체크상태일 경우 true 아니면 false
-					countChk++;
-				}
-			});
-			console.log(countChk);
-			if (countChk <= 0) {
-				alert("삭제할 레코드를 선택후 삭제해주세요");
-				return false;
-			}
-			;
+								</c:forEach>
+							</div>
+							<c:set var="username2" value="${username3}" />
+							<c:set var="username3">${username3+10}</c:set>
 
-			$("#listFrm").submit();
-		});
-	});
-	//if("#aa"==0){
-	//			
-	//}
-</script>
-<div class="container">
-	<h1>게시판 리스트</h1>
-	<c:if test="${logStatus=='Y' }">
-		<div>
-			<a href="/board/boardForm">글쓰기</a>
-		</div>
-	</c:if>
-	<div>${pVO.totalPage }/${pVO.nowPage},총레코드수:${pVO.totalRecord }</div>
-	<div>
-		<input type="button" value="선택삭제" id="multiDel" />
-	</div>
-	<form method="post" action="/board/multiDel" id="listFrm">
-		<ul id="board">
-			<li><input type="checkbox" id="allChk" /></li>
-							<li>User ID</li>
-							<li>UserName</li>
-							<li>Role</li>
-							<li>register_date</li>
-							<li>Tel</li>
-							<li>Gender</li>
-							<li>Birth</li>
+						</c:forEach>
+					</form>
+					<!-- 		</ul> -->
+					<!-- 	</form> -->
+					<div>
+						<div id="page">
+							<!-- 페이지번호 -->
 
-			<c:forEach var="vo" items="${list }">
+							<div>prev</div>
+							<c:forEach var="p" begin="${pVO.startPage }"
+								end="${pVO.startPage+pVO.onePageCount-1 }">
+								<!-- 출력할 페이지번호 총페이지 수보다 작거나 같을때만 출력함 -->
+								<c:if test="${p<=pVO.totalPage }">
+									<div class="divdivdiv" name="${p}">${p}</div>
+								</c:if>
+							</c:forEach>
 
-			</c:forEach>
-		</ul>
-	</form>
-	<div>
-		<ul id="page">
-			<!-- 페이지번호 -->
-			<c:if test="${pVO.nowPage<=1 }">
-				<!-- 이전페이지가 없을 때 -->
-				<li>prev</li>
-			</c:if>
-			<c:if test="${pVO.nowPage>1 }">
-				<!-- 이전페이지가 있을때 -->
-				<li><a
-					href="/board/boardList?nowPage=${pVO.nowPage-1 }<c:if test='${pVO.searchWord!=null }'>&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>">prev</a></li>
-			</c:if>
-			<!-- 1 	5		5+1-1=5
-	11	15 		11+5-1=15
--->
-			<c:forEach var="p" begin="${pVO.startPage }"
-				end="${pVO.startPage+pVO.onePageCount-1 }">
-				<!-- 출력할 페이지번호 총페이지 수보다 작거나 같을때만 출력함 -->
-				<c:if test="${p<=pVO.totalPage }">
-					<li
-						<c:if test="${p==pVO.nowPage }">
-					style="background-color:#f00;color:#fff;"
-					</c:if>><a
-						href="/board/boardList?nowPage=${p}<c:if test='${pVO.searchWord!=null }'>&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>">${p}</a></li>
-				</c:if>
-			</c:forEach>
-			<c:if test="${pVO.nowPage==pVO.totalPage }">
-				<li>next</li>
-			</c:if>
-			<c:if test="${pVO.nowPage<pVO.totalPage }">
-				<li><a
-					href="/board/boardList?nowPage=${pVO.nowPage+1 }<c:if test='${pVO.searchWord!=null }'>&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>">next</a></li>
-			</c:if>
-		</ul>
-	</div>
-	<div>
-		<form method="get" action="/board/boardList" id="searchFrm">
-			<select name="searchKey">
-				<option value="subject">제목</option>
-				<option value="userid">작성자</option>
-				<option value="content">글내용</option>
-			</select> <input type="text" name="searchWord" id="searchWord" /> <input
-				type="submit" value="Search" />
-		</form>
-	</div>
-</div></div>
+							<div>next</div>
+						</div>
+					</div>
+
+					<div>
+						<form method="get" action="/admin" class="searchFrm">
+							<select name="searchKey">
+								<option value="id">회원ID</option>
+								<option value="username">회원명</option>
+								<option value="role">회원역활</option>
+							</select> <input type="text" name="searchWord" class="searchWord" /> <input
+								type="submit" value="Search" />
+						</form>
+
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
