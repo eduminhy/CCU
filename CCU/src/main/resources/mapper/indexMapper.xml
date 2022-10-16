@@ -157,4 +157,34 @@
 			</foreach>
 		</where>
 	</delete>
+
+	<select id="getTotalUser3" resultType="int">
+		select count(id) cnt from
+		report
+
+	</select>
+	<select id="reportList" resultType="BoardVO">
+
+		select a.id, a.user_id, a.type, a.content, b.user_id ,b.content, b.show_id, b.order_list_no from report
+		inner join
+		review b on a.postNum = b.id where a.type = 'review'
+		
+		 date_format(a.writedate,
+		'%m-%d %h:%i') writedate, b.name showdb_id
+		from board a
+		inner join
+		showdb b on a.showdb_id = b.id
+
+<!-- 		<if test='searchKey2== "name"'> -->
+<!-- 			where b.${searchKey2} like '%${searchWord2}%' -->
+<!-- 		</if> -->
+<!-- 		<if test='searchKey2!= "name"'> -->
+<!-- 			<if test='searchWord2!=null'> -->
+<!-- 				where a.${searchKey2} like '%${searchWord2}%' -->
+<!-- 			</if> -->
+<!-- 		</if> -->
+
+		<!-- limit ${onePageRecord} offset ${offsetPoint} -->
+
+	</select>
 </mapper>

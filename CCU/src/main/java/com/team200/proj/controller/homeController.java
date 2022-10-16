@@ -20,6 +20,7 @@ import com.team200.proj.service.IndexService;
 import com.team200.proj.service.MypageService;
 import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.PagingVO;
+import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.UserVO;
 
 import okhttp3.Response;
@@ -67,21 +68,27 @@ public class homeController {
 		System.out.println("admin");
 		String id = (String) session.getAttribute("logId");
 		mav = new ModelAndView();
+//		ReviewVO rvO = new ReviewVO();
 		System.out.println(service.getTotalUser(pVO));
 		pVO.setTotalRecord(service.getTotalUser(pVO));
 		pVO.setTotalRecord2(service.getTotalUser2(pVO));
+		pVO.setTotalRecord3(service.getTotalUser3(pVO));
 		mav.addObject("pVO", pVO);
 //		PagingVO pVO2 = new PagingVO();
 		mav.addObject("list", service.userList(pVO));
 
 		mav.addObject("blist", service.boardList(pVO));
+		mav.addObject("rlist", service.reportList(pVO));
 		System.out.println(pVO.toString());
 //		if (pVO.getSearchKey() == "") {
 //			mav.setViewName("adminPage/admin?view=user");
 //		} else if (pVO.getSearchKey2() == "") {
 //			mav.setViewName("adminPage/admin?view=board");
 //		} else {
-			mav.setViewName("adminPage/admin");
+		
+
+		
+		mav.setViewName("adminPage/admin");
 //		}
 
 		return mav;

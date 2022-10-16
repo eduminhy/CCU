@@ -21,10 +21,12 @@ public interface IndexDAO {
 	public List<showVO> outputpopularDWMData(int a,String b);
 	public int getTotalUser(PagingVO pvo);
 	public int getTotalUser2(PagingVO pvo);
+	public int getTotalUser3(PagingVO pvo);
 	public List<UserVO> userList(PagingVO pVO);
 	public List<BoardVO> boardList(PagingVO pVO);
 
 	public int boardMultiDel(BoardVO vo);
 	public int boardMultiDel2(UserVO vo);
+	public List<BoardVO> reportList(PagingVO pVO);
 	
 }

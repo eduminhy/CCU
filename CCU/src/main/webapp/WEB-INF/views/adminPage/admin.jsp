@@ -30,9 +30,10 @@
 		<div>통계</div>
 		<div>예매관리</div>
 		<div>게시판관리</div>
-		<div>QnA 관리</div>
-		<!-- 		<div>1:1문의 관리</div> -->
+		<div>1:1문의 관리</div>
+				
 		<div>회원관리</div>
+		<div>신고관리</div>
 	</div>
 	<div style="line-height: 50%;">
 		<br>
@@ -53,15 +54,16 @@
 			<div>게시판관리</div>
 		</div>
 		<div>
-			<div>QnA관리</div>
+			<div>1:1문의 관리</div>
 
 		</div>
-		<!-- 		<div> -->
-		<!-- 			<div>문의관리</div> -->
 
-		<!-- 		</div> -->
 		<div>
 			<div>회원관리</div>
+
+		</div>
+		<div>
+			<div>신고관리</div>
 
 		</div>
 	</div>
@@ -290,7 +292,7 @@
 							<div>Writedate</div>
 							<div>Hit</div>
 						</div>
-				
+
 
 						<c:forEach var="no" begin="1"
 							end="${username4+(1-(username4%1))%1}">
@@ -317,7 +319,7 @@
 							</div>
 							<c:set var="username5" value="${username6}" />
 							<c:set var="username6">${username6+10}</c:set>
-				
+
 
 						</c:forEach>
 
@@ -351,7 +353,7 @@
 							</select> <input type="text" name="searchWord2" class="searchWord2" /> <input
 								type="submit" value="Search" />
 						</form>
-						
+
 
 					</div>
 				</div>
@@ -455,6 +457,9 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div>
+			<div>99</div>
 		</div>
 	</div>
 </div>

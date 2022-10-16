@@ -26,7 +26,82 @@ public class PagingVO {
 	private int startPage2 =1;
 	private int onePageCount2 = 5;
 	
+	private String searchKey3;
+	private String searchWord3;
+	
+	private int nowPage3 = 1;//현재페이지 정보
+	private int onePageRecord3 =10;//한페이지에 출력할 레코드 수
+	private int totalRecord3;//총 레코드 수
+	private int totalPage3;//총 페이지 수
+	private int offsetPoint3;//페이지레코드 선택할 위치
+	//페이지번호
+	private int startPage3 =1;
+	private int onePageCount3 = 5;
 
+
+	public String getSearchKey3() {
+		return searchKey3;
+	}
+	public void setSearchKey3(String searchKey3) {
+		this.searchKey3 = searchKey3;
+	}
+	public String getSearchWord3() {
+		return searchWord3;
+	}
+	public void setSearchWord3(String searchWord3) {
+		this.searchWord3 = searchWord3;
+	}
+	public int getOnePageRecord3() {
+		return onePageRecord3;
+	}
+	public void setOnePageRecord3(int onePageRecord3) {
+		this.onePageRecord3 = onePageRecord3;
+	}
+	public int getTotalRecord3() {
+		return totalRecord3;
+	}
+	public void setTotalRecord3(int totalRecord3) {
+		this.totalRecord3 = totalRecord3;
+		//총페이지수 구하기
+		totalPage3 = totalRecord3/onePageRecord3;
+		if(totalRecord3%onePageRecord3!=0) {
+			totalPage3++;
+		}
+	}
+	public int getTotalPage3() {
+		return totalPage3;
+	}
+	public void setTotalPage3(int totalPage3) {
+		this.totalPage3 = totalPage3;
+	}
+	public int getOffsetPoint3() {
+		return offsetPoint3;
+	}
+	public void setOffsetPoint3(int offsetPoint3) {
+		this.offsetPoint3 = offsetPoint3;
+	}
+	public int getStartPage3() {
+		return startPage3;
+	}
+	public void setStartPage3(int startPage3) {
+		this.startPage3 = startPage3;
+	}
+	public int getOnePageCount3() {
+		return onePageCount3;
+	}
+	public void setOnePageCount3(int onePageCount3) {
+		this.onePageCount3 = onePageCount3;
+	}
+	public int getNowPage3() {
+		return nowPage3;
+	}
+	public void setNowPage3(int nowPage3) {
+		this.nowPage3 = nowPage3;
+		//선택레코드 시작위치
+		offsetPoint3 = (nowPage3-1)*onePageRecord3;
+		//표시할 페이지의 시작번호
+		startPage3 = (nowPage3-1)/onePageCount3*onePageCount3+1;
+	}
 	@Override
 	public String toString() {
 		return "PagingVO [nowPage=" + nowPage + ", onePageRecord=" + onePageRecord + ", totalRecord=" + totalRecord
