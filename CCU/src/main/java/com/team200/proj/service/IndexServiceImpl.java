@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team200.proj.dao.IndexDAO;
+import com.team200.proj.vo.AdminBookPageVO;
+import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.PagingVO;
 import com.team200.proj.vo.UserVO;
 import com.team200.proj.vo.festivalVO;
@@ -54,4 +56,15 @@ public class IndexServiceImpl implements IndexService {
 		return dao.userList(pVO);
 	}
 
+	@Override
+	public List<OrderlistVO> getReservation(AdminBookPageVO apvo) {
+		return dao.getReservation(apvo);
+	}
+
+	@Override
+	public int totalReservation(AdminBookPageVO apvo) {
+		return dao.totalReservation(apvo);
+	}
+
+	
 }

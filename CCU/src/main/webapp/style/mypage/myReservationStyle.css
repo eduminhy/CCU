@@ -27,7 +27,7 @@
 	.book li:nth-child(7n+6){width:10%;}
 	.book li:nth-child(7n+7){width:15%;}
 	#bookList>li:first-child>ul>li{margin-top:30px; background-color:#E0E0E0; font-weight:bold; border-top:2px solid #7F7F7F;}
-	#bookList>li:last-child>ul>li{margin-bottom:80px; border-bottom:2px solid #7F7F7F;}
+	#bookList>li:last-child>ul>li{margin-bottom:5px; border-bottom:2px solid #7F7F7F;}
 	
 	#bookListSearch{float:left; margin:10px 0 30px 0;}
 	#searchWord{
@@ -49,3 +49,11 @@
 	}
 	#searchFrm>span{margin:10px 10px 0 10px; padding:5px 15px; border:1px solid lavender; border-radius:20px; background-color:lavender; color:#440099; font-weight:bold;}
 	.reviewBtn, .checkBtn{border:none; background-color:lavender; color:#440099; font-weight:bold; font-size:13px; border-radius:10px; padding:5px; cursor: pointer;}
+
+	#page li{
+	overflow:auto; float:left; padding:10px;
+	font-size:18px;
+	margin-top:10px;
+	margin-bottom:80px;
+	}
+	#page li:first-child{margin-left:525px;}

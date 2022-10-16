@@ -1,6 +1,7 @@
 package com.team200.proj.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,7 +9,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.team200.proj.service.IndexService;
 import com.team200.proj.service.MypageService;
+import com.team200.proj.vo.AdminBookPageVO;
+import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.PagingVO;
 
 import okhttp3.Response;
@@ -59,19 +62,26 @@ public class homeController {
 
 	@GetMapping("/admin")
 	@ResponseBody
-	public ModelAndView admin(PagingVO pVO,HttpSession session) {
+	public ModelAndView admin(PagingVO pVO,HttpSession session, AdminBookPageVO apvo) {
 		
 		System.out.println("admin");
 		String id = (String)session.getAttribute("logId"); 
+		List<OrderlistVO> booklist = service.getReservation(apvo);
+		
 		mav = new ModelAndView();
 		System.out.println(service.getTotalUser(pVO));
 		pVO.setTotalRecord(service.getTotalUser(pVO));
 		mav.addObject("pVO", pVO);
 		mav.addObject("list",service.userList(pVO));
+		apvo.setBooktotalRecord(service.totalReservation(apvo));
+		System.out.println(service.totalReservation(apvo));
+		mav.addObject("apvo", apvo);
+		mav.addObject("booklist", booklist);
 		mav.setViewName("adminPage/admin");
 		return mav;
 	}
 
+	
 	@GetMapping("/test")
 	public ModelAndView test() {
 		System.out.println("test");

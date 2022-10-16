@@ -100,4 +100,32 @@
 		limit ${onePageRecord} offset ${offsetPoint}
 
 	</select>
+	
+	<select id="getReservation" resultType="OrderlistVO">
+		select a.no, a.user_id, date_format(a.writedate, '%Y.%m.%d %h:%i') writedate, date_format(b.showDate, '%Y.%m.%d') showDate, b.showTime, c.seat_num, d.name 
+		from order_list a
+		inner join scheduleDate as b on a.scheduleDate_id=b.id
+		inner join seat as c on a.no=c.order_list_no
+		inner join showdb as d on b.showdb_id=d.id
+		<if test="booksearchWord!=null">
+			where ${booksearchKey} like '%${booksearchWord}%'
+			<!-- <if test="booksearchKey=='id'">
+			where a.user_id like '%${booksearchWord}%'
+			</if>
+			<if test="booksearchKey=='no'">
+			where a.no like '%${booksearchWord}%'
+			</if>
+			<if test="booksearchKey=='name'">
+			where d.id like '%${booksearchWord}%'
+			</if> -->
+		</if>
+		order by a.writedate desc
+		limit ${bookonePageRecord} offset ${bookoffsetPoint}
+	</select>
+	<select id="totalReservation" resultType="int">
+		select count(no) cnt from order_list
+		<if test='booksearchWord!=null'>
+			where ${booksearchKey} like '%${booksearchWord}%'
+		</if>
+	</select>
 </mapper>

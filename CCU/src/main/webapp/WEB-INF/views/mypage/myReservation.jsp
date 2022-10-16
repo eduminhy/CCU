@@ -29,7 +29,7 @@
 			//console.log(${bvo.no}.eq(i).val());
 			if(statusArray[i]=='관람완료'){		
 					$(".book>li:nth-of-type(7):eq("+i+")").append("<input type='button' value='후기작성하기' class='reviewBtn' onclick='location.href=\"/show/showDetail?show_id="+$(".showid").eq(i-1).val()+"&no="+$(".no").eq(i-1).val()+"&stD="+$(".stD").eq(i-1).val()+"\"'/>");
-          for(var j=0;j<$(".orderno").length;j++){
+          			for(var j=0;j<$(".orderno").length;j++){
 						if($(".orderno").eq(j).val()==$(".no").eq(i-1).val()){
 							$(".book>li:nth-of-type(7):eq("+i+")").text("후기작성완료");
 						}
@@ -130,8 +130,32 @@
 						</ul>
 					</li>
 					</c:forEach>
-					
 				</ul>
 			</li>
 		</ul>
+	<div id="pageDiv">
+		<ul id="page">
+			<c:if test="${pvo.nowPage<=1 }">
+				<li>◀</li>
+			</c:if>
+			<c:if test="${pvo.nowPage>1 }">
+				<li><a href="/mypage/myReservation?nowPage=${pvo.nowPage-1 }">◀</a></li>
+			</c:if>
+			<c:forEach var="p" begin="${pvo.startPage }" end="${pvo.startPage+pvo.onePageCount-1}">
+				<c:if test="${p<=pvo.totalPage }">
+					<li
+						<c:if test="${p==pvo.nowPage}">
+							style="background-color:lavender;font-weight:bold;"
+						</c:if>
+					><a href="/mypage/myReservation?nowPage=${p }">${p}</a></li>
+				</c:if>
+			</c:forEach>
+			<c:if test="${pvo.nowPage==pvo.totalPage }">
+				<li>▶</li>
+			</c:if>
+			<c:if test="${pvo.nowPage<pvo.totalPage }">
+				<li><a href="/mypage/myReservation?nowPage=${pvo.nowPage+1 }">▶</a></li>
+			</c:if>
+		</ul>
+	</div>
 </div>

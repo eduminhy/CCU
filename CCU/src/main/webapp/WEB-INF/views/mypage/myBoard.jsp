@@ -19,7 +19,9 @@
 				alert("삭제할 글을 선택해주세요.");
 				return false;
 			}
-			$("#boardFrm").submit();
+			if(confirm("삭제하시겠습니까?")){
+				$("#boardFrm").submit();
+			}
 		});
 		
 	});
@@ -31,7 +33,7 @@
 			<li><a href="myInfo">나의 정보</a></li>
 			<li><a href="myReservation">나의 예매내역</a></li>
 			<li><a href="myHeartList">나의 찜목록</a></li>
-			<li><a href="myBoard?nowPage=1">나의 게시글</a></li>
+			<li><a href="myBoard">나의 게시글</a></li>
 			<li><a href="myComment">나의 댓글</a></li>
 			<li><a href="myReview">나의 후기</a></li>
 		</ul>
@@ -68,7 +70,12 @@
 	</form>
 	<div id="pageDiv">
 		<ul id="page">
-			<li>◀</li>
+			<c:if test="${pvo.nowPage<=1 }">
+				<li>◀</li>
+			</c:if>
+			<c:if test="${pvo.nowPage>1 }">
+				<li><a href="/mypage/myBoard?nowPage=${pvo.nowPage-1 }">◀</a></li>
+			</c:if>
 			<c:forEach var="p" begin="${pvo.startPage }" end="${pvo.startPage+pvo.onePageCount-1}">
 				<c:if test="${p<=pvo.totalPage }">
 					<li
@@ -78,7 +85,12 @@
 					><a href="/mypage/myBoard?nowPage=${p }">${p}</a></li>
 				</c:if>
 			</c:forEach>
-			<li>▶</li>
+			<c:if test="${pvo.nowPage==pvo.totalPage }">
+				<li>▶</li>
+			</c:if>
+			<c:if test="${pvo.nowPage<pvo.totalPage }">
+				<li><a href="/mypage/myBoard?nowPage=${pvo.nowPage+1 }">▶</a></li>
+			</c:if>
 		</ul>
 	</div>
 </div>

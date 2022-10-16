@@ -34,3 +34,10 @@ h1{color:rgb(68,0,153); margin:50px;}
 	font-weight:bold; font-size:17px; 
 	cursor:pointer;
 }
+#page li{
+	overflow:auto; float:left; padding:10px;
+	font-size:18px;
+	margin-top:10px;
+}
+#page li:first-child{margin-left:525px;}
+#page a{color:black;} 

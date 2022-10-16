@@ -6,9 +6,18 @@
 		$(document).attr("title","공연/${genre}");//title 이름 변경 
 		for(var i=0;i<5;i++){
 			if($(".subject").children("a:eq("+i+")").text().length>=30){
+				var boardN = $(".subject").children("a:eq("+i+")").text().substr(0,30)+"...";
+				$(".subject").children("a:eq("+i+")").text(boardN);
 				$(".more").children("a:eq("+i+")").show();
 			}else{
 				$(".more").children("a:eq("+i+")").hide();
+			}
+		}
+		
+		for(var i=0;i<5;i++){
+			if($(".rname").children("a:eq("+i+")").text().length>=15){
+				var rankN = $(".rname").children("a:eq("+i+")").text().substr(0,15)+"...";
+				$(".rname").children("a:eq("+i+")").text(rankN);
 			}
 		}
 		
@@ -54,7 +63,7 @@
 			<ul>
 				<c:forEach var="wvo" items="${weeklylist }" varStatus="status">
 				<li>${status.count }위&nbsp;</li>
-				<li><a href="/show/showDetail?show_id=${wvo.id}">${wvo.name }</a></li>
+				<li class="rname"><a href="/show/showDetail?show_id=${wvo.id}">${wvo.name }</a></li>
 				</c:forEach>
 			</ul>
 		</div>

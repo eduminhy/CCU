@@ -21,7 +21,7 @@ h1{color:rgb(68,0,153); margin:50px;}
 .review li{float:left; height:100px; line-height:100px; border-bottom:1px solid #ddd;}
 .review li:nth-child(7n+1){width:5%;}
 .review li:nth-child(7n+2){width:5%;}
-.review li:nth-child(7n+3){width:15%;}
+.review li:nth-child(7n+3){width:15%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .review li:nth-child(7n+4){width:10%;}
 .review li:nth-child(7n+5){width:40%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .review li:nth-child(7n+6){width:10%; color:#440099;}
@@ -37,3 +37,9 @@ h1{color:rgb(68,0,153); margin:50px;}
 	font-weight:bold; font-size:17px; 
 	cursor:pointer;
 }
+#page li{
+	overflow:auto; float:left; padding:10px;
+	font-size:18px;
+	margin-top:10px;
+}
+#page li:first-child{margin-left:525px;}

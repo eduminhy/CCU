@@ -9,8 +9,12 @@
 				$(".showname").eq(i).text(showN);				
 			}
 		}
+		console.log($(".delBtn").parents().find("li[class='show']").children().val());
+		console.log($(".delBtn").parents().find("li[class='show']").children().eq(1).val());
+		console.log($(".delBtn").length);
 		
 		$(".delBtn").click(function(){
+			//console.log($(this).parents().find("li[class='show']").children().eq(i-1).val());
 			if(confirm("삭제하시겠습니까?")){
 				$.ajax({
 					type:"get",
@@ -25,6 +29,7 @@
 				});
 			}
 		});
+		
 	});
 </script>
 <div class="container">
@@ -43,7 +48,7 @@
 	<div id="heartList">
 		<c:forEach var="vo" items="${myfavlist}">
 		<ul>
-			<li><input type="hidden" class="showdb_id" name="showdb_id" value="${vo.id }"/></li>
+			<li class="show"><input type="hidden" class="showdb_id" name="showdb_id" value="${vo.id }"/></li>
 			<li><a href="/show/showDetail?show_id=${vo.id}"><img src="${vo.mainposter}"/></a></li>
 			<li class="showname">${vo.name }</li>
 			<li>${vo.startdate } ~ ${vo.enddate }</li>

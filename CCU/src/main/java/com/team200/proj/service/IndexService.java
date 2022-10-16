@@ -2,6 +2,8 @@ package com.team200.proj.service;
 
 import java.util.List;
 
+import com.team200.proj.vo.AdminBookPageVO;
+import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.PagingVO;
 import com.team200.proj.vo.UserVO;
 import com.team200.proj.vo.festivalVO;
@@ -15,4 +17,6 @@ public interface IndexService {
 	public List<showVO> outputpopularDWMData(int a,String b);
 	public int getTotalUser(PagingVO pvo);
 	public List<UserVO> userList(PagingVO pVO);
+	public List<OrderlistVO> getReservation(AdminBookPageVO apvo);
+	public int totalReservation(AdminBookPageVO apvo);
 }

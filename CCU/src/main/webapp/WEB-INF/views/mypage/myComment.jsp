@@ -20,7 +20,9 @@
 				alert("삭제할 글을 선택해주세요.");
 				return false;
 			}
-			$("#commentFrm").submit();
+			if(confirm("삭제하시겠습니까?")){
+				$("#commentFrm").submit();
+			}
 		});
 	});
 </script>
@@ -66,4 +68,29 @@
 		</ul>
 		<input type="button" value="삭제" id="DeleteBtn"/>	
 	</form>
+	<div id="pageDiv">
+		<ul id="page">
+			<c:if test="${pvo.nowPage<=1 }">
+				<li>◀</li>
+			</c:if>
+			<c:if test="${pvo.nowPage>1 }">
+				<li><a href="/mypage/myComment?nowPage=${pvo.nowPage-1 }">◀</a></li>
+			</c:if>
+			<c:forEach var="p" begin="${pvo.startPage }" end="${pvo.startPage+pvo.onePageCount-1}">
+				<c:if test="${p<=pvo.totalPage }">
+					<li
+						<c:if test="${p==pvo.nowPage}">
+							style="background-color:lavender;font-weight:bold;"
+						</c:if>
+					><a href="/mypage/myComment?nowPage=${p }">${p}</a></li>
+				</c:if>
+			</c:forEach>
+			<c:if test="${pvo.nowPage==pvo.totalPage }">
+				<li>▶</li>
+			</c:if>
+			<c:if test="${pvo.nowPage<pvo.totalPage }">
+				<li><a href="/mypage/myComment?nowPage=${pvo.nowPage+1 }">▶</a></li>
+			</c:if>
+		</ul>
+	</div>
 </div>
