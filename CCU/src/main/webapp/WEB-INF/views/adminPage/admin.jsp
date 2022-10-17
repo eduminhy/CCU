@@ -333,10 +333,12 @@
 										<div>${vo.role}</div>
 										<div>${vo.register_date}</div>
 										<div>${vo.tel}</div>
-										<div>${vo.gender}</div>
-										<div>${vo.birth}</div>
+										<div>${vo.gender}&nbsp;</div>
+										<div>${vo.birth}&nbsp;</div>
 									</div>
-
+<%-- 								<c:if test="${p<=pVO.totalPage2 }"> --%>
+<%-- 									<div class="divdivdiv3" name="${p}">${p}</div> --%>
+<%-- 								</c:if> --%>
 
 								</c:forEach>
 							</div>

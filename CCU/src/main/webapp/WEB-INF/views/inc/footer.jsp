@@ -2,7 +2,7 @@
 <div class="bottom">
 	<div class="footer">
 		<div id="ccuimg">
-			<img src="../img/logo_footer.png"/>
+			<img src="/logo_footer.png"/>
 			<span>CCU</span>
 		</div>
 		<ul id="coinfo">

@@ -9,7 +9,7 @@
 <script>
 	$(function () {
 	    CKEDITOR.replace("content"); // CKEDITOR 크기 조절
-	
+// 	    config.enterMode = CKEDITOR.ENTER_BR;
 	    $("#playMeetingWritingFrm").submit(function () {
 	        if ($("#title").val() == "") {
 	            alert("제목을 입력하세요!");
