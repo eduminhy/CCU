@@ -63,6 +63,11 @@
 		font-size:17px; padding:10px 0;
 		cursor:pointer;
 	}
+	#replyList li {
+	width: 1100px;
+	border-bottom: 2px solid #440099;
+	margin:30px; padding:0 20px;
+	}
     .contentPart>td:last-child{
     	vertical-align: top;
     }
@@ -100,4 +105,8 @@
 	}
 	.replyUpdate{
 		margin:0 30px;
+	}
+	
+	#renamedate{
+		font-size:16px;
 	}

@@ -91,7 +91,7 @@
 				<!-- 					대해 유의하십시오.</p> -->
 
 <!-- 예약내역가져오는 곳~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-				<form method="post" action="" class="playMeetingTable">
+				<form method="post" action="/bookDel" class="playMeetingTable">
 					<ul>
 						<li>
 							<ul class="playMeetingList">
@@ -109,19 +109,20 @@
 								<!-- 게시물이 출력될 영역 -->
 								<c:forEach var="bvo" items="${booklist}">
 									<li>
-										<ul>
-											<li><input type="checkbox" name="checkbox" value="checkbox"></li>
+										<ul class="book">
+											<li><input type="checkbox" name="noList" value="${bvo.no }"></li>
 											<li>${bvo.user_id}</li>
-											<li>${bvo.no }</li>
+											<li>${bvo.no}</li>
 											<li>${bvo.name }</li>
 											<li>${bvo.showDate }&nbsp;${bvo.showTime }</li>
-											<li>${bvo.seat_num }</li>
+											<li>${bvo.seat_num}</li>
 										</ul>
 									</li>
 								</c:forEach>
 							</ul>
 						</li>
 					</ul>
+					<input type="button" value="예매취소" id="DeleteBtn"/>
 				</form>
 			<div id="pageDiv">
 				<ul id="page">
@@ -135,7 +136,7 @@
 						<c:if test="${p<=apvo.booktotalPage }">
 							<li
 								<c:if test="${p==apvo.booknowPage}">
-									style="background-color:lavender;font-weight:bold;"
+									style="background-color:lavender;font-weight:bold;font-size:20px;"
 								</c:if>
 							><a href="/admin?booknowPage=${p}<c:if test='${apvo.booksearchWord!=null}'>&booksearchKey=${apvo.booksearchKey}&booksearchWord=${apvo.booksearchWord}</c:if>">${p}</a></li>
 						</c:if>
@@ -148,15 +149,15 @@
 					</c:if>
 				</ul>
 			</div>
-				<div class="playMeetingListSearch">
+				<div class="BookSearch">
 					<form method="get" action="/admin" class="playMeetingListSearchFrm">
-						<select name="booksearchKey" class="playMeetingListSearchKey">
+						<select name="booksearchKey" class="BookSearchKey">
 							<option value="user_id">아이디</option>
 							<option value="no">예매번호</option>
 							<option value="name">공원명</option>
 						</select> 
-						<input type="text" name="booksearchWord" class="playMeetingListSearchTxt" placeholder="" /> 
-						<input type="submit" value="" class="playMeetingListSearchBtn"/>
+						<input type="text" name="booksearchWord" class="BookSearchTxt" placeholder="" /> 
+						<input type="submit" value="Search" class="BookSearchBtn"/>
 					</form>
 				</div>
 <!-- 예약내역가져온 곳~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->

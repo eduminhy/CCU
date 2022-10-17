@@ -51,7 +51,7 @@
 		display: table;
 	    width: 100%;
 	    table-layout: fixed;
-	    padding: 20px 70px;
+	    padding: 10px 70px;
 	    box-sizing: border-box;
 	    border-bottom: 1px solid #CCCCCC;
 	}
@@ -84,7 +84,7 @@
 	
 	.colData{
 		position: relative;
-		padding: 30px 100px;
+		padding: 30px 50px;
     vertical-align: top;
     display: table-cell;
     
@@ -93,14 +93,14 @@
 		overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 17px;
+    font-size: 20px;
     color: #000;
     font-weight: bold;
 	}
 	.itemInfo{
 		position: absolute;
-    bottom: 30px;
-    left: 30px;
+    bottom: 80px;
+    left: -20px;
     width: 520px;
 	}
 	.ticketInfo{
@@ -135,4 +135,5 @@
 	    color: #333;
 	    font-size: 14px;
 	}
+	.itemList a:link,.itemList a:visited {color:black;}
 	

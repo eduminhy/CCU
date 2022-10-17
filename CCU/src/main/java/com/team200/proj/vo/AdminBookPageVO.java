@@ -13,6 +13,8 @@ public class AdminBookPageVO {
 	
 	private String booksearchKey;
 	private String booksearchWord;
+	private String name;
+	
 	
 	public int getBooknowPage() {
 		return booknowPage;
@@ -76,6 +78,12 @@ public class AdminBookPageVO {
 	}
 	public void setBooksearchWord(String booksearchWord) {
 		this.booksearchWord = booksearchWord;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

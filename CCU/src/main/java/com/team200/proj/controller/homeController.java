@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -165,6 +166,13 @@ public class homeController {
 		return mav;
 	}
 
+	@PostMapping("/bookDel")
+	public ModelAndView bookDel(OrderlistVO vo) {
+		int cnt = service.bookDel(vo);
+		mav= new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		return mav;
+	}
 //	@GetMapping("sms")
 //	@ResponseBody
 //	public ModelAndView sms() throws IOException {
