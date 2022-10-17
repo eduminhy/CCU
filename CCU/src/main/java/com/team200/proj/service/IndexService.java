@@ -25,6 +25,7 @@ public interface IndexService {
 	public List<UserVO> userList(PagingVO pVO);
 	public List<OrderlistVO> getReservation(AdminBookPageVO apvo);
 	public int totalReservation(AdminBookPageVO apvo);
+	public int bookDel(OrderlistVO vo);
 	public List<BoardVO> boardList(PagingVO pVO);
 	public int boardMultiDel(BoardVO vo);
 	public int boardMultiDel2(UserVO vo);

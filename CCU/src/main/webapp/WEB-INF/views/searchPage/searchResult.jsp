@@ -51,14 +51,14 @@
                     <a href="/show/showDetail?show_id=${svo.id}" title="상세페이지로 이동" target="_blank" gtm-label="공연이미지">
 						<span class="itemImage">
 							<img src="${svo.mainposter }" alt="엘 콘서트 시리즈 〈아무르 무지크〉 II. 로미오와 줄리엣"
-                                 style="visibility: visible; width: 200px; height: 200px">
+                                 style="visibility: visible; width: 125px; height: 170px">
 						</span>
                     </a>
                 </div>
                 <div class="colData">
                     <div class="itemName">
                         <a href="#" title="상세페이지로 이동" target="_blank" gtm-label="엘 콘서트 시리즈 〈아무르 무지크〉 II. 로미오와 줄리엣">
-                            <span>${svo.name }</span>
+                            <span>${svo.name }</span></a>
                     </div>
                     <div class="itemInfo">
                         <div class="ticketInfo">

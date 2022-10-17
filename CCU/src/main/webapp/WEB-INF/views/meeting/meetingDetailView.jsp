@@ -3,21 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="/style/mainMeetingNoticeStyle.css">
 <script src="//cdn.ckeditor.com/4.19.1/full/ckeditor.js"></script>
-<style>
-#replyList li {
-	width: 1200px;
-	border-bottom: 2px solid #440099;
-	margin: 30px;
-}
-</style>
 
 <script>
 	//게시글 삭제
 	function deleteBoard(boardID) {
 		console.log("boardID",boardID);
-// 		/meeting/meetingDelete/${meetingView.id}
-// redirect:/meeting/mainMeeting
-		if( confirm("삭제하시겠습니까?") ) {
+		if(confirm("삭제하시겠습니까?")) {
 			$.ajax({
 	             url: "/meeting/meetingDelete/"+boardID,
 	             type: 'GET',
@@ -25,8 +16,8 @@
 	         }).done(function () {
 	        	 document.location.href = '/meeting/mainMeeting';
 	         }).fail(function (error) {
-	             alert(JSON.stringify(error))
-	         })
+	             alert(JSON.stringify(error));
+	         });
 		}
 	}
 
@@ -46,8 +37,8 @@
                 alert('댓글이 등록되었습니다.');
                 window.location.reload();
             }).fail(function (error) {
-                alert(JSON.stringify(error))
-            })
+                alert(JSON.stringify(error));
+            });
         });
     });
 
@@ -94,47 +85,35 @@
                     alert('댓글이 삭제되었습니다.');
                     window.location.reload();
                 }).fail(function (error) {
-                    alert(JSON.stringify(error))
-                })
+                    alert(JSON.stringify(error));
+                });
         	}
         }
     };
 
     main.init();
     $(document).ready(function() {
-	$('.report2').click(function() {
-		console.log(${meetingView.id})
-		var rcontent = prompt("신고하시는 이유를 적어주세요", "여기에!!");
-		//		 console.log(userName  );
-		//		myWindow = window.open('/show/report', '네이버팝업',
-		//			'width=500, height=400, scrollbars=yes, resizable=no')
-		//		$('.reportSM').click(function() {
-		//			myWindow.close();
-		//		});
-
-		//				console.log($(this).attr('name'));
-		//				console.log($(this).parent().children().eq(1).children().eq(0).text());
-		//				console.log($(this).parent().children().eq(1).children().eq(1).text());
-		//		.html() .text()
-		var rname = $(this).parent().children().eq(1).children().eq(0).text();
-// 		var rid = $(this).attr('name');
-		var content = "meet";
-		$.ajax({
-			url: '/show/report', //request 보낼 서버의 경로
-			type: 'post', // 메소드(get, post, put 등)
-			async: false,
-			data: JSON.stringify({
-				'name': rname,
-				'id': ${meetingView.id},
-				'content': content,
-				'rcontent': rcontent
-			}), //보낼 데이터
-			'Content-Type': 'application/json',
-			success: function(data) {        //서버로부터 정상적으로 응답이 왔을 때 실행
-			}, error: function(err) {		//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
-			}
+		$('.report2').click(function() {
+			console.log(${meetingView.id})
+			var rcontent = prompt("신고하시는 이유를 적어주세요", "여기에!!");
+			var rname = $(this).parent().children().eq(1).children().eq(0).text();
+			var content = "meet";
+			$.ajax({
+				url: '/show/report', //request 보낼 서버의 경로
+				type: 'post', // 메소드(get, post, put 등)
+				async: false,
+				ContentType: 'application/json',
+				data: JSON.stringify({
+					'name': rname,
+					'id': ${meetingView.id},
+					'content': content,
+					'rcontent': rcontent
+				}), //보낼 데이터
+				success: function(data) {        //서버로부터 정상적으로 응답이 왔을 때 실행
+				}, error: function(err) {		//서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+				}
+			});
 		});
-	});
     });
 </script>
 <div class="MeetingTopContainer">
@@ -186,14 +165,14 @@
 		<form method="post" id="replyFrm">
 			<!-- 	↓아래 id는 글번호를 의미	 -->
 			<input type="hidden" name="board_id" value="${meetingView.id }" />
-			<textarea maxlength="100" name="content" id="content" cols="50" rows="3"></textarea>
+			<textarea maxlength="100" name="content" id="content" cols="50" rows="3" placeholder="댓글을 입력해주세요."></textarea>
 			<input type="submit" id="replyok" value="댓글등록" />
 		</form>
 	</div>
 	<div id="replyList">
 		<ul>
 			<c:forEach var="reply" items="${reply}">
-				<li><span><b>${reply.user_id}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(${reply.writedate})</span>
+				<li id="replyZone"><span id="renamedate"><b>${reply.user_id}</b>&nbsp;(${reply.writedate})</span>
 					<p>${reply.content}</p> 
 					<c:if test="${reply.user_id eq user}">
 						<a type="button" onclick="main.replyDelete(${reply.id})">
