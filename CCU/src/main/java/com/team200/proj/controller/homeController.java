@@ -71,10 +71,10 @@ public class homeController {
 	@GetMapping("/admin")
 	@ResponseBody
 
-	public ModelAndView admin(PagingVO pVO,HttpSession session, AdminBookPageVO apvo) {
-		
+	public ModelAndView admin(PagingVO pVO, HttpSession session, AdminBookPageVO apvo) {
+
 		System.out.println("admin");
-		String id = (String)session.getAttribute("logId"); 
+		String id = (String) session.getAttribute("logId");
 		List<OrderlistVO> booklist = service.getReservation(apvo);
 		mav = new ModelAndView();
 //		ReviewVO rvO = new ReviewVO();
@@ -84,37 +84,35 @@ public class homeController {
 		pVO.setTotalRecord3(service.getTotalUser5(pVO));
 		pVO.setTotalRecord4(service.getTotalUser3(pVO));
 		pVO.setTotalRecord5(service.getTotalUser4(pVO));
+		pVO.setTotalRecord6(service.getTotalUser6(pVO));
 		mav.addObject("pVO", pVO);
 
-		mav.addObject("list",service.userList(pVO));
+		mav.addObject("list", service.userList(pVO));
 		apvo.setBooktotalRecord(service.totalReservation(apvo));
 		System.out.println(service.totalReservation(apvo));
 		mav.addObject("apvo", apvo);
 		mav.addObject("booklist", booklist);
 
 		mav.addObject("list", service.userList(pVO));
-		
+
 		mav.addObject("blist", service.boardList(pVO));
 		mav.addObject("rlist", service.reportList(pVO));
 		mav.addObject("mlist", service.mreportList(pVO));
 		mav.addObject("reviewlist", service.reviewList(pVO));
-		
+		mav.addObject("chatList", service.chatList(pVO));
 		System.out.println(pVO.toString());
 //		if (pVO.getSearchKey() == "") {
 //			mav.setViewName("adminPage/admin?view=user");
 //		} else if (pVO.getSearchKey2() == "") {
 //			mav.setViewName("adminPage/admin?view=board");
 //		} else {
-		
 
-		
 		mav.setViewName("adminPage/admin");
 //		}
 
 		return mav;
 	}
 
-	
 	@GetMapping("/test")
 	public ModelAndView test() {
 		System.out.println("test");
@@ -146,6 +144,7 @@ public class homeController {
 		mav.setViewName("Message");
 		return mav;
 	}
+
 	@PostMapping("/multiDel3")
 	public ModelAndView multiDel3(ReportVO vo) {
 		int cnt = service.boardMultiDel3(vo);
@@ -157,6 +156,7 @@ public class homeController {
 		mav.setViewName("Message");
 		return mav;
 	}
+
 	@PostMapping("/multiDel4")
 	public ModelAndView multiDel4(ReportVO vo) {
 		int cnt = service.boardMultiDel4(vo);
@@ -168,6 +168,7 @@ public class homeController {
 		mav.setViewName("Message");
 		return mav;
 	}
+
 	@PostMapping("/multiDel5")
 	public ModelAndView multiDel5(ReportVO vo) {
 		int cnt = service.boardMultiDel5(vo);
@@ -183,10 +184,11 @@ public class homeController {
 	@PostMapping("/bookDel")
 	public ModelAndView bookDel(OrderlistVO vo) {
 		int cnt = service.bookDel(vo);
-		mav= new ModelAndView();
+		mav = new ModelAndView();
 		mav.setViewName("redirect:/admin");
 		return mav;
 	}
+
 //	@GetMapping("sms")
 //	@ResponseBody
 //	public ModelAndView sms() throws IOException {

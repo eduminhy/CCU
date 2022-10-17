@@ -13,6 +13,7 @@ import com.team200.proj.vo.PagingVO;
 import com.team200.proj.vo.ReportVO;
 import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.UserVO;
+import com.team200.proj.vo.chatVO;
 import com.team200.proj.vo.festivalVO;
 import com.team200.proj.vo.showVO;
 
@@ -148,5 +149,17 @@ public class IndexServiceImpl implements IndexService {
 	public int bookDel(OrderlistVO vo) {
 		return dao.bookDel(vo);
 
+	}
+
+	@Override
+	public int getTotalUser6(PagingVO pvo) {
+		// TODO Auto-generated method stub
+		return 	dao.getTotalUser6( pvo);
+	}
+
+	@Override
+	public List<chatVO> chatList(PagingVO pVO) {
+		// TODO Auto-generated method stub
+		return dao.chatList(pVO);
 	}
 }

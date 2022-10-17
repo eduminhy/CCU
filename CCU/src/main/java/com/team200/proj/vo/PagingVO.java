@@ -2,7 +2,7 @@ package com.team200.proj.vo;
 
 public class PagingVO {
 	private int nowPage = 1;// 현재페이지 정보
-	private int onePageRecord = 10;// 한페이지에 출력할 레코드 수
+	private int onePageRecord = 20;// 한페이지에 출력할 레코드 수
 	private int totalRecord;// 총 레코드 수
 	private int totalPage;// 총 페이지 수
 	private int offsetPoint;// 페이지레코드 선택할 위치
@@ -17,7 +17,7 @@ public class PagingVO {
 	private String searchWord2;
 
 	private int nowPage2 = 1;// 현재페이지 정보
-	private int onePageRecord2 = 10;// 한페이지에 출력할 레코드 수
+	private int onePageRecord2 = 20;// 한페이지에 출력할 레코드 수
 	private int totalRecord2;// 총 레코드 수
 	private int totalPage2;// 총 페이지 수
 	private int offsetPoint2;// 페이지레코드 선택할 위치
@@ -29,7 +29,7 @@ public class PagingVO {
 	private String searchWord3;
 
 	private int nowPage3 = 1;// 현재페이지 정보
-	private int onePageRecord3 = 10;// 한페이지에 출력할 레코드 수
+	private int onePageRecord3 = 20;// 한페이지에 출력할 레코드 수
 	private int totalRecord3;// 총 레코드 수
 	private int totalPage3;// 총 페이지 수
 	private int offsetPoint3;// 페이지레코드 선택할 위치
@@ -61,8 +61,108 @@ public class PagingVO {
 	private int startPage5 = 1;
 	private int onePageCount5 = 5;
 
+	private String searchKey6;
+	private String searchWord6;
+
+	private int nowPage6 = 1;// 현재페이지 정보
+	private int onePageRecord6 = 10;// 한페이지에 출력할 레코드 수
+	private int totalRecord6;// 총 레코드 수
+	private int totalPage6;// 총 페이지 수
+	private int offsetPoint6;// 페이지레코드 선택할 위치
+	// 페이지번호
+	private int startPage6 = 1;
+	private int onePageCount6 = 5;
+	
+	/* ---------------------------------------------------------*/
+	
+	
+	
 	public String getSearchKey5() {
 		return searchKey5;
+	}
+
+	public String getSearchKey6() {
+		return searchKey6;
+	}
+
+	public void setSearchKey6(String searchKey6) {
+		this.searchKey6 = searchKey6;
+	}
+
+	public String getSearchWord6() {
+		return searchWord6;
+	}
+
+	public void setSearchWord6(String searchWord6) {
+		this.searchWord6 = searchWord6;
+	}
+
+	public int getNowPage6() {
+		return nowPage6;
+	}
+
+	public void setNowPage6(int nowPage6) {
+		this.nowPage6 = nowPage6;
+		// 선택레코드 시작위치
+		offsetPoint6 = (nowPage6 - 1) * onePageRecord6;
+		// 표시할 페이지의 시작번호
+		startPage6 = (nowPage6 - 1) / onePageCount6 * onePageCount6 + 1;
+
+	}
+
+	public int getOnePageRecord6() {
+		return onePageRecord6;
+	}
+
+	public void setOnePageRecord6(int onePageRecord6) {
+		this.onePageRecord6 = onePageRecord6;
+	}
+
+	public int getTotalRecord6() {
+		return totalRecord6;
+	}
+
+	public void setTotalRecord6(int totalRecord6) {
+
+		this.totalRecord6 = totalRecord6;
+		// 총페이지수 구하기
+
+		totalPage6 = totalRecord6 / onePageRecord6;
+		if (totalRecord6 % onePageRecord6 != 0) {
+			totalPage6++;
+		}
+	}
+
+	public int getTotalPage6() {
+		return totalPage6;
+	}
+
+	public void setTotalPage6(int totalPage6) {
+		this.totalPage6 = totalPage6;
+	}
+
+	public int getOffsetPoint6() {
+		return offsetPoint6;
+	}
+
+	public void setOffsetPoint6(int offsetPoint6) {
+		this.offsetPoint6 = offsetPoint6;
+	}
+
+	public int getStartPage6() {
+		return startPage6;
+	}
+
+	public void setStartPage6(int startPage6) {
+		this.startPage6 = startPage6;
+	}
+
+	public int getOnePageCount6() {
+		return onePageCount6;
+	}
+
+	public void setOnePageCount6(int onePageCount6) {
+		this.onePageCount6 = onePageCount6;
 	}
 
 	public void setSearchKey5(String searchKey5) {

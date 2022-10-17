@@ -309,8 +309,8 @@ $(function() {
 			}
 			$("#listFrm").submit();
 		});
-		
-		$("#DeleteBtn").click(
+
+	$("#DeleteBtn").click(
 
 		function() {
 			console.log(112);
@@ -630,5 +630,19 @@ $(document).ready(function() {
 		$(".page>div").css("background", "white");
 		$(this).css("background", "#cccccc");
 	});
+
+	$(".asdfqwer").click(function() {
+		var chatlist = "chatList?id=dong";
+		window.open(chatlist, '네이버팝업',
+			'width=660, height=870, scrollbars=yes, resizable=no');
+	});
+
+	//	function registChat() {
+	//
+	//		window.open('chatList', '네이버팝업',
+	//			'width=640, height=640, scrollbars=yes, resizable=no');
+	//	}
+
 });
+
 
