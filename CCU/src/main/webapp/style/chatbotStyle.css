@@ -1,6 +1,54 @@
 @charset "UTF-8";
 
+#content {
+	
+	width:1200px;
+	height:400px; 
+	border:2px solid #440099;
+	
+	font-weight : bold;
+	font-size : 1.2em;
+	color : #303ccf;
+	
+	margin-left : 18%;
+}
+.chatbotinput{
+	margin-top : 50px;
+	text-align:center;
+}
+#queryin {
+		width:300px;
+		height:20px;
+		font-size:16px;
+		border-top:none;
+		border-left:none;
+		border-right:none;
+		border-bottom:3px solid #440099;
+		outline:none;
+		text-align:center;
+}
 
+#query{
+	width:50px;
+	height:50px;
+	border-radius:50%;
+	border : none;
+	background : #00d3d3;
+	text-align:center;
+	line-height:50px;
+	cursor:pointer;
+	font-size : 1.1em;
+	color: white;
+	
+}
+.jsonCode {
+	
+	width:100%; 
+	height:300px; 
+	visibility:hidden;
+	display : block;
+	margin : auto;
+}
 
 .csmenu{
 	width: 1200px;

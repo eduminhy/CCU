@@ -1,0 +1,409 @@
+@charset "UTF-8";
+
+.body {
+	width: 1200px;
+}
+/* 메인 슬라이더 ---------------------------------------- */
+.main-item {
+	display: flax;
+	margin: 0 auto;
+	height: 100%;
+	min-height: 300px;
+	max-height: 450px;
+}
+
+.single-item img {
+	margin: 0 auto;
+	width: 100%;
+	min-width: 1200px;
+	max-width: 2000px;
+}
+/* 서브 슬라이더 ---------------------------------------- */
+.indexFav_title {
+	width: 100%;
+	min-width: 1200px;
+	/* 	max-width: 1600px; */
+	text-align: center;
+	color: rgba(255, 81, 87);
+}
+
+.indexFav {
+	margin: 0 auto;
+	width: 95%;
+	min-width: 1200px;
+	max-width: 1600px;
+}
+
+.indexFav_post {
+	min-width: 1200px;
+	max-width: 1600px;
+	margin: 0 auto;
+}
+
+.indexFav_post {
+	width: 100%;
+	display: flax;
+	justify-content: space-between;
+}
+
+.indexFav_post>div>div {
+	width: 10.5%;
+}
+
+.indexFav_post img {
+	max-height: 305.33px;
+	width: 100%;
+	height: 100%;
+	min-height: 200px;
+	margin: 0 auto;
+	border-radius: 9%;
+	margin: 0 auto;
+}
+
+.indexFav_img {
+	width: 95%;
+	/* 	height: 305.33px; */
+	margin: 0 auto;
+	border-radius: 9%;
+	position: relative;
+	overflow: hidden;
+}
+
+.indexFav_text {
+	left: 0px;
+	top: 0px;
+	width: 95%;
+	height: 100%;
+	/* 	height: 305.33px; */
+	margin: 0 auto;
+	border-radius: 9%;
+	position: absolute;
+	display: flex;
+}
+
+.textcon {
+	width: 90%;
+	margin: auto auto 0;
+	margin-top: auto;
+	color: white;
+	display: flex;
+	flex-direction: column;
+}
+
+.spantxt1 {
+	font-size: 21px;
+	font-weight: bold;
+}
+
+.spantxt2 {
+	font-size: 18px;
+	font-weight: bold;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.spantxt3 {
+	/* 	margin: 0 auto 0; */
+	justify-content: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.indexFav_count {
+	left: 10px;
+	top: 10px;
+	width: 100%;
+	height: 100%;
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+	/* 	height: 305.33px; */
+	margin: auto;
+	border-radius: 9%;
+	position: absolute;
+	display: flex;
+	display: inline-block;
+}
+@media ( min-width : 1750px) {
+	.indexFav_img {
+		height: 305.33px;
+	}
+}
+.indexFav_circle {
+	content: '';
+	position: absolute;
+	top: -35px;
+	left: -35px;
+	display: inline-block;
+	background-color: #f05650;
+	border-radius: 50%;
+	width: 5em;
+	height: 5em;
+}
+
+/* indexFav_img2 { */
+/* /* 	width: 11%; */
+* /
+	/* } */
+	/* .indexFav_count::before { */
+	/*   position: absolute; */
+	/*   transform: translateY(-50%); */
+	/*   content: counter(colorcircle); */
+	/*   color: #fff; */
+	/*   font-size: 0.8em; */
+	/*   z-index: 1; */
+	/* } */
+	/* 메인 DIV ---------------------------------------- */ 
+.indexBody {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+}
+/* MonthlyRanking ---------------------------------------- */
+.indexRank {
+	/* 	height: 700px; */
+	/* height:95%; */
+	/* min-height: 420px; */
+	/* 	max-height: 520px; */
+	width: 95%;
+	min-width: 1200px;
+	max-width: 1600px;
+	margin: 0 auto;
+	text-align: center;
+	border-radius: 15px;
+	border: solid rgba(59, 0, 148);
+	background-color: rgba(248, 245, 251);
+}
+
+.indexRank_menu {
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 500px;
+}
+
+
+@media ( min-width : 1750px) {
+	.indexRank_post {
+		min-height: 410px;
+	}
+}
+
+
+
+.index_title {
+	font-size: 50px;
+	font-weight: bold;
+	color: rgba(59, 0, 148);
+}
+
+.indexRank_menu {
+	font-size: 20px;
+}
+/* =------------------------------------------------ */
+.indexRank_post {
+	min-width: 1200px;
+	max-width: 1600px;
+	margin: 0 auto;
+	display: flex;
+		width: 95%;
+	justify-content: space-between;
+}
+.indexRank_post>div {
+	min-height: 285px;
+}
+.indexRank_post>div {
+	width:18%;
+	display: flex;
+}
+
+/* .indexRank_post img { */
+/* 	width: 100%; */
+/* 	margin: 0 auto; */
+/* } */
+
+@media ( min-width : 1750px) {
+	.indexRank_post img {
+		height:400px;
+	}
+}
+.indexRank_img {
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	width:18%;
+	display: flex;
+}
+.indexRank_post img{
+	width:100%;
+	height:auto;
+}
+.indexRank_text {
+	left: 0px;
+	top: -30px;
+	width: 100%;
+	height: 100%;
+	/* 		height: 305.33px; */
+	margin: 0 auto;
+	border-radius: 9%;
+	position: absolute;
+	display: flex;
+}
+
+.textconRank {
+	width: 90%;
+	margin: auto auto 0;
+	margin-top: auto;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	text-align:left;
+}
+
+.spanRanktxt1 {
+	font-size: 21px;
+	font-weight: bold;
+	/* 		height: 305.33px; */
+}
+
+.spanRanktxt2 {
+	font-size: 18px;
+	font-weight: bold;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	justify-content: left;
+}
+
+.spanRanktxt3 {
+	/* 	margin: 0 auto 0; */
+	justify-content: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/* Festival ---------------------------------------- */
+.indexFes {
+	width: 95%;
+	min-width: 1200px;
+	max-width: 1600px;
+	margin: 0 auto;
+	text-align: center;
+	border-radius: 15px;
+	border: solid rgba(59, 0, 148);
+	background-color: rgba(248, 245, 251);
+	margin: 0 auto;
+}
+
+.indexFes_post>div{
+	display: flex;
+	flex-direction: column;
+	width: 17%;
+}
+
+.indexFes_post {
+	display: flex;
+	width: 95%;
+	justify-content: space-between;
+	margin: 0 auto;
+}
+
+.indexFes_post img {
+	width: 100%;
+	height: 100%;
+}
+
+.festname {
+	width: 100%;
+	padding: 0 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+/* .slick-slide img{ */
+/* 	display: inline; */
+/* } */
+/* Total CSS---------------------------------------- */
+.indexRank_title, .indexRank_menu>div, .indexFes, .indexFes_post>div {
+	color: rgba(59, 0, 148);
+}
+/* Dot SCSS---------------------------------------- */
+.slick-dots {
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	padding: 1rem 0;
+	list-style-type: none;
+}
+
+.slick-dots li {
+	margin: 0 0.25rem;
+}
+
+.slick-dots button {
+	display: block;
+	width: 1rem;
+	height: 1rem;
+	padding: 0;
+	border: none;
+	border-radius: 100%;
+	background-color: rgba(59, 0, 148);
+	text-indent: -9999px;
+}
+
+.slick-dots li.slick-active button {
+	background-color: #f05650;
+}
+
+/* .slick-dots { */
+/*   bottom: 20px; */
+/* } */
+/* .slick-dots button { */
+/*   width: 10px; */
+/*   height: 10px; */
+/*   border: 2px solid #f8f5fb; */
+/*   border-radius: 50%; */
+/*   box-shadow: 1px 1px 3px #3b0094; */
+/* } */
+/* .slick-dots button::before { */
+/*   display: none; */
+/* } */
+/* .slick-dots .slick-active button { */
+/*   background: #3b0094; */
+/* } */
+
+/* Banner SCSS---------------------------------------- */
+body {
+	margin: 0;
+}
+
+#wrap {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#quick_bg {
+	margin: 0 auto;
+	text-align: center;
+	width: 1200px;
+	position: relative;
+}
+
+#quick {
+	position: absolute;
+	z-index: 2;
+	top: 15px;
+	width: 153px;
+	left: -400px;
+}
+
+#container {
+	position: relative;
+}
+
+#quick img {
+	width: 170px;
+}

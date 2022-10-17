@@ -118,6 +118,7 @@ public class UserController {
 		if(logVO != null) {
 			session.setAttribute("logId", logVO.getId());
 			session.setAttribute("logName", logVO.getUsername());
+			session.setAttribute("logNickname", logVO.getNickname());
 			session.setAttribute("logStatus", "Y");
 			session.setAttribute("logRole", logVO.getRole());
 			mav.setViewName("redirect:/");
