@@ -96,12 +96,10 @@
 				<!-- 				<p class="playMeetingWarning">※ 개인정보 유출 및 피해에 유의하시고 금전 및 물품 피해에 -->
 				<!-- 					대해 유의하십시오.</p> -->
 
-
 				<!-- 예약내역가져오는 곳~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 				<form method="post" action="" class="playMeetingTable">
 					<h4 class="h8" name="${param.booksearchKey}">검색분류:${param.booksearchKey}
 						/ 검색어: ${param.booksearchWord}</h4>
-
 					<ul>
 						<li>
 							<ul class="playMeetingList">
@@ -119,25 +117,21 @@
 								<!-- 게시물이 출력될 영역 -->
 								<c:forEach var="bvo" items="${booklist}">
 									<li>
-
 										<ul>
 											<li><input type="checkbox" name="checkbox"
 												value="checkbox"></li>
-
 											<li>${bvo.user_id}</li>
-											<li>${bvo.no}</li>
+											<li>${bvo.no }</li>
 											<li>${bvo.name }</li>
 											<li>${bvo.showDate }&nbsp;${bvo.showTime }</li>
-											<li>${bvo.seat_num}</li>
+											<li>${bvo.seat_num }</li>
 										</ul>
 									</li>
 								</c:forEach>
 							</ul>
 						</li>
 					</ul>
-					<input type="button" value="예매취소" id="DeleteBtn"/>
 				</form>
-
 				<div id="pageDiv">
 					<ul id="page">
 						<c:if test="${apvo.booknowPage<=1 }">
@@ -167,17 +161,14 @@
 					</ul>
 				</div>
 				<div class="playMeetingListSearch">
-
 					<form method="get" action="/admin" class="playMeetingListSearchFrm">
-						<select name="booksearchKey" class="BookSearchKey">
+						<select name="booksearchKey" class="playMeetingListSearchKey">
 							<option value="user_id">아이디</option>
 							<option value="no">예매번호</option>
 							<option value="name">공원명</option>
-
-						</select> 
-						<input type="text" name="booksearchWord" class="BookSearchTxt" placeholder="" /> 
-						<input type="submit" value="Search" class="BookSearchBtn"/>
-
+						</select> <input type="text" name="booksearchWord"
+							class="playMeetingListSearchTxt" placeholder="" /> <input
+							type="submit" value="" class="playMeetingListSearchBtn" />
 					</form>
 				</div>
 				<!-- 예약내역가져온 곳~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -187,7 +178,7 @@
 			<div>
 
 				<div class="container">
-					<!-- 					<h1>게시글 리스트</h1> -->
+
 					<div class="admindiv2">
 						<div class="h3" name="${pVO.searchKey2}">검색분류:${pVO.searchKey2}
 							&nbsp;/&nbsp; 검색어: &nbsp;${pVO.searchWord2}</div>
@@ -294,19 +285,23 @@
 			<div>
 
 				<div class="container">
-					<h1>회원 리스트</h1>
-					<h4 class="h4" name="${pVO.searchKey}">검색분류:${pVO.searchKey} /
-						검색어: ${pVO.searchWord}</h4>
-					<div>총${pVO.totalPage }페이지, 총레코드수::${pVO.totalRecord }</div>
-					<fmt:formatNumber value="${pVO.totalRecord div 10}" />
-					<div>
-						<input type="button" value="선택삭제" class="multiDel" />
+
+					<div class="admindiv2">
+						<div class="h4" name="${pVO.searchKey}">검색분류:${pVO.searchKey}
+							&nbsp;/&nbsp; 검색어: &nbsp;${pVO.searchWord}</div>
+						<div>
+							<div>총${pVO.totalPage }페이지,&nbsp;&nbsp;
+								총레코드수:${pVO.totalRecord }</div>
+							&nbsp;&nbsp;
+							<fmt:formatNumber value="${pVO.totalRecord div 10}" />
+
+							<input type="button" value="선택삭제" class="multiDel" />
+
+						</div>
 					</div>
-					<!-- 	<form method="post" action="/board/multiDel" id="listFrm"> -->
-					<!-- 		<ul id="board"> -->
+
 					<c:set var="username1">${pVO.totalRecord  div 10}</c:set>
 					<c:set var="username2" value="0" />
-
 					<c:set var="username3">10</c:set>
 
 					<form method="post" action="/multiDel2" id="listFrm">
@@ -385,58 +380,62 @@
 		<div>
 			<div>
 
+
 				<div class="container">
-					<h1>후기 신고 리스트</h1>
-					<h4 class="h5" name="${pVO.searchKey4}">검색분류:${pVO.searchKey4}
-						/ 검색어: ${pVO.searchWord4}</h4>
-					<div>총${pVO.totalPage4 }페이지, 총레코드수:${pVO.totalRecord4 }</div>
-					<fmt:formatNumber value="${pVO.totalRecord4 div 10}" />
-					<div>
-						<input type="button" value="선택삭제" class="multiDel3" />
+
+					<div class="admindiv2">
+						<div class="h5" name="${pVO.searchKey4}">검색분류:${pVO.searchKey4}
+							&nbsp;/&nbsp; 검색어: &nbsp;${pVO.searchWord4}</div>
+						<div>
+							<div>총${pVO.totalPage4 }페이지,&nbsp;&nbsp;
+								총레코드수:${pVO.totalRecord4 }</div>
+							&nbsp;&nbsp;
+							<fmt:formatNumber value="${pVO.totalRecord4 div 10}" />
+
+							<input type="button" value="선택삭제" class="multiDel3" />
+
+						</div>
 					</div>
-					<!-- 	<form method="post" action="/board/multiDel" id="listFrm"> -->
-					<!-- 		<ul id="board"> -->
 					<c:set var="username11">${pVO.totalRecord4  div 10}</c:set>
 					<c:set var="username12" value="0" />
-
 					<c:set var="username13">10</c:set>
 
 					<form method="post" action="/multiDel3" id="listFrm3">
 						<div class="UserDiv10">
-							<div>
-								<input type="checkbox" class="allChk3" />
+							<div class="admindiv34">
+								<div>
+									<input type="checkbox" class="allChk3" />
+								</div>
+								<div>NO</div>
+								<div>show_id</div>
+								<div>order_list_no</div>
 							</div>
-							<div>User ID</div>
-							<div>UserName</div>
-							<div>Type</div>
-							<div>content</div>
-							<div>user_id</div>
-							<div>rcontent</div>
-							<div>show_id</div>
+							<div>
+								<div>UserName : content</div>
+								<div>UserName : rcontent</div>
 
-							<div>order_list_no</div>
-							<div>postnum</div>
+							</div>
 						</div>
+
 						<c:forEach var="no" begin="1"
 							end="${username11+(1-(username11%1))%1}">
 							<div class="UserDiv12" name="${username13/10}">
 								<c:forEach var="vo" items="${rlist }" begin="${username12}"
 									end="${username13-1}" step="1" varStatus="status">
-									<div class="UserDiv11"">
-
-										<div>
-											<input type="checkbox" name="noList" value="${vo.postnum}" />
+									<div class="UserDiv11">
+										<div class="admindiv35">
+											<div>
+												<input type="checkbox" name="noList" value="${vo.postnum}" />
+											</div>
+											<div>${vo.id}</div>
+											<div>${vo.genre}</div>
+											<div>${vo.order_list_no}</div>
 										</div>
+										<div class="admindiv36">
+											<div>&nbsp;${vo.user_id}&nbsp;:&nbsp;${vo.content}</div>
+											<div>&nbsp;${vo.user_id2}&nbsp;:&nbsp;${vo.rcontent}</div>
 
-										<div>${vo.id}</div>
-										<div>${vo.user_id}</div>
-										<div>${vo.type}</div>
-										<div>${vo.content}</div>
-										<div>${vo.user_id}</div>
-										<div>${vo.rcontent}</div>
-										<div>${vo.show_id}</div>
-										<div>${vo.order_list_no}</div>
-										<div>${vo.postnum}</div>
+										</div>
 									</div>
 
 
@@ -481,58 +480,62 @@
 			<div>
 
 				<div class="container">
-					<h1>Meet 신고 리스트</h1>
-					<h4 class="h2" name="${pVO.searchKey5}">검색분류:${pVO.searchKey5}
-						/ 검색어: ${pVO.searchWord5}</h4>
-					<div>총${pVO.totalPage5 }페이지, 총레코드수:${pVO.totalRecord5 }</div>
-					<fmt:formatNumber value="${pVO.totalRecord5 div 10}" />
-					<div>
-						<input type="button" value="선택삭제" class="multiDel4" />
+
+
+					<div class="admindiv2">
+						<div class="h2" name="${pVO.searchKey5}">검색분류:${pVO.searchKey5}
+							&nbsp;/&nbsp; 검색어: &nbsp;${pVO.searchWord5}</div>
+						<div>
+							<div>총${pVO.totalPage5 }페이지,&nbsp;&nbsp;
+								총레코드수:${pVO.totalRecord5 }</div>
+							&nbsp;&nbsp;
+							<fmt:formatNumber value="${pVO.totalRecord5 div 10}" />
+
+							<input type="button" value="선택삭제" class="multiDel4" />
+
+						</div>
 					</div>
-					<!-- 	<form method="post" action="/board/multiDel" id="listFrm"> -->
-					<!-- 		<ul id="board"> -->
 					<c:set var="username21">${pVO.totalRecord5  div 10}</c:set>
 					<c:set var="username22" value="0" />
 
 					<c:set var="username23">10</c:set>
 
 					<form method="post" action="/multiDel4" id="listFrm4">
+
 						<div class="UserDiv13">
-							<div>
-								<input type="checkbox" class="allChk4" />
+							<div class="admindiv37">
+								<div>
+									<input type="checkbox" class="allChk4" />
+								</div>
+								<div>NO</div>
+								<div>show_id</div>
 							</div>
-							<div>RepoetID</div>
-							<div>UserName</div>
-							<!-- 							<div>Type</div> -->
-							<div>content</div>
-							<div>postnum</div>
-							<div>show_id</div>
-							<div>Report-UserName</div>
-							<div>Report-content</div>
+							<div>
+								<div>UserName : content</div>
+								<div>Report-UserName : Report-content</div>
 
-
-
+							</div>
 						</div>
 						<c:forEach var="no" begin="1"
 							end="${username21+(1-(username21%1))%1}">
 							<div class="UserDiv15" name="${username23/10}">
 								<c:forEach var="vo" items="${mlist }" begin="${username22}"
 									end="${username23-1}" step="1" varStatus="status">
+
 									<div class="UserDiv14">
+										<div class="admindiv37">
+											<div>
+												<input type="checkbox" name="noList" value="${vo.postnum}" />
+											</div>
+											<div>${vo.id}</div>
+											<div>${vo.show_id}</div>
 
-										<div>
-											<input type="checkbox" name="noList" value="${vo.postnum}" />
 										</div>
+										<div class="admindiv36">
+											<div>&nbsp;${vo.user_id}&nbsp;:&nbsp;${vo.content}</div>
+											<div>&nbsp;${vo.user_id2}&nbsp;:&nbsp;${vo.rcontent}</div>
 
-										<div>${vo.id}</div>
-										<div>${vo.user_id}</div>
-										<%-- 										<div>${vo.type}</div> --%>
-										<div>${vo.content}</div>
-										<div>${vo.postnum}</div>
-										<div>${vo.show_id}</div>
-										<div>${vo.user_id2}</div>
-										<div>${vo.rcontent}</div>
-
+										</div>
 									</div>
 
 
@@ -583,16 +586,18 @@
 				<div>
 
 					<div class="container">
-						<h1>공연 후기 리스트</h1>
-						<h4 class="h1" name="${pVO.searchKey3}">검색분류:${pVO.searchKey3}
-							/ 검색어: ${pVO.searchWord3}</h4>
-						<div>총${pVO.totalPage3 }페이지, 총레코드수:${pVO.totalRecord3 }</div>
-						<fmt:formatNumber value="${pVO.totalRecord3 div 10}" />
-						<div>
-							<input type="button" value="선택삭제" class="multiDel5" />
+
+						<div class="admindiv2">
+							<div class="h1" name="${pVO.searchKey3}">검색분류:${pVO.searchKey3}
+								&nbsp;/&nbsp; 검색어: &nbsp;${pVO.searchWord3}</div>
+							<div>
+								<div>총${pVO.totalPage3 }페이지,&nbsp;&nbsp;
+									총레코드수:${pVO.totalRecord3 }</div>
+								&nbsp;&nbsp;
+								<fmt:formatNumber value="${pVO.totalRecord3 div 10}" />
+								<input type="button" value="선택삭제" class="multiDel5" />
+							</div>
 						</div>
-						<!-- 	<form method="post" action="/board/multiDel" id="listFrm"> -->
-						<!-- 		<ul id="board"> -->
 						<c:set var="username31">${pVO.totalRecord3  div 10}</c:set>
 						<c:set var="username32" value="0" />
 
@@ -603,7 +608,7 @@
 								<div>
 									<input type="checkbox" class="allChk5" />
 								</div>
-								<div>ReviewID</div>
+								<div>NO</div>
 								<div>UserID</div>
 								<div>ShowName</div>
 								<div>Content</div>
@@ -648,16 +653,16 @@
 								<c:set var="username33">${username33+10}</c:set>
 
 							</c:forEach>
-							
+
 						</form>
 						<!-- 		</ul> -->
 						<!-- 	</form> -->
 						<div>
-							<br />
+
 							<div class="page">
 								<!-- 페이지번호 -->
 
-	<br >	<br />
+
 								<c:forEach var="p" begin="${pVO.startPage3 }"
 									end="${pVO.startPage3+pVO.onePageCount3-1 }">
 									<!-- 출력할 페이지번호 총페이지 수보다 작거나 같을때만 출력함 -->
@@ -687,5 +692,4 @@
 			</div>
 		</div>
 	</div>
-</div>
 </html>
