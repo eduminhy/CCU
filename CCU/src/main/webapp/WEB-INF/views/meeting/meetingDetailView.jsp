@@ -198,7 +198,7 @@
 
 								<textarea class="form-control" id="content${reply.id}" name="content"
 									rows="3">${reply.content}</textarea>
-								<input type="button" onclick="main.replyUpdate(${reply.id})" value="댓글수정"></button>
+								<input type="button" id ="editbtn" onclick="main.replyUpdate(${reply.id})" value="댓글수정"></button>
 							</form>
 						</div>
 					</c:if>
