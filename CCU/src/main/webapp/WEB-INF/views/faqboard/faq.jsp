@@ -79,10 +79,3 @@
 
   items.forEach(item => item.addEventListener('click', openCloseAnswer));
 </script>
-
-
-
-
-
-</body>
-</html>

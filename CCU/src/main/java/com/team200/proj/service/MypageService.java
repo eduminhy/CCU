@@ -17,6 +17,7 @@ public interface MypageService {
 	public String getImgname(String id);
 	public int profileUpdate(UserVO vo);
 	public int myInfoEraseOk(String id, String password);
+	public int snsInfoEraseOk(String id);
 	public List<BoardVO> myBoardList(String user_id, int opr, int offp);
 	public int myBoardDel(BoardVO vo);
 	public List<ReplyVO> myReplyList(String user_id, int opr, int offp);

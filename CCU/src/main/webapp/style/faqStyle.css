@@ -22,6 +22,7 @@
 	margin-bottom:200px;
 	
 }
+
 .csmenu>div {
 	
 	border : solid 3px #440099;
@@ -48,12 +49,13 @@
 
 .faq-content {
 	border-bottom: 1px solid #e0e0e0;
-	margin-bottom: 0%;
-	margin-left: 30%;
+	margin-left:360px;
+	width:800px;
 }
 .answer {
 	display: none;
 	padding-bottom: 30px;
+	padding-left:30px;
 }
 .question {
 	font-size: 19px;
