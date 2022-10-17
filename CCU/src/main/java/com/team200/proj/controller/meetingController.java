@@ -1,10 +1,17 @@
 package com.team200.proj.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.team200.proj.service.ReplyService;
+
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -201,6 +208,68 @@ public class meetingController {
 		}
 		return mav;
 	}
+	//report
+	@RequestMapping(value = "report", method = RequestMethod.POST)
+	@ResponseBody
+	public void report(HttpServletRequest request) throws IOException, ParseException {
+		HttpSession session = request.getSession();
+		String user_id = (String) (request.getSession()).getAttribute("logId");
+//		System.out.println(session.getAttribute("logId"));
+
+		String str = readBody(request);
+		System.out.println(str);
+//		String str = "{\"name\":\"dong\"}";
+//		readBody(request).replace("\"", "\\\"");
+//		System.out.println(str);
+//		System.out.println(readBody(request).replace("\"", "\\\""));
+//		System.out.println((readBody(request)).toString());
+//		System.out.println((readBody(request)).toString().replace("\"", "\\\""));
+		JSONParser parser = new JSONParser();
+		org.json.simple.JSONObject jsonObject = (org.json.simple.JSONObject) parser.parse(str);
+
+		String logid = (String) session.getAttribute("logId");
+		int id = Integer.parseInt(String.valueOf(jsonObject.get("id")));
+//    	String content = (String) jsonObject.get("content");
+		String rcontent = (String) jsonObject.get("rcontent");
+		service.setReport(id, rcontent, logid);
+//		String str = readBody(request);
+//		JSONObject jsonObject = new JSONObject(str.toString());
+//        System.out.println("OBJECT : "+jsonObject.toString());
+//		JsonObject array = new Gson().fromJson(str, JsonObject.class);
+//		System.out.println(array);
+
+//		readBody(request).toString();
+//		JSONParser parser = new JSONParser();
+//		JSONObject jsonObject = (JSONObject) parser.parse(readBody(request).toString());
+//		System.out.println(jsonObject.get("name"));
+//		JsonParser parser = new JsonParser();
+//		JsonElement element = parser.parse((readBody(request).toString()));
+//		JsonObject rootob = element.getAsJsonObject().get("response").getAsJsonObject();
+//		JsonObject body = rootob.getAsJsonObject().get("body").getAsJsonObject();
+//		JsonObject items = body.getAsJsonObject().get("items").getAsJsonObject();
+
+	}
+
+	public static String readBody(HttpServletRequest request) throws IOException {
+		BufferedReader input = new BufferedReader(new InputStreamReader(request.getInputStream()));
+		StringBuilder builder = new StringBuilder();
+		String buffer;
+		while ((buffer = input.readLine()) != null) {
+			if (builder.length() > 0) {
+				builder.append("\n");
+			}
+			builder.append(buffer);
+		}
+		return builder.toString();
+	}
+
+//	@GetMapping("report")
+//	public ModelAndView report() {
+//
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("show/report");
+//		return mav;
+//	}
 
 }
 

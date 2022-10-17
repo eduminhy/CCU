@@ -37,5 +37,7 @@ public interface MeetingDAO {
 	public List<showVO> showModal(String name);
 
 	public MeetingVO meetingView(Long id);
+	
+	public void setReport(int id,String content,String logid);
 
 }
