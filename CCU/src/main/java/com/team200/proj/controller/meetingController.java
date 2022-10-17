@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team200.proj.service.MeetingService;
+import com.team200.proj.vo.MainMeetingPageVO;
 import com.team200.proj.vo.MeetingVO;
 
 @RestController
@@ -32,15 +33,15 @@ public class meetingController {
 
 	// 같이갈래요 list
 	@RequestMapping(value = "mainMeeting", method = RequestMethod.GET)
-	public ModelAndView mainMeeting(@RequestParam(required = false) String title) {
+	public ModelAndView mainMeeting(@RequestParam(required = false) String title, MainMeetingPageVO pvo) {
 		ModelAndView mav = new ModelAndView();
-
 		if (title == null) {
-			mav.addObject("list", service.mainMeeting());
+			mav.addObject("list", service.mainMeeting(pvo.getOnePageRecord(), pvo.getOffsetPoint()));
+			pvo.setTotalRecord(service.totalRecord());
 		} else {
 			mav.addObject("list", service.searchByTitle(title));
 		}
-
+		mav.addObject("pvo", pvo);
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
 	}

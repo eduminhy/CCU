@@ -14,7 +14,7 @@ public interface MeetingDAO {
 
 	public MeetingVO mainMeetingGet(Long id);
 
-	public List<MeetingVO> mainMeeting();
+	public List<MeetingVO> mainMeeting(int opr, int offp);
 
 	public List<MeetingVO> searchByTitle(String title);
 
@@ -39,5 +39,7 @@ public interface MeetingDAO {
 	public MeetingVO meetingView(Long id);
 	
 	public void setReport(int id,String content,String logid);
+	
+	public int totalRecord();
 
 }
