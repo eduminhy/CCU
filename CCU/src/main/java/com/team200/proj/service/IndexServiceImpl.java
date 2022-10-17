@@ -11,6 +11,7 @@ import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.PagingVO;
 import com.team200.proj.vo.ReportVO;
+import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.UserVO;
 import com.team200.proj.vo.festivalVO;
 import com.team200.proj.vo.showVO;
@@ -124,5 +125,23 @@ public class IndexServiceImpl implements IndexService {
 	public int boardMultiDel4(ReportVO vo) {
 		// TODO Auto-generated method stub
 		return dao.boardMultiDel4(vo);
+	}
+
+	@Override
+	public int getTotalUser5(PagingVO pvo) {
+		// TODO Auto-generated method stub
+		return dao.getTotalUser5(pvo);
+	}
+
+	@Override
+	public List<ReviewVO> reviewList(PagingVO pVO) {
+		// TODO Auto-generated method stub
+		return dao.reviewList(pVO);
+	}
+
+	@Override
+	public int boardMultiDel5(ReportVO vo) {
+		// TODO Auto-generated method stub
+		return dao.boardMultiDel5(vo);
 	}
 }

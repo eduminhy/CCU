@@ -108,6 +108,33 @@ $(function() {
 
 		return true;
 	});
+	$(".searchFrm4").submit(function() {
+		if ($(".searchWord4").val() == "") {
+			alert("검색어를 입력하세요.");
+			return false;
+		}
+		;
+
+		return true;
+	});
+	$(".searchFrm5").submit(function() {
+		if ($(".searchWord5").val() == "") {
+			alert("검색어를 입력하세요.");
+			return false;
+		}
+		;
+
+		return true;
+	});
+	$(".searchFrm3").submit(function() {
+		if ($(".searchWord3").val() == "") {
+			alert("검색어를 입력하세요.");
+			return false;
+		}
+		;
+
+		return true;
+	});
 	//리스트 전체 선택
 	$(".allChk").click(
 		function() {
@@ -121,6 +148,25 @@ $(function() {
 				"checked",
 				$(".allChk2").prop("checked"));
 		});
+	$(".allChk3").click(
+		function() {
+			$(".UserDiv11 input[type=checkbox]").prop(
+				"checked",
+				$(".allChk3").prop("checked"));
+		});
+	$(".allChk4").click(
+		function() {
+			$(".UserDiv14 input[type=checkbox]").prop(
+				"checked",
+				$(".allChk4").prop("checked"));
+		});
+	$(".allChk5").click(
+		function() {
+			$(".UserDiv34 input[type=checkbox]").prop(
+				"checked",
+				$(".allChk5").prop("checked"));
+		});
+
 
 	//선택된 갯수를 구하여 여러개를 삭제하도록 한다.
 	$(".multiDel2").click(
@@ -185,7 +231,7 @@ $(function() {
 			console.log(112);
 			//체크갯수 확인
 			var countChk = 0;
-			$(".UserDiv12 input[name=noList]").each(
+			$(".UserDiv14 input[name=noList]").each(
 				function(idx, obj) {
 					if (obj.checked) { //input테그가 체크상태일 경우 true 아니면 false
 						countChk++;
@@ -206,6 +252,34 @@ $(function() {
 				alert.write("취소합니다.");
 			}
 			$("#listFrm4").submit();
+		});
+	$(".multiDel5").click(
+
+		function() {
+			console.log(112);
+			//체크갯수 확인
+			var countChk = 0;
+			$(".UserDiv34 input[name=noList]").each(
+				function(idx, obj) {
+					if (obj.checked) { //input테그가 체크상태일 경우 true 아니면 false
+						countChk++;
+					}
+				});
+			console.log(countChk);
+			if (countChk <= 0) {
+				alert("삭제할 레코드를 선택후 삭제해주세요");
+				return false;
+			}
+			;
+			var con_test = confirm("정말로 게시글을 삭제하시겠습니까?.");
+			if (con_test == true) {
+				alert("삭제합니다.");
+				$("#listFrm5").submit();
+			}
+			else if (con_test == false) {
+				alert.write("취소합니다.");
+			}
+			$("#listFrm5").submit();
 		});
 	$(".multiDel").click(
 
@@ -241,34 +315,22 @@ $(document).ready(function() {
 	//var testName = $('#rating_1_star5').attr("name");
 	//var rating = $("input[name='"+testName+"']:checked").val();
 	//var aaa = "1.0";
-	$(".UserDiv3").hide();
-	//	$(".UserDiv3[name='"+aaa+"']").hide();
-	var aaa = "1.0"
-	//	console.log($(".UserDiv2 [name='1']").show());
-	$(".UserDiv3[name='" + aaa + "']").show();
-	$(".divdivdiv").click(function() {
-		$(".UserDiv3").hide();
-		var aaa = $(this).attr('name');
-		console.log(aaa)
-		aaa += ".0"
-		console.log(aaa)
-		$(".UserDiv3[name='" + aaa + "']").show();
-	});
+
 	if ($(".h4").attr('name') != "") {
-		var firstDiv2 = 4;
+		var firstDiv4 = 4;
 		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
 
 		$(".adminSubmenuContent>div").hide();
-		$(".adminSubmenuContent>div").eq(firstDiv2).show().css("background", "#ffffff");
+		$(".adminSubmenuContent>div").eq(firstDiv4).show().css("background", "#ffffff");
 		$(".adminContent>div").show();
 		$(".adminContent>div>div").show();
-		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv2)).hide();
-		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv2).children().first()).hide();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv4)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv4).children().first()).hide();
 		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
-		$(".adminSubmenuContent>div").eq(firstDiv2).children().first().css("background", "#666666").css("color", "#ffffff");
-		//		$(".adminContent>div>div").eq(0).children().first().show();
-		$(".adminSubmenu>div").eq(firstDiv2).css("background", "#666666").css("color", "#ffffff");
-		//		console.log($(".adminSubmenu").eq(2))
+		$(".adminSubmenuContent>div").eq(firstDiv4).children().first().css("background", "#666666").css("color", "#ffffff");
+		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv4).css("background", "#666666").css("color", "#ffffff");
+
 
 	}
 	if ($(".h3").attr('name') != "") {
@@ -289,10 +351,88 @@ $(document).ready(function() {
 
 	}
 
+	if ($(".h2").attr('name') != "") {
+		var firstDiv5 = 5;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
+
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv5).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv5)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv5).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv5).children().first().css("background", "#666666").css("color", "#ffffff");
+		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv5).css("background", "#666666").css("color", "#ffffff");
+		//		console.log($(".adminSubmenu").eq(2))
+
+	}
+	if ($(".h5").attr('name') != "") {
+		var firstDiv7 = 5;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
+
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv7).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv7)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv7).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv7).children().first().css("background", "#666666").css("color", "#ffffff");
+		//		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv7).css("background", "#666666").css("color", "#ffffff");
+		//		console.log($(".adminSubmenu").eq(2))
+
+	}
+
+	if ($(".h1").attr('name') != "") {
+		var firstDiv6 = 6;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
+
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv6).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv6)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv6).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv6).children().first().css("background", "#666666").css("color", "#ffffff");
+		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv6).css("background", "#666666").css("color", "#ffffff");
+
+
+	}
+	if ($(".h8").attr('name') != "") {
+		var firstDiv8 = 1;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
+
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv8).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv8)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv8).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv8).children().first().css("background", "#666666").css("color", "#ffffff");
+		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv8).css("background", "#666666").css("color", "#ffffff");
+
+
+	}
 	//	$(".UserDiv6").hide();
 	//		$(".UserDiv3[name='"+aaa+"']").hide();
-	var aaa = "1.0"
+
 	//		console.log($(".UserDiv2 [name='1']").show());
+	//	$(".UserDiv3").hide();
+	$(".UserDiv3").hide();
+	$(".UserDiv6").hide();
+	$(".UserDiv8").hide();
+	$(".UserDiv12").hide();
+	$(".UserDiv15").hide();
+	$(".UserDiv35").hide();
+	//	$(".UserDiv3").hide();
+	var aaa = "1.0"
 	$(".UserDiv6[name='" + aaa + "']").show();
 	$(".divdivdiv2").click(function() {
 		$(".UserDiv6").hide();
@@ -326,9 +466,7 @@ $(document).ready(function() {
 
 		$(".UserDiv12[name='" + ccc + "']").show();
 	});
-	var ddd = "1.0"
-	//		console.log($(".UserDiv2 [name='1']").show());
-	$(".UserDiv15[name='" + ddd + "']").show();
+	$(".UserDiv15[name='" + ccc + "']").show();
 	$(".divdivdiv5").click(function() {
 		$(".UserDiv15").hide();
 		var ddd = $(this).attr('name');
@@ -336,6 +474,28 @@ $(document).ready(function() {
 		ddd += ".0"
 
 		$(".UserDiv15[name='" + ddd + "']").show();
+	});
+	var eee = "1.0"
+	//		console.log($(".UserDiv2 [name='1']").show());
+	$(".UserDiv35[name='" + eee + "']").show();
+	$(".divdivdiv6").click(function() {
+		$(".UserDiv35").hide();
+		var eee = $(this).attr('name');
+
+		eee += ".0"
+
+		$(".UserDiv35[name='" + eee + "']").show();
+	});
+
+	var aaa = "1.0"
+	$(".UserDiv3[name='" + aaa + "']").show();
+	$(".divdivdiv").click(function() {
+		$(".UserDiv3").hide();
+		var aaa = $(this).attr('name');
+		console.log(aaa)
+		aaa += ".0"
+		console.log(aaa)
+		$(".UserDiv3[name='" + aaa + "']").show();
 	});
 	//	if ($(".h3").attr('name') == ""&& &&) {
 	//		firstDiv = ($(this).index());
@@ -388,4 +548,56 @@ $(document).ready(function() {
 		$(".adminSubmenu>div").eq(firstDiv2).css("background", "#666666").css("color", "#ffffff");
 		//		console.log($(".adminSubmenu").eq(2))
 	}
+	if ($(".adminBody").attr('name') == "reportReview") {
+		var firstDiv2 = 5;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
+
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv2).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv2)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv2).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv2).children().first().css("background", "#666666").css("color", "#ffffff");
+		//		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv2).css("background", "#666666").css("color", "#ffffff");
+		//		console.log($(".adminSubmenu").eq(2))
+	}
+	if ($(".adminBody").attr('name') == "reportMeet") {
+		var firstDiv2 = 5;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
+
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv2).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv2)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv2).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv2).children().first().css("background", "#666666").css("color", "#ffffff");
+		//		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv2).css("background", "#666666").css("color", "#ffffff");
+		//		console.log($(".adminSubmenu").eq(2))
+	}
+	if ($(".adminBody").attr('name') == "review") {
+		var firstDiv2 = 6;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
+
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv2).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv2)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv2).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv2).children().first().css("background", "#666666").css("color", "#ffffff");
+		//		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv2).css("background", "#666666").css("color", "#ffffff");
+		//		console.log($(".adminSubmenu").eq(2))
+	}
+	$(".page>div").click(function() {
+		$(".page>div").css("background", "white");
+		$(this).css("background", "#cccccc");
+	});
 });

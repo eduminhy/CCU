@@ -78,6 +78,7 @@ public class homeController {
 		System.out.println(service.getTotalUser(pVO));
 		pVO.setTotalRecord(service.getTotalUser(pVO));
 		pVO.setTotalRecord2(service.getTotalUser2(pVO));
+		pVO.setTotalRecord3(service.getTotalUser5(pVO));
 		pVO.setTotalRecord4(service.getTotalUser3(pVO));
 		pVO.setTotalRecord5(service.getTotalUser4(pVO));
 		mav.addObject("pVO", pVO);
@@ -93,6 +94,8 @@ public class homeController {
 		mav.addObject("blist", service.boardList(pVO));
 		mav.addObject("rlist", service.reportList(pVO));
 		mav.addObject("mlist", service.mreportList(pVO));
+		mav.addObject("reviewlist", service.reviewList(pVO));
+		
 		System.out.println(pVO.toString());
 //		if (pVO.getSearchKey() == "") {
 //			mav.setViewName("adminPage/admin?view=user");
@@ -159,6 +162,17 @@ public class homeController {
 		mav.setViewName("redirect:/admin");
 		mav.addObject("data", "신고접수된 미팅게시판 글이 삭제되었습니다.");
 		mav.addObject("data2", "reportMeet");
+		mav.setViewName("Message");
+		return mav;
+	}
+	@PostMapping("/multiDel5")
+	public ModelAndView multiDel5(ReportVO vo) {
+		int cnt = service.boardMultiDel5(vo);
+//		System.out.println(cnt);
+		mav = new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		mav.addObject("data", "선택된 후기 게시글 글이 삭제되었습니다.");
+		mav.addObject("data2", "review");
 		mav.setViewName("Message");
 		return mav;
 	}
