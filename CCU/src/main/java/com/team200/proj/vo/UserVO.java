@@ -20,8 +20,8 @@ public class UserVO {
 	private String tel3;
 	
 	private String register_date;
-	private String gender;
-	private String birth;
+	private String gender = "null";
+	private String birth = "null";
 	private String addr;
 	private String zipcode;
 	private String road_name;

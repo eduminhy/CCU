@@ -61,6 +61,8 @@
 		<div class="answer" id="ans-4">예약내역 확인시에 가능합니다.</div>
 	</div>
 </div>	
+<br/>
+<br/>
 
 	<script>
   const items = document.querySelectorAll('.question');

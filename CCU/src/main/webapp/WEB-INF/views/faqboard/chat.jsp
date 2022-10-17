@@ -8,7 +8,7 @@
 	function registChat() {
 
 		window.open('chatList', '네이버팝업',
-				'width=500, height=400, scrollbars=yes, resizable=no');
+				'width=640, height=640, scrollbars=yes, resizable=no');
 	}
 </script>
 

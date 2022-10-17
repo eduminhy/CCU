@@ -29,8 +29,8 @@ public class meetingController {
 
 	@Inject
 	ReplyService replyService;
-	
-	//같이갈래요 list
+
+	// 같이갈래요 list
 	@RequestMapping(value = "mainMeeting", method = RequestMethod.GET)
 	public ModelAndView mainMeeting(@RequestParam(required = false) String title) {
 		ModelAndView mav = new ModelAndView();
@@ -47,7 +47,7 @@ public class meetingController {
 
 	// --------------------------------------------------------------------------------
 
-	//	mainMeeting?genre=연극
+	// mainMeeting?genre=연극
 	@RequestMapping(value = "mainMeeting/{genre}", method = RequestMethod.GET)
 	public ModelAndView meetingFindGenre(@PathVariable String genre) {
 		ModelAndView mav = new ModelAndView();
@@ -61,8 +61,6 @@ public class meetingController {
 	@RequestMapping(value = "mainMeeting2/{genre1}&{genre2}", method = RequestMethod.GET)
 	public ModelAndView meetingFindGenre(@PathVariable String genre1, @PathVariable String genre2) {
 		ModelAndView mav = new ModelAndView();
-
-		
 
 		mav.addObject("list", service.mainMeetingGenre2(genre1, genre2));
 
@@ -121,7 +119,6 @@ public class meetingController {
 	public ModelAndView GotoMeetingView(@PathVariable Long id, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 
-
 		HttpSession session = request.getSession();
 		String user_id = (String) session.getAttribute("logId");
 
@@ -141,7 +138,7 @@ public class meetingController {
 		mav.setViewName("meeting/mainMeetingNotice");
 		return mav;
 	}
-	
+
 	@GetMapping("playMeetingForm")
 	public ModelAndView playMeetingForm() { // 연극게시판글쓰기폼
 		ModelAndView mav = new ModelAndView();
@@ -149,7 +146,6 @@ public class meetingController {
 		return mav;
 	}
 
-	
 	@GetMapping("playMeetingComment")
 	public ModelAndView playMeetingComment() { // 연극게시판댓글폼
 		ModelAndView mav = new ModelAndView();
@@ -167,9 +163,16 @@ public class meetingController {
 
 		Long id = vo.getId();
 
-		System.out.println("id : " + id);
+		String a = vo.getContent();
+
+		String aa = a.replaceAll("</p>", "<p>");
+
+		String aaa = aa.replaceAll("<p>", "");
+
+		vo.setContent(aaa);
 
 		int cnt;
+
 		if (service.mainMeetingGet(id) == null) {
 			cnt = service.meetingWriteOk(vo);
 		} else {
@@ -208,7 +211,8 @@ public class meetingController {
 		}
 		return mav;
 	}
-	//report
+
+	// report
 	@RequestMapping(value = "report", method = RequestMethod.POST)
 	@ResponseBody
 	public void report(HttpServletRequest request) throws IOException, ParseException {
@@ -272,4 +276,3 @@ public class meetingController {
 //	}
 
 }
-
