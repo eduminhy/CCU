@@ -10,6 +10,7 @@ import com.team200.proj.vo.OrderlistVO;
 import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.PagingVO;
 import com.team200.proj.vo.ReportVO;
+import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.UserVO;
 import com.team200.proj.vo.festivalVO;
 import com.team200.proj.vo.showVO;
@@ -38,8 +39,11 @@ public interface IndexDAO {
 	public int boardMultiDel2(UserVO vo);
 	public int boardMultiDel3(ReportVO vo);
 	public int boardMultiDel4(ReportVO vo);
+	public int boardMultiDel5(ReportVO vo);
 	
 	public List<BoardVO> reportList(PagingVO pVO);
 	public List<BoardVO> mreportList(PagingVO pVO);
+	public int getTotalUser5(PagingVO pvo);
+	public List<ReviewVO> reviewList(PagingVO pVO);
 
 }
