@@ -121,6 +121,7 @@
 </head>
 
 <body>
+
 	<div>
 		<table width="640px;">
 			<colgroup>
@@ -141,5 +142,6 @@
 			style="font-size: 1.5em; border: 2px solid #440099;">
 		<button onclick="addChat();" class="newchatbtn">전송</button>
 	</div>
+
 </body>
 </html>

@@ -96,10 +96,12 @@
 				<!-- 				<p class="playMeetingWarning">※ 개인정보 유출 및 피해에 유의하시고 금전 및 물품 피해에 -->
 				<!-- 					대해 유의하십시오.</p> -->
 
+
 				<!-- 예약내역가져오는 곳~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 				<form method="post" action="" class="playMeetingTable">
 					<h4 class="h8" name="${param.booksearchKey}">검색분류:${param.booksearchKey}
 						/ 검색어: ${param.booksearchWord}</h4>
+
 					<ul>
 						<li>
 							<ul class="playMeetingList">
@@ -117,21 +119,25 @@
 								<!-- 게시물이 출력될 영역 -->
 								<c:forEach var="bvo" items="${booklist}">
 									<li>
+
 										<ul>
 											<li><input type="checkbox" name="checkbox"
 												value="checkbox"></li>
+
 											<li>${bvo.user_id}</li>
-											<li>${bvo.no }</li>
+											<li>${bvo.no}</li>
 											<li>${bvo.name }</li>
 											<li>${bvo.showDate }&nbsp;${bvo.showTime }</li>
-											<li>${bvo.seat_num }</li>
+											<li>${bvo.seat_num}</li>
 										</ul>
 									</li>
 								</c:forEach>
 							</ul>
 						</li>
 					</ul>
+					<input type="button" value="예매취소" id="DeleteBtn"/>
 				</form>
+
 				<div id="pageDiv">
 					<ul id="page">
 						<c:if test="${apvo.booknowPage<=1 }">
@@ -161,14 +167,17 @@
 					</ul>
 				</div>
 				<div class="playMeetingListSearch">
+
 					<form method="get" action="/admin" class="playMeetingListSearchFrm">
-						<select name="booksearchKey" class="playMeetingListSearchKey">
+						<select name="booksearchKey" class="BookSearchKey">
 							<option value="user_id">아이디</option>
 							<option value="no">예매번호</option>
 							<option value="name">공원명</option>
-						</select> <input type="text" name="booksearchWord"
-							class="playMeetingListSearchTxt" placeholder="" /> <input
-							type="submit" value="" class="playMeetingListSearchBtn" />
+
+						</select> 
+						<input type="text" name="booksearchWord" class="BookSearchTxt" placeholder="" /> 
+						<input type="submit" value="Search" class="BookSearchBtn"/>
+
 					</form>
 				</div>
 				<!-- 예약내역가져온 곳~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->

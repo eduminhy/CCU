@@ -124,8 +124,9 @@
 		<li><input type="button" value="아이디중복검사" id="idChk"/></li>
 		<br/>
 		<li><input type="hidden" id="idCheckStatus" value="N"/></li>  
-		<li><input type="text" name="password" id="password" placeholder="비밀번호를 입력해주세요"></li>
-		<li><input type="text" name="password2" id="password2" placeholder="비밀번호를 확인해주세요"></li>
+		<li><input type="password" name="password" id="password" placeholder="비밀번호를 입력해주세요"></li>
+		<li><input type="password" name="password2" id="password2" placeholder="비밀번호를 확인해주세요"></li>
+		<li><input type="text" name="email" id="email" placeholder="이메일을 입력해주세요"></li>
 		<li><input type="text" name="nickname" id="nickname" placeholder="닉네임을 입력해주세요"></li>
 		<li><input type="text" name="username" id="username" placeholder="이름을 입력해주세요"></li>
 		<li><input type="text" name="birth" id="birth" placeholder="생년월일을 입력해주세요 (8자리) EX:19990101"></li>
@@ -141,21 +142,27 @@
 		<li><input type="text" name="zipcode" id="addr1" readonly="readonly"  placeholder="우편번호"></li>
 		<li><input type="text" name="road_name" id="addr2"  readonly="readonly" placeholder="도로명 주소"  /> </li>
 		<li><input type="text" name="addr" id="addr3" placeholder="상세주소를 입력해주세요"></li>
-		<span>광고 및 이벤트성 '이메일' 수신동의 여부</span>
-		<li><input type="radio" name="rcvmail" value="0" checked>동의함
-		<input type="radio" name="rcvmail" value="1" checked>동의하지않음</li>
+		<span><b>광고 및 이벤트성 '이메일' 수신동의 여부</b></span>
+		<li><input type="radio" name="agree_to_receive_email" value="0" checked>동의함
+		<input type="radio" name="agree_to_receive_email" value="1" checked>동의하지않음</li>
 		<br/>
-		<span>광고 및 이벤트성 '문자' 수신동의 여부</span>
-		<li><input type="radio" name="rcvmsg" value="0" checked>동의함
-		<input type="radio" name="rcvmsg" value="1" checked>동의하지않음</li>
+		<span><b>광고 및 이벤트성 '문자' 수신동의 여부</b></span>
+		<li><input type="radio" name="agree_to_receive_msg" value="0" checked>동의함
+		<input type="radio" name="agree_to_receive_msg" value="1" checked>동의하지않음</li>
 		<br/>
-		<li><input type="text" name="route" id="route" placeholder= "가입경로를 입력해주세요"></li>
-		
+		<span><b>CCU 가입경로를 선택해주세요</b></span>
+		<br/>
+		<li><input type="radio" name="route" value="광고" checked> 광고</li>
+		<li><input type="radio" name="route" value="검색" checked> 검색</li>
+		<li><input type="radio" name="route" value="추천" checked> 추천</li>
+		<li><input type="radio" name="route" value="기타" checked> 기타</li>
+<!-- 		<li><input type="text" name="route" id="route" placeholder= "가입경로를 입력해주세요"></li> -->
+		</br>
 		<li><input type="submit" value="회원가입" class="signupbtn"></li>
 	
-		<li><img src="../img/navericon.png" width=80px; height=80px; id="navericon"> </li>
-		<li><img src="../img/kakaoicon.png" width=80px; height=80px; id="kakaoicon"></li>
-		<li><img src="../img/googleicon.png" width=80px; height=80px; id="googleicon"></li>
+<!-- 		<li><img src="../img/navericon.png" width=80px; height=80px; id="navericon"> -->
+<!-- 		<li><img src="../img/kakaoicon.png" width=80px; height=80px; id="kakaoicon"></li> -->
+<!-- 		<a href="/oauth2/authorization/google"><li><img src="../img/googleicon.png" width=80px; height=80px; id="googleicon"></li></a> -->
 	</ul>
 </form>
 

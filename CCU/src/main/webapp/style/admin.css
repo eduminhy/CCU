@@ -120,84 +120,75 @@
 /* 		margin-top:4%; */
 /* 		margin-left:11%; */
 /* 	} */
-ul, li {
-	list-style: none;
-	/*text-align:center;*/
-	padding: 0;
-	margin: 0;
-}
+    ul, li{ 
+        list-style:none;
+        /*text-align:center;*/
+        padding:0;
+        margin:0;
+	}
+	
+    .playMeetingTable{
+		margin:0 0;
+		width:100%;
+		/*height:255px;*/
+		padding:0%;
+		border-bottom:0px solid #7F7F7F; /* ------------------백엔드하고 스타일 다시 확인하기 */
+		height:600px;
+    }
 
-.playMeetingTable {
-	margin: 0 0;
-	width: 100%;
-	/*height:255px;*/
-	padding: 0%;
-	border-bottom: 0px solid #7F7F7F;
-	/* ------------------백엔드하고 스타일 다시 확인하기 */
-	height: 700px;
-}
+    .playMeetingTable > ul > li:first-child {
+        text-align: center;
+        font-size:14pt;
+        height:40px;
+        vertical-align:middle;
+        line-height:30px;
+	}
 
-.playMeetingTable>ul>li:first-child {
-	text-align: center;
-	font-size: 14pt;
-	height: 40px;
-	vertical-align: middle;
-	line-height: 30px;
-}
 
-.playMeetingList {
-	/*     	margin-top:10px; */
-	line-height: 50px;
-}
+    .playMeetingList {
+/*     	margin-top:10px; */
+    	line-height: 50px;
+    }
+    
 
-.playMeetingList>li:first-child>ul>li {
-	background-color: #E0E0E0;
-	font-weight: bold;
-	text-align: center;
-}
+    .playMeetingList > li:first-child > ul > li {
+        background-color:#E0E0E0;
+        font-weight:bold;
+        text-align:center;
+	}
+    .playMeetingList > li:last-child > ul > li {
+        border-bottom:2px solid #7F7F7F;
+	}
 
-.playMeetingList>li:last-child>ul>li {
-	border-bottom: 2px solid #7F7F7F;
-}
+    .playMeetingList > li > ul > li { 
+        float:left;
+        font-size:12pt; /* 글씨 크기 */
+        border-bottom:1px solid silver;
+        vertical-align:baseline;
+}    
 
-.playMeetingList>li>ul>li {
-	float: left;
-	font-size: 12pt; /* 글씨 크기 */
-	border-bottom: 1px solid silver;
-	vertical-align: baseline;
-}
-
-.playMeetingList>li>ul>li:first-child {
-	width: 5%;
-	height: 50px;
-} /*체크박스 열,행 크기*/
-.playMeetingList>li>ul>li:first-child+li {
-	width: 10%;
-	height: 50px;
-} /*번호 열,행 크기*/
-.playMeetingList>li>ul>li:first-child+li+li {
-	width: 20%;
-	height: 50px;
-} /*말머리 열,행 크기*/
-.playMeetingList>li>ul>li:first-child+li+li+li {
-	width: 35%;
-	height: 50px;
-	text-align: left;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-} /*제목 열,행 크기*/
-.playMeetingList>li>ul>li:first-child+li+li+li+li {
-	width: 15%;
-	height: 50px;
-} /*마감여부 열,행 크기*/
-.playMeetingList>li>ul>li:first-child+li+li+li+li+li {
-	width: 15%;
-	height: 50px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-} /*마감여부 열,행 크기*/
+	.playMeetingList > li > ul > li:first-child							{width:5%; height:50px;} /*체크박스 열,행 크기*/
+    .playMeetingList > li > ul > li:first-child +li              		{width:10%; height:50px;} /*번호 열,행 크기*/
+    .playMeetingList > li > ul > li:first-child +li+li           		{width:20%; height:50px;} /*말머리 열,행 크기*/
+    .playMeetingList > li > ul > li:first-child +li+li+li        		{width:35%; height:50px; text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;} /*제목 열,행 크기*/
+    .playMeetingList > li > ul > li:first-child +li+li+li+li     		{width:15%; height:50px;} /*마감여부 열,행 크기*/
+    .playMeetingList > li > ul > li:first-child +li+li+li+li+li     	{width:15%; height:50px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;} /*마감여부 열,행 크기*/
+    #DeleteBtn{
+    	width:100px; height:40px; 
+    	float:right; margin:10px;
+    	border:none; font-size:17px; font-weight:bold;
+    	background-color:#440099; color:#fff;
+    }
+    .BookSearchKey{margin-left:325px; margin-bottom:100px; margin-top:50px; width:100px; border:1px solid #ddd; padding:5px; color:gray; outline:none;}
+    .BookSearchTxt{margin-bottom:100px; margin-top:50px; width:300px; border:none; border-bottom:1px solid #ddd; padding:5px; color:gray; outline:none;}
+    .BookSearchBtn{margin-bottom:100px; margin-top:50px; width:100px; border:none; padding:5px; color:gray; outline:none;}
+    
+    #page li{
+	overflow:auto; float:left; padding:10px;
+	font-size:18px;
+	margin-top:10px;
+	}
+	#page li:first-child{margin-left:525px;}
 /* ///////////////////////////////////////////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////////////////////////// */
 .playMeetingList2 {
@@ -261,6 +252,7 @@ ul, li {
 	border-style: none;
 	cursor: pointer;
 }
+
 
 /*목록*/
 /* #board { */

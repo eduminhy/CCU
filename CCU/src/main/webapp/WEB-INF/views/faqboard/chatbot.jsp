@@ -104,7 +104,22 @@ $(function(){
 </head>
 <body>
 
-<h2>Chatbot</h2>
+<div class="csmenu">
+		<div><a href="/faq">FAQ</a></div>
+		<div><a href="/qna">Q&A</a></div>
+		<div><a href="/chatbot">ChatBot</a></div>
+		<div><a href="/terms">이용약관</a></div>
+</div>
+
+
+<img src="https://img.freepik.com/premium-vector/robot-icon-bot-sign-design-
+chatbot-symbol-concept-voice-support-service-bot-online-support-bot-vector-
+stock-illustration_100456-34.jpg?w=2000" style="width:350px; height:350px;  margin: auto;
+    display: block;">
+<li style="text-align:center; color:GREY; font-size:1.5em;"><b>CCU Chatbot Manager</b></li>
+
+
+
 <div id="content" style="width:100%; height:400px; border:1px solid #ddd;"></div>
 <input type="text" name="queryin" id="queryin"/>
 <input type="button" value="query" id="query"/>

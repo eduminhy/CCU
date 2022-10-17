@@ -321,9 +321,28 @@
 		${bookoffsetPoint}
 	</select>
 	<select id="totalReservation" resultType="int">
-		select count(no) cnt from order_list
-		<if test='booksearchWord!=null'>
-			where ${booksearchKey} like '%${booksearchWord}%'
+		<if test="booksearchKey=='name'">
+			select count(no) cnt from order_list as a  
+			inner join scheduleDate as b on a.scheduleDate_id=b.id
+			inner join showdb as c on c.id=b.showdb_id
+	        where c.name like '%${booksearchWord}%'
+		</if>
+		<if test="booksearchKey!='name'">
+			select count(no) cnt from order_list
+			<if test='booksearchWord!=null'>
+				where ${booksearchKey} like '%${booksearchWord}%'
+			</if>
 		</if>
 	</select>
+	<delete id="bookDel">
+		delete from order_list
+		<where>
+			<foreach item="item" index="index" collection="noList" open="no in (" separator="," close=")">
+				#{item}
+			</foreach>
+		</where>
+	</delete>
+<!-- 	<select id="bookCancelInfo">
+		select a.no, a.user_id, c.showname, b.showdate, d.seat_numfrom order_list
+	</select> -->
 </mapper>

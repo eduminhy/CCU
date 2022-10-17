@@ -309,6 +309,35 @@ $(function() {
 			}
 			$("#listFrm").submit();
 		});
+		
+		$("#DeleteBtn").click(
+
+		function() {
+			console.log(112);
+			//체크갯수 확인
+			var countChk = 0;
+			$(".book input[name=noList]").each(
+				function(idx, obj) {
+					if (obj.checked) { //input테그가 체크상태일 경우 true 아니면 false
+						countChk++;
+					}
+				});
+			console.log(countChk);
+			if (countChk <= 0) {
+				alert("삭제할 레코드를 선택후 삭제해주세요");
+				return false;
+			}
+			;
+			var con_test = confirm("정말로 게시글을 삭제하시겠습니까?.");
+			if (con_test == true) {
+				alert("삭제합니다.");
+				$(".playMeetingTable").submit();
+			}
+			else if (con_test == false) {
+				alert.write("취소합니다.");
+			}
+			$(".playMeetingTable").submit();
+		});
 });
 //---------------------------------------------------------------------------------------------
 $(document).ready(function() {
@@ -548,6 +577,7 @@ $(document).ready(function() {
 		$(".adminSubmenu>div").eq(firstDiv2).css("background", "#666666").css("color", "#ffffff");
 		//		console.log($(".adminSubmenu").eq(2))
 	}
+
 	if ($(".adminBody").attr('name') == "reportReview") {
 		var firstDiv2 = 5;
 		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
@@ -601,3 +631,4 @@ $(document).ready(function() {
 		$(this).css("background", "#cccccc");
 	});
 });
+

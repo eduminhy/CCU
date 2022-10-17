@@ -11,6 +11,9 @@ public interface UserDAO {
 
 	//로그인
 	public UserVO loginOk(UserVO vo);
+
+	public UserVO findByEmail(String email);
+
 	//회원가입 signup
 	public int signupWrite(UserVO vo);
 	//아이디 중복검사

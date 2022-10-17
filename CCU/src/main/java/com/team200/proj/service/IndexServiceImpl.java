@@ -143,5 +143,9 @@ public class IndexServiceImpl implements IndexService {
 	public int boardMultiDel5(ReportVO vo) {
 		// TODO Auto-generated method stub
 		return dao.boardMultiDel5(vo);
+
+	public int bookDel(OrderlistVO vo) {
+		return dao.bookDel(vo);
+
 	}
 }

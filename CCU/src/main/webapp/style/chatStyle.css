@@ -1,7 +1,17 @@
 @charset "UTF-8";
-
+.newchat {
+		position: absolute;
+		bottom : 0;
+		width:80%;
+		height:100px;
+}
 .newchatbtn{
-		text-align:right;
+		width:19%;
+		height:107px;
+		position: absolute;
+		right:0;
+		bottom : 0;
+		text-align:center;
 		padding:10px 20px;
 		float:right;
 		background:#440099;
@@ -11,22 +21,58 @@
 		border-style:none;
 	
 }
+tbody tr td:nth-child(1){
 
+ 	font-color : #008080;
+ }
+ tbody tr td:nth-child(2){
+ 	padding-left : 200px;
+ 	font-color : #f1c550;
+ }
+ th#adminchat {
+	font-weight:bold;
+	font-size : 1.5em;
+	color : #008080;
+	
+}
+th#userchat {
+	padding-left : 200px;
+	font-weight:bold;
+	font-size : 1.5em;
+	color : #f1c550;
+}
 .chatqnabox {
-	border: solid 3px #440099;
+	
 	text-align: center;
 	width: 1200px;
 	height:800px;
-	font-size: 20px;
-	font-weight: bold;
 	margin: 0 auto;
+}
+#chatqnali1{
+	font-weight:bold;
+	font-size:30px;
+}
+#chatqnali2{
+	font-size:15px;
+	color:red;
+}
+
+#admiinchat {
+	float:right;	
+	
+}
+
+#userchat {
+	float:left;	
+	
 }
 #chatBtn {
 	width: 300px;
-	height : 300px;
+	height : 80px;
 	font-size : 40px;
 	font-weight:bold;
-	background:rgb(245,242,250);
+	background-color:white;
+	border : 1px solid white;
 	
 }
 .csmenu{
