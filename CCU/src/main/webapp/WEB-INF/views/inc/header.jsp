@@ -112,7 +112,8 @@
 </script>
 </head>
 <body>
-	<div id="topMenu">
+
+<div id="topMenu">
 		<c:if test="${logStatus!='Y' }">
 			<a href="/user/login">로그인</a>
 			<span>&nbsp;</span>
@@ -125,9 +126,10 @@
 			<span>&nbsp;</span>
 			<a href="/mypage/myInfo">mypage</a>
 			<span>&nbsp;</span>
-			<a href="/qna">1:1문의</a>
+			<a href="/faq">고객센터</a>
 		</c:if>
 	</div>
+	
 	<div class="topUp">
 		<div id="top">
 			<button class="search-btn" type="submit">
@@ -148,45 +150,45 @@
 
 			<form method="post" action="/user/loginOk" id="log">
 				<div id="toggleDiv">
-
+					
+					
+					<c:if test="${logStatus!='Y' }">
 					<input type="text" placeholder="아이디를 입력해주세요" name="id" id="id">
 					<br /> <input type="password" placeholder="비밀번호를 입력해주세요"
-						name="password" id="password"> <br /> <br />
-					<c:if test="${logStatus!='Y' }">
+						name="password" id="password">
+						<br/>
 						<input type="submit" value="로그인" class="loginBtn">
-						<br />
+						<br/>
+						<a href="/oauth2/authorization/google"><img src="../img/googleicon.png" id="googleicon"></a>
+						<a href="/oauth2/authorization/kakao"><img src="../img/kakaoicon.png" id="kakaoicon"></a>
+					
+						<br /><br /><br /><br />
+						<a href="/user/signup"><b>회원가입</b></a>
+						</br>
+						<a href="/faq"><b>고객센터</b></a>
 					</c:if>
 					<c:if test="${logStatus=='Y' }">
-						<!-- 	<button onclick="logoutFunc();">로그아웃</button>  -->
-						<a href="/user/logout" class="logoutBtn">로그아웃</a>
+						<h1 style="font-size:20px; font-color:orange;"> ${logId }님 환영합니다</h1>
+						<input type="button" value="로그아웃" onclick=" location.href ='/user/logout' " class="logoutBtn">
+					
+						<br /><br /><br /><br />
+						<a href="/mypage/myInfo"><b>Mypage</b></a>
+						<br />
+						<a href="/faq"><b>고객센터</b></a>
+					
 					</c:if>
+					
+					</div>
 			</form>
-			<!-- 
-			<input type="text" id="userid" placeholder="ID"/><br/>
-			<input type="password" id="userpwd" placeholder="PW"/><br/>
-			<input type="submit" value="Login" id="logBtn" width=160px;/>
-		 -->
+			
 
-			<!-- 
-		<Div>
-			<img src="../img/navericon.png" width=40px; height=40px; id="navericon">
-			<img src="../img/kakaoicon.png" width=40px; height=40px; id="kakaoicon">
-			<img src="../img/googleicon.png" width=40px; height=40px; id="googleicon">
-		</Div>
-		 -->
-
-			<br />
-			<div>
-				<a href="/user/signup">회원가입</a>
-			</div>
-			<div>
-				<a href="/faq">고객센터</a>
-			</div>
+			
+			
 
 
 		</div>
 	</div>
-	</div>
+
 
 	<div class="topDown">
 		<!-- 탭메뉴 -->

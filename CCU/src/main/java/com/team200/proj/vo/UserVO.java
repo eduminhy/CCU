@@ -7,6 +7,7 @@ import java.util.List;
 //18개
 public class UserVO {
 	private String id;
+	private String email;
 	private String password;
 	private String username;
 	private int role;
@@ -176,9 +177,14 @@ public class UserVO {
 	public void setDelImg(List<String> delImg) {
 		this.delImg = delImg;
 	}
-	
-	
-	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }
 	
 

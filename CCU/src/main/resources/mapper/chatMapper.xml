@@ -8,7 +8,7 @@
 	</insert>
 	
 	<insert id="registChatRoom">
-		insert into chatRoom (chat_room_id, chat_info, chat_role) values( #{chat_room_id}, '문의하세요.' , 1)
+		insert into chatRoom (chat_room_id, chat_info, chat_role) values( #{chat_room_id}, 'CCU 1:1문의함입니다.' , 1)
 	</insert>
 	
 	<insert id="addChat">

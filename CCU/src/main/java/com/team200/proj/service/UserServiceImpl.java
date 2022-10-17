@@ -19,6 +19,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public UserVO findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return dao.findByEmail(email);
+	}
+
+	@Override
 	public int signupWrite(UserVO vo) {
 		// TODO Auto-generated method stub
 		return dao.signupWrite(vo);

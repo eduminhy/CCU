@@ -10,7 +10,11 @@
     </select>
 
     <select id="showModal" resultType="showVO">
+
+     
+
         select id, name, mainposter from showdb where name like CONCAT('%', #{search}, '%')
+
     </select>
 
 	<select id="showSearch" resultType="showVO">

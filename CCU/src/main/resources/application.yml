@@ -11,21 +11,21 @@ server:
       force: true
 spring:
   mvc:
-   view:
-    ##접두어 / 접미어 view페이지의 앞에는 공통된 폴더 위치인 /WEB-INF/views/를 붙여주고 뒤에는 .jsp를 넣는것
-    ##즉 리턴값이 "A"일경우 /WEB-INF/views/A.jsp의 경로에 있는 파일을 리턴해주는것.
-    prefix: /WEB-INF/views/
-    suffix: .jsp
+    view:
+      ##접두어 / 접미어 view페이지의 앞에는 공통된 폴더 위치인 /WEB-INF/views/를 붙여주고 뒤에는 .jsp를 넣는것
+      ##즉 리턴값이 "A"일경우 /WEB-INF/views/A.jsp의 경로에 있는 파일을 리턴해주는것.
+      prefix: /WEB-INF/views/
+      suffix: .jsp
   ##jdbc Schema(DB)명과 mySQL id, password 각자 설정해야함.
   ## 127.0.0.1는 서버 URL이나 로컬서버 localhost:8020을 사용하기에 통일
   ##추후 공유하지않는 파일로 변경이 가능하다면 할 것.
-  dataSource: 
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1/Team200?characterEncoding=utf-8
-#    url: jdbc:mysql://localhost:3307/team200
-    username: root
-#    password: 1234
-    password: root1234
+  dataSource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1/Team200?characterEncoding=utf-8
+#      url: jdbc:mysql://localhost:3307/team200
+      username: root
+#      password: 1234
+      password: root1234
 
   ##파일업로드 제한용량 설정
   servlet:
@@ -33,13 +33,41 @@ spring:
       max-file-size: 20MB
       max-request-size: 20MB
       enabled: true
-        
+
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: 7345dd34fad4c4b6e313b15506ac815b
+            client-secret: caa05f990d5a2e85fde36f80d8d28afd
+            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
+            authorization-grant-type: authorization_code
+            client-authentication-method: POST
+            client-name: Kakao
+            scope:
+              - profile_nickname
+              - profile_image
+              - account_email
+          google:
+            client-id: 426256303189-91qm6qceidgtnqitpoq62grsjgo4rot1.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - profile
+              - email
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
 ##mybatis 설정
 mybatis:
- ##나중에 MapperXML파일에 resultType클래스의 패키지를 안적고 클래스명만 넣고 사용하도록
- ##ex) "boardVO" 이런식으로 사용하게 해주기 위하여 미리 위치를 지정해주는것.
- ##다양한 폴더를 지정하기 위해서는 ","콤마를 통하여 구분한다.
- type-aliases-package: com.team200.proj.vo
- ##mapper파일의 위치를 지정
- mapper-locations: mapper/*Mapper.xml
+  ##나중에 MapperXML파일에 resultType클래스의 패키지를 안적고 클래스명만 넣고 사용하도록
+  ##ex) "boardVO" 이런식으로 사용하게 해주기 위하여 미리 위치를 지정해주는것.
+  ##다양한 폴더를 지정하기 위해서는 ","콤마를 통하여 구분한다.
+  type-aliases-package: com.team200.proj.vo
+  ##mapper파일의 위치를 지정
+  mapper-locations: mapper/*Mapper.xml
 
