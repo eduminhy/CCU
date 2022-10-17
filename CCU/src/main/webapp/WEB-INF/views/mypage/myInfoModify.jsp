@@ -144,7 +144,7 @@
 		</tr>
 		<tr class="rows">
 			<th>연락처</th>
-			<td><input type="text" name="tel" value="${vo.tel }" readonly/></td>
+			<td><input type="text" name="tel" value="${vo.tel }"/></td>
 		</tr>
 		<tr class="rows">
 			<th rowspan='3'>주소*</th>

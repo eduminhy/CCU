@@ -13,10 +13,13 @@
 		select img from user where id = #{param1}
 	</select>
 	<update id="profileUpdate">
-		update user set password=#{password}, img=#{img}, nickname=#{nickname}, road_name=#{road_name}, addr=#{addr} where id = #{id}
+		update user set password=#{password}, img=#{img}, nickname=#{nickname}, tel=#{tel}, road_name=#{road_name}, addr=#{addr} where id = #{id}
 	</update>
 	<delete id="myInfoEraseOk">
 		delete from user where id = #{param1} and password = #{param2}
+	</delete>
+	<delete id="snsInfoEraseOk">
+		delete from user where id=#{param1}
 	</delete>
 	<select id="myBoardList" resultType="BoardVO">
 		select a.id, a.showdb_id, a.title, date_format(a.writedate, '%Y.%m.%d') writedate, b.genre

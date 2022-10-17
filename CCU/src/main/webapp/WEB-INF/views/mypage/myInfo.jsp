@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <link rel="stylesheet" href="/style/mypage/myInfoStyle.css">
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script>
@@ -21,7 +22,7 @@
 	<table id="content">
 		<tr class="rows">
 			<th>아이디</th>
-			<td>${vo.id}</td>
+			<td>${vo.id}<input type="hidden" name="userid" id="userid" value="${vo.id }"/></td>
 		</tr>
 		<tr class="rows">
 			<th>프로필</th>
@@ -59,7 +60,15 @@
 			<td>${vo.road_name}&nbsp;${vo.addr }</td>
 		</tr>
 	</table>
+	<c:set var="snscheck" value="${vo.id }"/>
+	<c:set var="length" value="${fn:length(snscheck)}"/>
+	<c:set var="snscheck2" value="${fn:substring(snscheck, length -4, length)}"/>
 	
-	<input type="button" value="회원탈퇴" class="btn" id="leave" onclick="location.href='/mypage/myInfoErase'"/>
+	<c:if test="${snscheck2 eq '.com'}">
+		<input type="button" value="회원탈퇴" class="btn" class="snsbtn" id="leave"  onclick="location.href='/mypage/snsInfoErase'"/>
+	</c:if>
+	<c:if test="${snscheck2 ne '.com'}">
+		<input type="button" value="회원탈퇴" class="btn" id="leave" onclick="location.href='/mypage/myInfoErase'"/>
+	</c:if>
 	<input type="button" value="수정" class="btn" id="modify" onclick="location.href='myInfoModify'"/>
 </div>

@@ -45,6 +45,11 @@ public class MypageServiceImpl implements MypageService {
 	public int myInfoEraseOk(String id, String password) {
 		return dao.myInfoEraseOk(id, password);
 	}
+
+	@Override
+	public int snsInfoEraseOk(String id) {
+		return dao.snsInfoEraseOk(id);
+	}
 	
 	@Override
 	public List<BoardVO> myBoardList(String user_id, int opr, int offp) {
@@ -115,6 +120,7 @@ public class MypageServiceImpl implements MypageService {
 	public int totalReviewRecord(String id) {
 		return dao.totalReviewRecord(id);
 	}
+
 
 	
 

@@ -225,6 +225,44 @@ public class MypageController {
 		return entity;		
 	}
 	
+	@GetMapping("snsInfoErase")
+	public ModelAndView snsInfoErase(HttpSession session) {
+		String id = (String)session.getAttribute("logId");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("mypage/snsInfoErase");
+		return mav;
+	}
+	@PostMapping("snsInfoEraseOk")
+	public ResponseEntity<String> snsInfoEraseOk(HttpSession session, HttpServletRequest request){
+		String id = (String)session.getAttribute("logId");
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders(); 
+		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		
+		try {
+			int result = service.snsInfoEraseOk(id);
+			System.out.println("result=>"+result);
+			if(result>0) {
+				String msg = "<script>";
+				msg += "alert('성공적으로 탈퇴되었습니다. 이용해주셔서 감사합니다.');";
+				msg += "location.href='/'";
+				msg += "</script>";
+				session.setAttribute("logStatus", "N");
+				entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+			}else {
+				String msg = "<script>";
+				msg += "alert('오류가 발생했습니다.');";
+				msg += "location.href='/mypage/snsInfoErase'";
+				msg += "</script>";
+				entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return entity;
+	}
+	
 	//2. 나의 예매내역
 	@GetMapping("myReservation")
 	public ModelAndView myReservation(HttpSession session, String searchWord, String startdate, String enddate, MyBookPageVO pvo) {
