@@ -22,27 +22,27 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 
 	@Override
-	public List<MeetingVO> mainMeeting() {
+	public List<MeetingVO> mainMeeting(int opr, int offp) {
 		// TODO Auto-generated method stub
-		return dao.mainMeeting();
+		return dao.mainMeeting(opr, offp);
 	}
 
 	@Override
-	public List<MeetingVO> searchByTitle(String title) {
+	public List<MeetingVO> searchByTitle(String title, int opr, int offp) {
 		// TODO Auto-generated method stub
-		return dao.searchByTitle(title);
+		return dao.searchByTitle(title, opr, offp);
 	}
 
 	@Override
-	public List<MeetingVO> mainMeetingGenre(String genre) {
+	public List<MeetingVO> mainMeetingGenre(String genre, int opr, int offp) {
 		// TODO Auto-generated method stub
-		return dao.mainMeetingGenre(genre);
+		return dao.mainMeetingGenre(genre, opr, offp);
 	}
 
 	@Override
-	public List<MeetingVO> mainMeetingGenre2(String genre1, String genre2) {
+	public List<MeetingVO> mainMeetingGenre2(String genre1, String genre2, int opr, int offp) {
 		// TODO Auto-generated method stub
-		return dao.mainMeetingGenre2(genre1, genre2);
+		return dao.mainMeetingGenre2(genre1, genre2, opr, offp);
 	}
 
 	@Override
@@ -95,5 +95,35 @@ public class MeetingServiceImpl implements MeetingService {
 	public void setReport(int id, String content, String logid) {
 		// TODO Auto-generated method stub
 		dao.setReport(id,content,logid);
+	}
+
+	@Override
+	public int totalRecord() {
+		return dao.totalRecord();
+	}
+
+	@Override
+	public int totalSearchRecord(String title) {
+		return dao.totalSearchRecord(title);
+	}
+
+	@Override
+	public int totlaPlayRecord(String genre) {
+		return dao.totlaPlayRecord(genre);
+	}
+
+	@Override
+	public int totalOperaRecord() {
+		return dao.totalOperaRecord();
+	}
+
+	@Override
+	public int totalPlaySearchRecord(String genre, String title) {
+		return dao.totalPlaySearchRecord(genre, title);
+	}
+
+	@Override
+	public int totalOperaSearchRecord(String title) {
+		return dao.totalOperaSearchRecord(title);
 	}
 }

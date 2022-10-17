@@ -1,5 +1,16 @@
 @charset "UTF-8";
 /* ======= Header ====== */
+/* html, body { */
+/* 	height: 100%; */
+/* } */
+
+/* body { */
+/* 	display: flex; */
+/* 	flex-direction: column; */
+
+/* 	margin: 0; */
+/* } */
+
 body, ul, li {
 	margin: 0;
 	padding: 0;
@@ -58,7 +69,6 @@ a:link, a:visited, a:hover {
 /* 	display: none */
 /* 	} */
 /* } */
-
 .search-btn {
 	padding: 30px;
 	border: none;
@@ -183,19 +193,20 @@ a:link, a:visited, a:hover {
 
 #googleicon {
 	text-align: center;
-	cursor : pointer;
+	cursor: pointer;
 	width: 70%;
 	height: 150%;
-	
-	overflow:hidden;
+	overflow: hidden;
 }
+
 #kakaoicon {
 	text-align: center;
-	cursor : pointer;
+	cursor: pointer;
 	width: 70%;
 	height: 75%;
-	overflow:hidden;
+	overflow: hidden;
 }
+
 .loginBtn {
 	width: 100px;
 	text-align: center;
@@ -206,7 +217,7 @@ a:link, a:visited, a:hover {
 	font-weight: bold;
 	font-size: 17px;
 	border-style: none;
-	cursor : pointer;
+	cursor: pointer;
 }
 
 .logoutBtn {
@@ -219,10 +230,8 @@ a:link, a:visited, a:hover {
 	font-weight: bold;
 	font-size: 17px;
 	border-style: none;
-	cursor : pointer;
+	cursor: pointer;
 }
-
-
 
 .topDown {
 	width: 100%;
@@ -307,13 +316,15 @@ a:link, a:visited, a:hover {
 	font-size: 10pt;
 	color: rgb(173, 173, 173);
 }
+
 #toggleDiv {
-	overflow:hidden;
+	overflow: hidden;
 }
-#toggleDiv, #toggleDiv>input{
-  -ms-user-select: none; 
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
+
+#toggleDiv, #toggleDiv>input {
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 }

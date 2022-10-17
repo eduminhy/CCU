@@ -12,6 +12,7 @@ import com.team200.proj.vo.PagingVO;
 import com.team200.proj.vo.ReportVO;
 import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.UserVO;
+import com.team200.proj.vo.chatVO;
 import com.team200.proj.vo.festivalVO;
 import com.team200.proj.vo.showVO;
 
@@ -27,6 +28,7 @@ public interface IndexDAO {
 	public int getTotalUser2(PagingVO pvo);
 	public int getTotalUser3(PagingVO pvo);
 	public int getTotalUser4(PagingVO pvo);
+	public int getTotalUser6(PagingVO pvo);
 
 	public List<UserVO> userList(PagingVO pVO);
 	public List<OrderlistVO> getReservation(AdminBookPageVO apvo);
@@ -45,5 +47,7 @@ public interface IndexDAO {
 	public List<BoardVO> mreportList(PagingVO pVO);
 	public int getTotalUser5(PagingVO pvo);
 	public List<ReviewVO> reviewList(PagingVO pVO);
+	
+	public List<chatVO> chatList(PagingVO pVO);
 
 }

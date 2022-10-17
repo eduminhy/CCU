@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team200.proj.service.MeetingService;
+import com.team200.proj.vo.MainMeetingPageVO;
 import com.team200.proj.vo.MeetingVO;
 
 @RestController
@@ -32,15 +33,16 @@ public class meetingController {
 
 	// 같이갈래요 list
 	@RequestMapping(value = "mainMeeting", method = RequestMethod.GET)
-	public ModelAndView mainMeeting(@RequestParam(required = false) String title) {
+	public ModelAndView mainMeeting(@RequestParam(required = false) String title, MainMeetingPageVO pvo) {
 		ModelAndView mav = new ModelAndView();
-
 		if (title == null) {
-			mav.addObject("list", service.mainMeeting());
+			mav.addObject("list", service.mainMeeting(pvo.getOnePageRecord(), pvo.getOffsetPoint()));
+			pvo.setTotalRecord(service.totalRecord());
 		} else {
-			mav.addObject("list", service.searchByTitle(title));
+			mav.addObject("list", service.searchByTitle(title, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
+			pvo.setTotalRecord(service.totalSearchRecord(title));
 		}
-
+		mav.addObject("pvo", pvo);
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
 	}
@@ -49,34 +51,38 @@ public class meetingController {
 
 	// mainMeeting?genre=연극
 	@RequestMapping(value = "mainMeeting/{genre}", method = RequestMethod.GET)
-	public ModelAndView meetingFindGenre(@PathVariable String genre, @RequestParam(required = false) String title) {
+	public ModelAndView meetingFindGenre(@PathVariable String genre, @RequestParam(required=false) String title, MainMeetingPageVO pvo) {
 		ModelAndView mav = new ModelAndView();
-//		아니 근데 여기 매핑에는 타이틀 선언안되있잖아 에러날거같은데
-		if (title == null) {
-		mav.addObject("list", service.mainMeetingGenre(genre));
-		} else {
-			mav.addObject("list", service.searchByTitle(title));
-		
+		if(title==null) {
+			pvo.setTotalRecord(service.totlaPlayRecord(genre));
+			mav.addObject("list", service.mainMeetingGenre(genre, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
+		}else {
+			pvo.setTotalRecord(service.totalPlaySearchRecord(genre, title));
+			mav.addObject("list", service.searchByTitle(title, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
 		}
+		mav.addObject("pvo", pvo);
+
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
 	}
 
 	@RequestMapping(value = "mainMeeting2/{genre1}&{genre2}", method = RequestMethod.GET)
-	public ModelAndView meetingFindGenre(@PathVariable String genre1, @PathVariable String genre2, @RequestParam(required = false) String title) {
+	public ModelAndView meetingFindGenre(@PathVariable String genre1, @PathVariable String genre2, @RequestParam(required=false) String title, MainMeetingPageVO pvo) {
 		ModelAndView mav = new ModelAndView();
-		if (title == null) {
-		mav.addObject("list", service.mainMeetingGenre2(genre1, genre2));
-		} else {
-			mav.addObject("list", service.searchByTitle(title));
-			
-		} 
-		
+		if(title==null) {
+			pvo.setTotalRecord(service.totalOperaRecord());
+			mav.addObject("list", service.mainMeetingGenre2(genre1, genre2, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
+		}else {
+			pvo.setTotalRecord(service.totalOperaSearchRecord(title));
+			mav.addObject("list", service.searchByTitle(title, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
+		}
+		mav.addObject("pvo", pvo);
+
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
 	}
 
-	// --------------------------------------------------------------------------------
+	
 
 	@RequestMapping("playMeetingList")
 	public ModelAndView playMeetingList1() {
