@@ -26,7 +26,15 @@
     }
 
     items.forEach(item => item.addEventListener('click', openCloseitemDetail));
-
+	
+    function search() {
+        let title = document.getElementById('meetingkeyword').value;
+        let form = document.forms["searchForm"];
+//         console.log(window.location.pathname);
+        form.action = window.location.pathname+"?title=" + title;
+        form.submit();
+    }
+    /*
     function search() {
         let title = document.getElementById('meetingkeyword').value;
         let form = document.forms["searchForm"];

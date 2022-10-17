@@ -12,15 +12,15 @@ h1{color:rgb(68,0,153);}
 #content th{background-color:rgb(224,224,224); width:18%;}
 #content td{float:left; padding:0 20px;}
 .btn{height:70px; border:2px solid rgb(68,0,153); font-weight:bold; font-size:1.5em;}
-#print, #imgdown{width:27%; margin-right:5px; margin-bottom:10px; background-color:#fff; color:rgb(68,0,153);}
-#check{width:55%; background-color:rgb(68,0,153); color:#fff; margin-bottom:50px;}
+#print{width:27%; margin-right:5px; margin-bottom:50px; background-color:#fff; color:rgb(68,0,153);}
+#check{width:27%; margin-right:5px; margin-bottom:50px; background-color:rgb(68,0,153); color:#fff;}
 
 @media print {
 	/*header,footer 제거*/
 	@page { margin: 0; }
 	body { margin: 1.6cm; page-break-after: avoid; page-break-before: avoid}
     #content{
-    	position:absolute; left:250px; top:300px; 
+    	position:absolute; left:100px; top:100px; width:600px;
     	border-top:2px solid gray; border-bottom:2px solid gray;
     }
     /*인쇄 배경색상적용*/
@@ -28,5 +28,5 @@ h1{color:rgb(68,0,153);}
        background-color: rgb(224,224,224) !important;
        -webkit-print-color-adjust: exact; 
    }
-    .topUp, .topDown, .bottom, #print, #imgdown, #check{display:none;}
+    #topMenu, .topUp, .topDown, .bottom, #print, #check{display:none;}
 }
