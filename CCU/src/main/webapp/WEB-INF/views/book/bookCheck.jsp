@@ -9,27 +9,7 @@
 		//인쇄기능
 		$('#print').on('click', function(){
 			 window.print();  // 클릭액션 : 버튼클릭시 인쇄창팝업
-		  });
-		//이미지 저장
-		$("#imgdown").on("click", function(){
-			html2canvas(document.querySelector("#content")).then(canvas=>{
-			saveAs(canvas.toDataURL("img/jpg"), "ticket.jpg");//다운로드 이미지 파일
-			
-			});	
-		});
-		function saveAs(uri, filename){
-			var img = document.createElement('a');
-			if(typeof img.download === 'string'){
-				img.href=uri;
-				img.download=filename;
-				document.body.appendChild(img);
-				img.click();
-				document.body.removeChild(img);
-				console.log(img.href);
-			}else{
-				window.open(uri);
-			}
-		}		
+		  });	
 	});
 	
 
@@ -78,6 +58,5 @@
 	</table>
 	
 	<input type="button" value="인쇄하기" class="btn" id="print"/>
-	<input type="button" value="예매내역 이미지로 저장" class="btn" id="imgdown"/><br/>
 	<input type="button" value="확인" class="btn" id="check" onclick="location.href='/mypage/myReservation'"/>
 </div>

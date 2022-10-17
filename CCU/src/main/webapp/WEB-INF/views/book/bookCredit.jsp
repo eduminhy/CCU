@@ -133,13 +133,11 @@
 			});
 			
 		});//결제하기 click 닫는부분
-		/*
 		//좌석페이지로 다시 이동
 		var timer = setTimeout(function(){
 			alert("일정 시간이 초과하여 좌석예약페이지로 다시 이동합니다.");
 			location.href="/book/bookSeat?scheduleDate_id="+$("#scheduleDate_id").val();
 		},60000);
-		*/
 	});//jqeury 닫는 부분
 </script>
 <div class="container">
