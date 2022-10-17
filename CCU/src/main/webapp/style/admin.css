@@ -843,9 +843,47 @@ ul, li {
 	width: 20%;
 }
 
-.UserDiv34>div:nth-child(8), .UserDiv33>div:nth-child(8) {
+.UserDiv34>div:nth-child(8), .UserDiv52>div:nth-child(8) {
 	width: 15%;
 }
-.UserDiv34>div:nth-child(9), .UserDiv33>div:nth-child(9) {
-	width: 10%;
+
+
+
+
+.UserDiv51>div:nth-child(5), .UserDiv52>div:nth-child(5) {
+	width: 30%;
+}
+
+.UserDiv51>div:nth-child(1), .UserDiv52>div:nth-child(1) {
+	width: 5%;
+}
+
+.UserDiv51>div:nth-child(2), .UserDiv52>div:nth-child(2) {
+	width: 5%;
+}
+
+.UserDiv51>div:nth-child(3), .UserDiv52>div:nth-child(3) {
+	width: 30%;
+}
+.UserDiv51>div:nth-child(4), .UserDiv52>div:nth-child(4) {
+	width: 30%;
+}
+.UserDiv51 {
+	background-color: #cccccc;
+		display: flex;
+	justify-content: space-between;
+}
+
+.UserDiv52 {
+	display: flex;
+	justify-content: space-between;
+}
+
+.UserDiv52>div, .UserDiv51>div {
+	border: 1px solid gray;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin: auto;
+	text-align: center;
 }

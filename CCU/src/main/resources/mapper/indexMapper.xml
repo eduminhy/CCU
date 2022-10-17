@@ -178,7 +178,15 @@
 			</foreach>
 		</where>
 	</delete>
-
+	<delete id="boardMultiDel51">
+		delete from chatList
+		<where>
+			<foreach item="item" index="index" collection="noList"
+				open="chat_room_id in(" separator="," close=")">
+				'${item}'
+			</foreach>
+		</where>
+	</delete>
 	<delete id="boardMultiDel5">
 		delete from review
 		<where>
@@ -276,25 +284,20 @@
 
 	</select>
 	<select id="chatList" resultType="chatVO">
-		select a.chat_room_id, a.update_date, b.username
-		from chatlist a
+		select a.chat_room_id, a.update_date, b.username, a.send_user_id
+		from
+		chatlist a
 		inner join user b on a.send_user_id = b.id
-		order by a.update_date
-		
-<!-- 		<if test='searchKey5=="content"'> -->
-<!-- 			and ( a.content like '%${searchWord5}%' OR b.content like -->
-<!-- 			'%${searchWord5}%' ) -->
-<!-- 		</if> -->
-<!-- 		<if test='searchKey5=="rcontent"'> -->
-<!-- 			and b.content like '%${searchWord5}%' -->
-<!-- 		</if> -->
-<!-- 		<if test='searchKey5=="username"'> -->
-<!-- 			and ( b.user_id like '%${searchWord5}%' OR a.user_id like -->
-<!-- 			'%${searchWord5}%' ) -->
-<!-- 		</if> -->
-<!-- 		<if test='searchKey5=="rusername"'> -->
-<!-- 			and b.user_id like '%${searchWord5}%' -->
-<!-- 		</if> -->
+
+
+		<if test='searchKey6=="id"'>
+			where b.id like '%${searchWord6}%'
+		</if>
+		<if test='searchKey6=="username"'>
+			where b.username like '%${searchWord6}%'
+		</if>
+		order by
+		a.update_date
 		;
 
 	</select>
@@ -359,9 +362,11 @@
 	<select id="totalReservation" resultType="int">
 		<if test="booksearchKey=='name'">
 			select count(no) cnt from order_list as a
-			inner join scheduleDate as b on a.scheduleDate_id=b.id
+			inner join
+			scheduleDate as b on a.scheduleDate_id=b.id
 			inner join showdb as
-			c on c.id=b.showdb_id
+			c on
+			c.id=b.showdb_id
 			where c.name like '%${booksearchWord}%'
 		</if>
 		<if test="booksearchKey!='name'">

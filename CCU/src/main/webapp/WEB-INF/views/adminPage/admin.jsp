@@ -283,29 +283,30 @@
 				<div class="container">
 
 					<div class="admindiv2">
-						<div class="h4" name="${pVO.searchKey}">검색분류:${pVO.searchKey}
-							&nbsp;/&nbsp; 검색어: &nbsp;${pVO.searchWord}</div>
+						<div class="h11" name="${pVO.searchKey6}">검색분류:${pVO.searchKey6}
+							&nbsp;/&nbsp; 검색어: &nbsp;${pVO.searchWord6}</div>
 						<div>
-							<div>총${pVO.totalPage }페이지,&nbsp;&nbsp;
-								총레코드수:${pVO.totalRecord }</div>
+							<div>총${pVO.totalPage6 }페이지,&nbsp;&nbsp;
+								총레코드수:${pVO.totalRecord6 }</div>
 							&nbsp;&nbsp;
-							<fmt:formatNumber value="${pVO.totalRecord div 20}" />
+							<fmt:formatNumber value="${pVO.totalRecord6 div 20}" />
 
-							<input type="button" value="선택삭제" class="multiDel" />
+							<input type="button" value="선택삭제" class="multiDel51" />
 
 						</div>
 					</div>
 
-					<c:set var="username1">${pVO.totalRecord  div 20}</c:set>
+					<c:set var="username1">${pVO.totalRecord6 div 20}</c:set>
 					<c:set var="username2" value="0" />
 					<c:set var="username3">20</c:set>
 					<div class="UserDiv43">
-						<form method="post" action="/multiDel2" id="listFrm">
-							<div class="UserDiv1">
+						<form method="post" action="/multiDel51" id="listFrm51">
+							<div class="UserDiv51">
 								<div>
-									<input type="checkbox" class="allChk" />
+									<input type="checkbox" class="allChk51" />
 								</div>
-								<div>chat_room_id</div>
+								<div>NO</div>
+								<div>UserID</div>
 								<div>UserName</div>
 								<div>update_date</div>
 
@@ -314,19 +315,20 @@
 <!-- 								style="cursor: pointer;">1:1문의하기</button> -->
 							<c:forEach var="no" begin="1"
 								end="${username1+(1-(username1%1))%1}">
-								<div class="UserDiv3" name="${username3/20}">
+								<div class="UserDiv53" name="${username3/20}">
 									<c:forEach var="vo" items="${chatList}" begin="${username2}"
 										end="${username3-1}" step="1" varStatus="status">
-										<div class="UserDiv2">
+										<div class="UserDiv52">
 
 											<div>
 												<input type="checkbox" name="noList"
 													value="${vo.chat_room_id}" />
 											</div>
-
-											<div>${vo.chat_room_id}</div>
-											<div value="asdfqwer" >${vo.username}</div>
-											<div>${vo.update_date}</div>
+											
+											<div class="asdfqwer1" name="${vo.send_user_id}">${vo.chat_room_id}</div>
+											<div class="asdfqwer1" name="${vo.send_user_id}">${vo.send_user_id}</div>
+											<div class="asdfqwer1" name="${vo.send_user_id}">${vo.username}</div>
+											<div class="asdfqwer1" name="${vo.send_user_id}">${vo.update_date}</div>
 
 										</div>
 										<%-- 								<c:if test="${p<=pVO.totalPage2 }"> --%>
@@ -360,12 +362,11 @@
 					</div>
 
 					<div>
-						<form method="get" action="/admin" class="searchFrm">
-							<select name="searchKey">
+						<form method="get" action="/admin" class="searchFrm6">
+							<select name="searchKey6">
 								<option value="id">회원ID</option>
 								<option value="username">회원명</option>
-								<option value="role">회원역활</option>
-							</select> <input type="text" name="searchWord" class="searchWord" /> <input
+							</select> <input type="text" name="searchWord6" class="searchWord6" /> <input
 								type="submit" value="Search" />
 						</form>
 
