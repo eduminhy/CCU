@@ -16,11 +16,11 @@ public interface MeetingDAO {
 
 	public List<MeetingVO> mainMeeting(int opr, int offp);
 
-	public List<MeetingVO> searchByTitle(String title);
+	public List<MeetingVO> searchByTitle(String title, int opr, int offp);
 
-	public List<MeetingVO> mainMeetingGenre(String genre);
+	public List<MeetingVO> mainMeetingGenre(String genre, int opr, int offp);
 
-	public List<MeetingVO> mainMeetingGenre2(String genre1, String genre2);
+	public List<MeetingVO> mainMeetingGenre2(String genre1, String genre2, int opr, int offp);
 	
 	public List<MeetingVO> playMeetingList();
 
@@ -41,5 +41,10 @@ public interface MeetingDAO {
 	public void setReport(int id,String content,String logid);
 	
 	public int totalRecord();
+	public int totalSearchRecord(String title);
+	public int totlaPlayRecord(String genre);
+	public int totalOperaRecord();
+	public int totalPlaySearchRecord(String genre, String title);
+	public int totalOperaSearchRecord(String title);
 
 }

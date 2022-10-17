@@ -39,7 +39,8 @@ public class meetingController {
 			mav.addObject("list", service.mainMeeting(pvo.getOnePageRecord(), pvo.getOffsetPoint()));
 			pvo.setTotalRecord(service.totalRecord());
 		} else {
-			mav.addObject("list", service.searchByTitle(title));
+			mav.addObject("list", service.searchByTitle(title, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
+			pvo.setTotalRecord(service.totalSearchRecord(title));
 		}
 		mav.addObject("pvo", pvo);
 		mav.setViewName("meeting/mainMeeting");
@@ -50,21 +51,31 @@ public class meetingController {
 
 	// mainMeeting?genre=연극
 	@RequestMapping(value = "mainMeeting/{genre}", method = RequestMethod.GET)
-	public ModelAndView meetingFindGenre(@PathVariable String genre) {
+	public ModelAndView meetingFindGenre(@PathVariable String genre, @RequestParam(required=false) String title, MainMeetingPageVO pvo) {
 		ModelAndView mav = new ModelAndView();
-
-		mav.addObject("list", service.mainMeetingGenre(genre));
-
+		if(title==null) {
+			pvo.setTotalRecord(service.totlaPlayRecord(genre));
+			mav.addObject("list", service.mainMeetingGenre(genre, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
+		}else {
+			pvo.setTotalRecord(service.totalPlaySearchRecord(genre, title));
+			mav.addObject("list", service.searchByTitle(title, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
+		}
+		mav.addObject("pvo", pvo);
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
 	}
 
 	@RequestMapping(value = "mainMeeting2/{genre1}&{genre2}", method = RequestMethod.GET)
-	public ModelAndView meetingFindGenre(@PathVariable String genre1, @PathVariable String genre2) {
+	public ModelAndView meetingFindGenre(@PathVariable String genre1, @PathVariable String genre2, @RequestParam(required=false) String title, MainMeetingPageVO pvo) {
 		ModelAndView mav = new ModelAndView();
-
-		mav.addObject("list", service.mainMeetingGenre2(genre1, genre2));
-
+		if(title==null) {
+			pvo.setTotalRecord(service.totalOperaRecord());
+			mav.addObject("list", service.mainMeetingGenre2(genre1, genre2, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
+		}else {
+			pvo.setTotalRecord(service.totalOperaSearchRecord(title));
+			mav.addObject("list", service.searchByTitle(title, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
+		}
+		mav.addObject("pvo", pvo);
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
 	}

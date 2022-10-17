@@ -8,76 +8,59 @@
     <select id="showModalAll" resultType="showVO">
         select id, name from showdb
     </select>
-
     <select id="showModal" resultType="showVO">
-
-     
-
         select id, name, mainposter from showdb where name like CONCAT('%', #{search}, '%')
-
     </select>
-
 	<select id="showSearch" resultType="showVO">
 	 select id, name from showdb where id= name='%${param1}%' order by name desc;
 	</select>
-
     <select id="mainMeeting" resultType="MeetingVO">
         select a.id, a.user_id, a.status, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre,
         b.name
         from board a inner join showdb b on a.showdb_id = b.id 
-<!--         <if test = "meetingkeyword != null"> -->
-<!--         where (title like '%${meetingkeyword}%' or content like '%${meetingkeyword}%') -->
-<!--         </if> -->
         order by id desc
         limit ${param1} offset ${param2}
     </select>
-
     <select id="searchByTitle" resultType="MeetingVO">
         select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
-        from board a inner join showdb b on a.showdb_id = b.id where title like CONCAT('%', #{title}, '%')
-    </select>
-    
-      <select id="meetingsearch" resultType="MeetingVO">
+        from board a inner join showdb b on a.showdb_id = b.id where title like CONCAT('%', #{param1}, '%')
+    </select> 
+    <select id="meetingsearch" resultType="MeetingVO">
         select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
         from board a inner join showdb b on a.showdb_id = b.id
     </select>
-
     <select id="mainMeetingGenre" resultType="MeetingVO">
-        select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
-        from board a
-                 inner join showdb b on a.showdb_id = b.id
-        where b.genre = #{genre}
-        order by id desc;
+        <if test="param1=='아동'">
+			select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
+			from board as a
+			inner join showdb as b on a.showdb_id=b.id			
+			inner join child as c on b.id=c.showdb_id
+		</if>
+		<if test="param1!='아동'">
+	        select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
+	        from board a
+	        inner join showdb b on a.showdb_id = b.id
+	        left join child as c on b.id = c.showdb_id
+	        where b.genre = #{param1} and c.showdb_id is null
+        </if>
+        order by id desc limit ${param2} offset ${param3}
     </select>
-
     <select id="mainMeetingGenre2" resultType="MeetingVO">
         select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre
         from board a
-                 inner join showdb b on a.showdb_id = b.id
+        inner join showdb b on a.showdb_id = b.id
         where b.genre = #{param1}
         or b.genre = #{param2}
-        order by id desc;
-        --         select *
---         from board
+        order by id desc
+        limit ${param3} offset ${param4}
     </select>
-
-<!--    <select id="playMeetingList" resultType="MeetingVO">-->
-<!--        select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre-->
-<!--        from board a-->
-<!--                 left outer join showdb b on a.showdb_id = b.id-->
-<!--        where b.genre = '연극'-->
-<!--        order by id desc;-->
-<!--    </select>-->
-
     <insert id="meetingWriteOk">
         insert into board(user_id, showdb_id, title, content, status)
         values (#{user_id}, #{showdb_id}, #{title}, #{content}, #{status})
     </insert>
-
     <select id="mainMeetingGet" resultType="MeetingVO">
         select * from board where id = #{id}
     </select>
-
     <update id="meetingEdit" parameterType="map">
         update board
         set title   = #{title},
@@ -85,13 +68,11 @@
             showdb_id = #{showdb_id}
         where id = #{id}
     </update>
-
     <delete id="meetingDelete">
         delete
         from board
         where id = #{id}
     </delete>
-
     <select id="meetingView" resultType="MeetingVO">
         select a.id, a.user_id, a.title, a.content, date_format(a.writedate, '%y-%m-%d %h:%i') writedate, a.showdb_id, b.genre, b.name
         from board a inner join showdb b on a.showdb_id = b.id where a.id = #{id}
@@ -101,6 +82,47 @@
 		values ( #{param3}, 'meet',#{param2},#{param1})
 	</insert>
 	<select id="totalRecord" resultType="int">
-		select count(id) cnt from board
+		select count(id) from board
+	</select>
+	<select id="totalSearchRecord" resultType="int">
+		select count(id) cnt from board where title like '%${title}%'
+	</select>
+	<select id="totlaPlayRecord" resultType="int">
+		<if test="param1=='아동'">
+			select count(a.id) from board as a
+			inner join showdb as b on a.showdb_id=b.id
+			inner join child as c on b.id=c.showdb_id
+		</if>
+		<if test="param1!='아동'">
+			select count(a.id) from board as a
+			inner join showdb as b on a.showdb_id=b.id
+			left join child as c on b.id = c.showdb_id
+			where b.genre=#{param1} and c.showdb_id is null
+		</if>
+	</select>
+	<select id="totalOperaRecord" resultType="int">
+		select count(a.id) from board as a
+        inner join showdb as b on a.showdb_id=b.id
+        where (b.genre='오페라' or b.genre='클래식')
+	</select>
+	<select id="totalPlaySearchRecord" resultType="int">
+		<if test="param1=='아동'">
+			select count(a.id) from board as a
+			inner join showdb as b on a.showdb_id=b.id
+			inner join child as c on b.id=c.showdb_id
+			where 
+		</if>
+		<if test="param1!='아동'">
+			select count(a.id) from board as a
+			inner join showdb as b on a.showdb_id=b.id
+			left join child as c on b.id = c.showdb_id
+			where c.showdb_id is null and b.genre=#{param1} and 
+		</if>
+		a.title like '%${param2}%'
+	</select>
+	<select id="totalOperaSearchRecord" resultType="int">
+		select count(a.id) from board as a
+		inner join showdb as b on a.showdb_id=b.id
+		where (b.genre='오페라' or b.genre='클래식') and a.title like '%${param1}%'
 	</select>
 </mapper>
