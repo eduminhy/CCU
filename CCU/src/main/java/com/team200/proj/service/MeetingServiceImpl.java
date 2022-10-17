@@ -22,9 +22,9 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 
 	@Override
-	public List<MeetingVO> mainMeeting() {
+	public List<MeetingVO> mainMeeting(int opr, int offp) {
 		// TODO Auto-generated method stub
-		return dao.mainMeeting();
+		return dao.mainMeeting(opr, offp);
 	}
 
 	@Override
@@ -95,5 +95,10 @@ public class MeetingServiceImpl implements MeetingService {
 	public void setReport(int id, String content, String logid) {
 		// TODO Auto-generated method stub
 		dao.setReport(id,content,logid);
+	}
+
+	@Override
+	public int totalRecord() {
+		return dao.totalRecord();
 	}
 }

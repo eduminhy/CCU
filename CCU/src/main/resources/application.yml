@@ -26,7 +26,7 @@ spring:
 #      url: jdbc:mysql://localhost:3307/team200
       username: root
 #      password: 1234
-      password: akflfls8dfh115!
+      password: root1234
 
 
   ##파일업로드 제한용량 설정

@@ -24,12 +24,12 @@
     <select id="mainMeeting" resultType="MeetingVO">
         select a.id, a.user_id, a.status, a.title, a.content, date_format(a.writedate, '%m-%d %h:%i') writedate, b.genre,
         b.name
-
-        from board a inner join showdb b on a.showdb_id = b.id
+        from board a inner join showdb b on a.showdb_id = b.id 
 <!--         <if test = "meetingkeyword != null"> -->
 <!--         where (title like '%${meetingkeyword}%' or content like '%${meetingkeyword}%') -->
 <!--         </if> -->
         order by id desc
+        limit ${param1} offset ${param2}
     </select>
 
     <select id="searchByTitle" resultType="MeetingVO">
@@ -48,8 +48,6 @@
                  inner join showdb b on a.showdb_id = b.id
         where b.genre = #{genre}
         order by id desc;
---         select *
---         from board
     </select>
 
     <select id="mainMeetingGenre2" resultType="MeetingVO">
@@ -102,4 +100,7 @@
 		insert into report( user_id, type, content, postNum)
 		values ( #{param3}, 'meet',#{param2},#{param1})
 	</insert>
+	<select id="totalRecord" resultType="int">
+		select count(id) cnt from board
+	</select>
 </mapper>

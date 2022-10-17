@@ -191,7 +191,12 @@
 		padding:5px 10px;
 		float:right;
 	}
-	
+	#page li{
+		overflow:auto; float:left; padding:10px;
+		font-size:18px;
+		margin-top:10px;
+	}
+	#page li:first-child{margin-left:525px;}
 	
 	
 	
