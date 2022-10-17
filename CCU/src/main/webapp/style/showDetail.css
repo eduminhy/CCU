@@ -1,0 +1,483 @@
+.showDetailTitle {
+	display: flex;
+	width: 1200px;
+	/* 	//margin: auto; */
+	text-align: left;
+	color: rgba(59, 0, 148);
+	font-size: 35px;
+	font-weight: bold;
+	padding: 0px 0px 10px;
+}
+
+.showDetailTitle>div:nth-child(2) {
+	color: red;
+}
+
+.showDetailTitle>div:nth-child(3) {
+	color: red;
+}
+
+.fullheart, .emptyheart {
+	margin-left: auto;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.showDetail {
+	width: 1200px;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.showBody {
+	margin: 0 auto;
+	width: 1200px;
+	display: flax;
+	justify-content: space-between;
+	display: inline-flex;
+	/* 	background-color: green; */
+}
+
+.showDetailImgDiv {
+	width: 25%;
+	display: flax;
+	flex-direction: column;
+}
+
+.showDetailImgDiv>img {
+	width: 100%;
+}
+
+.showDetailTable {
+	display: flax;
+	margin-left: auto;
+	border: none;
+	height: 1100px;
+	/* 	background-color: red; */
+}
+
+.showDetailDiv {
+	width: 70%;
+}
+
+.showDetailTable {
+	border-top: 2px solid #7F7F7F;
+	border-bottom: 2px solid #7F7F7F;
+	border-spacing: 0;
+	width: 100%;
+}
+
+.showDetailTable td {
+	width: 80%;
+	border-bottom: 1px solid #B3B3B3;
+	padding: 5px 0 5px 5px;
+	padding: 1%;
+	padding-left: 2%;
+		font-size:20px;
+}
+
+.showDetailTable th {
+	width: 20%;
+	padding-left: 5px;
+	border-bottom: 1px solid #B3B3B3;
+	padding: 5px 0 5px 5px;
+	background: #E0E0E0;
+	text-align: center;
+	font-size:20px;
+}
+
+.detailTag {
+	width: 70%;
+	display: flex;
+	justify-content: space-between;
+	color: rgba(59, 0, 148);
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.detailTag>div {
+	display: flex;
+	align-items: center;
+	height: 200px;
+	/* 	border-radius: 15px; */
+	/* 	border:solid rgba(59, 0,148); */
+}
+
+.detailChart {
+	width: 100%;
+	height: 500px;
+	border-radius: 15px;
+	border: solid rgba(59, 0, 148);
+}
+
+.detailRating {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	border-radius: 15px;
+	border: solid rgba(59, 0, 148);
+}
+
+.detailRatingTitle {
+	color: rgba(59, 0, 148);
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.detailRatingStar {
+	color: red;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+.detailRatingLink {
+	width: 90%;
+	text-align: right;
+	border-radius: 15px;
+	color: rgba(59, 0, 148);
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.detailRatingContent {
+	width: 100%;
+	display: flex;
+	margin: 0 auto;
+	flex-direction: column;
+}
+
+.detailRatingContentInnerDiv {
+	margin: auto;
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+	border: solid rgba(247, 247, 247) 4px;
+	height: 140px;
+}
+
+.detailRatingContentInnerDiv>div {
+	margin: auto;
+}
+
+.detailRatingContentInnerDiv>div:nth-child(1) {
+	font-size: 30px;
+	font-weight: bold;
+	width: 25%;
+	text-align: center;
+	color: red;
+}
+
+.detailRatingContentInnerDiv>div:nth-child(2) {
+	font-size: 20px;
+	font-weight: bold;
+	width: 70%;
+	text-align: left;
+}
+
+.detailRatingContentInnerDiv>div:nth-child(3) {
+	/* 	margin: 0 0 0 auto; */
+	width: 10%;
+}
+
+.calendar {
+	height: 700px;
+	width: 300px;
+}
+
+.calendar {
+	padding: 5px 20px 20px 20px;
+	box-sizing: border-box;
+	border-radius: 15px;
+	border: solid rgba(59, 0, 148);
+}
+
+.calendar>.header {
+	text-align: center;
+}
+
+.calendar>.header>.title {
+	width: 50%;
+	display: inline-block;
+}
+
+.calendar>.header>.calendar_btn {
+	width: 30px;
+	height: 30px;
+	border: none;
+	padding: 0;
+	background-color: #ffffff;
+	vertical-align: middle;
+	color: black;
+}
+
+.calendar>.day {
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+}
+
+.calendar>.day>div {
+	display: table-cell;
+	text-align: center;
+	height: 50px;
+	vertical-align: middle;
+}
+
+.calendar>.day>div:first-child {
+	color: red;
+}
+
+.calendar>.day>div:last-of-type {
+	color: blue;
+}
+
+.calendar>.dates {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.calendar>.dates>.date {
+	text-align: center;
+	width: calc(100%/ 7);
+	height: 50px;
+	box-sizing: border-box;
+	line-height: 3;
+	border-radius: 3px;
+}
+
+.calendar>.dates>.date:nth-child(7n) {
+	color: blue;
+}
+
+.calendar>.dates>.date:nth-child(7n+1) {
+	color: red;
+}
+
+.calendar>.dates>.last {
+	color: #c8c8c8 !important;
+}
+
+.calendar>.dates>.next {
+	color: #c8c8c8 !important;
+}
+
+.calanderSelect {
+	height: 100px;
+}
+
+.calanderSelectDiv {
+	display: flex;
+	flex-flow: wrap;
+}
+
+.calanderSelectDiv>div {
+	display: flex;
+	/* 	margin:auto; */
+	justify-content: center;
+	align-items: center;
+	width: 48%;
+	height: 35px;
+	border-radius: 5px;
+	border: solid rgba(59, 0, 148) 1px;
+	background-color: rgba(247, 247, 247);
+}
+
+.calanderButten {
+	display: flex;
+	height: 50px;
+	background-color: rgba(59, 0, 148);
+	/* 	text-align: center; */
+}
+
+.calanderButten>div {
+	display: flex;
+	align-items: center;
+	margin: auto;
+	color: white;
+}
+
+.form {
+	display: none;
+}
+
+.detailImg {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.detailImg img {
+	width: 55%;
+	margin: 0 auto;
+}
+/* 별점----------------------------------------------------------------------------------------- */
+.setreview {
+	width: 100%;
+}
+
+.setreviewForm {
+	width: 100%;
+	height: 230px;
+	border-radius: 5px;
+	border: solid rgba(59, 0, 148) 1px;
+	display:flex;
+	flex-direction: column;
+		border-radius: 15px;
+	border: solid rgba(59, 0, 148);
+/* 	background-color: rgba(247, 247, 247); */
+}
+.setreviewForm>div {
+	margin:0 auto;
+	
+}
+.setReviewBtn{
+	width: 67px;
+	height:67px;
+color: rgba(59, 0, 148);
+font-size: 1.0rem;
+font-weight: bold;
+}
+.setReviewdiv1{
+	display:flex;
+	justify-content: space-between;
+}
+textarea{
+	resize: none;
+/* 	rows:"4"; */
+/* 	 cols:"50" */
+}
+/* 별점----------------------------------------------------------------------------------------- */
+.star-rating {
+	display: flex;
+	flex-direction: row-reverse;
+	font-size: 2.25rem;
+	line-height: 2.5rem;
+	justify-content: space-around;
+	padding: 0 0.2em;
+	text-align: center;
+	width: 5em;
+}
+
+.star-rating input {
+	display: none;
+}
+
+.star-rating label {
+	-webkit-text-fill-color: transparent;
+	/* Will override color (regardless of order) */
+	-webkit-text-stroke-width: 2.3px;
+	-webkit-text-stroke-color: red;
+	cursor: pointer;
+}
+
+.star-rating :checked ~ label {
+	-webkit-text-fill-color: red;
+}
+
+.star-rating label:hover, .star-rating label:hover ~ label {
+	-webkit-text-fill-color: orange;
+}
+/* Banner SCSS---------------------------------------- */
+#asdf1111 {
+	margin: 0;
+}
+
+#wrap {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#quick_bg {
+	margin: 0 auto;
+	text-align: center;
+	width: 1200px;
+	position: relative;
+}
+
+#quick {
+	position: absolute;
+	z-index: 2;
+	top: 15px;
+	/* 	width: 153px; */
+	right: -100px;
+	heightL: 70px;
+}
+
+#container12 {
+	position: relative;
+}
+
+#quick>div {
+	margin: 0px;
+	border: 0px;
+}
+
+#quick>div {
+	/* 	heightL: 70px;  */
+	font-weight: bold;
+	color: rgba(59, 0, 148);
+	/* 	margin: 0px; */
+	/* 	border: 0px; */
+	font-size: 40px;
+}
+
+/* .scroll123 { */
+/* 	margin: 0px; */
+/* 	border: 0px; */
+/* 	font-size: 20px; */
+/* 	font-weight: bold; */
+/* } */
+hr {
+	width: 50px;
+	height: 3px;
+	background-color: rgba(59, 0, 148);
+}
+.hr1{
+	width: 250px;
+	height: 1px;
+	background-color: rgba(59, 0, 148);
+}
+/* Banner SCSS---------------------------------------- */
+.scroll {
+	width: 1200px;
+	justify-content: space-around;
+	display: flex;
+	height: 70px;
+}
+
+.scroll>div {
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	width: 250px;
+	height: 50px;
+	text-align: center;
+
+	border-radius: 5px;
+	border: solid rgba(59, 0, 148) 2px;
+	background-color: rgba(248, 245, 251);
+}
+
+.scroll>div>div {
+	margin: auto;
+	height: 20px;
+	color:rgba(59, 0, 148);
+		font-weight: bold;
+	
+
+
+}
+.raterate{
+	display:flex;
+	justify-content: space-around;
+}
+.araterate{
+	font-size:33px;
+		color:rgba(59, 0, 148);
+/* 		font-weight: bold; */
+}
