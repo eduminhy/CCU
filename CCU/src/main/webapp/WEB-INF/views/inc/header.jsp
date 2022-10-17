@@ -136,7 +136,7 @@
 				<i class="fas fa-search" id="searchBtn"></i>
 			</button>
 			<input type="text" id="searchBar" /> <a href="/" id="mainLink">
-				<img src="../img/logo.png" id="logo" /> <span>CCU</span>
+				<img src="/logo.png" id="logo" /> <span>CCU</span>
 			</a>
 			<!-- 		<button class="bell-btn" type="submit"><i class="fas fa-bell" id="bellBtn"></i></button> -->
 			<button class="user-btn" type="submit">
