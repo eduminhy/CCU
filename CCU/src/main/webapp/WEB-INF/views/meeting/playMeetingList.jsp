@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/style/playMeetingListStyle.css">
-<script src="/script/playMeetingListScript.js" type="text/javascript"></script>
+<head>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
+<script src="/script/playMeetingListScript.js" type="text/javascript"></script>
+
 
 <script>
 	$(function(){

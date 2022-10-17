@@ -1,0 +1,51 @@
+@charset "UTF-8";
+	body{margin:0; padding:0;}
+	.container{width:1200px; overflow:auto; margin:0 auto; text-align:center;}
+	a:link, a:visited{text-decoration:none;}
+	h1{color:rgb(68,0,153); margin:50px;}
+	#myTapmenu li{
+		float:left; text-align:center;
+		width:16%; height:50px; line-height:50px; 
+		margin:40px 0 60px 0;
+		font-weight:bold; font-size:18px; 
+		border:3px solid #440099; border-left:none;
+	}
+	#myTapmenu a{color:#440099;}
+	#myTapmenu li:first-child{border-left:3px solid #440099; margin-left:15px;}
+	
+	#myTapmenu li:nth-child(2){background-color:#440099;}
+	#myTapmenu li:nth-child(2)>a{color:#fff;}
+	
+	
+	#bookFrm a{color:black;}
+	.book li{float:left; height:50px; line-height:50px; border-bottom:1px solid #ddd;}
+	.book li:nth-child(7n+1){width:15%;}
+	.book li:nth-child(7n+2){width:20%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+	.book li:nth-child(7n+3){width:15%;}
+	.book li:nth-child(7n+4){width:15%;}
+	.book li:nth-child(7n+5){width:10%;}
+	.book li:nth-child(7n+6){width:10%;}
+	.book li:nth-child(7n+7){width:15%;}
+	#bookList>li:first-child>ul>li{margin-top:30px; background-color:#E0E0E0; font-weight:bold; border-top:2px solid #7F7F7F;}
+	#bookList>li:last-child>ul>li{margin-bottom:80px; border-bottom:2px solid #7F7F7F;}
+	
+	#bookListSearch{float:left; margin:10px 0 30px 0;}
+	#searchWord{
+		width:200px;
+		height:20px;
+		font-size:20px;
+		border-top:none;
+		border-left:none;
+		border-right:none;
+		border-bottom:1px solid #ddd;
+		outline:none;
+	}
+	#date{font-size:18px; border:none; border-bottom:1px solid #ddd; text-align:center; color:#440099;}
+	.searchBtn{
+        border: none; margin-left:10px;
+        width: 60px; height: 30px;
+        font-weight:bold; font-size:15px; background-color:#440099; color:#fff; border-radius:20px;
+        cursor: pointer;
+	}
+	#searchFrm>span{margin:10px 10px 0 10px; padding:5px 15px; border:1px solid lavender; border-radius:20px; background-color:lavender; color:#440099; font-weight:bold;}
+	.reviewBtn, .checkBtn{border:none; background-color:lavender; color:#440099; font-weight:bold; font-size:13px; border-radius:10px; padding:5px; cursor: pointer;}

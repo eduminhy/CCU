@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- dao뒤에 사용할DAO명을 입력해야함 ex)boardDAO -->
+<mapper namespace="com.team200.proj.dao.IndexDAO">
+	<select id="outputFestivalData" resultType="festivalVO">
+		select id, name, startdate, enddate, place place_name, poster mainposter,
+		genre, state from festival where
+		state = '공연중' or state = '공연예정' ORDER
+		BY enddate ASC limit 0, 5;
+	</select>
+	<select id="outputpopularData" resultType="showVO">
+		SELECT
+		a.name, a.id, a.mainposter,a.startdate, a.enddate,a.genre, b.showRank
+		FROM showdb as a INNER JOIN popular as b ON a.id = b.showdb_id ORDER BY
+		b.showRank ASC limit 0, 21;
+	</select>
+	<select id="outputpopularWData" resultType="showVO">
+		SELECT
+		a.name, a.id, a.mainposter,a.startdate, a.enddate,a.genre, b.showRank
+		FROM showdb as a INNER JOIN popularW as b ON a.id = b.showdb_id ORDER BY
+		b.showRank ASC limit 0, 21;
+	</select>
+	<select id="outputpopularDWMData" resultType="showVO">
+		SELECT
+		a.name, a.id, a.mainposter,a.startdate, a.enddate,a.genre,
+		<if test='param2 == "아동"'> c.showRank
+		FROM showdb as a INNER JOIN child as c on a.id = c.showdb_id ORDER BY c.showRank ASC
+			limit 0, 5;</if>
+			
+		<if test='param2 != "아동"'>
+		b.showRank
+		FROM showdb as a INNER JOIN
+			<if test='param1 == 1'>popular</if>
+			<if test='param1 == 7'>popularW</if>
+			<if test='param1 == 30'>popularM</if>
+			as b ON a.id = b.showdb_id
+			
+			<if test='param2 == "연극"'>where genre = #{param2}</if>
+			<if test='param2 == "뮤지컬"'>where genre = #{param2}</if>
+			<if test='param2 == "클래식"'>where genre = '클래식' or genre = '오페라'</if>
+			ORDER BY b.showRank ASC limit 0, 5;
+		</if>
+
+
+	</select>
+</mapper>

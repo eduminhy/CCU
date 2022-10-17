@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<head>
 <link rel="stylesheet" href="/style/mainMeetingNoticeStyle.css">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
 <script src="//cdn.ckeditor.com/4.19.1/full/ckeditor.js"></script>
 
 <script>
@@ -40,6 +44,7 @@
                 alert(JSON.stringify(error));
             });
         });
+        
     });
 
     const main = {
@@ -54,26 +59,30 @@
                 });
             });
         },
-        replyUpdate: function (form) {
-            const data = {
-                id: form.querySelector('#id').value,
-                comment: form.querySelector('#reply-content').value,
+        replyUpdate: function (id) {
+        	console.log(id);
+           const data = {
+                id: $('#id'+id).val(),
+                content: $('#content'+id).val()
             }
-            var params = $("#replyUpdate" + data.id).serialize();
+            //console.log(data);
+            //var params = $("replyUpdate"+id).serialize();
+            
             console.log(data);
-            if (!data.comment || data.comment.trim() === "") {
+            if (!data.content || data.content.trim() === "") {
                 alert("공백 또는 입력하지 않은 부분이 있습니다.");
                 return false;
             }
             $.ajax({
-                type: 'PUT',
-                url: '/reply/' + data.id,
-                data: params
+                type: 'POST',
+                url: '/reply/replyUpdate',
+                data: data
             }).done(function () {
-                window.location.reload();
+                 window.location.reload();
             }).fail(function (error) {
-                alert(JSON.stringify(error));
+                 alert(JSON.stringify(error));
             });
+            return false;
         },
 
         replyDelete: function (id) {
@@ -182,14 +191,14 @@
 							data-bs-target=".multi-collapse-${reply.id}">
 							<button id="remodify">수정</button>
 						</a>
-						<div class="collapse multi-collapse-${reply.id}">
-							<form class="replyUpdate" id="replyUpdate${reply.id}">
+						<div class="collapse multi-collapse">
+							<form class="replyUpdate" id="replyUpdate${reply.id}"">
 
-								<input type="hidden" id="id" name="id" value="${reply.id}">
+								<input type="hidden" id="id${reply.id}" name="id" value="${reply.id}">
 
-								<textarea class="form-control" id="reply-content" name="content"
+								<textarea class="form-control" id="content${reply.id}" name="content"
 									rows="3">${reply.content}</textarea>
-								<button type="button" id="btn-reply-update">저장</button>
+								<input type="button" onclick="main.replyUpdate(${reply.id})" value="댓글수정"></button>
 							</form>
 						</div>
 					</c:if>

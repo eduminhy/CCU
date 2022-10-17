@@ -30,9 +30,9 @@ public class ReplyController {
 		return service.replyInsert(vo);
 	}
 
-	@PutMapping("{id}")
+	@PostMapping("replyUpdate")
 	public int replyEdit(ReplyVO vo) {
-		System.out.println(vo);
+		System.out.println(vo.toString());
 		return service.replyEdit(vo);
 	}
 

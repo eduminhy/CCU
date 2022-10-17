@@ -116,15 +116,17 @@ $(function(){
 chatbot-symbol-concept-voice-support-service-bot-online-support-bot-vector-
 stock-illustration_100456-34.jpg?w=2000" style="width:350px; height:350px;  margin: auto;
     display: block;">
-<li style="text-align:center; color:GREY; font-size:1.5em;"><b>CCU Chatbot Manager</b></li>
+<li style="text-align:center; color:GREY; font-size:2.0em;"><b>CCU Chatbot Manager</b></li>
 
 
 
-<div id="content" style="width:100%; height:400px; border:1px solid #ddd;"></div>
-<input type="text" name="queryin" id="queryin"/>
-<input type="button" value="query" id="query"/>
-<hr/>
-<textarea id="jsonCode" style="width:100%; height:300px;"></textarea>
+<div id="content"></div>
+<div class="chatbotinput">
+	<input type="text" name="queryin" id="queryin"/>
+	<input type="button" value="전송" id="query"/>
+</div>
+
+<textarea id="jsonCode" style="width:100%; height:300px; visibility:hidden;"></textarea>
 </body>
 </html>
 

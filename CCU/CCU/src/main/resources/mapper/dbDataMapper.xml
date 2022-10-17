@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- dao뒤에 사용할DAO명을 입력해야함 ex)boardDAO -->
+<mapper namespace="com.team200.proj.dao.DBdataDAO">
+	<insert id="inputPlaceData">
+		insert into place(
+id,
+name,
+seat_count,
+concert_hall_count,
+tel,
+url,
+addr,
+lat,
+lng
+		)
+		values (
+		#{id},
+		#{name},
+#{seats_count},
+#{concert_hall_count},
+#{tel},
+#{url},
+#{addr},
+
+#{lat},
+#{lng})
+	</insert>
+		<insert id="inputShowData">
+		insert into showdb(
+id,
+name,
+
+startdate,
+enddate,
+place_name,
+
+performer,
+producer,
+open_time,
+runtime,
+
+minimum_age,
+production_company_name,
+price,
+mainposter,
+introduction_txt,
+
+genre,
+state,
+openrun,
+
+introduction_image1,
+introduction_image2,
+introduction_image3,
+introduction_image4
+		)
+		values (
+#{id},
+#{name},
+#{startdate},
+#{enddate},
+#{place_name},
+#{performer},
+#{producer},
+#{open_time},
+#{runtime},
+#{minimum_age},
+#{statistics_search_by_production_company_name},
+#{price},
+#{mainposter},
+#{introduction_txt},
+#{genre},
+#{state},
+#{openrun},
+#{introduction_image1},
+#{introduction_image2},
+#{introduction_image3},
+#{introduction_image4}
+)
+	</insert>
+			<insert id="inputFestivalData">
+		insert into festival(
+id,
+name,
+
+startdate,
+enddate,
+place,
+
+
+
+poster,
+
+
+genre,
+state
+
+		)
+		values (
+#{id},
+#{name},
+#{startdate},
+#{enddate},
+#{place_name},
+
+
+#{mainposter},
+
+#{genre},
+#{state}
+
+)
+	</insert>
+	
+	<insert id="popularInputMain">
+		insert into popular( showdb_id, showRank) values ( #{id}, #{showRank})
+	</insert>
+		<insert id="popularWInputMain">
+		insert into popularW( showdb_id, showRank) values ( #{id}, #{showRank})
+	</insert>
+		<insert id="popularMInputMain">
+		insert into popularM( showdb_id, showRank) values ( #{id}, #{showRank})
+	</insert>
+			<insert id="popularChildInputMain">
+		insert into child ( showdb_id, showRank) values ( #{id}, #{showRank})
+	</insert>
+</mapper>

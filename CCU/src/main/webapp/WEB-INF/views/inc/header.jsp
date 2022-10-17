@@ -159,16 +159,17 @@
 						<br/>
 						<input type="submit" value="로그인" class="loginBtn">
 						<br/>
-						<a href="/oauth2/authorization/google"><img src="../img/googleicon.png" id="googleicon"></a>
-						<a href="/oauth2/authorization/kakao"><img src="../img/kakaoicon.png" id="kakaoicon"></a>
+						<a href="/oauth2/authorization/google"><img src="../img/googlebtnsmall.png" id="googleicon"></a>
+						<br />
+						<a href="/oauth2/authorization/kakao"><img src="../img/kakaobtnsmall.png" id="kakaoicon"></a>
 					
-						<br /><br /><br /><br />
+						
 						<a href="/user/signup"><b>회원가입</b></a>
-						</br>
+						
 						<a href="/faq"><b>고객센터</b></a>
 					</c:if>
 					<c:if test="${logStatus=='Y' }">
-						<h1 style="font-size:20px; font-color:orange;"> ${logId }님 환영합니다</h1>
+						<h1 style="font-size:20px; font-color:orange;"> ${logName }님 환영합니다</h1>
 						<input type="button" value="로그아웃" onclick=" location.href ='/user/logout' " class="logoutBtn">
 					
 						<br /><br /><br /><br />

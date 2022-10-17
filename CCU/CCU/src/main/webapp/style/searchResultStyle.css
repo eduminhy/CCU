@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+	.searchTopContainer{
+		width:1200px;
+		/*width:64%;*/
+		height:160px;
+		background-color:#F2F2F2;
+		margin:1% auto;
+	}
+	.searchTopTxt{
+		padding-top:30px;
+		color:#440099;
+		font-weight:normal;
+		text-align:center;
+	}
+	.searchTopWriteTxt{
+		/*margin-left:500px;*/
+		margin-left:37%;
+		background-color:#F2F2F2;
+		border: 1px solid #bcbcbc;
+		font-size:16px;
+		/*width:300px;*/
+		width:25%;
+        padding:10px 10px;
+        border:0px;
+        border-bottom:2px solid #000;
+		outline:none;
+		float:left;	
+	}
+	.searchTopBtn{
+		background:url("../img/search_black.png");
+		background-repeat: no-repeat;
+        border: none;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+	}
+	
+	.itemList{
+		margin-top:3%;
+		width:1200px;
+		margin:0 auto;
+		margin-bottom:4%;
+		/*background:red;*/
+		list-style: none;
+		border-top:2px solid #7F7F7F;
+		border-bottom:2px solid #7F7F7F;
+	}
+	.itemList li{
+		/*background:yellow;*/
+		display: table;
+	    width: 100%;
+	    table-layout: fixed;
+	    padding: 20px 70px;
+	    box-sizing: border-box;
+	    border-bottom: 1px solid #CCCCCC;
+	}
+	
+	.colPhoto{
+	
+		width: 125px;
+		display: table-cell;
+    	vertical-align: top;
+	}
+
+
+	
+	.searchPanel a{
+		margin: 0;
+	    padding: 0;
+	    font-size: 100%;
+	    vertical-align: baseline;
+	    background: transparent;
+	    text-decoration: none;
+	}
+	.itemImage{
+		position: relative;
+		display: block;
+	    /* width: 100%; */
+	    /* height: 160px; */
+	    /* overflow: hidden;*/
+	}
+	
+	
+	.colData{
+		position: relative;
+		padding: 30px 100px;
+    vertical-align: top;
+    display: table-cell;
+    
+	}
+	.itemName{
+		overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 17px;
+    color: #000;
+    font-weight: bold;
+	}
+	.itemInfo{
+		position: absolute;
+    bottom: 30px;
+    left: 30px;
+    width: 520px;
+	}
+	.ticketInfo{
+		margin-bottom: 5px;
+	}
+	.ticketInfo span{
+		position: relative;
+		margin-left: 70px;
+		font-size: 14px;
+	}
+	
+
+	
+	.colInfo{
+		/*padding-left: 0;*/
+		box-sizing: border-box;
+    	text-align: left;
+    	width: 187px;
+    	vertical-align: bottom;
+    	display: table-cell;
+    
+	}
+	.concertHall{
+		display: block;
+		color: #333;
+		font-size: 14px;
+    
+	}
+	.period{
+		display: block;
+		margin-bottom: 20px;
+	    color: #333;
+	    font-size: 14px;
+	}
+	
