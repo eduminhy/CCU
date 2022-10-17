@@ -1,16 +1,26 @@
 @charset "UTF-8";
+.chatDiv{
+ width:	640px;
+/*  		position: absolute; */
+/* 		bottom : 0; */
+}
+.chatDiv2{
+ width:	640px;
+height:110px;
+}
 .newchat {
-		position: absolute;
-		bottom : 0;
+
 		width:80%;
 		height:100px;
+		margin:0;
+		padding:0px;
 }
 .newchatbtn{
 		width:19%;
-		height:107px;
-		position: absolute;
-		right:0;
-		bottom : 0;
+		height:105px;
+/* 		position: absolute; */
+/* 		right:0; */
+/* 		bottom : 0; */
 		text-align:center;
 		padding:10px 20px;
 		float:right;
@@ -21,22 +31,27 @@
 		border-style:none;
 	
 }
+table{
+border-collapse: collapse;
+}
+
 tbody tr td:nth-child(1){
 
  	font-color : #008080;
  }
  tbody tr td:nth-child(2){
- 	padding-left : 200px;
+/*  	padding-left : 200px; */
  	font-color : #f1c550;
+ 	text-align:right;
  }
- th#adminchat {
+th#adminchat {
 	font-weight:bold;
 	font-size : 1.5em;
 	color : #008080;
 	
 }
 th#userchat {
-	padding-left : 200px;
+/* 	padding-left : 200px; */
 	font-weight:bold;
 	font-size : 1.5em;
 	color : #f1c550;
@@ -103,4 +118,9 @@ th#userchat {
 .csmenu>div:first-child{
 	border-left: solid 3px #440099;
 	margin-left : 16%;
+}
+
+
+#chat_list tr td{
+border: 1px solid;
 }

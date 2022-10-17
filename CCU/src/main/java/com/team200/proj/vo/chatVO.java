@@ -8,7 +8,17 @@ public class chatVO {
 	private String send_user_id;
 	
 	private String chat_info;
+	private String username;
+	private String update_date;
 	
+	
+	
+	public String getUpdate_date() {
+		return update_date;
+	}
+	public void setUpdate_date(String update_date) {
+		this.update_date = update_date;
+	}
 	public String getChat_info() {
 		return chat_info;
 	}
@@ -17,6 +27,13 @@ public class chatVO {
 	}
 	private int chat_role;
 	
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	@Override
 	public String toString() {
 		return "chatVO [chat_room_id=" + chat_room_id + ",  send_user_id="
