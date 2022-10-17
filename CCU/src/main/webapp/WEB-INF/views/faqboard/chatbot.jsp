@@ -30,6 +30,12 @@ padding:10px}
 width:200px; height:200px;}
 </style>
 <script>
+$(document).keydown(function(event) {
+	if (event.keyCode == 13) {
+		queryin();
+	}
+});
+
 $(function(){
 	$(document).on('click','#queryin',function(){
 		
@@ -123,7 +129,7 @@ stock-illustration_100456-34.jpg?w=2000" style="width:350px; height:350px;  marg
 <div id="content"></div>
 <div class="chatbotinput">
 	<input type="text" name="queryin" id="queryin"/>
-	<input type="button" value="전송" id="query"/>
+	<input type="button" value="전송" id="query" onkeyup="enterkey();"/>
 </div>
 
 <textarea id="jsonCode" style="width:100%; height:300px; visibility:hidden;"></textarea>

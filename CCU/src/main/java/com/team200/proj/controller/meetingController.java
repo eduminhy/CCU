@@ -49,21 +49,29 @@ public class meetingController {
 
 	// mainMeeting?genre=연극
 	@RequestMapping(value = "mainMeeting/{genre}", method = RequestMethod.GET)
-	public ModelAndView meetingFindGenre(@PathVariable String genre) {
+	public ModelAndView meetingFindGenre(@PathVariable String genre, @RequestParam(required = false) String title) {
 		ModelAndView mav = new ModelAndView();
-
+//		아니 근데 여기 매핑에는 타이틀 선언안되있잖아 에러날거같은데
+		if (title == null) {
 		mav.addObject("list", service.mainMeetingGenre(genre));
-
+		} else {
+			mav.addObject("list", service.searchByTitle(title));
+		
+		}
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
 	}
 
 	@RequestMapping(value = "mainMeeting2/{genre1}&{genre2}", method = RequestMethod.GET)
-	public ModelAndView meetingFindGenre(@PathVariable String genre1, @PathVariable String genre2) {
+	public ModelAndView meetingFindGenre(@PathVariable String genre1, @PathVariable String genre2, @RequestParam(required = false) String title) {
 		ModelAndView mav = new ModelAndView();
-
+		if (title == null) {
 		mav.addObject("list", service.mainMeetingGenre2(genre1, genre2));
-
+		} else {
+			mav.addObject("list", service.searchByTitle(title));
+			
+		} 
+		
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
 	}
@@ -276,3 +284,44 @@ public class meetingController {
 //	}
 
 }
+
+
+
+
+////같이갈래요 list
+//	@RequestMapping(value = "mainMeeting", method = RequestMethod.GET)
+//	public ModelAndView mainMeeting(@RequestParam(required = false) String title) {
+//		ModelAndView mav = new ModelAndView();
+//
+//		if (title == null) {
+//			mav.addObject("list", service.mainMeeting());
+//		} else {
+//			mav.addObject("list", service.searchByTitle(title));
+//		}
+//
+//		mav.setViewName("meeting/mainMeeting");
+//		return mav;
+//	}
+//
+//	// --------------------------------------------------------------------------------
+//
+//	// mainMeeting?genre=연극
+//	@RequestMapping(value = "mainMeeting/{genre}", method = RequestMethod.GET)
+//	public ModelAndView meetingFindGenre(@PathVariable String genre) {
+//		ModelAndView mav = new ModelAndView();
+//
+//		mav.addObject("list", service.mainMeetingGenre(genre));
+//
+//		mav.setViewName("meeting/mainMeeting");
+//		return mav;
+//	}
+//
+//	@RequestMapping(value = "mainMeeting2/{genre1}&{genre2}", method = RequestMethod.GET)
+//	public ModelAndView meetingFindGenre(@PathVariable String genre1, @PathVariable String genre2) {
+//		ModelAndView mav = new ModelAndView();
+//
+//		mav.addObject("list", service.mainMeetingGenre2(genre1, genre2));
+//
+//		mav.setViewName("meeting/mainMeeting");
+//		return mav;
+//	}

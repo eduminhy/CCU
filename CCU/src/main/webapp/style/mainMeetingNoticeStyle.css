@@ -1,10 +1,21 @@
 @charset "UTF-8";
 	.form-control {
-		width:100%;
+		width:85%;
 		height:70px;
 		margin-top:5px;
+		border : 2px solid #f5b50a;
+		font-weight : bold;
+		font-size : 1.2em;
 	}
 	#editbtn{
+		border:none; 
+		background-color:#f5b50a; 
+		color:white;
+		font-weight:bold; 
+		font-size:17px; 
+		padding:10px 20px; 
+		margin-bottom : 1%;
+		margin-right: 2%;
 		float:right;
 	}
 	#reporticon {
@@ -109,7 +120,7 @@
 		border:none; background-color:lavender; color:#440099;
 		font-weight:bold; font-size:17px; 
 		padding:10px 20px; margin:0 5px;
-		float:right;
+		float:top-right;
 	}
 	.replyUpdate{
 		margin:0 30px;
@@ -118,3 +129,16 @@
 	#renamedate{
 		font-size:16px;
 	}
+/* 	#btn_toggle{ */
+/*   font-size:14px; */
+/*   padding:10px 15px; */
+/*   border:1px solid #ddd; */
+/*   background-color:#0a76b7; */
+/*   border-radius:5px; */
+/*   color:#fff; */
+/*   font-weight:bold; */
+/* } */
+/* #Toggle{ */
+/*   font-size:14px; */
+/*   color: #666; */
+/* } */

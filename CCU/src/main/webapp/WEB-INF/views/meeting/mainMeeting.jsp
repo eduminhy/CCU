@@ -30,9 +30,12 @@
     function search() {
         let title = document.getElementById('meetingkeyword').value;
         let form = document.forms["searchForm"];
-        form.action = "/meeting/mainMeeting?title=" + title;
+//         console.log(window.location.pathname);
+        form.action = window.location.pathname+"?title=" + title;
         form.submit();
     }
+//     window.location.pathname  //JavaScript에서 윈도우 uri주소호출
+                                 //js 에서 주소 호출
     /*
     $(document).ready(function() {
         
