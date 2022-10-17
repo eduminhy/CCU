@@ -90,4 +90,10 @@ public class MeetingServiceImpl implements MeetingService {
 		// TODO Auto-generated method stub
 		return dao.meetingView(id);
 	}
+
+	@Override
+	public void setReport(int id, String content, String logid) {
+		// TODO Auto-generated method stub
+		dao.setReport(id,content,logid);
+	}
 }
