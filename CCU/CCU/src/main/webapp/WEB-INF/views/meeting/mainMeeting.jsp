@@ -158,7 +158,7 @@
                 공연 : ${vo.name}
                 장르 : ${vo.genre }
                 내용 : ${vo.content}
-                포스터 :
+                포스터 :<img src="${vo.mainposter }">
                 
 
                 "

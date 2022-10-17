@@ -61,6 +61,7 @@ public class meetingController {
 			mav.addObject("list", service.searchByTitle(title, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
 		}
 		mav.addObject("pvo", pvo);
+
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
 	}
@@ -76,11 +77,12 @@ public class meetingController {
 			mav.addObject("list", service.searchByTitle(title, pvo.getOnePageRecord(), pvo.getOffsetPoint()));
 		}
 		mav.addObject("pvo", pvo);
+
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
 	}
 
-	// --------------------------------------------------------------------------------
+	
 
 	@RequestMapping("playMeetingList")
 	public ModelAndView playMeetingList1() {
@@ -288,3 +290,44 @@ public class meetingController {
 //	}
 
 }
+
+
+
+
+////같이갈래요 list
+//	@RequestMapping(value = "mainMeeting", method = RequestMethod.GET)
+//	public ModelAndView mainMeeting(@RequestParam(required = false) String title) {
+//		ModelAndView mav = new ModelAndView();
+//
+//		if (title == null) {
+//			mav.addObject("list", service.mainMeeting());
+//		} else {
+//			mav.addObject("list", service.searchByTitle(title));
+//		}
+//
+//		mav.setViewName("meeting/mainMeeting");
+//		return mav;
+//	}
+//
+//	// --------------------------------------------------------------------------------
+//
+//	// mainMeeting?genre=연극
+//	@RequestMapping(value = "mainMeeting/{genre}", method = RequestMethod.GET)
+//	public ModelAndView meetingFindGenre(@PathVariable String genre) {
+//		ModelAndView mav = new ModelAndView();
+//
+//		mav.addObject("list", service.mainMeetingGenre(genre));
+//
+//		mav.setViewName("meeting/mainMeeting");
+//		return mav;
+//	}
+//
+//	@RequestMapping(value = "mainMeeting2/{genre1}&{genre2}", method = RequestMethod.GET)
+//	public ModelAndView meetingFindGenre(@PathVariable String genre1, @PathVariable String genre2) {
+//		ModelAndView mav = new ModelAndView();
+//
+//		mav.addObject("list", service.mainMeetingGenre2(genre1, genre2));
+//
+//		mav.setViewName("meeting/mainMeeting");
+//		return mav;
+//	}

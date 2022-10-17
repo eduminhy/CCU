@@ -124,6 +124,12 @@
 			});
 		});
     });
+    
+    $(function (){
+    	$("#btn_toggle").click(function (){
+      	$("#Toggle").toggle();
+      });
+    });
 </script>
 <div class="MeetingTopContainer">
 	<h1 class="MeetingTopText">같이 갈래요?</h1>
@@ -197,7 +203,7 @@
 								<input type="hidden" id="id${reply.id}" name="id" value="${reply.id}">
 
 								<textarea class="form-control" id="content${reply.id}" name="content"
-									rows="3">${reply.content}</textarea>
+									rows="3" style=display:none;">${reply.content}</textarea>
 								<input type="button" id ="editbtn" onclick="main.replyUpdate(${reply.id})" value="댓글수정"></button>
 							</form>
 						</div>
@@ -207,3 +213,30 @@
 		</ul>
 	</div>
 </div>
+
+
+<script>
+$(document).ready(function(){
+	isShow = true; //변수 하나를 설정, 화면에 보이면 true, 보이지 않으면 false;
+	
+	$('#remodify').click(function(){
+	if(isShow){ //보이니까 숨기고
+    		isShow = false;
+    		$('.form-control').hide();	//요소를 안보이게 한다.
+    		$('#editbtn').hide();	
+    		$('#remodify').text('수정');
+    	}else{	//안보이니까 보이게 한다
+    		isShow = true;
+    		$('.form-control').show();		//요소를 보이게 한다
+    		$('#editbtn').show();
+        	$('#remodify').text('수정');
+   
+    	};
+	});
+});
+
+
+
+
+
+</script>

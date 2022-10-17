@@ -49,22 +49,30 @@ public class meetingController {
 
 	//	mainMeeting?genre=연극
 	@RequestMapping(value = "mainMeeting/{genre}", method = RequestMethod.GET)
-	public ModelAndView meetingFindGenre(@PathVariable String genre) {
+	public ModelAndView meetingFindGenre(@RequestParam(required = false) String title, @PathVariable String genre) {
 		ModelAndView mav = new ModelAndView();
-
-		mav.addObject("list", service.mainMeetingGenre(genre));
-
+		
+		if (title == null) {
+			mav.addObject("list", service.mainMeetingGenre(genre));
+		} else {
+			mav.addObject("list", service.searchByTitle(title));
+		}
+		
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
-	}
+	}	
 
 	@RequestMapping(value = "mainMeeting2/{genre1}&{genre2}", method = RequestMethod.GET)
-	public ModelAndView meetingFindGenre(@PathVariable String genre1, @PathVariable String genre2) {
+	public ModelAndView meetingFindGenre(@RequestParam(required = false) String title, @PathVariable String genre1, @PathVariable String genre2) {
 		ModelAndView mav = new ModelAndView();
 
-		
+		if (title == null) {
+			mav.addObject("list", service.mainMeetingGenre2(genre1, genre2));
+		} else {
+			mav.addObject("list", service.searchByTitle(title));
+		}
 
-		mav.addObject("list", service.mainMeetingGenre2(genre1, genre2));
+		=
 
 		mav.setViewName("meeting/mainMeeting");
 		return mav;
