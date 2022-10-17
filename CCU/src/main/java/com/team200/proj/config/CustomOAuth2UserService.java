@@ -53,7 +53,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         if (optionalUser == null) {
            
-            user.setId("email");
+            user.setId(email);
             user.setUsername((String) memberAttribute.get("name"));
             user.setNickname((String) memberAttribute.get("name"));
             user.setEmail(email);

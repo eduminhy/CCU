@@ -200,10 +200,11 @@
 	</select>
 	<select id="reportList" resultType="ReportVO">
 		select a.id, a.user_id, a.type, a.content, b.user_id
-		user_id2,b.content rcontent, b.show_id, b.order_list_no, a.postnum
+		user_id2,b.content rcontent, b.show_id,c.name genre ,b.order_list_no, a.postnum
 		from report a
-		inner join review b on a.postNum = b.id where a.type =
-		'review'
+		inner join review b on a.postNum = b.id
+		inner join showdb c on b.show_id = c.id
+		where a.type = 'review'
 
 		<!-- date_format(a.writedate, -->
 		<!-- '%m-%d %h:%i') writedate, b.name showdb_id -->
@@ -240,11 +241,13 @@
 	<select id="mreportList" resultType="ReportVO">
 		select a.id, a.user_id,
 		a.type, a.content, b.user_id user_id2
-		,b.content rcontent, b.showdb_id
+		,b.content rcontent, c.name
 		show_id, a.postnum postnum from report
 		a
 		inner join board b on
-		a.postNum = b.id where a.type = 'meet'
+		a.postNum = b.id 
+		inner join showdb c on
+		b.showdb_id = c.id where a.type = 'meet'
 		<if test='searchKey5=="content"'>
 			and ( a.content like '%${searchWord5}%' OR b.content like
 			'%${searchWord5}%' )
@@ -265,7 +268,7 @@
 
 	<select id="reviewList" resultType="ReviewVO">
 		select a.id, a.user_id, b.name, a.order_list_no, a.content,
-		date_format(a.writedate, '%Y.%m.%d %h:%i')
+		date_format(a.writedate, '%Y.%m.%d %h:%i') writedate
 
 		, a.rate, a.viewdate from
 		review a inner join showdb b on b.id = a.show_id
