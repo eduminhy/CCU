@@ -61,6 +61,11 @@
 				alert("연락처를 올바르게 기재하세요");
 				return false;
 			}
+			// email
+			if($("#email").val() == ""){
+				alert("연락처를 올바르게 기재하세요");
+				return false;
+			}
 
 		});
 	});
