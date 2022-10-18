@@ -34,6 +34,7 @@ public interface IndexService {
 	public int boardMultiDel3(ReportVO vo);
 	public int boardMultiDel4(ReportVO vo);
 	public int boardMultiDel5(ReportVO vo);
+	public int boardMultiDel51(ReportVO vo);
 	public List<BoardVO> reportList(PagingVO pVO);
 	public List<BoardVO> mreportList(PagingVO pVO);
 	public int getTotalUser5(PagingVO pvo);

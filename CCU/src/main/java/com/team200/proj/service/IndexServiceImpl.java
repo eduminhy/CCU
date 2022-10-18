@@ -162,4 +162,10 @@ public class IndexServiceImpl implements IndexService {
 		// TODO Auto-generated method stub
 		return dao.chatList(pVO);
 	}
+
+	@Override
+	public int boardMultiDel51(ReportVO vo) {
+		// TODO Auto-generated method stub
+		return dao.boardMultiDel51(vo);
+	}
 }

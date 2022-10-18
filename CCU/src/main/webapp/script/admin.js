@@ -166,7 +166,12 @@ $(function() {
 				"checked",
 				$(".allChk5").prop("checked"));
 		});
-
+	$(".allChk51").click(
+		function() {
+			$(".UserDiv52 input[type=checkbox]").prop(
+				"checked",
+				$(".allChk51").prop("checked"));
+		});
 
 	//선택된 갯수를 구하여 여러개를 삭제하도록 한다.
 	$(".multiDel2").click(
@@ -280,6 +285,34 @@ $(function() {
 				alert.write("취소합니다.");
 			}
 			$("#listFrm5").submit();
+		});
+	$(".multiDel51").click(
+
+		function() {
+			console.log(112);
+			//체크갯수 확인
+			var countChk = 0;
+			$(".UserDiv52 input[name=noList]").each(
+				function(idx, obj) {
+					if (obj.checked) { //input테그가 체크상태일 경우 true 아니면 false
+						countChk++;
+					}
+				});
+			console.log(countChk);
+			if (countChk <= 0) {
+				alert("삭제할 채팅방를 선택후 삭제해주세요");
+				return false;
+			}
+			;
+			var con_test = confirm("정말로 채팅방을 삭제하시겠습니까?.");
+			if (con_test == true) {
+				alert("삭제합니다.");
+				$("#listFrm51").submit();
+			}
+			else if (con_test == false) {
+				alert.write("취소합니다.");
+			}
+			$("#listFrm51").submit();
 		});
 	$(".multiDel").click(
 
@@ -446,6 +479,23 @@ $(document).ready(function() {
 		$(".adminSubmenuContent>div").eq(firstDiv8).children().first().css("background", "#666666").css("color", "#ffffff");
 		$(".adminContent>div>div").eq(0).children().first().show();
 		$(".adminSubmenu>div").eq(firstDiv8).css("background", "#666666").css("color", "#ffffff");
+
+
+	}
+	if ($(".h11").attr('name') != "") {
+		var firstDiv11 = 3;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
+
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv11).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv11)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv11).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv11).children().first().css("background", "#666666").css("color", "#ffffff");
+		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv11).css("background", "#666666").css("color", "#ffffff");
 
 
 	}
@@ -626,13 +676,32 @@ $(document).ready(function() {
 		$(".adminSubmenu>div").eq(firstDiv2).css("background", "#666666").css("color", "#ffffff");
 		//		console.log($(".adminSubmenu").eq(2))
 	}
+	if ($(".adminBody").attr('name') == "chat") {
+		var firstDiv2 = 3;
+		$(".adminSubmenu>div").css("background", "#ffffff").css("color", "#666666");
+
+		$(".adminSubmenuContent>div").hide();
+		$(".adminSubmenuContent>div").eq(firstDiv2).show().css("background", "#ffffff");
+		$(".adminContent>div").show();
+		$(".adminContent>div>div").show();
+		$(".adminContent>div").not($(".adminContent>div").eq(firstDiv2)).hide();
+		$(".adminContent>div>div").not($(".adminContent>div").eq(firstDiv2).children().first()).hide();
+		$(".adminSubmenuContent>div>div").css("background", "#ffffff").css("color", "#666666");
+		$(".adminSubmenuContent>div").eq(firstDiv2).children().first().css("background", "#666666").css("color", "#ffffff");
+		//		$(".adminContent>div>div").eq(0).children().first().show();
+		$(".adminSubmenu>div").eq(firstDiv2).css("background", "#666666").css("color", "#ffffff");
+		//		console.log($(".adminSubmenu").eq(2))
+	}
 	$(".page>div").click(function() {
 		$(".page>div").css("background", "white");
 		$(this).css("background", "#cccccc");
 	});
 
-	$(".asdfqwer").click(function() {
-		var chatlist = "chatList?id=dong";
+	$(".asdfqwer1").click(function() {
+		console.log($(this).attr('name'));
+		var chatlist = "chatList?id=";
+		chatlist += $(this).attr('name');
+		console.log(chatlist)
 		window.open(chatlist, '네이버팝업',
 			'width=660, height=870, scrollbars=yes, resizable=no');
 	});
@@ -642,7 +711,32 @@ $(document).ready(function() {
 	//		window.open('chatList', '네이버팝업',
 	//			'width=640, height=640, scrollbars=yes, resizable=no');
 	//	}
+	$(".newdata").click(function() {
+		console.log(11)
+		$.ajax({
+			type: "get",
+			url: "/dbData/festivalInputMain",
+			async: false,
+			success: function(data) {
 
+				console.log(data);
+
+			},
+			error: function(error) {
+
+				console.log("error", error);
+			}
+		});
+	});
+
+
+//	var testInterval = setInterval(function() {
+//		console.log("2초 시간마다 계속 실행됩니다.");
+//	}, 2000);
+//	setTimeout(function() {
+//		clearTimeout(testInterval);
+//	}, 7000);
+//
 });
 
 

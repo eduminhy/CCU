@@ -180,7 +180,17 @@ public class homeController {
 		mav.setViewName("Message");
 		return mav;
 	}
-
+	@PostMapping("/multiDel51")
+	public ModelAndView multiDel51(ReportVO vo) {
+		int cnt = service.boardMultiDel51(vo);
+//		System.out.println(cnt);
+		mav = new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		mav.addObject("data", "선택된 채팅방이 삭제되었습니다.");
+		mav.addObject("data2", "chat");
+		mav.setViewName("Message");
+		return mav;
+	}
 	@PostMapping("/bookDel")
 	public ModelAndView bookDel(OrderlistVO vo) {
 		int cnt = service.bookDel(vo);

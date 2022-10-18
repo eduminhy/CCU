@@ -44,6 +44,10 @@ tbody tr td:nth-child(1){
  	font-color : #f1c550;
  	text-align:right;
  }
+ #userchat{
+ }
+ 
+ 
 th#adminchat {
 	font-weight:bold;
 	font-size : 1.5em;

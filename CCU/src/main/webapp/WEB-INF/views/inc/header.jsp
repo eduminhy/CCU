@@ -57,28 +57,37 @@
 				}
 			}
 		});
-		
-// 		//알림버튼
-// 		$(".bell-btn").click(function(){
-// 			$("#bellDiv").toggle();
-// 		});
-		
+
+		// 		//알림버튼
+		// 		$(".bell-btn").click(function(){
+		// 			$("#bellDiv").toggle();
+		// 		});
+
 		//사용자버튼
 		$("#toggleDiv").hide();
 		$(".user-btn").click(function() {
 			$("#toggleDiv").toggle();
-// 			var goFocus = function() {
-// 				$('#id').focus();
-// 			}
-// 			var goInfinite = function() {
-// 				function(){ goFocus(); }/* 3 Sec interval */
-// 			}
+			// 			var goFocus = function() {
+			// 				$('#id').focus();
+			// 			}
+			// 			var goInfinite = function() {
+			// 				function(){ goFocus(); }/* 3 Sec interval */
+			// 			}
 
 		});
-		
-		
+
+// 		var tmpNumber = 0;
+// 		var chkViewtime = setInterval(function() {
+// 			tmpNumber++;
+// 			console.log(tmpNumber);
+// 			if( tmpNumber >= 	86400000 ) {
+// 		        window.location.href = "/dBData/popularInputMain";
+// 		        return;
+// 		    }
+// 		}, 1000);
+
 	});
-	
+
 	$(function() {
 		$("#log").submit(function() {
 			if ($("#id").val() == "") {
@@ -107,13 +116,12 @@
 	         })
 		}
 	}
-*/
-
+	 */
 </script>
 </head>
 <body>
 
-<div id="topMenu">
+	<div id="topMenu">
 		<c:if test="${logStatus!='Y' }">
 			<a href="/user/login">로그인</a>
 			<span>&nbsp;</span>
@@ -124,12 +132,18 @@
 		<c:if test="${logStatus=='Y' }">
 			<a href="/user/logout">로그아웃</a>
 			<span>&nbsp;</span>
-			<a href="/mypage/myInfo">mypage</a>
+			<c:if test="${logRole=='1' }">
+				<a href="/admin"><b>AdminPage</b></a>
+			</c:if>
+			<c:if test="${logRole=='0' }">
+				<a href="/mypage/myInfo"><b>Mypage</b></a>
+			</c:if>
+
 			<span>&nbsp;</span>
 			<a href="/faq">고객센터</a>
 		</c:if>
 	</div>
-	
+
 	<div class="topUp">
 		<div id="top">
 			<button class="search-btn" type="submit">
@@ -150,41 +164,56 @@
 
 			<form method="post" action="/user/loginOk" id="log">
 				<div id="toggleDiv">
-					
-					
+
+
 					<c:if test="${logStatus!='Y' }">
-					<input type="text" placeholder="아이디를 입력해주세요" name="id" id="id">
-					<br /> <input type="password" placeholder="비밀번호를 입력해주세요"
-						name="password" id="password">
-						<br/>
-						<input type="submit" value="로그인" class="loginBtn">
-						<br/>
-						<a href="/oauth2/authorization/google"><img src="../img/googlebtnsmall.png" id="googleicon"></a>
+						<input type="text" placeholder="아이디를 입력해주세요" name="id" id="id">
 						<br />
-						<a href="/oauth2/authorization/kakao"><img src="../img/kakaobtnsmall.png" id="kakaoicon"></a>
-					
-						
+						<input type="password" placeholder="비밀번호를 입력해주세요" name="password"
+							id="password">
+						<br />
+						<input type="submit" value="로그인" class="loginBtn">
+						<br />
+						<a href="/oauth2/authorization/google"><img
+							src="../img/googlebtnsmall.png" id="googleicon"></a>
+						<br />
+						<a href="/oauth2/authorization/kakao"><img
+							src="../img/kakaobtnsmall.png" id="kakaoicon"></a>
+
+
 						<a href="/user/signup"><b>회원가입</b></a>
-						
+
 						<a href="/faq"><b>고객센터</b></a>
 					</c:if>
 					<c:if test="${logStatus=='Y' }">
-						<h1 style="font-size:20px; font-color:orange;"> ${logName }님 환영합니다</h1>
-						<input type="button" value="로그아웃" onclick=" location.href ='/user/logout' " class="logoutBtn">
-					
-						<br /><br /><br /><br />
-						<a href="/mypage/myInfo"><b>Mypage</b></a>
+						<h1 style="font-size: 20px; font-color: orange;">${logName }님
+							환영합니다</h1>
+						<input type="button" value="로그아웃"
+							onclick=" location.href ='/user/logout' " class="logoutBtn">
+
+						<br />
+						<br />
+						<br />
+						<br />
+
+						<c:if test="${logRole=='1' }">
+							<a href="/admin"><b>AdminPage</b></a>
+						</c:if>
+						<c:if test="${logRole=='0' }">
+							<a href="/mypage/myInfo"><b>Mypage</b></a>
+						</c:if>
+
 						<br />
 						<a href="/faq"><b>고객센터</b></a>
-					
-					</c:if>
-					
-					</div>
-			</form>
-			
 
-			
-			
+					</c:if>
+
+				</div>
+			</form>
+
+
+
+
 
 
 		</div>

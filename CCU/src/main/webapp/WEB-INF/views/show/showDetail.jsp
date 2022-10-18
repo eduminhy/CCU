@@ -156,9 +156,9 @@
 	</div>
 	<br />
 	<div class="scroll">
-		<div class="scroll2">
-			<div>공연통계 바로가기</div>
-		</div>
+<!-- 		<div class="scroll2"> -->
+<!-- 			<div>공연통계 바로가기</div> -->
+<!-- 		</div> -->
 		<div class="scroll1">
 			<div>후기보기 바로가기</div>
 		</div>
@@ -216,12 +216,12 @@
 			src="${show.introduction_image4}" />
 	</div>
 	<br /> <br />
-	<div class="detailTag">
+<!-- 	<div class="detailTag"> -->
 		<!-- 		<div>#드라마</div> -->
 		<!-- 		<div>#성장</div> -->
 		<!-- 		<div>#철학</div> -->
-	</div>
-	<div class="detailChart"></div>
+<!-- 	</div> -->
+<!-- 	<div class="detailChart"></div> -->
 	<br /> <br />
 	<div class="detailRating">
 		<br />
@@ -232,9 +232,13 @@
          	
     </script>
 			&nbsp;&nbsp;
-			
-			<c:if test="${starResult != 'NaN'}">    <c:out value="${starResult}" /></c:if>
-			<c:if test="${starResult == 'NaN'}">    <c:out value="아직 등록된 후기가 없습니다!" /></c:if>
+
+			<c:if test="${starResult != 'NaN'}">    <c:out
+					value="${starResult}" />
+			</c:if>
+			<c:if test="${starResult == 'NaN'}">    <c:out
+					value="아직 등록된 후기가 없습니다!" />
+			</c:if>
 		</div>
 		<br />
 		<div class="detailRatingContent">
