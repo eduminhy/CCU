@@ -87,7 +87,7 @@ public class UserController {
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 		} catch(Exception e) { // 실패 -> 이전페이지(history : 자바스크립트)
 			String msg = "<script>";
-			msg += "alert('회원가입 실패');";
+			msg += "alert('회원가입 실패. 항목들을 옳게 작성해주세요.');";
 			msg += "history.back()";
 			msg += "</script>";
 			

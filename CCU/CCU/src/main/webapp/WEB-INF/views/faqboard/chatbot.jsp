@@ -30,8 +30,8 @@ padding:10px}
 width:200px; height:200px;}
 </style>
 <script>
-$(function(){
-	$(document).on('click','#queryin',function(){
+// $(function(){
+// 	$(document).on('click','#queryin',function(){
 		
 
 
@@ -100,6 +100,12 @@ $(function(){
 	
 })
 })
+
+function press(f){
+    if(f.keyCode == 13){ 
+        from의 name.submit(); //formname에 사용자가 지정한 form의 name입력
+    }
+}
 </script>
 </head>
 <body>
@@ -111,18 +117,18 @@ $(function(){
 		<div><a href="/terms">이용약관</a></div>
 </div>
 
-
+<div>
 <img src="https://img.freepik.com/premium-vector/robot-icon-bot-sign-design-
 chatbot-symbol-concept-voice-support-service-bot-online-support-bot-vector-
 stock-illustration_100456-34.jpg?w=2000" style="width:350px; height:350px;  margin: auto;
     display: block;">
-<li style="text-align:center; color:GREY; font-size:1.5em;"><b>CCU Chatbot Manager</b></li>
+<a style="text-align:center; color:GREY; font-size:1.5em;"><b>CCU Chatbot Manager</b></a>
+</div>
 
 
-
-<div id="content" style="width:100%; height:400px; border:1px solid #ddd;"></div>
+<div id="content"></div>
 <input type="text" name="queryin" id="queryin"/>
-<input type="button" value="query" id="query"/>
+<input type="button" value="전송" id="query"/>
 <hr/>
 <textarea id="jsonCode" style="width:100%; height:300px;"></textarea>
 </body>
