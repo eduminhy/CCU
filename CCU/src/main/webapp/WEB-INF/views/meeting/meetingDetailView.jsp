@@ -217,21 +217,26 @@
 
 <script>
 $(document).ready(function(){
+	$('#editbtn').hide();	
+	
 	isShow = true; //변수 하나를 설정, 화면에 보이면 true, 보이지 않으면 false;
 	
+	
 	$('#remodify').click(function(){
-	if(isShow){ //보이니까 숨기고
+		
+		if(isShow){ //보이니까 숨기고
     		isShow = false;
     		$('.form-control').hide();	//요소를 안보이게 한다.
-    		$('#editbtn').hide();	
     		$('#remodify').text('수정');
+    		$('#editbtn').hide();	
     	}else{	//안보이니까 보이게 한다
     		isShow = true;
-    		$('.form-control').show();		//요소를 보이게 한다
     		$('#editbtn').show();
+    		$('.form-control').show();		//요소를 보이게 한다
         	$('#remodify').text('수정');
-   
+        		
     	};
+    	
 	});
 });
 

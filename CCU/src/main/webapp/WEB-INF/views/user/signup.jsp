@@ -152,10 +152,10 @@
 		<br/>
 		<span><b>CCU 가입경로를 선택해주세요</b></span>
 		<br/>
-		<li><input type="radio" name="route" value="광고" checked> 광고</li>
-		<li><input type="radio" name="route" value="검색" checked> 검색</li>
-		<li><input type="radio" name="route" value="추천" checked> 추천</li>
-		<li><input type="radio" name="route" value="기타" checked> 기타</li>
+		<li><input type="radio" name="route" value="광고" checked> 광고
+		<input type="radio" name="route" value="검색" checked> 검색
+		<input type="radio" name="route" value="추천" checked> 추천
+		<input type="radio" name="route" value="기타" checked> 기타</li>
 <!-- 		<li><input type="text" name="route" id="route" placeholder= "가입경로를 입력해주세요"></li> -->
 		</br>
 		<li><input type="submit" value="회원가입" class="signupbtn"></li>
