@@ -711,7 +711,32 @@ $(document).ready(function() {
 	//		window.open('chatList', '네이버팝업',
 	//			'width=640, height=640, scrollbars=yes, resizable=no');
 	//	}
+	$(".newdata").click(function() {
+		console.log(11)
+		$.ajax({
+			type: "get",
+			url: "/dbData/festivalInputMain",
+			async: false,
+			success: function(data) {
 
+				console.log(data);
+
+			},
+			error: function(error) {
+
+				console.log("error", error);
+			}
+		});
+	});
+
+
+//	var testInterval = setInterval(function() {
+//		console.log("2초 시간마다 계속 실행됩니다.");
+//	}, 2000);
+//	setTimeout(function() {
+//		clearTimeout(testInterval);
+//	}, 7000);
+//
 });
 
 

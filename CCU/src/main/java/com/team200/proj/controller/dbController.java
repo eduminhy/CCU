@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.servlet.ModelAndView;
 
 import com.team200.proj.service.DBdataService;
 import com.team200.proj.vo.festivalVO;
@@ -39,9 +39,11 @@ import org.json.simple.JSONArray;
 public class dbController {
 	@Inject
 	DBdataService service;
-
+    
+	ModelAndView mav = null;
+	
 	@GetMapping("showInputMain")
-	public String showInputMain() throws IOException, ParseException {
+	public ModelAndView  showInputMain() throws IOException, ParseException {
 		// http://www.kopis.or.kr/openApi/restful/pblprfr?service=983f7e00b8104d7aa07995c22ee98fde&stdate=20220701&cpage=6&rows=999
 		// 0920기준 7월1~종료일없이 4,939개의 공연이 있음..
 //		LocalDate now = LocalDate.now();
@@ -237,8 +239,12 @@ public class dbController {
 			service.inputShowData(sVO);	
 		}
 			
-//		System.out.println();
-		return "index";
+		mav = new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		mav.addObject("data", "공연정보데이터 최신화를 완료화였습니다.");
+		mav.addObject("data2", "NEWData");
+		mav.setViewName("Message");
+		return mav;
 
 	}
 
@@ -365,7 +371,7 @@ public class dbController {
 //	}
 
 	@GetMapping("festivalInputMain")
-	public String festivalInputMain() throws IOException, ParseException {
+	public ModelAndView festivalInputMain() throws IOException, ParseException {
 		Calendar mon = Calendar.getInstance();
 		mon.add(Calendar.MONTH, -2);
 		String sD = new java.text.SimpleDateFormat("yyyyMMdd").format(mon.getTime());
@@ -445,13 +451,16 @@ public class dbController {
 		}
 		
 		
-		
-//		System.out.println();
-		return "index";
+		mav = new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		mav.addObject("data", "축제정보데이터 최신화를 완료화였습니다.");
+		mav.addObject("data2", "NEWData");
+		mav.setViewName("Message");
+		return mav;
 
 	}
 	@GetMapping("popularInputMain")
-	public String popularInputMain() throws IOException, ParseException {
+	public ModelAndView popularInputMain() throws IOException, ParseException {
 		Calendar mon = Calendar.getInstance();
 		mon.add(Calendar.DATE , -1);
 		int co = 0;
@@ -548,11 +557,16 @@ public class dbController {
 //			}
 		}
 		}
-		return "index";
+		mav = new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		mav.addObject("data", "박스오피스 데이터 최신화를 완료화였습니다.");
+		mav.addObject("data2", "NEWData");
+		mav.setViewName("Message");
+		return mav;
 
 	}
 	@GetMapping("ChildInputMain")
-	public String ChildInputMain() throws IOException, ParseException {
+	public ModelAndView ChildInputMain() throws IOException, ParseException {
 		Calendar mon = Calendar.getInstance();
 		mon.add(Calendar.DATE , -1);
 //		int co = 0;
@@ -636,7 +650,12 @@ public class dbController {
 //			}
 		}
 		
-		return "index";
+		mav = new ModelAndView();
+		mav.setViewName("redirect:/admin");
+		mav.addObject("data", "아동관련 데이터 최신화를 완료화였습니다.");
+		mav.addObject("data2", "NEWData");
+		mav.setViewName("Message");
+		return mav;
 
 	}
 	
