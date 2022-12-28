@@ -111,13 +111,10 @@
 </script>
 </head>
 <body>
-	<div class="cculogo">
-	<img src="../img/logo01.PNG" width=100px; height=100px;>
-	</div>
-	<br />
-	<br />
+	
 	<!-- 아이디,비밀번호,닉네임,이름,연락처,주소, 우편번호, 생년월일, 성별, 가입경로, 이메일수신동의여부, 메시지 수신동의 여부 -->
 <div class="signupcontainer">
+<span class="signuptitle">-회원가입-</span>
 <form method="post" action="/user/signupWrite" id="uFrm">
 	<ul>	
 		<li><input type="text" name="id" id="id" placeholder="아이디를 입력해주세요"></li>

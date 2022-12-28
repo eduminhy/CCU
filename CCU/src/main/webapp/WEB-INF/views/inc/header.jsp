@@ -239,6 +239,9 @@
 				<li><a href="/show/showList?genre=아동">아동</a></li>
 			</ul>
 			<ul>
+				<li><a href="/preferGenrePage/preferGenre">선호장르</a></li>
+			</ul>
+			<ul>
 				<li><a href="/meeting/mainMeeting">같이갈래요?</a></li>
 			</ul>
 		</div>

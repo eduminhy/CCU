@@ -157,7 +157,8 @@ public class dbController {
 			sVO.setIntroduction_image2("");
 			sVO.setIntroduction_image3("");
 			sVO.setIntroduction_image4("");
-			sVO.setName((String) parse_items2.get("prfnm"));
+			//sVO.setName((String) parse_items2.get("prfnm"));
+			sVO.setName(String.valueOf(parse_items2.get("prfnm")));
 			sVO.setStartdate((String) parse_items2.get("prfpdfrom"));
 			sVO.setEnddate((String) parse_items2.get("prfpdto"));
 //			System.out.println(result);

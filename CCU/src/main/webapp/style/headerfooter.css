@@ -1,15 +1,5 @@
 @charset "UTF-8";
 /* ======= Header ====== */
-/* html, body { */
-/* 	height: 100%; */
-/* } */
-
-/* body { */
-/* 	display: flex; */
-/* 	flex-direction: column; */
-
-/* 	margin: 0; */
-/* } */
 
 body, ul, li {
 	margin: 0;
@@ -248,11 +238,11 @@ a:link, a:visited, a:hover {
 }
 
 #tapmenu>ul:first-child {
-	margin-left: 230px;
+	margin-left: 170px;
 }
 
 #tapmenu>ul:last-child {
-	margin-right: 230px;
+	margin-right: 170px;
 }
 
 #tapmenu li {
