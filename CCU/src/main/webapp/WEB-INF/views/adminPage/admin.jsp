@@ -50,6 +50,7 @@
 			<div>회원관리</div>
 			<div>신고관리</div>
 			<div>후기관리</div>
+			<div><a href="/adminPage/prefer" style="color:#666">선호장르관리</a></div>
 
 		</div>
 		<div style="line-height: 50%;">

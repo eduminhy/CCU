@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import com.team200.proj.dao.MypageDAO;
 import com.team200.proj.vo.BoardVO;
 import com.team200.proj.vo.OrderlistVO;
-import com.team200.proj.vo.MyBoardPageVO;
-import com.team200.proj.vo.MyCommentPageVO;
 import com.team200.proj.vo.ReplyVO;
 import com.team200.proj.vo.ReviewVO;
 import com.team200.proj.vo.UserVO;

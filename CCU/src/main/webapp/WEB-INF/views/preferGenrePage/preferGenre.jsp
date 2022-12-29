@@ -4,6 +4,41 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 	$(function(){
+		//공연장이름 줄이기
+		var placename = document.getElementsByClassName("pname");
+		for(var i=0;i<placename.length;i++){
+			if(placename[i].innerText.length>=14){
+				var repname = placename[i].innerText.substr(0,14)+"...";
+				placename[i].innerText = repname;
+			}
+		}
+		//공연이름 줄이기
+		var showname = document.getElementsByClassName("name");
+		for(var i=0;i<showname.length;i++){
+			if(showname[i].innerText.length>=14){
+				var repname = showname[i].innerText.substr(0,14)+"...";
+				showname[i].innerText = repname;
+			}
+		}
+
+		//공연장르 필터링
+		$(".btn").click(function(){
+			var genre = this.innerText;
+			var genrename = document.getElementsByClassName("genrename");
+			if(genre == '전체'){
+				$(".preferelement").show(400);
+			}else{
+				for(var i=0;i<genrename.length;i++){
+					if(genre!=genrename[i].innerText){
+						$(".preferelement").show();//리셋
+						$(".preferelement").eq(i).not(genre).hide(200);
+						$(".preferelement").eq(i).filter(genre).show(400);
+					}
+				}
+			}
+		});
+		
+		
 		var cnt=0;
 		$("input[name='genrename']").click(function(){
 			console.log(this.id);
@@ -20,6 +55,8 @@
 			}
 		});	
 	});
+	
+	
 </script>
 
 <div class="container">
@@ -30,25 +67,25 @@
 				<li>장르</li>
 			</ul>
 			<ul>
-				<li><button>전체</button></li>
+				<li><button class="btn">전체</button></li>
 			</ul>
 			<ul>
-				<li><button>연극</button></li>
+				<li><button class="btn">연극</button></li>
 			</ul>
 			<ul>
-				<li><button>뮤지컬</button></li>
+				<li><button class="btn">뮤지컬</button></li>
 			</ul>
 			<ul>
-				<li><button>클래식</button></li>
+				<li><button class="btn">클래식</button></li>
 			</ul>
 			<ul>
-				<li><button>오페라</button></li>
+				<li><button class="btn">오페라</button></li>
 			</ul>
 			<ul>
-				<li><button>국악</button></li>
+				<li><button class="btn">국악</button></li>
 			</ul>
 			<ul>
-				<li><button>무용</button></li>
+				<li><button class="btn">무용</button></li>
 			</ul>
 		</div>
 		<div class="genreSection">
@@ -77,40 +114,13 @@
 		<div class="selectSection"></div>
 	</div>
 	<div class="rightSide">
-		<ul>
-			<li><a href=""><img src="../img/poster/1.jpg"/></a></li>
-			<li>공연이름</li>
-			<li>공연장소</li>
-		</ul>
-		<ul>
-			<li><a href=""><img src="../img/poster/2.jpg"/></a></li>
-			<li>공연이름</li>
-			<li>공연장소</li>
-		</ul>
-		<ul>
-			<li><a href=""><img src="../img/poster/3.jpg"/></a></li>
-			<li>공연이름</li>
-			<li>공연장소</li>
-		</ul>
-		<ul>
-			<li><a href=""><img src="../img/poster/4.jpg"/></a></li>
-			<li>공연이름</li>
-			<li>공연장소</li>
-		</ul>
-		<ul>
-			<li><a href=""><img src="../img/poster/5.jpg"/></a></li>
-			<li>공연이름</li>
-			<li>공연장소</li>
-		</ul>
-		<ul>
-			<li><a href=""><img src="../img/poster/1.jpg"/></a></li>
-			<li>공연이름</li>
-			<li>공연장소</li>
-		</ul>
-		<ul>
-			<li><a href=""><img src="../img/poster/2.jpg"/></a></li>
-			<li>공연이름</li>
-			<li>공연장소</li>
-		</ul>
+		<c:forEach var="svo" items="${showlist }">
+			<ul class="preferelement">
+				<li><a href="/show/showDetail?show_id=${svo.id}"><img src="${svo.mainposter }"/></a></li>
+				<li class="name">${svo.name }</li>
+				<li class="genrename">${svo.genre }</li>
+				<li class="pname">${svo.place_name }</li>
+			</ul>
+		</c:forEach>	
 	</div>
 </div>

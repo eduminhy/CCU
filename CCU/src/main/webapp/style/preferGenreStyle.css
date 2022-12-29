@@ -47,15 +47,29 @@
 		border:none;
 		border-radius:20px;
 	}
-	.rightSide>ul{
+	.rightSide ul{
 		float:left; text-align:center;
 	}
 	.rightSide li:nth-child(2){
 		font-weight:bold; margin-top:15px;
+	}
+	.rightSide li:nth-child(3){
+		display:none;
 	}
 	.rightSide li:last-child{
 		margin-bottom:50px;
 	}
 	.rightSide img{
 		width:200px; height:270px; margin:0 20px;
+	}
+	.btn{
+		border:none;
+		background:#fdded9;
+		font-size:16px;
+	}
+	.btn:focus{
+		border:none;
+		border-radius:10px; padding:7px;
+		color:#f69a8d;
+		font-weight:bold; font-size:16px;
 	}

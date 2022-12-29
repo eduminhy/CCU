@@ -1,6 +1,6 @@
 package com.team200.proj.controller;
 
-import java.util.List;
+
 
 import javax.inject.Inject;
 
@@ -9,22 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.team200.proj.service.PreferService;
+import com.team200.proj.service.AdminService;
 
 @RestController
-@RequestMapping("/preferGenrePage/*")
-public class preferController {
+@RequestMapping("/adminPage/*")
+public class AdminController {
 	@Inject
-	PreferService service;
+	AdminService service;
 	
-	@GetMapping("preferGenre")
-	public ModelAndView preferGenre() {
-		
+	@GetMapping("prefer")
+	public ModelAndView prefer() {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("showlist", service.getInfo());
-		
-		mav.setViewName("preferGenrePage/preferGenre");
+			
+		mav.setViewName("adminPage/prefer");
 		return mav;
 	}
-
 }
