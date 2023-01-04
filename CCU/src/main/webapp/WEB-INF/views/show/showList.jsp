@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link rel="stylesheet" href="/style/showListStyle.css">
 <script>
 	$(function(){
@@ -47,14 +48,24 @@
 <div class="container">
 	<div id="hot">
 		<h2>What's HOT? [${genre}]</h2>
-		<c:forEach var="svo" items="${showlist }">
-			<ul>
-				<li><a href="/show/showDetail?show_id=${svo.id}"><img src="${svo.mainposter }"/></a></li>
-				<li class="showname">${svo.name }</li>
-				<li>${svo.startdate } ~ ${svo.enddate }</li>
-				<li class="placename">${svo.place_name}</li>
-			</ul>
-		</c:forEach>
+			<c:forEach var="svo" items="${showlist }">
+				<ul>
+					<li><a href="/show/showDetail?show_id=${svo.id}"><img src="${svo.mainposter }"/></a></li>
+					<li class="showname">${svo.name }</li>
+					<li>${svo.startdate } ~ ${svo.enddate }</li>
+					<li class="placename">${svo.place_name}</li>
+				</ul>
+			</c:forEach>
+			<c:if test="${fn:length(showlist)<10}">
+				<c:forEach begin="1" end="${10-fn:length(showlist)}">
+					<ul>
+						<li><img src="../img/comingsoon.jpg"/></li>
+						<li class="showname"></li>
+						<li></li>
+						<li class="placename"></li>
+					</ul>
+				</c:forEach>
+			</c:if>
 	</div>
 	&nbsp;
 	<div id="letter">
